@@ -1,4 +1,10 @@
-## Get and Post
+## Table of Content
+
+- [GET and POST](#get-and-post)
+- [REST](#rest)
+- [Cookies](#cookies)
+
+## GET and POST
 
 | GET | POST |
 | --- | ---- |
@@ -11,22 +17,38 @@
 
 ## REST
 
-**REST** - REpresentation State Transfer. An Architectural style for building APIs
+**REST** - REpresentation State Transfer. An Architectural style for building APIs.
 
-1. GET
+1. GET  
+    `/users` - get users list  
+    `/users/max` - get max  
+2. PUT  
+    `/users/max` - updates max entity  
+3. POST  
+    `/user/` - create new user  
+4. DELETE  
+    `/users/max` - delete user  
 
-    `/users` - get users list
-    `/users/max` - get max
+## Cookies
 
-2. PUT
+1. Browser Limit
 
-    `/users/max` - updates max entity
+    * 20 cookies per websie
+    * cookie size **< 4kb**
+    * only for one domain
 
-3. POST
+2. Good uses
 
-    `/user/` - create new user
+    * storing login information
+    * stroing small amount of data to avoid hitting a db
+    * tracking you for ads
 
-4. DELETE
+3. To set cookie send header `Set-Cookie` from server:
 
-    `/users/max` - delete user
-    
+    `Set-Cookie: user_id=12345;`
+
+4. If you want to set more than 1 cookie, just send multiple `Set-Cookie` header
+
+5. Browser send cookies with `cookies` header:
+
+    `cookie: user_id=12345;session_id=1238`
