@@ -52,7 +52,7 @@
 3. Bash variables have no type. Basically just store a string.
 4. To assign combo value use the following
 
-    ```bash
+    ```{r, engine='bash'}
     greeting=”hello”
     user_greeting=”$greeting, $USER”
     ```
