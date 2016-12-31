@@ -8,12 +8,12 @@
 
 1. The is a good practise to put hash-band line at the beginning of each script
 
-    ```
+    ```bash
     #!/bin/bash
     ```
 2. To make file executable use
 
-    ```
+    ```bash
     chmod u+x file_name
     ```
 3. Single quotes escape everything inside.
@@ -24,7 +24,7 @@
 
 6. To finish script execution run
 
-    ```
+    ```bash
     exit exit_code
     ```
 
@@ -41,18 +41,18 @@
 ## Variables
 1. To create variable and assign value to it (do not put space before or after **`=`** )
 
-    ```
+    ```bash
     var_name=var_value
     ```
 2. To extract variable value use
 
-    ```
+    ```bash
     $var_name
     ```
 3. Bash variables have no type. Basically just store a string.
 4. To assign combo value use the following
 
-    ```ksh
+    ```bash
     greeting=”hello”
     user_greeting=”$greeting, $USER”
     ```
@@ -61,12 +61,12 @@
     * right: **`“$x”`**
 6. To tell bash where you variable ends use braces **`{}`**
 
-    ```
+    ```bash
     ${var_name}
     ```
 7. To read a line of input into variable use
 
-    ```
+    ```bash
     read var_name
     ```
 8. All variables have attributes. To set attribute use declare.
@@ -75,12 +75,12 @@
 
 9. To set variable as readonly
 
-    ```
+    ```bash
     declare -r const_name=”some value”
     ```
 10. To export variable to child script use:
 
-    ```
+    ```bash
     export var_name
     declare -x var_name
     ```
@@ -98,7 +98,7 @@
     More info http://goo.gl/g6xtca
 
 12. To put some string multistring value to a variable use
-    ```
+    ```bash
     var_name=$(cat <<some_custom_tag
         multiline string
     some_custom_tag
