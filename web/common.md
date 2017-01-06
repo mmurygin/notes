@@ -45,18 +45,23 @@
 
 3. To set cookie send header `Set-Cookie` from server:
 
-    `Set-Cookie: user_id=12345`
+    ```
+    Set-Cookie: user_id=12345`
+    ```
 
 4. If you want to set more than 1 cookie, just send multiple `Set-Cookie` header
 
 5. Browser send cookies with `cookies` header:
 
-    `cookie: user_id=12345;session_id=1238`
+    ```
+    cookie: user_id=12345;session_id=1238`
+    ```
 
 6. Cookie domain restriction:
 
-    **`Set-Cookie: user_id=12345; domain=www.site.com`**
-
+    ```
+    Set-Cookie: user_id=12345; domain=www.site.com
+    ```
     * Browser will only set cookie if server domain is the same or subdomain of domain in header (ends with that domain in cookie).<br>
         `domain=foo.www.site.com` - this works<br>
         `domain=site.com` - this doesn't work<br>
@@ -65,4 +70,8 @@
         `www.site.com` - this works<br>
         `.site.com` - this works<br>
 
-7. 
+7. By default Cookie is deleted when user closes the browser. To set expiration date use:
+
+    ```
+    Set-Cookie: user_id=12345; Expires=Tue, 1 Jan 2025 00:00:0 GMT
+    ```
