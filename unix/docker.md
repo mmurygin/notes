@@ -1,5 +1,16 @@
 # Docker
 
+## Table of Content
+- [Common](#common)
+- [Images](#images)
+- [Containers](#containers)
+- [Creating new images](#creating-new-images)
+- [Dockerfile](#dockerfile)
+- [Volumes](#volumes)
+- [Share Containers](#share-containers)
+- [Containers networking](#containers-networking)
+- [Docker Compose](#docker-compose)
+
 ## Common
 
 1. To use docker as non-root user add user to docker group:
@@ -69,7 +80,7 @@
         ```
 
     * **`-d`** flag tells docker to run container in the background (detached mode) or as a daemon
-    
+
     * **`-w`**  set the current working directory (inside container) for conatiner process
 
 3. To exit container shell without the container shut down user **CTRL+P+Q**
@@ -259,3 +270,102 @@
     ```
     docker push <username>/<image_name>:<tag>
     ```
+
+## Containers networking
+
+1. Containers have their own network and IP address
+
+2. To map exposed container ports to ports on the host machine use -p
+    * maps port 80 on the container to 8080 on the host
+
+        ```
+        docker run -d -p 8080:80 nginx:1.7
+        ```
+
+3. To map ports exposed by the container to a port value on the host
+
+    ```
+    docker run -d -P nginx:1.7
+    ```
+
+    * Host port numbers used go from 49153 to 65535
+
+    * Only works for port defined in the EXPOSE instruction 
+
+4. **Linking** is a communication method between containers which allows them to securely transfer data from one to another
+
+    * Source and recipient containers
+
+    * Recipient containers have access to data on source containers
+
+    * Links are established based on container names
+        
+        ```
+        docker run -d --name database postgress
+        ```
+
+        ```
+        docker run -d -P --name website --link database:db nginx
+        ```
+
+5. **Container Network** - we can create a container network, then each container in this network can talk to another one
+    * Create a Custum Bridge Network
+    
+        ```
+        docker network create --driver bridge network_name
+        ```
+
+    * Run Container in the Network
+
+        ```
+        docker run -d --net=network_name --name container_name container_image
+        docker run -d --net=isolated_network --name mongodb mongo
+        ```
+
+    * One container could be run in multiple networks
+
+    * Get the list of available networks
+    
+        ```
+        docker network ls
+        ```
+
+    * Get info about network
+
+        ```
+        docker network inspect network_name
+
+        ```
+5. Usage of Linking
+    * Containers can talk to each other without having to expose ports to the host
+    * Essential for micro service application architecture
+    * Example
+        * Container with nodejs web app
+        * Container with postgres database
+        * Application on Nodejs need to connect to postgres
+
+## Docker Compose
+
+1. Manages the whole application lifecycle:
+    * Start, stop and rebuild services
+    * View the status of running services
+    * Stream the log output of running services
+
+2. **dockercompose.yml** - allows to define the following containers parametrs
+    * build (context, workdir)
+    * environment
+    * image
+    * networks
+    * ports
+    * volumes
+3. Docker compose command
+    * **`docker-compose build`** - build or rebuild all services defined in docker-compose.yml
+    * **`docker-compose build mongo`** - build or rebuild mongo service
+    * **`docker-compose up`** - creates and starts all services
+    * **`docker-comose up --no-deps node`** - do not recreate services than node depends on
+    * **`docker-compose down`** - stops and removes all containers 
+    * **`docker-compose down --rmi all --volumes`** - remove containers, images, volumes
+    * **`docker-compose start`** - starts all services
+    * **`docker-compose stop`** - stops all containers
+    * **`docker-compose rm`** - removes stopped containers
+    * **`docker-compose logs`** - get services logs
