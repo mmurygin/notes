@@ -9,6 +9,7 @@
     obj.items()
     ```
 2. To set string as a row string (ignore any escaping) use `r`
+
     ```python
     my_str = r"this is my \nstring"
     ```

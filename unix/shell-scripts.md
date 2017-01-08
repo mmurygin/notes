@@ -41,6 +41,7 @@
     * Arguments after this will not be interpreted as options
 
 ## Variables
+
 1. To create variable and assign value to it (do not put space before or after **`=`** )
 
     ```bash

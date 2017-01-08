@@ -290,7 +290,7 @@
 
     * Host port numbers used go from 49153 to 65535
 
-    * Only works for port defined in the EXPOSE instruction 
+    * Only works for port defined in the EXPOSE instruction
 
 4. **Linking** is a communication method between containers which allows them to securely transfer data from one to another
 
@@ -299,7 +299,7 @@
     * Recipient containers have access to data on source containers
 
     * Links are established based on container names
-        
+
         ```
         docker run -d --name database postgress
         ```
@@ -310,7 +310,7 @@
 
 5. **Container Network** - we can create a container network, then each container in this network can talk to another one
     * Create a Custum Bridge Network
-    
+
         ```
         docker network create --driver bridge network_name
         ```
@@ -325,7 +325,7 @@
     * One container could be run in multiple networks
 
     * Get the list of available networks
-    
+
         ```
         docker network ls
         ```
@@ -363,7 +363,7 @@
     * **`docker-compose build mongo`** - build or rebuild mongo service
     * **`docker-compose up`** - creates and starts all services
     * **`docker-comose up --no-deps node`** - do not recreate services than node depends on
-    * **`docker-compose down`** - stops and removes all containers 
+    * **`docker-compose down`** - stops and removes all containers
     * **`docker-compose down --rmi all --volumes`** - remove containers, images, volumes
     * **`docker-compose start`** - starts all services
     * **`docker-compose stop`** - stops all containers
