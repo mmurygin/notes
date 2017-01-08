@@ -1,3 +1,5 @@
+# Optimization
+
 ## Table Of Content
 - [Schema Optimization](#schema-optimization)
 - [Server Profiling](#server-profiling)
