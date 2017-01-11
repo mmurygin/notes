@@ -28,3 +28,31 @@
     ![preflight request description](https://mdn.mozillademos.org/files/14289/prelight.png)
 
 7. [More info abount CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+
+## CSRF
+
+1. **CSRF** (Cross-site request forgery) - is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing.
+
+3. As `POST` requests with type `application/x-www-form-urlencoded` are not preflighted, it's possible to send post request from evil site to trusted site, if user is authorized inside trusted site.
+
+    ```javascript
+    fetch('www.no-very-secure-bank', {
+        method: 'POST',
+        body: 'recipient=Umbrella+Corp&amount=666',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        credentials: 'include',
+    });
+
+## XSS
+
+1. **XSS** (Cross-site scripting) - Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+
+An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page
+
+2. The only way to protect from such kind of attack - **only way to secure for such kind of attack is validate user input on a serverside**. If we insert user input into html we should escape that html
+
+## Resources
+
+[https://www.owasp.org](https://www.owasp.org)
