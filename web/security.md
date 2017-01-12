@@ -1,5 +1,13 @@
 # Security
 
+## Table Of Contents
+
+- [Origins](#origins)
+- [CSRF](#csrf)
+- [SQL Injection](#sql-injection)
+- [XSS](#xss)
+- [Resources](#resources)
+
 ## Origins
 
 1. **Same Origin Policy** - javascript is not allowed to get or put any data from dirrerent origin. [More info](https://www.w3.org/Security/wiki/Same_Origin_Policy)
@@ -44,6 +52,23 @@
         },
         credentials: 'include',
     });
+
+## SQL Injection
+
+1. **SQL Injection** - attack consists of insertion or "injection" of a SQL query via the input data from the client to the application.
+
+2. Example
+
+    * We have a route `/users?id={id}`
+
+    * We have a backend for selecting user:
+
+    ```python
+    query = "SELECT * FROM Users WHERE id = %s" % self.get.id
+    ```
+
+    * Hacker made a request `/users?id=12;some_sql_query` and can run any sql within our database
+
 
 ## XSS
 
