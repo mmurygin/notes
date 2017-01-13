@@ -52,6 +52,7 @@
         },
         credentials: 'include',
     });
+    ```
 
 3. The only way to protect from such kind of attack - is to include custom token to every form, and verify that token on a backend.
 
