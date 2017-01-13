@@ -19,15 +19,18 @@
 
 **REST** - REpresentation State Transfer. An Architectural style for building APIs.
 
-1. GET<br>
-    `/users` - get users list<br>
-    `/users/max` - get max<br>
-2. PUT<br>
-    `/users/max` - updates max entity<br>
-3. POST<br>
-    `/user/` - create new user<br>
-4. DELETE<br>
-    `/users/max` - delete user<br>
+1. GET
+    `/users` - get users list
+    `/users/max` - get max
+2. PUT
+    `/users/max` - updates max entity
+3. POST
+    `/user/` - create new user
+4. DELETE
+    `/users/max` - delete user
+5. Urls with ended `/` and without (for example `/users/` and `/users`) should have the same handler. To implement such kind of behaviour we can use the following regex:<br>
+    `/users/?`<br>
+
 
 ## Cookies
 

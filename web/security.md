@@ -41,7 +41,7 @@
 
 1. **CSRF** (Cross-site request forgery) - is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated. CSRF attacks specifically target state-changing requests, not theft of data, since the attacker has no way to see the response to the forged request. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker's choosing.
 
-3. As `POST` requests with type `application/x-www-form-urlencoded` are not preflighted, it's possible to send post request from evil site to trusted site, if user is authorized inside trusted site.
+2. As `POST` requests with type `application/x-www-form-urlencoded` are not preflighted, it's possible to send post request from evil site to trusted site, if user is authorized inside trusted site.
 
     ```javascript
     fetch('www.no-very-secure-bank', {
@@ -52,6 +52,8 @@
         },
         credentials: 'include',
     });
+
+3. The only way to protect from such kind of attack - is to include custom token to every form, and verify that token on a backend.
 
 ## SQL Injection
 

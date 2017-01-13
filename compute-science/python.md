@@ -1,5 +1,14 @@
 # Python
 
+## Table Of Contents
+
+- [Common](#common)
+- [Decorators](#decorators)
+- [Requests](#requests)
+- [JSON](#json)
+- [Internationalization](#internationalization)
+- [Logging](#logging)
+
 ## Common
 
 1. To get items from dictionary use `items` method
@@ -66,4 +75,17 @@
     * use 'r'
     ```python
     json.loads(r'{"story": "don\"t"}')
+    ```
+
+## Internationalization
+
+1. To implement internationalization use library called `gettext`
+
+## Logging
+
+1. Use python standart library
+
+    ```python
+    import logging
+    logging.debug(...)
     ```
