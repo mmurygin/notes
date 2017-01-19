@@ -4,6 +4,10 @@
 
 - [Common](#common)
 - [Variables](#variables)
+- [Integer and Arithmetic Expressions](#integer-and-arithmetic-expressions)
+- [Debugging](#debugging)
+- [Conditions](#conditions)
+- [Control flow](#control-flow)
 
 
 ## Common
@@ -97,8 +101,8 @@
     * **`ar=(1 2 3 a b c)`** - creates array of 6 elements
     * **`${#var_name[@]}`** - gets the array length
     * **`${!var_name[@]}`** - gets all array indices (there can be gaps in the indices)
-    * **`declare -A var_name`**  - declares dictionary<br>
-    More info http://goo.gl/g6xtca
+    * **`declare -A var_name`**  - declares dictionary
+    * More info http://goo.gl/g6xtca
 
 12. To put some string multistring value to a variable use
     ```
@@ -111,7 +115,7 @@
     * **`${var:-value}`** - will evaluate to “value” if var is empty or unset
     * **`${var-value}`** - will evaluete to “value” if var is unset
     * **`${var:=value}`** - if var was empty or unset, this evaluates to “value” and assigns it to var
-    **`${var=value}`** - if var was unset, this evaluates to `value` and assigns it to var<br>
+    * **`${var=value}`** - if var was unset, this evaluates to `value` and assigns it to var<br>
     More information about parameter expansions
 
 ## Integer and Arithmetic Expressions
@@ -218,3 +222,66 @@
 7. Some usefull regex:<br>
     **`[0-9]?`** - will match a single digit or nothing at all<br>
     **`[a-z]*`** - will match any lowecase text or nothing at all
+
+## Control flow
+
+1. `while` - repeats code while test true
+
+    ```
+    while test; do
+        code to be repeated
+    done
+    ```
+
+2. `until` - repeats code while test false
+
+    ```
+    until test; do
+        code to be repeated
+    done
+    ```
+
+3. `for` - assign each word in words to var . Stops when no words are left. **Do NOT** quote words.
+
+    ```
+    for VAR in WORDS; do
+        code
+    done
+    ```
+
+    ```
+    for (( i=0; i<max; i++ )); do
+        code
+    done
+    ```
+
+    * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
+
+4. `case`
+
+    ```
+    case WORD in
+        PATTERN1)
+            code for pattern1;;
+        PATTERN2)
+            code for pattern2;;
+        ....
+        PATTERNNn)
+            code for pattern n;;
+        ?)
+            code for not matching pattern
+    esac
+    ```
+
+5. `||` and `&&` - combines multiple commands depending on their result. Commands are executed in order, they do not use any priorites
+    * `[[ $1 ]] || echo “missing argument”` - print error when there is no argument
+    * `[[ $1 ]] || echo “missing argument” && exit 1` - always exits!!!
+    * `[[ $1 ]] || { echo “missing argument” >&2; exit 1; }` - good way to check input params
+
+6. `{ }` - group commands
+    * will group them into a single statement
+    * can use I/O redirection for the whole group
+    * use the group in an if statement or while loop
+    * return status is that of the last command in the group
+    * separate the commands with new linews or semicolons, use spaces around braces 
+        * `{ cmd1; cmd2; cmd3 }`
