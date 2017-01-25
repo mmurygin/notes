@@ -8,6 +8,7 @@
 - [Debugging](#debugging)
 - [Conditions](#conditions)
 - [Control flow](#control-flow)
+- [Input and Output](#input-and-output)
 
 
 ## Common
@@ -285,3 +286,46 @@
     * return status is that of the last command in the group
     * separate the commands with new linews or semicolons, use spaces around braces 
         * `{ cmd1; cmd2; cmd3 }`
+
+
+## Input and Output
+
+1. `echo` - display a line of text
+
+2. `printf` - format and print data
+    * can do more sophisticated output than echo
+    * uses a format string for formatting
+    * will not append a newline by default.
+
+3. To put argument in printf command use
+
+    ```
+    printf "hello %s, how are you?\n" $USER
+    ```
+
+5. To put printf output to a variable use -v option
+
+    ```
+    printf -v var_name “some_str”
+    ```
+
+4. [More Info About printf](http://wiki.bash-hackers.org/commands/builtin/printf)
+
+5. `read` - reads input into a variable
+
+    ```
+    read x
+    ```
+
+    * without variable name put input to variable REPLY
+    * `-n` stop read at the new line
+    * `-N` reads exact number of characters
+    * `-s` will suspess otput (useful for passwords)
+    * `-r` dissallow escare sequences, line continuation (best practice to use this option)
+    * to read 2 variables at one time:
+
+        ```
+        read var_1 var_2 var_1_value var_2_value
+        ```
+        * everything after the last separator goes to the last variable
+        * to change default separator (space) you could change variable IFS
