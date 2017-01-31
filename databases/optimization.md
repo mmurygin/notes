@@ -20,3 +20,15 @@
 ## Server Profiling
 1. Best way to find the slow queries it’s to analize slow query log. At first you need to turn this options on, then confuge the logs destination, then restart sql server.
 2. You can use pt-query-digest to analyze slow query logs
+
+## Indexis
+
+1. MySQL will use index only in case of isolated column. In the following example there is the full table scan:
+
+    ```sql
+    SELECT actor_id FROM sakila.actor WHERE actor_id + 1 = 5;
+    ```
+
+2. If you need to index long string column, index only some prefix of it column.
+    * It will allow to speed up index search
+    * It will reduce the index size
