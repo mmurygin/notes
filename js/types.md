@@ -72,6 +72,13 @@
 
 6. There are some operations (like the bitwise operators) which are only defined for 32-bit numbers.
 
+7. To check if variable is `NaN` use
+    
+    ```javascript
+    const a = 2 / "foo";
+    Number.isNaN(a); // true
+    ```
+
 ## Coercing
 
 1. There are the following **falsy** values in javascript
