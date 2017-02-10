@@ -14,7 +14,7 @@
 2. `typeof` returns one of the above types
     
     ```javascript
-    typeof true === 'boolean' // true
+    typeof true          === 'boolean' // true
     typeof true          === "boolean";   // true
     typeof 42            === "number";    // true
     typeof "42"          === "string";    // true
@@ -79,7 +79,56 @@
     Number.isNaN(a); // true
     ```
 
+8. It's commonly a bad idea to pass `Number` wrapper to function, and try to edit it value. `Number` is mutable object and it can hold only one value.
+
+    ```javascript
+    function foo(x) {
+        x = x + 1;
+        x; // 3
+    }
+
+    var a = 2;
+    var b = new Number( a ); // or equivalently `Object(a)`
+
+    foo( b );
+    console.log( b ); // 2, not 3
+    ```
+
+## Natives
+
+1. There are the following natives:
+    * `String()`
+    * `Number()`
+    * `Boolean()`
+    * `Array()`
+    * `Object()`
+    * `Function()`
+    * `RegExp()`
+    * `Date()`
+    * `Error()`
+    * `Symbol()` -- added in ES6!
+
+2. If you call `"my string".length` the string value is automatically boxed to object `String`. The same for `number`, `boolean`.
+
+3. `Function.prototype` it is an empty function, `RegExp.prototype` it is an empty regex, `Array.prototype` it is an empty array. So it's usefull to use that objects as default value. But you should be sure that these value will not be modified.
+
+    ```javascript
+    function isThisCool(vals,fn,rx) {
+        vals = vals || Array.prototype;
+        fn = fn || Function.prototype;
+        rx = rx || RegExp.prototype;
+
+        return rx.test(
+            vals.map( fn ).join( "" )
+        );
+    }
+    ```
+
 ## Coercing
+
+1. **Converting** a value from one type to another is often called "type casting," when done **explicitly**, and **coercion** when done **implicitly** (forced by the rules of how a value is used).
+
+2. JavaScript coercions always result in one of the scalar primitive values, like `string`, `number`, or `boolean`. 
 
 1. There are the following **falsy** values in javascript
     * `undefined`
