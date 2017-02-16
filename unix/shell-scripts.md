@@ -11,7 +11,8 @@
 - [Input and Output](#input-and-output)
 - [Stream and IO Redirection](#stream-and-io-redirection)
 - [Handling script parametrs](#handling-script-parametrs)
-
+- [Functions](#function)
+- [Strings](#strings)
 
 ## Common
 
@@ -228,7 +229,7 @@
 
 ## Control flow
 
-1. `while` - repeats code while test true
+1. **`while`** - repeats code while test true
 
     ```
     while test; do
@@ -236,7 +237,7 @@
     done
     ```
 
-2. `until` - repeats code while test false
+2. **`until`** - repeats code while test false
 
     ```
     until test; do
@@ -244,7 +245,7 @@
     done
     ```
 
-3. `for` - assign each word in words to var . Stops when no words are left. **Do NOT** quote words.
+3. **`for`** - assign each word in words to var . Stops when no words are left. **Do NOT** quote words.
 
     ```
     for VAR in WORDS; do
@@ -260,7 +261,7 @@
 
     * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
 
-4. `case`
+4. **`case`**
 
     ```
     case WORD in
@@ -276,12 +277,12 @@
     esac
     ```
 
-5. `||` and `&&` - combines multiple commands depending on their result. Commands are executed in order, they do not use any priorites
+5. **`||`** and **`&&`** - combines multiple commands depending on their result. Commands are executed in order, they do not use any priorites
     * `[[ $1 ]] || echo “missing argument”` - print error when there is no argument
     * `[[ $1 ]] || echo “missing argument” && exit 1` - always exits!!!
     * `[[ $1 ]] || { echo “missing argument” >&2; exit 1; }` - good way to check input params
 
-6. `{ }` - group commands
+6. **`{ }`** - group commands
     * will group them into a single statement
     * can use I/O redirection for the whole group
     * use the group in an if statement or while loop
@@ -291,9 +292,9 @@
 
 ## Input and Output
 
-1. `echo` - display a line of text
+1. **`echo`** - display a line of text
 
-2. `printf` - format and print data
+2. **`printf`** - format and print data
     * can do more sophisticated output than echo
     * uses a format string for formatting
     * will not append a newline by default.
@@ -312,17 +313,17 @@
 
 4. [More Info About printf](http://wiki.bash-hackers.org/commands/builtin/printf)
 
-5. `read` - reads input into a variable
+5. **`read`** - reads input into a variable
 
     ```
     read x
     ```
 
-    * without variable name put input to variable REPLY
-    * `-n` stop read at the new line
-    * `-N` reads exact number of characters
-    * `-s` will suspess otput (useful for passwords)
-    * `-r` dissallow escare sequences, line continuation (best practice to use this option)
+    * without variable name put input to variable **`REPLY`**
+    * **`-n`** stop read at the new line
+    * **`-N`** reads exact number of characters
+    * **`-s`** will suspess otput (useful for passwords)
+    * **`-r`** dissallow escare sequences, line continuation (best practice to use this option)
     * to read 2 variables at one time:
 
         ```
@@ -335,39 +336,39 @@
 
 [An Introduction to Linux I/O Redirection](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-i-o-redirection)
 
-1. `0`: Standart Input (stdin)
+1. **`0`**: Standart Input (stdin)
 
     ```
     /dev/stdin
     ```
 
-2. `1`: Standart Output (stdout)
+2. **`1`**: Standart Output (stdout)
 
     ```
     /dev/stdout
     ```
 
-3. `2`: Standart Error (stderr)
+3. **`2`**: Standart Error (stderr)
 
     ```
     /dev/stderr
     ```
 
-4. `/dev/null` - discards all data send to it
-5. Input redirection: `<`
+4. **`/dev/null`** - discards all data send to it
+5. Input redirection: **`<`**
 
     ```
     grep milk < shoppingnotes.txt
     ```
 
-6. Output redirection: `>`
+6. Output redirection: **`>`**
 
     ```
     ls > listing.txt
     ```
 
-    * `>` - will overwite existing files
-    * `>>` -  appends to the end of a file
+    * **`>`** - will overwite existing files
+    * **`>>`** -  appends to the end of a file
 
 7. Pipes
 
@@ -377,12 +378,12 @@
 
 8. Redirect a specific stream with `N>` (where N is the number of stream, `1` is default )
 
-    * `cmd 2>/dev/null`  - discards all errors
+    * **`cmd 2>/dev/null`**  - discards all errors
 
 9. Redirect **to** a specific stream with `>&N`
 
-    * `>&2` - sends output to stderr
-    * `2>&1` - redirects stderr into stdout
+    * **`>&2`** - sends output to stderr
+    * **`2>&1`** - redirects stderr into stdout
 
 10. To redirect all I/O for the whole script use exec (usefull for logging)
 
@@ -390,27 +391,35 @@
     exec >logfile 2>errorlog
     ```
 
-11. Examples
+11. A command in a pipeline runs in a subshell
 
-    * `command > file` - redirects out of a command to a file
-    * `command > /dev/null` - discards out of a command
-    * `command 2> file` - redirects standart error stream to a file
-    * `command | tee file` - redirects standart ouput of the command to a file and backward to output
-    * `command  > logfile 2>&1` - sending both error and ouput to a single file
+    ```
+    declare -i count=0
+    ls | while read -r; do ((++count)); done  # do not increases global count
+    ```
+
+12. Examples
+
+    * **`command > file`** - redirects out of a command to a file
+    * **`command > /dev/null`** - discards out of a command
+    * **`command 2> file`** - redirects standart error stream to a file
+    * **`command | tee file`** - redirects standart ouput of the command to a file and backward to output
+    * **`command  > logfile 2>&1`** - sending both error and ouput to a single file
 
 
 ## Handling script parametrs
-1. Special variables
-    * `$1, $2…` - gets the argument number 1, 2 and etc
-    * `“$@”` - equivalent to `“$1”, “$2”, ..,  “$N”`
-    * `“$*”` - equivalent to `“$1 $2 $3… $N”`
-    * `$#` - get the number of script arguments
-    * `$0` - holds the name of the script as it was called
 
-2. `shift` - removes the first argument ($2 => $1, $3 => $2)
+1. Special variables
+    * **`$1, $2…`** - gets the argument number 1, 2 and etc
+    * **`“$@”**` - equivalent to `“$1”, “$2”, ..,  “$N”`
+    * **`“$*”`** - equivalent to `“$1 $2 $3… $N”`
+    * **`$#`** - get the number of script arguments
+    * **`$0`** - holds the name of the script as it was called
+
+2. **`shift`** - removes the first argument ($2 => $1, $3 => $2)
     * `shift n` - removes first n arguments
 
-3. `getopts`  - parse script options (like -p). Stops on an argument which does not starts with -.
+3. **`getopts`**  - parse script options (like -p). Stops on an argument which does not starts with -.
 
     ```
     getopts opt_string var_name
@@ -424,17 +433,136 @@
     * **var_name**
         * The name of a variable
         * Every time you call getopts, it will place next option int $var_name
-    * `OPTARG` - argument of an option
-    * `OPTIND` - holds the index of the next argument to be processed
-    * `getopts` returns false when no more options are left
-    * `getopts` handles erros for you. If anything goes wrong, the option variable var_name holds `“?”`
+    * **`OPTARG`** - argument of an option
+    * **`OPTIND`** - holds the index of the next argument to be processed
+    * **`getopts`** returns false when no more options are left
+    * **`getopts`** handles erros for you. If anything goes wrong, the option variable var_name holds **`“?”`**
 
 4. Process getopts errors by yourself
     * start optioon strgin with a colon (silent mode)
         * `“:bsr”`
     * Unknown option:
-        * `“?”` will be putted in `var_name`
+        * **`“?”`** will be putted in `var_name`
         * actual option in `OPTARG`
     * Missing option argument
         * `“:”` in option `var_name`
         * actual option in `OPTARG`
+
+## Functions
+
+1. To define function use
+
+    ```
+    function_name () { .. }
+    ```
+
+2.  Functions are like any command (or little shell script inside another shell script)
+    * you can pass arguments to it
+
+    * you can use input\output redirection
+
+3. Exit a function with return
+
+    * returns a status code, like exit
+
+    * without a return statement, function returns status of last command
+
+4. To **return value** from function use one of the following:
+    * print to stdout
+
+        ```
+        sum () {
+            echo $(( $1 + $2))
+        }
+        ```
+
+    * change global variable value (all variables by default globals)
+    * use status  of last comman
+
+        ```
+        start_with_a () {
+              [[ $1 == [aA]* ]];
+        }
+        ```
+
+5. To define function local variable use:
+
+    ```
+    declare var_name
+    local var_name
+    ```
+
+6. To export function to subprocess use
+
+    ```
+    export -f function_name
+    ```
+
+7. Redirection
+    * redirection is allowed immeadiately after function definition
+    * will be executed every time when function is run
+
+        ```
+        fun () {} >&2
+        ```
+    * you can not pipe some output to the function
+        * `ls | some_func` - function will not get input from the ls output
+
+## Strings
+
+1. Get the length of the string
+
+    ```
+    ${#var_name}
+    ```
+
+2. Removing part of a string
+
+    * Example string: `i=/Users/reindert/demo.txt`
+
+    * **`${var_name#pattern}`**  - removes the shortest match from the begining of a string
+
+        ```
+        ${i#*/} => User/reindert/demo.txt
+        ```
+
+    * **`${var_name##pattern}`**  -removes the longest match from the begining of a string
+
+        ```
+        ${i##*/} => demo.txt
+        ```
+    * **`${var_name%pattern}`**  - removes the shortest match from the end of a string
+
+        ```
+        ${i%.*} => /User/reindert/demo (remove extension)
+        ```
+
+    * **`${var_name%%pattern}`**  - remove the longest match from the end of a string
+
+        ```
+        ${i%%*.} => txt
+        ```
+
+3. Search and Replace.
+
+    * Example string `i=mytxt.txt`
+
+    * **`${var/pattern/string}`** - substitute first match with a string
+
+        ```
+        ${i/txt/jpg} # myjpg.txt
+        ```
+
+    * **`${var//pattern/string}`** - substitute all matchs with a string
+
+        ```
+        ${i//txt/jpg} # myjpg.jpg
+        ${i//[jx]/a} # matat.tat
+        ```
+
+    * **`${var/#pattern/string}`** - matches begining of the string
+    * **`${var/%pattern/string}`** - matches the end of the string
+
+        ```
+        ${i/%txt/jpg} # mytxt.jpg
+        ```
