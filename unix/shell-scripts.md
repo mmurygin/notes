@@ -9,6 +9,8 @@
 - [Conditions](#conditions)
 - [Control flow](#control-flow)
 - [Input and Output](#input-and-output)
+- [Stream and IO Redirection](#stream-and-io-redirection)
+- [Handling script parametrs](#handling-script-parametrs)
 
 
 ## Common
@@ -284,9 +286,8 @@
     * can use I/O redirection for the whole group
     * use the group in an if statement or while loop
     * return status is that of the last command in the group
-    * separate the commands with new linews or semicolons, use spaces around braces 
+    * separate the commands with new linews or semicolons, use spaces around braces
         * `{ cmd1; cmd2; cmd3 }`
-
 
 ## Input and Output
 
@@ -329,3 +330,111 @@
         ```
         * everything after the last separator goes to the last variable
         * to change default separator (space) you could change variable IFS
+
+## Stream and IO Redirection
+
+[An Introduction to Linux I/O Redirection](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-i-o-redirection)
+
+1. `0`: Standart Input (stdin)
+
+    ```
+    /dev/stdin
+    ```
+
+2. `1`: Standart Output (stdout)
+
+    ```
+    /dev/stdout
+    ```
+
+3. `2`: Standart Error (stderr)
+
+    ```
+    /dev/stderr
+    ```
+
+4. `/dev/null` - discards all data send to it
+5. Input redirection: `<`
+
+    ```
+    grep milk < shoppingnotes.txt
+    ```
+
+6. Output redirection: `>`
+
+    ```
+    ls > listing.txt
+    ```
+
+    * `>` - will overwite existing files
+    * `>>` -  appends to the end of a file
+
+7. Pipes
+
+    ```
+    ls | grep x
+    ```
+
+8. Redirect a specific stream with `N>` (where N is the number of stream, `1` is default )
+
+    * `cmd 2>/dev/null`  - discards all errors
+
+9. Redirect **to** a specific stream with `>&N`
+
+    * `>&2` - sends output to stderr
+    * `2>&1` - redirects stderr into stdout
+
+10. To redirect all I/O for the whole script use exec (usefull for logging)
+
+    ```
+    exec >logfile 2>errorlog
+    ```
+
+11. Examples
+
+    * `command > file` - redirects out of a command to a file
+    * `command > /dev/null` - discards out of a command
+    * `command 2> file` - redirects standart error stream to a file
+    * `command | tee file` - redirects standart ouput of the command to a file and backward to output
+    * `command  > logfile 2>&1` - sending both error and ouput to a single file
+
+
+## Handling script parametrs
+1. Special variables
+    * `$1, $2…` - gets the argument number 1, 2 and etc
+    * `“$@”` - equivalent to `“$1”, “$2”, ..,  “$N”`
+    * `“$*”` - equivalent to `“$1 $2 $3… $N”`
+    * `$#` - get the number of script arguments
+    * `$0` - holds the name of the script as it was called
+
+2. `shift` - removes the first argument ($2 => $1, $3 => $2)
+    * `shift n` - removes first n arguments
+
+3. `getopts`  - parse script options (like -p). Stops on an argument which does not starts with -.
+
+    ```
+    getopts opt_string var_name
+    ```
+
+    * **opt_string**
+        * a list of expected options
+        * `“ab”` will let your script handle an option `-a` and/or `-b`
+        * Append `:` to options that take an argument
+        * `“a:b”` will let `a` take an argument, but not `b`
+    * **var_name**
+        * The name of a variable
+        * Every time you call getopts, it will place next option int $var_name
+    * `OPTARG` - argument of an option
+    * `OPTIND` - holds the index of the next argument to be processed
+    * `getopts` returns false when no more options are left
+    * `getopts` handles erros for you. If anything goes wrong, the option variable var_name holds `“?”`
+
+4. Process getopts errors by yourself
+    * start optioon strgin with a colon (silent mode)
+        * `“:bsr”`
+    * Unknown option:
+        * `“?”` will be putted in `var_name`
+        * actual option in `OPTARG`
+    * Missing option argument
+        * `“:”` in option `var_name`
+        * actual option in `OPTARG`
