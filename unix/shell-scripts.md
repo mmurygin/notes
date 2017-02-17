@@ -608,4 +608,4 @@
     at -f myscript noon tomorrow
     ```
 
-7. **`Cron`** will execute your script according to a schedule. Also we could use **`upstart`** for this purpose
+7. **Cron** will execute your script according to a schedule. Also we could use **upstart** for this purpose
