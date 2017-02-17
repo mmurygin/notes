@@ -13,6 +13,7 @@
 - [Handling script parametrs](#handling-script-parametrs)
 - [Functions](#function)
 - [Strings](#strings)
+- [Running Scripts](#running-scripts)
 
 ## Common
 
@@ -566,3 +567,45 @@
         ```
         ${i/%txt/jpg} # mytxt.jpg
         ```
+
+## Running Scripts
+
+1. To import code in the crrent shell proces use
+
+    ```
+    source myscript
+    ```
+
+    * `source` has an allias **`.`**
+
+2.  To run script in backgroud use
+
+    ```
+    ./myscript &
+    ```
+
+3. To keep you script running when you exit the terminal session use
+
+    ```
+    nohup myscript &
+    ```
+
+4. To run script with lower priority
+
+    ```
+    nice myscript
+    ```
+
+5. To run script with lower priority in background use
+
+    ```
+    nohup nice myscript &
+    ```
+
+6. At will execute your script at a specific time
+
+    ```
+    at -f myscript noon tomorrow
+    ```
+
+7. **`Cron`** will execute your script according to a schedule. Also we could use **`upstart`** for this purpose
