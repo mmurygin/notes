@@ -1,5 +1,12 @@
 # Types & Grammar
 
+## Table of Content
+
+* [Types](#types)
+* [Numbers](#numbers)
+* [Natives](#natives)
+* [Coercing](#coercing)
+
 ## Types
 
 1. JavaScript defines seven built-in types:
@@ -12,7 +19,7 @@
     * `symbol` (added in ES6)
 
 2. `typeof` returns one of the above types
-    
+
     ```javascript
     typeof true          === 'boolean' // true
     typeof true          === "boolean";   // true
@@ -73,7 +80,7 @@
 6. There are some operations (like the bitwise operators) which are only defined for 32-bit numbers.
 
 7. To check if variable is `NaN` use
-    
+
     ```javascript
     const a = 2 / "foo";
     Number.isNaN(a); // true
@@ -128,22 +135,75 @@
 
 1. **Converting** a value from one type to another is often called "type casting," when done **explicitly**, and **coercion** when done **implicitly** (forced by the rules of how a value is used).
 
-2. JavaScript coercions always result in one of the scalar primitive values, like `string`, `number`, or `boolean`. 
+2. JavaScript coercions always result in one of the scalar primitive values, like `string`, `number`, or `boolean`.
 
-1. There are the following **falsy** values in javascript
-    * `undefined`
-    * `null`
-    * `false`
-    * `+0`, `-0` and `NaN`
-    * `""`
-    * `document.all` (it is obsolete browser behaviour)
+6. **`toBoolean`**
 
-2. Everything which is not from the above list evaluates to true
-    
+    * there are the following **falsy** values in javascript
+        * `undefined`
+        * `null`
+        * `false`
+        * `+0`, `-0` and `NaN`
+        * `""`
+        * `document.all` (it is obsolete browser behaviour)
+
+    * Everything which is not from the above list evaluates to true
+
+        ```javascript
+        var a = new Boolean( false );   // true
+        var b = new Number( 0 );        // true
+        var c = new String( "" );       // true
+        ```
+
+3. **`toString`** is used in case when we convert object to `String`
+
     ```javascript
-    var a = new Boolean( false );   // true
-    var b = new Number( 0 );        // true
-    var c = new String( "" );       // true
+    const obj = {
+        foo: 'bar',
+        toString: function () {
+            return 'the number 42';
+        }
+    }
+
+    console.log(obj); // 'the number 42'
     ```
 
-3. 
+4. **`valueOf`**- is used in case when we convert object to `Number`
+
+    ```javascript
+    const obj = {
+        foo: 'bar',
+        valueOf: function () {
+            return 28;
+        }
+    }
+
+    obj + 14 // 42
+    ```
+
+5. **`toJSON`** is called when object is passed to `JSON.stringify`. `toJSON` should return object which could be safely pass to `JSON.stringify`
+
+    ```javascript
+    var o = { };
+
+    var a = {
+        b: 42,
+        c: o,
+        d: function(){}
+    };
+
+    // create a circular reference inside `a`
+    o.e = a;
+
+    // would throw an error on the circular reference
+    // JSON.stringify( a );
+
+    // define a custom JSON value serialization
+    a.toJSON = function() {
+        // only include the `b` property for serialization
+        return { b: this.b };
+    };
+
+    JSON.stringify( a ); // "{"b":42}"
+    ```
+

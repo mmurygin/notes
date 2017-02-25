@@ -369,3 +369,8 @@
     * **`docker-compose stop`** - stops all containers
     * **`docker-compose rm`** - removes stopped containers
     * **`docker-compose logs`** - get services logs
+4. You can pass multile files to `docker-compose`. In this case every next file will override corresponding settings in previous.
+
+    ```shell
+    docker-compose -f docker-compose.yml -f docker-compose.admin.yml run backup_db
+    ```
