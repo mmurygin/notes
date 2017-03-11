@@ -38,3 +38,13 @@
     return x + y + z
   ```
 3. _Key idea to count split inversion_: have recursive calls both count inversions and sort. _Motivation_: Merge subroutine naturally uncovers split inversions.
+
+## The Master method
+
+1. **Master method** - "black box" for solving recurrences.
+2. _Assumption_: all subproblems have equal size
+3. **`T(n)`** - maximum running time of the algorithm
+4. **IF:**
+    ![Assumption](../images/master_method_assumption.png)
+    **THEN:**
+    ![Cases](../images/master_method_cases.png)
