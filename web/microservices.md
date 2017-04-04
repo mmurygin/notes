@@ -17,10 +17,21 @@
 1. Send with API only necessary fields, by doing this we can change our inner models more easyly
 1. Use HTTP 202 response code, indicating that the request was accepted but has not yet been processed
 
-
 ## Bounded Context
 1. We should split bounded context according to a buissness goals, not according to a data models.
 1. Share only necessay fields of shared models
+
+## Deployment
+1. Use only necessary configuration for every service
+1. Test docker images not standalone code
+1. Use dedicated system for providing configuration
+
+## Monitoring
+1. Health check for whole system
+1. Health check for every server
+1. Log aggregation
+1. Monitor downstream communications
+1. Use correlation ID
 
 ## Migration from monolith
 1. Identify bounded contexts
@@ -36,3 +47,4 @@
 1. [Catastrophic Failover](https://martinfowler.com/bliki/CatastrophicFailover.html)
 1. Enterprise Integration Patterns
 1. Refactoring Databases
+1. [Continious Delivery](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
