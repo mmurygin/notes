@@ -36,6 +36,7 @@
 1. Test docker images not standalone code
 1. Use dedicated system for providing configuration
 1. Use blue\green deployment
+1. Use "canary releasing" - when we deploy two version of service and send some amount of traffic on it
 1. Pass configuration only throw `ENV` variables
 
 ## Tests
@@ -45,6 +46,7 @@
     * Consumer Driven tests - service tests expectations of every of its consumer
     * Integration tests - check that our stubs (mochs) are correct
     * End-to-End Tests - tests a service in real environment
+    * Performance tests
 1. Check [Mountebank](http://www.mbtest.org/) - it allows to stub http services
 1. Fix or remote non-deterministic tests. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 1. Decrease as possible the running time of tests.
@@ -58,6 +60,8 @@
 1. Log aggregation
 1. Monitor downstream communications
 1. Use correlation ID in logs (to visualize sequential processes)
+1. Create failure metrics for all of you monitoring parametrs
+1. Handle and remove unused features
 
 ## Articles
 1. [12 factored apps](https://12factor.net/)
@@ -66,7 +70,7 @@
 1. [SelfInitializingFake](https://martinfowler.com/bliki/SelfInitializingFake.html)
 1. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 
-##Books
+## Books
 1. [REST in Practice](http://shop.oreilly.com/product/9780596805838.do)
 1. [Catastrophic Failover](https://martinfowler.com/bliki/CatastrophicFailover.html)
 1. Enterprise Integration Patterns
@@ -74,3 +78,4 @@
 1. Growing Object-Oriented Software, Guided by Tests
 1. [Continious Delivery](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
 1. [Kubernetes: Up and Running](http://shop.oreilly.com/product/0636920043874.do)
+1. [Agile Testing](https://www.amazon.com/Agile-Testing-Practical-Guide-Testers/dp/0321534468)
