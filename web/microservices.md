@@ -22,19 +22,6 @@
 1. We should split bounded context according to a buissness goals, not according to a data models.
 1. Share only necessay fields of shared models
 
-## Deployment
-1. Use only necessary configuration for every service
-1. Test docker images not standalone code
-1. Use dedicated system for providing configuration
-1. Use blue\green deployment
-
-## Monitoring
-1. Health check for whole system
-1. Health check for every server
-1. Log aggregation
-1. Monitor downstream communications
-1. Use correlation ID
-
 ## Migration from monolith
 1. Identify bounded contexts
 1. Move bounded contexts into separate modules
@@ -44,12 +31,20 @@
 1. Choose the most appropriate part (easy to split, need a lot of changes in the feature, necessety to change framework e.t.c) of separation and split it from the monolith
 1. Start with a place where mistakes cost less
 
+## Deployment
+1. Use only necessary configuration for every service
+1. Test docker images not standalone code
+1. Use dedicated system for providing configuration
+1. Use blue\green deployment
+1. Pass configuration only throw `ENV` variables
+
 ## Tests
-1. Split all your tests on 3 categories:
+1. Split all your tests the following categories:
     * Unit Tests - test a couple of lines of code
-    * Service Tests - tests a service downstream connections. Implemented by stubbing other services dependencies.
+    * Service Tests - tests a service downstream dependencies. Implemented by stubbing other services dependencies.
+    * Consumer Driven tests - service tests expectations of every of its consumer
+    * Integration tests - check that our stubs (mochs) are correct
     * End-to-End Tests - tests a service in real environment
-1. Use **Consumer-Driven Tests** tests. When service create expectation tests for every of it's consumer.
 1. Check [Mountebank](http://www.mbtest.org/) - it allows to stub http services
 1. Fix or remote non-deterministic tests. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 1. Decrease as possible the running time of tests.
@@ -57,6 +52,12 @@
 1. Create integration tests which should assert services mochs expetations
 1. We should have few amount of end-to-end tests, which covers base "user journeys". The best case when we don't need end-to-end tests at all.
 
+## Monitoring
+1. Health check for whole system
+1. Health check for every server
+1. Log aggregation
+1. Monitor downstream communications
+1. Use correlation ID in logs (to visualize sequential processes)
 
 ## Articles
 1. [12 factored apps](https://12factor.net/)
