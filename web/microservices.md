@@ -44,15 +44,15 @@
     * Unit Tests - test a couple of lines of code
     * Service Tests - tests a service downstream dependencies. Implemented by stubbing other services dependencies.
     * Consumer Driven tests - service tests expectations of every of its consumer
-    * Integration tests - check that our stubs (mochs) are correct
+    * Integration tests - check that our stubs (mochs) are correct. Assert all our stabs
     * End-to-End Tests - tests a service in real environment
     * Performance tests
-1. Check [Mountebank](http://www.mbtest.org/) - it allows to stub http services
-1. Fix or remote non-deterministic tests. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
-1. Decrease as possible the running time of tests.
+1. **Decrease as possible the running time of tests.**
+1. The most important task in tests maintaingin it is fixing (or skipping, removing) non-deterministic tests. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 1. Use mocks to check remove services dependencies. Minimize the real call to remote services.
-1. Create integration tests which should assert services mochs expetations
+1. Create integration tests which should assert external services. Stub external services inside unit tests
 1. We should have few amount of end-to-end tests, which covers base "user journeys". The best case when we don't need end-to-end tests at all.
+1. Check [Mountebank](http://www.mbtest.org/) - it allows to stub http services
 
 ## Monitoring
 1. Health check for whole system
