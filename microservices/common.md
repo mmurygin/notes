@@ -7,7 +7,7 @@
 1. The goal is create fully isolated service. Which could and should be deployed independenly.
 1. Do not start with microservices. Because getting bounded context wrong it's very expensive. So it's better to wait until thigs become stable
 1. **Retry all requests**
-1. Topic for unhandled messages
+1. Create topic for error messages
 
 ## API
 1. Use correct HTTP status codes
@@ -41,16 +41,13 @@
 
 ## Tests
 1. Split all your tests the following categories:
-    * Unit Tests - test a couple of lines of code
-    * Service Tests - tests a service downstream dependencies. Implemented by stubbing other services dependencies.
+    * Unit Tests - test a couple of lines of code. Implemented by stubbing other services dependencies. Runs with every commit.
+    * Integration tests - check that our stubs (mochs) are correct. Assert all our external dependencies behaviour
     * Consumer Driven tests - service tests expectations of every of its consumer
-    * Integration tests - check that our stubs (mochs) are correct. Assert all our stabs
     * End-to-End Tests - tests a service in real environment
-    * Performance tests
+    * Performance tests - should have some criteria to fit, e.g. less than 2 seconds response with 200 concurent users. Should be collected with tests and inside production as well.
 1. **Decrease as possible the running time of tests.**
-1. The most important task in tests maintaingin it is fixing (or skipping, removing) non-deterministic tests. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
-1. Use mocks to check remove services dependencies. Minimize the real call to remote services.
-1. Create integration tests which should assert external services. Stub external services inside unit tests
+1. **Fix non-deterministic tests**. [Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 1. We should have few amount of end-to-end tests, which covers base "user journeys". The best case when we don't need end-to-end tests at all.
 1. Check [Mountebank](http://www.mbtest.org/) - it allows to stub http services
 
@@ -62,6 +59,17 @@
 1. Use correlation ID in logs (to visualize sequential processes)
 1. Create failure metrics for all of you monitoring parametrs
 1. Handle and remove unused features
+
+## Scaling
+1. Prioritize and handle the main cross-functional requirements.
+    * Response time/latency - how long should various operations take with fixed number of concurrent connections/users.
+    * Availability - can you expect a service to be down.
+    * Durability of data - can we lose some data?
+1. Notice all [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing)
+1. Do not try to make network reliable, it's imposible. Focus on recover capability is much better.
+1. Have the capability to degrade functionality in case when one microservice is broken. We need to ask yourself: "What happens if this microservice is down?"
+1. Monitor and react (circuit breaker) on a slow services. To not allow them to break the whole system.
+
 
 ## Articles
 1. [12 factored apps](https://12factor.net/)
