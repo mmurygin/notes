@@ -16,7 +16,7 @@
 1. To use docker as non-root user add user to docker group:
 
     ```
-    sudo usermod -aG docker <user_name>
+    sudo usermod -aG docker $(whoami)
     ```
 
 2. Docker has a Client / Server architecture

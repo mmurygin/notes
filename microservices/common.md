@@ -8,6 +8,8 @@
 1. Do not start with microservices. Because getting bounded context wrong it's very expensive. So it's better to wait until thigs become stable
 1. **Retry all requests**
 1. Create topic for error messages
+1. All event handlers should be **idempotent**. GET and PUT requests also should be idempotent.
+1. If you use message queue you should handle the capability for messages to arrive in different order.
 
 ## API
 1. Use correct HTTP status codes
@@ -69,7 +71,9 @@
 1. Do not try to make network reliable, it's imposible. Focus on recover capability is much better.
 1. Have the capability to degrade functionality in case when one microservice is broken. We need to ask yourself: "What happens if this microservice is down?"
 1. Monitor and react (circuit breaker) on a slow services. To not allow them to break the whole system.
-
+1. There are two ways of autoscaling:
+    * _predictive_ - when we have a load metrics and we can use them to scale up\down in predefined time periods
+    * _reactive_ - when we react on load in runtime
 
 ## Articles
 1. [12 factored apps](https://12factor.net/)

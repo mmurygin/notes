@@ -8,6 +8,26 @@
     man cmd
     ```
 
+## System commands
+
+1. To shut down the process
+
+    ```shell
+    kill -9 process-id
+    ```
+
+1. To get the full processes list
+
+    ```shell
+    sudo ps aux
+    ```
+
+1. Get the full list of installed packages
+
+    ```shell
+    sudo dpkg -l
+    ```
+
 ## File management
 
 1. Special symbols
@@ -34,9 +54,6 @@
     * **`cp a b c dir/`** - copy files **a b c** into **dir/**
     * **`cp -R old new`** - recursively copies directory old into new
     * **`cp -i a b`** - ask before overwriting files
-
-
-
 
 ## Configuration
 

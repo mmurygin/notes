@@ -1,5 +1,7 @@
 # Kubernetes
 
+[kubectl Cheat Sheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+
 ## Definitions
 1. A Pod is a group of one or more application containers (such as Docker or rkt) and includes shared storage (volumes), IP address and information about how to run them.
 1. A _Kubernetes Service_ is an abstraction layer which defines a logical set of Pods and enables external traffic exposure, load balancing and service discovery for those Pod
