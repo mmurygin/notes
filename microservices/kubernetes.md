@@ -11,3 +11,8 @@
 1. **kubectl describe** - show detailed information about a resource
 1. **kubectl logs** - print the logs from a container in a pod
 1. **kubectl exec** - execute a command on a container in a pod
+
+## Features
+
+1. **livenessProbe** - checks that a container is alive
+1. **readinessProbe** - checks that a container is ready

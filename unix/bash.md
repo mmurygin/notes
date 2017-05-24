@@ -55,6 +55,18 @@
     * **`cp -R old new`** - recursively copies directory old into new
     * **`cp -i a b`** - ask before overwriting files
 
+5. Get the lines number of a directory
+
+    ```
+    find . -name "*.js" -type f -exec cat {} \; | wc -l
+    ```
+
+6. Get the size number of a directory
+
+    ```
+    find . -name "*.js" -type f -exec cat {} \; | wc -c
+    ```
+
 ## Configuration
 
 1. To extend `PATH` variable use
