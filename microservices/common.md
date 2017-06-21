@@ -61,6 +61,7 @@
 1. Use correlation ID in logs (to visualize sequential processes)
 1. Create failure metrics for all of you monitoring parametrs
 1. Handle and remove unused features
+1. Implement monitoring of different messages
 
 ## Scaling
 1. Prioritize and handle the main cross-functional requirements.
@@ -75,6 +76,10 @@
     * _predictive_ - when we have a load metrics and we can use them to scale up\down in predefined time periods
     * _reactive_ - when we react on load in runtime
 
+## Documentation:
+1. Use something like grabber to describe system
+1. [Use human registry](https://martinfowler.com/bliki/HumaneRegistry.html)
+
 ## Articles
 1. [12 factored apps](https://12factor.net/)
 1. [12 factored apps addition](https://medium.com/@kelseyhightower/12-fractured-apps-1080c73d481c)
@@ -88,6 +93,7 @@
 1. Enterprise Integration Patterns
 1. Refactoring Databases
 1. Growing Object-Oriented Software, Guided by Tests
+1. Release It
 1. [Continious Delivery](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
 1. [Kubernetes: Up and Running](http://shop.oreilly.com/product/0636920043874.do)
 1. [Agile Testing](https://www.amazon.com/Agile-Testing-Practical-Guide-Testers/dp/0321534468)
