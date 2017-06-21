@@ -20,7 +20,7 @@
 1. Long running time
 2. Do not display an error source
 3. Provide feedback - does system as a whole work or not
-4. If customer tests are made via UI - then any change in UI will break them.
+4. If customer tests are made via UI then any change in UI will break them.
 
 # Mocking
 1. Do no mock everything, because mocking has a price
