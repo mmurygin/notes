@@ -19,7 +19,7 @@
 
 ## Aggregates
 1. **Aggregate** - a transactional grapth of objects.
-1. ** Aggregate Root** - the entry point of an aggregate which ensures the integrity of the entire graph
+1. **Aggregate Root** - the entry point of an aggregate which ensures the integrity of the entire graph
 1. **Invariant** - a condition that should always be true for the system to be in consistent state
 1. Properties:
     * Should have a grapth structure. Should have one root.
@@ -32,3 +32,7 @@
     * Don't overlook using FKs for non-root entities connections. To many FKs to non-root entities my suggest a problem
     * Aggregate of one are acceptable
     * "Rule of Cascading Deletes"
+
+## Tips
+1. Find good _domain expert_ and communicate with them using _ubiquitous languate_.
+1. Use _Ubiquitous Language_ in conversations (ether between developers and domain experts or between developers or in classes and methods names)
