@@ -1,5 +1,12 @@
 # C++
 
+## Table Of Content
+* [Компиляция](#%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%86%D0%B8%D1%8F)
+* [g++](#g)
+* [Указатели](#%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8)
+* [Массивы](#%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D1%8B)
+* [Использование указателей](#%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%B9)
+
 ## Компиляция
 
 1. **Препроцессор**
@@ -125,9 +132,23 @@
         return max
     }
     ```
-1. Функция для поиска максимума в массиве:
+
+## Использование указателей
+1. Для передачи массива в фунцию - передаём указатель на начало и указатель на следующий за последним элемен (тем самым избегая лишней операции - ` m[i] => *(m + i)`)
     ```cpp
-    int* max_element (int* p, int* q) {
+    bool contains(int *p, int *q, int value) {
+        for (;, p!=q, ++p) {
+            if (*p == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+    ```
+
+1. Возврат указателя из функции
+    ```cpp
+    int * max_element (int* p, int* q) {
         int* pmax = p;
         for(; p != q; ++p) {
             if (*p > *pmax) {
@@ -138,3 +159,19 @@
         return pmax;
     }
     ```
+
+1. Возврат значения через укзатель
+    ```cpp
+    bool max_element (int *p, int *q, int *res) {
+        if (p == q) {
+            return false;
+        }
+
+        *res = *p;
+        for(; p!=q; ++p) {
+            if (*p > *res) {
+                *res = *p;
+            }
+        }
+        return true;
+    }
