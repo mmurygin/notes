@@ -74,4 +74,21 @@
 
     // не вызван delete [] m => утечка памяти
     ```
+1. Неправильное освобождение памяти
+    ```cpp
+    int * m1 = new int[1000];
+    delete m1; // должно быть delete [] m1;
+
+    int *p = new int(0);
+    free(p); // совмещение функций С++ и С
+
+    int *q1 = (int*) malloc (sizeof(int));
+    free(q1);
+    free(q1); // двойное удаление
+
+    int *q2 = (int*) malloc(sizeof(int));
+    free(q2);
+    q2 = 0;
+    free(q2); // правильно работает для q2 = 0;
+    ```
 
