@@ -22,6 +22,10 @@
 3. Provide feedback - does system as a whole work or not
 4. If customer tests are made via UI then any change in UI will break them.
 
-# Mocking
-1. Do no mock everything, because mocking has a price
-2.
+## Unit tests best practices
+1. Should be very fast
+1. Do no mock everything, because mocking has a price - it decreases the thrustfullness of your tests and increase maintanance time
+1. Use Minimal Fixture
+1. Use Transient Fresh Fixture or just Fresh Fixture if first is not possible
+1. Don't use condition
+1. If you use multile assert, make sure that you don't lose information if second asset it not checked (when first one failes)
