@@ -176,20 +176,20 @@
     };
     ```
 
-    Person
+    Person<br>
     | index | Method     | adress |
     |-------|------------| ------:|
     | 0     | ~Person    | 0x1111 |
     | 1     | occupation | 0x0000 |
 
-    Teacher
+    Teacher<br>
     | index | Method     | adress |
     |-------|------------| ------:|
     | 0     | ~Teacher   | 0x2222 |
     | 1     | occupation | 0x3333 |
     | 2     | course     | 0x4444 |
 
-    Professor
+    Professor<br>
     | index | Method     | adress |
     |-------|------------| ------:|
     | 0     | ~Professor | 0x5555 |
