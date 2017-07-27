@@ -176,11 +176,28 @@
     };
     ```
 
-    | Tables        | Are           | Cool  |
-    | ------------- |:-------------:| -----:|
-    | col 3 is      | right-aligned | $1600 |
-    | col 2 is      | centered      |   $12 |
-    | zebra stripes | are neat      |    $1 |
+    Person
+    | index | Method     | adress |
+    |-------|------------| ------:|
+    | 0     | ~Person    | 0x1111 |
+    | 1     | occupation | 0x0000 |
+
+    Teacher
+    | index | Method     | adress |
+    |-------|------------| ------:|
+    | 0     | ~Teacher   | 0x2222 |
+    | 1     | occupation | 0x3333 |
+    | 2     | course     | 0x4444 |
+
+    Professor
+    | index | Method     | adress |
+    |-------|------------| ------:|
+    | 0     | ~Professor | 0x5555 |
+    | 1     | occupation | 0x6666 |
+    | 2     | course     | 0x4444 |
+    | 3     | thesis     | 0x7777 |
+
+
 
 ## Полиморфизм
 1. **Полиморфизм** - возможность единообразно обрабатывать разные типы данных
