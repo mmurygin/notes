@@ -22,7 +22,7 @@
         ```cpp
         void foo()
         {
-            bar(); //add address of bar, e.g. 0x087A
+            bar(); // call <address of bar>, e.g. call 0x087A
         }
         void bar() { }
         ```
