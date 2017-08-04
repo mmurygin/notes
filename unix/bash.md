@@ -2,11 +2,55 @@
 
 ## Help
 
-1. `man` - prints help for command
+1. **`man`** - prints help for command
 
     ```
     man cmd
     ```
+1. **`man -k`** - get all pages which contain specified string
+    ```
+    man -k syslog
+    ```
+1. **`whatis`** - get the description of help page
+    ```
+    whatis route
+    ```
+1. **`whereis`** - get help page location
+    ```
+    whereis -m whois
+    ```
+
+## Common
+1. Quoting special characters
+    * backslash for a single character: `"file\ with\ spaces"`
+    * single quotes espace everything: `'f*?'`
+
+## File management
+
+1. Special symbols
+    * **`/`** - top level directory
+    * **`.`** - current directory
+    * **`..`** - parent directory
+    * **`~`** - home directory
+
+3. List files - **`ls`**
+    * **`ls dir`** - list contens of dir
+    * **`ls -l`** - list in long format
+    * **`ls -a`** - list all files
+    * **`ls -R`** - recursively list files in subdirectories
+    * **`ls -d`** - don't go into subdirectories, just list them
+    * **`ls -S`** - list by size
+    * **`ls -t`** - list by modification date
+    * **`ls -lh`** - list files in long format with human-readable size
+
+4. Copy files - **`cp`**
+    * **`cp a b`** - copy file **a** to **b**
+    * **`cp a b c dir/`** - copy files **a b c** into **dir/**
+    * **`cp -R old new`** - recursively copies directory old into new
+    * **`cp -i a b`** - ask before overwriting files
+
+1. **`mkdir`** - create directory
+    * **`mkdir -p`** - create directory recursively
 
 ## System commands
 
@@ -28,44 +72,6 @@
     sudo dpkg -l
     ```
 
-## File management
-
-1. Special symbols
-    * **`/`** - top level directory
-    * **`.`** - current directory
-    * **`..`** - parent directory
-    * **`~`** - home directory
-
-2. Quoting special characters
-    * backslash for a single character: `"file\ with\ spaces"`
-    * single quotes espace everything: `'f*?'`
-
-3. List files - **`ls`**
-    * **`ls dir`** - list contens of dir
-    * **`ls -l`** - list in long format
-    * **`ls -a`** - list all files
-    * **`ls -R`** - recursively list files in subdirectories
-    * **`ls -d`** - don't go into subdirectories, just list them
-    * **`ls -S`** - list by size
-    * **`ls -t`** - list by modification date
-
-4. Copy files - **`cp`**
-    * **`cp a b`** - copy file **a** to **b**
-    * **`cp a b c dir/`** - copy files **a b c** into **dir/**
-    * **`cp -R old new`** - recursively copies directory old into new
-    * **`cp -i a b`** - ask before overwriting files
-
-5. Get the lines number of a directory
-
-    ```
-    find . -name "*.js" -type f -exec cat {} \; | wc -l
-    ```
-
-6. Get the size number of a directory
-
-    ```
-    find . -name "*.js" -type f -exec cat {} \; | wc -c
-    ```
 
 ## Configuration
 
@@ -79,6 +85,19 @@
 
     ```shell
     ssh-add path_to_ssh_key
+    ```
+
+## Usefull commands
+1. Get the lines number of a directory
+
+    ```
+    find . -name "*.js" -type f -exec cat {} \; | wc -l
+    ```
+
+1. Get the size number of a directory
+
+    ```
+    find . -name "*.js" -type f -exec cat {} \; | wc -c
     ```
 
 ## Usefull scripts
