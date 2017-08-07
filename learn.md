@@ -9,6 +9,7 @@
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
  - [ ] [Head First Design Patterns](https://www.safaribooksonline.com/search/?query=%22Head%20First%20Design%20Patterns%22)
+ - [ ] [Stream Handbook](https://github.com/substack/stream-handbook)
 
  ## External
  - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)
