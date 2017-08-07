@@ -26,6 +26,7 @@
     * single quotes espace everything: `'f*?'`
 
 ## File management
+1. ["On a UNIX system, everything is a file; if something is not a file, it is a process."](http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html)
 
 1. Special symbols
     * **`/`** - top level directory
@@ -42,6 +43,7 @@
     * **`ls -S`** - list by size
     * **`ls -t`** - list by modification date
     * **`ls -lh`** - list files in long format with human-readable size
+    * **`ls -F`** - list files and gets their types
 
 4. Copy files - **`cp`**
     * **`cp a b`** - copy file **a** to **b**
@@ -51,6 +53,9 @@
 
 1. **`mkdir`** - create directory
     * **`mkdir -p`** - create directory recursively
+1. **`file`** - get info about file
+1. **`mv`** - rename file
+1. **`rename`** - rename files according to template
 
 ## System commands
 
