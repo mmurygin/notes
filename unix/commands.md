@@ -28,6 +28,18 @@
 1. **`''`** escape everything inside.
 1. **`""`** don’t escape **`$`**, **`{}`**. But escape **`~`** (use **`$HOME`** instead).
 1. **`\`** - escapes one symbol
+1. There are 2 kinds of commands. Shell _builtin_ and _external_ (executable files).
+    * **`type`** - get info if command is builtin, external or alias command
+
+        ```shell
+        type ls # ls is aliased to `ls --color=auto`
+        ```
+
+    * **`which command`** - finds command executable in $PATH
+1. Aliases
+    * **`alias co=checkout`** - create command alias
+    * **`alias co`** - list aliases value
+    * **`unalias co`** - remove alias
 
 ## File management commands
 1. Special symbols
