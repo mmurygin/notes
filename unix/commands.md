@@ -1,4 +1,4 @@
-# Bash
+# Commands
 
 ## Help
 
@@ -19,22 +19,26 @@
     ```
     whereis -m whois
     ```
+1. To get help about linux file system use
+    ```
+    man heir
+    ```
 
 ## Common
-1. Quoting special characters
-    * backslash for a single character: `"file\ with\ spaces"`
-    * single quotes espace everything: `'f*?'`
+1. **`''`** escape everything inside.
+1. **`""`** don’t escape **`$`**, **`{}`**. But escape **`~`** (use **`$HOME`** instead).
+1. **`\`** - escapes one symbol
 
-## File management
-1. ["On a UNIX system, everything is a file; if something is not a file, it is a process."](http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html)
-
+## File management commands
 1. Special symbols
     * **`/`** - top level directory
     * **`.`** - current directory
     * **`..`** - parent directory
     * **`~`** - home directory
 
-3. List files - **`ls`**
+1. **`touch`** - create a file
+
+1. List files - **`ls`**
     * **`ls dir`** - list contens of dir
     * **`ls -l`** - list in long format
     * **`ls -a`** - list all files
@@ -45,7 +49,7 @@
     * **`ls -lh`** - list files in long format with human-readable size
     * **`ls -F`** - list files and gets their types
 
-4. Copy files - **`cp`**
+1. Copy files - **`cp`**
     * **`cp a b`** - copy file **a** to **b**
     * **`cp a b c dir/`** - copy files **a b c** into **dir/**
     * **`cp -R old new`** - recursively copies directory old into new
@@ -53,9 +57,37 @@
 
 1. **`mkdir`** - create directory
     * **`mkdir -p`** - create directory recursively
+
 1. **`file`** - get info about file
+
 1. **`mv`** - rename file
+
 1. **`rename`** - rename files according to template
+    * change all `.txt` files extensions to `.png`
+        ```shell
+        rename 's/\.txt/\.png/ *.txt
+        ```
+
+## Get file content
+1. **`head`** - get first 10 lines of file
+    * **`head -4`** - get first 4 files of file
+    * **`head -4c`** - get first 4 bytes of file
+1. **`tail`** - get last 10 lines of file
+    * **`tail -4`** - get last 4 files of file
+    * **`tail -4c`** - get last 4 bytes of file
+1. **`cat`** - copy data from `stdin` to `stdout`.
+    * **`cat file1 file2 file3`** - concatenates 3 files
+    * create a file with content (stop - here is a special marker of end of input - we could specify any word, most common is EOF)
+        ```shell
+        cat > hot.txt <<stop
+        some string
+        stop
+        ```
+    * copy file1 to file2
+        ```shell
+        cat file1 > file2
+        ```
+1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
 
 ## System commands
 
@@ -76,66 +108,3 @@
     ```shell
     sudo dpkg -l
     ```
-
-
-## Configuration
-
-1. To extend `PATH` variable use
-
-    ```shell
-    PATH="${PATH}:new_path"
-    ```
-
-2. To add ssh-key use
-
-    ```shell
-    ssh-add path_to_ssh_key
-    ```
-
-## Usefull commands
-1. Get the lines number of a directory
-
-    ```
-    find . -name "*.js" -type f -exec cat {} \; | wc -l
-    ```
-
-1. Get the size number of a directory
-
-    ```
-    find . -name "*.js" -type f -exec cat {} \; | wc -c
-    ```
-
-## Usefull scripts
-
-1. To change terminal title add the following function to `.bashrc`:
-
-    ```shell
-    st(){
-        echo -en "\033]0;$1\a"
-    }
-    ```
-
-2. To set the colored promt with current branch name add the following to `.bashrc`:
-
-    ```shell
-    parse_git_branch() {
-        local branch=$(git branch 2> /dev/null | \
-            sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
-
-
-        if [[ branch ]]; then
-            local -i MAX_LENGTH=30
-            local -i branch_characters=${#branch}
-
-            if ((branch_characters > MAX_LENGTH)) ; then
-                branch="${branch::30}...)"
-            fi
-
-            echo "$branch"
-        fi
-    }
-    GREEN="\[\033[0;32m\]"
-    NO_COLOR="\[\033[0m\]"
-    PS1="$GREEN\$(parse_git_branch)$NO_COLOR${debian_chroot:+($debian_chroot)}\w$ "
-    ```
-

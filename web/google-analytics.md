@@ -2,7 +2,6 @@
 
 ## Common
 
-
 1. **Digital analytics** is the analysis of **qualitative and quantitative data from your business** and the competition to drive a **continual improvement** of the online experience that your **customers** and potential customers have which translates to your desired **outcomes**.
 
 2. Outcomes
@@ -79,6 +78,6 @@
 
 ## References
 
-1. [ Understanding your customers and the full value of digital](https://analytics.googleblog.com/2013/01/insights-for-2013-understanding-your.html)
+1. [Understanding your customers and the full value of digital](https://analytics.googleblog.com/2013/01/insights-for-2013-understanding-your.html)
 
 Stayed at 3.1
