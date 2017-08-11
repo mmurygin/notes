@@ -90,7 +90,7 @@
     ```
     declare -r const_name=”some value”
     ```
-10. To export variable to child script use:
+10. [To export variable to child process use](https://linuxconfig.org/learning-linux-commands-export):
 
     ```
     export var_name

@@ -14,4 +14,7 @@
     ssh-add path_to_ssh_key
     ```
 
-1. Add alias
+1. Aliases
+    * **`alias`** - list all aliases
+    * **`alias bb='echo bb'`** - create an alias
+    * **`unalias bb`** - remove an alias

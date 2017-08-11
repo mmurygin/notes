@@ -36,10 +36,6 @@
         ```
 
     * **`which command`** - finds command executable in $PATH
-1. Aliases
-    * **`alias co=checkout`** - create command alias
-    * **`alias co`** - list aliases value
-    * **`unalias co`** - remove alias
 
 ## File management commands
 1. Special symbols
@@ -100,6 +96,10 @@
         cat file1 > file2
         ```
 1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
+
+## Process management
+1. **`ps`** - get process list
+    * **`ps -p`**
 
 ## System commands
 
