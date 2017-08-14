@@ -1,8 +1,23 @@
 ## Table of Content
 
+- [Internet](#internet)
+- [Загрузка страницы](#Загрузка страницы)
 - [GET and POST](#get-and-post)
 - [REST](#rest)
 - [Cookies](#cookies)
+
+## Internet
+1. **`Internet`** - глобальная сеть передачи данных.
+1. **`www`** (World Wide Web) - множество _взаимосвязанных документов_, располагающихся на машинах подключенных к Internet.
+1. **`www`**  - Набор протоколов и клиентского ПО, позволяющих получать доступ к документам.
+
+## Загрузка страницы
+1. Браузер парсит заголовок и видит что `content-type` равен `text/html`.
+1. После этого браузер начинает парсить тело запроса, и как только он находит ресурсы (`css`, `js`) он начинает их загружать.
+1. По мере получения `html` кода страницы браузер сразу начинает её отображать.
+
+## URL
+
 
 ## GET and POST
 
@@ -30,7 +45,6 @@
     `/users/max` - delete user
 5. Urls with ended `/` and without (for example `/users/` and `/users`) should have the same handler. To implement such kind of behaviour we can use the following regex:<br>
     `/users/?`<br>
-
 
 ## Cookies
 
