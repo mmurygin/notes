@@ -3,6 +3,7 @@
 - [Internet](#internet)
 - [Протоколы](#Протоколы)
 - [Загрузка страницы](#Загрузка-страницы)
+- [URL](#url)
 - [GET and POST](#get-and-post)
 - [REST](#rest)
 - [Cookies](#cookies)
