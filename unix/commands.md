@@ -1,5 +1,15 @@
 # Commands
 
+## Table of Content
+
+- [Help](#help)
+- [History](#history)
+- [Common](#common)
+- [File management commands](#file-management-commands)
+- [Get file content](#get-file-content)
+- [Process management](#process-management)
+- [System commands](#system-commands)
+
 ## Help
 
 1. **`man`** - prints help for command
@@ -23,6 +33,18 @@
     ```
     man heir
     ```
+
+## History
+1. **`!!`** - повторение предыдущей команды
+1. **`!to`** - повторение последней команды начинающейся с `to`
+1. **`!<number>`** (`!3`) - повторение команды по с номером 3 из истории
+1. **`history <n>`** - отображает последние `n` команд
+1. **`ctrl+r`** - поиск последней команды содержащий набор символов. (для перехода к следующему результату поиска нужно повторно нажать `ctrl+r`)
+1. Конфигурирование
+    * **`HISTSIZE`** - количество команд, которые сохраняются при работе в текущем окружении
+    * **`HISTFILE`** - имя файла для сохранения истории
+    * **`HISTFILESIZE`** - количество команд которые сохраняются в файле истории команд
+1. Чтобы предтовратить сохранение команды в истории нужно использовать `space` вначале команды
 
 ## Common
 1. **`''`** escape everything inside.
