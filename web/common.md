@@ -1,7 +1,7 @@
 ## Table of Content
 
 - [Internet](#internet)
-- [Загрузка страницы](#Загрузка страницы)
+- [Загрузка страницы](#Загрузка-страницы)
 - [GET and POST](#get-and-post)
 - [REST](#rest)
 - [Cookies](#cookies)
