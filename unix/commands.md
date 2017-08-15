@@ -204,6 +204,34 @@
 
 1. **`wc`** - подсчитывает строки, слова и символы
 1. **`sort`** - сортирует строки
+
+    * сортировка строк
+        ```shell
+        sort music.txt
+        ```
+
+    * **`-k`** - сортировка строк по 1 столбцу
+        ```shell
+        sort -k1 country.txt
+        ```
+
+    * **`-n`** - числовая сортировка
+        ```shell
+        $ sort -k3 country.txt
+        Belgium, Brussels, 10
+        Germany, Berlin, 100
+        Italy, Rome, 50
+        France, Paris, 60
+
+        Iran, Teheran, 70
+        $ sort -n -k3 country.txt
+        Belgium, Brussels, 10
+        Italy, Rome, 50
+        France, Paris, 60
+        Iran, Teheran, 70
+        Germany, Berlin, 100
+        ```
+
 1. **`uniq`** - отфильтровывает повторяющиеся строки
 1. **`sed`** - расширенное потоковое редактирование файлов с помощью регулярных выражений
 
