@@ -8,8 +8,7 @@
 - [File management commands](#file-management-commands)
 - [Get file content](#get-file-content)
 - [Filters](#filters)
-- [Process management](#process-management)
-- [System commands](#system-commands)
+- [System utils](#system-utils)
 
 ## Help
 
@@ -98,6 +97,30 @@
         ```shell
         rename 's/\.txt/\.png/ *.txt
         ```
+
+1. **`find`** - поиск и обработка файлов рекурсивно
+    * поиск всех файлов в директории рекурсивно
+        ```shell
+        find /etc
+        ```
+
+    * Поиск только файлов
+        ```shell
+        find . -type f
+        ```
+
+    * Поиск всех файлов с расширением `.conf`
+        ```shell
+        find . -name "*.conf"
+        ```
+
+    * Поиск всех файлов и копирование их в по заданному пути
+        ```shell
+        find /data -exec cp {} /backup/ \;
+        ```
+
+1. **`locate`** - поиск файлов используя данные индексирования файловой системы. Эта утилита гораздо быстрее find, но может вернуть устаревшие данные. Для того чтобы обновить индексы нужно вызвать `updatedb`. В большинстве систем Linux утилита `updatedb` запускатся один раз в день.
+
 
 ## Get file content
 1. **`head`** - get first 10 lines of file
@@ -263,26 +286,42 @@
     Serena williams, USA
     ```
 
-## Process management
-1. **`ps`** - get process list
-    * **`ps -p`**
+## System utils
+1. **`date`** - информация о дате, времени часовом поясе и тд
+1. **`cal`** - выводит каледарь для текущего месяца, в котором выделен текущий день
+1. **`sleep`** переход выполнения в режим ожидания на заданное количество секунд
+1. **`time`** - выводит информацию о том сколько потратилось времени на выполнение команды
+    ```shell
+    time ls
+    ```
+1. **`gzip`** - сжать файл
+    ```shell
+    gzip text.txt
+    ```
 
-## System commands
-
-1. To shut down the process
+1. **`gunzip`** - распоковать файл
+    ```shell
+    gunzip text.txt.gz
+    ```
+1. **`zcat`**, **`zmore`** - вывод содержимого сжатых файлов сжатых с помощью `gzip`
+1. **`bzip2`**, **`bunzip2`** - сжимает\распоковывает файлы более эффективно чем `gzip` но при этом тратит больше времени.
+1. **`bzcat`**, **`bzmore`** - вывод содержимого сжатых файлов сжатого с помощью `bzip2`
+1. **`kill`** - shut down the process
 
     ```shell
     kill -9 process-id
     ```
 
-1. To get the full processes list
+1. **`ps`** - get the processes list snapshoot
 
-    ```shell
-    sudo ps aux
-    ```
+    * get the full process list
+        ```shell
+        sudo ps aux
+        ```
 
-1. Get the full list of installed packages
+1. **`dpkg`** - get info about installed packages.
 
-    ```shell
-    sudo dpkg -l
-    ```
+    * Get the full list of installed packages
+        ```shell
+        sudo dpkg -l
+        ```
