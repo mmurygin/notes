@@ -128,7 +128,134 @@
 ## rename
 1. _Осуществляет переименование файлов по шаблону_
 1. Реализация утилиты `rename` отличается между дистрибутивами _Debian_ и _Red Hat_
-1.
+1. **`'s/to_replace_regex/replace_value/`**Поиск и переименование файлов по шаблону:
+
+    ```shell
+    $ ls
+    abc       allfiles.TXT  bllfiles.TXT  Scratch   tennis2.TXT
+    abc.conf  backup        cllfiles.TXT  temp.TXT  tennis.TXT
+    $ rename 's/TXT/text/' *
+    $ ls
+    abc       allfiles.text  bllfiles.text  Scratch    tennis2.text
+    abc.conf  backup         cllfiles.text  temp.text  tennis.text
+    ```
+1. **`'s/regex/str/g`** - замена всех вхожденй строки
+    ```shell
+    $ touch aTXT.TXT
+    $ rename -n 's/TXT/txt/g' aTXT.TXT
+    aTXT.TXT renamed as atxt.txt
+    ```
+1. **`'s/regex/str/i`** - замена без учета регистра
+    ```shell
+    $ ls
+    file1.text  file2.TEXT  file3.txt
+    $ rename 's/.text/.txt/i' *
+    $ ls
+    file1.txt  file2.txt  file3.txt
+    ```
+
+## sed
+1. Редактор потока данных (_stream editor_) или, для краткости, утилита `sed`, использует регулярные выражения для модификации потока данных.
+1. Замена строки
+    ```shell
+    $ echo Понедельник | sed 's/Понедель/Втор/'
+    Вторник
+    ```
+1. Слэши могут быть заменены на некоторые другие символы, которые могут оказаться более удобными и повысить читаемость команды в ряде случаев.
+    ```shell
+    $ echo Понедельник | sed 's:Понедель:Втор:'
+    Вторник
+    $ echo Понедельник | sed 's_Понедель_Втор_'
+    Вторник
+    $ echo Понедельник | sed 's|Понедель|Втор|'
+    Вторник
+    ```
+1. **`sed -i`** интерактивная обработка файлов (т.е. изменения содержимого файла)
+    ```shell
+    $ echo Понедельник > today
+    $ cat today
+    Понедельник
+    $ sed -i 's/Понедель/Втор/' today
+    $ cat today
+    Вторник
+    ```
+1. **`.`** - любой символ
+    ```shell
+    $ echo 2014-04-01 | sed 's/....-..-../YYYY-MM-DD/'
+    YYYY-MM-DD
+    ```
+1. **`\s`** - используется на ссылку на пробел и табуляцию
+    ```shell
+    $ echo -e 'сегодня\tтеплый\tдень'
+    сегодня	теплый	день
+    $ echo -e 'сегодня\tтеплый\tдень' | sed 's_\s_ _g'
+    сегодня теплый день
+    ```
+1. **`?`** - необязательный символ
+    ```shell
+    $ cat list2
+    ll
+    lol
+    lool
+    loool
+    $ grep -E 'ooo?' list2
+    lool
+    loool
+    $ cat list2 | sed 's/ooo\?/A/'
+    ll
+    lol
+    lAl
+    lAl
+    ```
+1. **ровно n повторение**
+    ```shell
+    $ cat list2
+    ll
+    lol
+    lool
+    loool
+    $ grep -E 'o{3}' list2
+    loool
+    $ cat list2 | sed 's/o\{3\}/A/'
+    ll
+    lol
+    lool
+    lAl
+    ```
+1. **от n до m повторений**
+    ```shell
+    $ cat list2
+    ll
+    lol
+    lool
+    loool
+    $ grep -E 'o{2,3}' list2
+    lool
+    loool
+    $ grep 'o\{2,3\}' list2
+    lool
+    loool
+    $ cat list2 | sed 's/o\{2,3\}/A/'
+    ll
+    lol
+    lAl
+    lAl
+    ```
+
+1. **Обратные ссылки** - круглые скобки используются для группировки частей регулярного выражения, на которые впоследствии могут быть установлены ссылки.
+    ```shell
+    $ echo Sunday | sed 's_\(Sun\)_\1ny_'
+    Sunnyday
+    $ echo Sunday | sed 's_\(Sun\)_\1ny \1_'
+    Sunny Sunday
+    ```
+1. **Множественные обратные ссылки** - в случае использования более чем одной пары круглых скобок, ссылка на каждую из них может быть осуществлена путем использования последовательных числовых значений.
+    ```shell
+    $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\1+\2+\3/'
+    2014+04+01
+    $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\3:\2:\1/'
+    01:04:2014
+    ```
 
 ## Ресурсы
 1. [stepik Основы Линукс](https://stepik.org/lesson/30012/step/2?course=%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Linux&unit=10741)
