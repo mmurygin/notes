@@ -16,3 +16,6 @@
     * 25 - SMTP (почта)
     * 80 - HTTP
     * 443 - HTTPS
+
+## Установление TCP соединения
+![TCP handshake](../images/tcp-handshake.png)
