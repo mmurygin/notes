@@ -15,3 +15,9 @@
 1. **`b`** - moves to beginning of the word
 1. **`nw`* - moves through `n` to the begining of the nth line
 
+## Deleting
+1. **`d$`** - delete from current position to the end of line
+1. **`d^`** - delete from current backward to first non-white-space character
+1. 
+
+
