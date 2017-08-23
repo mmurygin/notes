@@ -3,13 +3,13 @@
 ## Usefull commands
 1. Get the lines number of a directory
 
-    ```shell
+    ```bash
     find . -name "*.js" -type f -exec cat {} \; | wc -l
     ```
 
 1. Get the size number of a directory
 
-    ```shell
+    ```bash
     find . -name "*.js" -type f -exec cat {} \; | wc -c
     ```
 
@@ -17,7 +17,7 @@
 
 1. To change terminal title add the following function to `.bashrc`:
 
-    ```shell
+    ```bash
     st(){
         echo -en "\033]0;$1\a"
     }
@@ -25,7 +25,7 @@
 
 2. To set the colored promt with current branch name add the following to `.bashrc`:
 
-    ```shell
+    ```bash
     parse_git_branch() {
         local branch=$(git branch 2> /dev/null | \
             sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')

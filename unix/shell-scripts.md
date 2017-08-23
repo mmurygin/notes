@@ -190,7 +190,7 @@
     * `help test`<br>
 
 1. To test some expression use
-    ```shell
+    ```bash
     [ 56 -gt 55 ] && echo true || echo false # true
     test 56 -gt 55 && echo $? # 0
     ```
@@ -263,7 +263,7 @@
 
     * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
 
-    ```shell
+    ```bash
     for counter in `seq 1 20`; do
         echo $counter
     done

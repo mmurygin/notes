@@ -24,14 +24,14 @@
 
 1. Что делает `DNS сервер` (в дополнение к описанному ниже проверятся кэш на каждом этапе)
     * part 0 (спрашиваем кто знает информацию о Top Level Domain)
-        ```shell
+        ```bash
         $ host -t NS .
         ...
         name server i.root-servers.net.
         ...
         ```
     * part 1 (спрашиваем кто знает информацию о зоне `ru.` у одного из root серверов)
-        ```shell
+        ```bash
         $ host -v -t NS ru. i.root-servers.net
         ...
         ;; AUTHORITY SECTION:
@@ -40,7 +40,7 @@
         ...
         ```
     * part 2 (спрашиваем у зоны DNS сервера зоны `ru.` у кого можно спросить про адрес мэйла)
-        ```shell
+        ```bash
         $ host -v -t NS mail.ru a.dns.ripn.net.
         ...
         ;; AUTHORITY SECTION:
@@ -49,7 +49,7 @@
         ...
         ```
     * part 3 (спрашиваем адрес яндекса)
-        ```shell
+        ```bash
         $ host -t A mail.ru ns2.mail.RU.
         ```
     * Весь процесс на картинке:
@@ -60,7 +60,7 @@
 ## DNS records
 1. **Все DNS записи должны содержать точку в конце!**
 1. **`A`** - IPv4 адрес(а) данного домена
-    ```shell
+    ```bash
     host -t A yandex.ru
     ```
 
@@ -74,7 +74,7 @@
 1. **`CNAME`** - _alias_ для доменной записи. Т.е. когда один домен ссылается на другой.
     * Если у домена есть `CNAME` запись, то не может быть никакой друго записи любого типа
 1. **`SOA`** - содержит техническую информацию о домене.
-    ```shell
+    ```bash
     $ host -t SOA yandex.ru
 
     yandex.ru has SOA record ns1.yandex.ru. sysadmin.yandex-team.ru. 2017081923 600 300 2592000 900
@@ -96,7 +96,7 @@
 
 ## DNS lookup utilites
 1. **`host`**
-    ```shell
+    ```bash
     host -t A example.com ns-server.com
     ```
     * **`-v`** - verbose

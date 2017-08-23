@@ -4,13 +4,13 @@
 
 1. To extend `PATH` variable use
 
-    ```shell
+    ```bash
     PATH="${PATH}:new_path"
     ```
 
 1. To add ssh-key use
 
-    ```shell
+    ```bash
     ssh-add path_to_ssh_key
     ```
 

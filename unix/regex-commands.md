@@ -20,7 +20,7 @@
     * **`grep -P`** - use Perl Regular Expressions
 1. Вывод строк совпадающих с шаблоном
     * Поиск по одному символу
-        ```shell
+        ```bash
         $ cat names
         Tania
         Laura
@@ -31,13 +31,13 @@
         ```
 
     * Поиск по группе символов
-        ```shell
+        ```bash
         $ grep ia names
         Tania
         ```
 
     * Один из двух символов
-        ```shell
+        ```bash
         $ grep -E 'L|T' names
         Laura
         Tania
@@ -49,7 +49,7 @@
 
 1. Совпадение одного или нескольких символов
     * **`*`** - соответствует 0, одному или большему количеству вхождений предыдущего симола.
-        ```shell
+        ```bash
         $ cat list2
         ll
         lol
@@ -72,7 +72,7 @@
 
 1. Совпадение начала\конца строки
     * **`$`** - совпадение в конце строки
-        ```shell
+        ```bash
         $ cat names
         Tania
         Laura
@@ -90,7 +90,7 @@
         ```
 
     * **`^`** - совпадение в начале строки
-        ```shell
+        ```bash
         $ grep ^Val names
         Valentina
         $ grep ^F names
@@ -101,7 +101,7 @@
 1. Разделение слов
     * **`\b`** - используется как разделитель слов при поиске
 
-        ```shell
+        ```bash
         $ cat text
         The governer is governing.
         The winter is over.
@@ -113,13 +113,13 @@
         ```
 
     * **`-w`** - поиск по словам
-        ```shell
+        ```bash
         $ grep -w over text
         The winter is over.
         Can you get over there?
         ```
 1. Предотвращение раскрытия регулярного выражения командной оболочкой. Т.к. символ доллара является специальным символом, то рекомендуется экранировать регулярные выражения
-    ```shell
+    ```bash
     $ grep 'r$' names
     Fleur
     Floor
@@ -130,7 +130,7 @@
 1. Реализация утилиты `rename` отличается между дистрибутивами _Debian_ и _Red Hat_
 1. **`'s/to_replace_regex/replace_value/`**Поиск и переименование файлов по шаблону:
 
-    ```shell
+    ```bash
     $ ls
     abc       allfiles.TXT  bllfiles.TXT  Scratch   tennis2.TXT
     abc.conf  backup        cllfiles.TXT  temp.TXT  tennis.TXT
@@ -140,13 +140,13 @@
     abc.conf  backup         cllfiles.text  temp.text  tennis.text
     ```
 1. **`'s/regex/str/g`** - замена всех вхожденй строки
-    ```shell
+    ```bash
     $ touch aTXT.TXT
     $ rename -n 's/TXT/txt/g' aTXT.TXT
     aTXT.TXT renamed as atxt.txt
     ```
 1. **`'s/regex/str/i`** - замена без учета регистра
-    ```shell
+    ```bash
     $ ls
     file1.text  file2.TEXT  file3.txt
     $ rename 's/.text/.txt/i' *
@@ -154,7 +154,7 @@
     file1.txt  file2.txt  file3.txt
     ```
 1. **Изменение расширений**
-    ```shell
+    ```bash
     $ ls *.txt
     allfiles.txt  bllfiles.txt  cllfiles.txt  really.txt.txt  temp.txt  tennis.txt
     $ rename 's/.txt$/.TXT/' *.txt
@@ -166,12 +166,12 @@
 ## sed
 1. Редактор потока данных (_stream editor_) или, для краткости, утилита `sed`, использует регулярные выражения для модификации потока данных.
 1. Замена строки
-    ```shell
+    ```bash
     $ echo Понедельник | sed 's/Понедель/Втор/'
     Вторник
     ```
 1. Слэши могут быть заменены на некоторые другие символы, которые могут оказаться более удобными и повысить читаемость команды в ряде случаев.
-    ```shell
+    ```bash
     $ echo Понедельник | sed 's:Понедель:Втор:'
     Вторник
     $ echo Понедельник | sed 's_Понедель_Втор_'
@@ -180,7 +180,7 @@
     Вторник
     ```
 1. **`sed -i`** интерактивная обработка файлов (т.е. изменения содержимого файла)
-    ```shell
+    ```bash
     $ echo Понедельник > today
     $ cat today
     Понедельник
@@ -189,19 +189,19 @@
     Вторник
     ```
 1. **`.`** - любой символ
-    ```shell
+    ```bash
     $ echo 2014-04-01 | sed 's/....-..-../YYYY-MM-DD/'
     YYYY-MM-DD
     ```
 1. **`\s`** - используется на ссылку на пробел и табуляцию
-    ```shell
+    ```bash
     $ echo -e 'сегодня\tтеплый\tдень'
     сегодня	теплый	день
     $ echo -e 'сегодня\tтеплый\tдень' | sed 's_\s_ _g'
     сегодня теплый день
     ```
 1. **`?`** - необязательный символ
-    ```shell
+    ```bash
     $ cat list2
     ll
     lol
@@ -217,7 +217,7 @@
     lAl
     ```
 1. **ровно n повторение**
-    ```shell
+    ```bash
     $ cat list2
     ll
     lol
@@ -232,7 +232,7 @@
     lAl
     ```
 1. **от n до m повторений**
-    ```shell
+    ```bash
     $ cat list2
     ll
     lol
@@ -252,14 +252,14 @@
     ```
 
 1. **Обратные ссылки** - круглые скобки используются для группировки частей регулярного выражения, на которые впоследствии могут быть установлены ссылки.
-    ```shell
+    ```bash
     $ echo Sunday | sed 's_\(Sun\)_\1ny_'
     Sunnyday
     $ echo Sunday | sed 's_\(Sun\)_\1ny \1_'
     Sunny Sunday
     ```
 1. **Множественные обратные ссылки** - в случае использования более чем одной пары круглых скобок, ссылка на каждую из них может быть осуществлена путем использования последовательных числовых значений.
-    ```shell
+    ```bash
     $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\1+\2+\3/'
     2014+04+01
     $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\3:\2:\1/'

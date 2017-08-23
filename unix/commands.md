@@ -41,7 +41,7 @@
 1. There are 2 kinds of commands. Shell _builtin_ and _external_ (executable files).
     * **`type`** - get info if command is builtin, external or alias command
 
-        ```shell
+        ```bash
         type ls # ls is aliased to `ls --color=auto`
         ```
 
@@ -94,28 +94,28 @@
 
 1. **`rename`** - rename files according to template
     * change all `.txt` files extensions to `.png`
-        ```shell
+        ```bash
         rename 's/\.txt/\.png/ *.txt
         ```
 
 1. **`find`** - поиск и обработка файлов рекурсивно
     * поиск всех файлов в директории рекурсивно
-        ```shell
+        ```bash
         find /etc
         ```
 
     * Поиск только файлов
-        ```shell
+        ```bash
         find . -type f
         ```
 
     * Поиск всех файлов с расширением `.conf`
-        ```shell
+        ```bash
         find . -name "*.conf"
         ```
 
     * Поиск всех файлов и копирование их в по заданному пути
-        ```shell
+        ```bash
         find /data -exec cp {} /backup/ \;
         ```
 
@@ -132,18 +132,18 @@
 1. **`cat`** - copy data from `stdin` to `stdout`.
     * **`cat file1 file2 file3`** - concatenates 3 files
     * create a file with content (stop - here is a special marker of end of input - we could specify any word, most common is EOF)
-        ```shell
+        ```bash
         cat > hot.txt <<stop
         some string
         stop
         ```
     * copy file1 to file2
-        ```shell
+        ```bash
         cat file1 > file2
         ```
 1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
 1. **`tac`** - print file with reversed string order
-    ```shell
+    ```bash
     $ tac count.txt
     три
     два
@@ -153,7 +153,7 @@
 ## Filters
 1. `cat` - при размещении фильтра cat между двумя программными каналами не будет осуществляться какой-либо обработки передающихся через них данных.
 
-    ```shell
+    ```bash
     $ tac count.txt | cat | cat | cat | cat | cat
     три
     два
@@ -161,7 +161,7 @@
     ```
 1. **`tee`** - перемещает данные из стандартного потока ввода stdin в стандартный поток вывода stdout, а также записывает их в файл.
 
-    ```shell
+    ```bash
     $ tac count.txt | tee temp.txt | tac
     один
     два
@@ -174,22 +174,22 @@
 1. **`grep`** - фильрует строки текста
 
     * поиск слово Williams в строке
-        ```shell
+        ```bash
         cat tennis.txt | grep Williams
         ```
 
     * **`-i`** - поиск без учета регистра
-        ```shell
+        ```bash
         grep -i Bel tennis.txt
         ```
 
     * **`-v`** - поиск строк не удовлетворяющих условию
-        ```shell
+        ```bash
         grep -v Bel tennis.txt
         ```
 
     * **`-A1`** - добавить одну строку выше найденной в результат
-        ```shell
+        ```bash
         grep -A1 Henin tennis.txt
         ```
 
@@ -199,29 +199,29 @@
 1. **`cut`** - извлекает данные из столбцов расположенных в файлах таблиц с указанием разделителя столбцов или количества байт данных в столбцах
 
     * разделить строку по двоеточию и вывести 1 и 3 столбцы
-        ```shell
+        ```bash
         cut -d: -f1,3 /etc/passwd | tail -4
         ```
 
     * разделить строку по пробелам
-        ```shell
+        ```bash
         cut -d" " -f1 file.txt
         ```
 
 1. **`tr`** - преобразование символов в потоке
 
     * заменить символ в строке
-        ```shell
+        ```bash
         cat tennis.txt | tr 'e' 'E'
         ```
 
     * **`-d`** - удалить символ
-        ```shell
+        ```bash
         cat tennis.txt | tr -d e
         ```
 
     * заменить последовательность символов
-        ```shell
+        ```bash
         cat tennis.txt | tr 'a-z' 'A-Z'
         ```
 
@@ -229,17 +229,17 @@
 1. **`sort`** - сортирует строки
 
     * сортировка строк
-        ```shell
+        ```bash
         sort music.txt
         ```
 
     * **`-k`** - сортировка строк по 1 столбцу
-        ```shell
+        ```bash
         sort -k1 country.txt
         ```
 
     * **`-n`** - числовая сортировка
-        ```shell
+        ```bash
         $ sort -k3 country.txt
         Belgium, Brussels, 10
         Germany, Berlin, 100
@@ -259,19 +259,19 @@
 1. **`sed`** - расширенное потоковое редактирование файлов с помощью регулярных выражений
 
     * замена строки
-    ```shell
+    ```bash
     $ echo уровень5 | sed 's/5/42/'
     уровень42
     ```
 
     * **`g`** - замена всех строк в файле
-    ```shell
+    ```bash
     $ echo уровень5 уровень7 | sed 's/уровень/переход/'
     переход5 уровень7
     ```
 
     * **`d`** - удаление срок содержащих заданную последовательность символов
-    ```shell
+    ```bash
     $ cat tennis.txt
     Venus Williams, USA
     Martina Hingis, SUI
@@ -291,16 +291,16 @@
 1. **`cal`** - выводит каледарь для текущего месяца, в котором выделен текущий день
 1. **`sleep`** переход выполнения в режим ожидания на заданное количество секунд
 1. **`time`** - выводит информацию о том сколько потратилось времени на выполнение команды
-    ```shell
+    ```bash
     time ls
     ```
 1. **`gzip`** - сжать файл
-    ```shell
+    ```bash
     gzip text.txt
     ```
 
 1. **`gunzip`** - распоковать файл
-    ```shell
+    ```bash
     gunzip text.txt.gz
     ```
 1. **`zcat`**, **`zmore`** - вывод содержимого сжатых файлов сжатых с помощью `gzip`
@@ -308,20 +308,20 @@
 1. **`bzcat`**, **`bzmore`** - вывод содержимого сжатых файлов сжатого с помощью `bzip2`
 1. **`kill`** - shut down the process
 
-    ```shell
+    ```bash
     kill -9 process-id
     ```
 
 1. **`ps`** - get the processes list snapshoot
 
     * get the full process list
-        ```shell
+        ```bash
         sudo ps aux
         ```
 
 1. **`dpkg`** - get info about installed packages.
 
     * Get the full list of installed packages
-        ```shell
+        ```bash
         sudo dpkg -l
         ```

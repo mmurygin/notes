@@ -4,13 +4,13 @@
 
 1. Install
 
-    ```shell
+    ```bash
     sudo apt-get install nginx
     ```
 
 1. Check start nginx
 
-    ```shell
+    ```bash
     sudo systemctl start nginx
     ```
 
