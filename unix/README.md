@@ -9,4 +9,5 @@
 - [Utils](utils)
     * [Docker](utils/docker.md)
     * [Nginx](utils/nginx.md)
+- [User Management](user-management.md)
 - [Resources](resources.md)
