@@ -22,30 +22,32 @@
     ```
     #!/bin/bash
     ```
-2. To make file executable use
+1. To make file executable use
 
     ```
     chmod u+x file_name
     ```
-3. Single quotes escape everything inside.
+1. Single quotes escape everything inside.
 
-4. Double quotes don’t escape **`$`**, **`{}`**. But escape **`~`** (use **`$HOME`** instead).
+1. Double quotes don’t escape **`$`**, **`{}`**. But escape **`~`** (use **`$HOME`** instead).
 
-5. Every unix command return result code. **`0`** means success. Other values are error codes.
+1. Every unix command return result code. **`0`** means success. Other values are error codes.
 
-6. To finish script execution run
+1. To finish script execution run
 
     ```
     exit exit_code
     ```
 
-8. **`$?`** - exit status for last command
+1. **`$?`** - exit status for last command
 
-9. **`${#var}`** - the length of the string in a variable
+1. **`${#var}`** - the length of the string in a variable
 
-10. **`--`** - end of options command.
+1. **`--`** - end of options command.
     * Supported by many UNIX commands
     * Arguments after this will not be interpreted as options
+1. **`$(...)`** - runs command in subshell (inner variables does not appear in main shell)
+1. **`eval`** - gets the string and evaluates it as if you type it in the terminal
 
 ## Script params
 1. **`$0`** - script name
@@ -173,7 +175,7 @@
     * **`declare -i var_name`** - add integer attribute to a varibale
     * **`declare +i var_name`** - removes integer attribute from a variable
 
-2. C-like syntax for doing calculation
+2. **`let`** - C-like syntax for doing calculation
     * **`let n=100/2`** - sets variable n to integer
 
 3. **`((..))`** - arithmetic expression.
