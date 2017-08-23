@@ -3,6 +3,7 @@
 ## Table of Content
 
 - [Common](#common)
+- [Script params](#script-params)
 - [Variables](#variables)
 - [Integer and Arithmetic Expressions](#integer-and-arithmetic-expressions)
 - [Debugging](#debugging)
@@ -10,7 +11,6 @@
 - [Control flow](#control-flow)
 - [Input and Output](#input-and-output)
 - [Stream and IO Redirection](#stream-and-io-redirection)
-- [Handling script parametrs](#handling-script-parametrs)
 - [Functions](#function)
 - [Strings](#strings)
 - [Running Scripts](#running-scripts)
@@ -39,8 +39,6 @@
     exit exit_code
     ```
 
-7. **`$#`** - the number of script arguments
-
 8. **`$?`** - exit status for last command
 
 9. **`${#var}`** - the length of the string in a variable
@@ -48,6 +46,53 @@
 10. **`--`** - end of options command.
     * Supported by many UNIX commands
     * Arguments after this will not be interpreted as options
+
+## Script params
+1. **`$0`** - script name
+1. **`$1`** - get the first param of the script
+1. **`$2`** - get the second param of the script
+1. **`$#`** - the number of script arguments
+1. **`“$@”`** - equivalent to `“$1”, “$2”, ..,  “$N”`
+1. **`“$*”`** - equivalent to `“$1 $2 $3… $N”`
+1. **`$$`** - `PID` of current process
+1. iterate through the script params
+    ```bash
+    while (( $# )); do
+        echo $1
+        shift
+    done
+    ```
+1. **`shift`** - removes the first argument ($2 => $1, $3 => $2)
+    * `shift n` - removes first n arguments
+
+1. **`getopts`**  - parse script options (like -p). Stops on an argument which does not starts with -.
+
+    ```
+    getopts opt_string var_name
+    ```
+
+    * **opt_string**
+        * a list of expected options
+        * `“ab”` will let your script handle an option `-a` and/or `-b`
+        * Append `:` to options that take an argument
+        * `“a:b”` will let `a` take an argument, but not `b`
+    * **var_name**
+        * The name of a variable
+        * Every time you call getopts, it will place next option int $var_name
+    * **`OPTARG`** - argument of an option
+    * **`OPTIND`** - holds the index of the next argument to be processed
+    * **`getopts`** returns false when no more options are left
+    * **`getopts`** handles erros for you. If anything goes wrong, the option variable var_name holds **`“?”`**
+
+1. Process getopts errors by yourself
+    * start optioon strgin with a colon (silent mode)
+        * `“:bsr”`
+    * Unknown option:
+        * **`“?”`** will be putted in `var_name`
+        * actual option in `OPTARG`
+    * Missing option argument
+        * `“:”` in option `var_name`
+        * actual option in `OPTARG`
 
 ## Variables
 
@@ -436,48 +481,6 @@
     * **`command 2> file`** - redirects standart error stream to a file
     * **`command | tee file`** - redirects standart ouput of the command to a file and backward to output
     * **`command  > logfile 2>&1`** - sending both error and ouput to a single file
-
-
-## Handling script parametrs
-
-1. Special variables
-    * **`$1, $2…`** - gets the argument number 1, 2 and etc
-    * **`“$@”**` - equivalent to `“$1”, “$2”, ..,  “$N”`
-    * **`“$*”`** - equivalent to `“$1 $2 $3… $N”`
-    * **`$#`** - get the number of script arguments
-    * **`$0`** - holds the name of the script as it was called
-
-2. **`shift`** - removes the first argument ($2 => $1, $3 => $2)
-    * `shift n` - removes first n arguments
-
-3. **`getopts`**  - parse script options (like -p). Stops on an argument which does not starts with -.
-
-    ```
-    getopts opt_string var_name
-    ```
-
-    * **opt_string**
-        * a list of expected options
-        * `“ab”` will let your script handle an option `-a` and/or `-b`
-        * Append `:` to options that take an argument
-        * `“a:b”` will let `a` take an argument, but not `b`
-    * **var_name**
-        * The name of a variable
-        * Every time you call getopts, it will place next option int $var_name
-    * **`OPTARG`** - argument of an option
-    * **`OPTIND`** - holds the index of the next argument to be processed
-    * **`getopts`** returns false when no more options are left
-    * **`getopts`** handles erros for you. If anything goes wrong, the option variable var_name holds **`“?”`**
-
-4. Process getopts errors by yourself
-    * start optioon strgin with a colon (silent mode)
-        * `“:bsr”`
-    * Unknown option:
-        * **`“?”`** will be putted in `var_name`
-        * actual option in `OPTARG`
-    * Missing option argument
-        * `“:”` in option `var_name`
-        * actual option in `OPTARG`
 
 ## Functions
 
