@@ -153,6 +153,15 @@
     $ ls
     file1.txt  file2.txt  file3.txt
     ```
+1. **Изменение расширений**
+    ```shell
+    $ ls *.txt
+    allfiles.txt  bllfiles.txt  cllfiles.txt  really.txt.txt  temp.txt  tennis.txt
+    $ rename 's/.txt$/.TXT/' *.txt
+    $ ls *.TXT
+    allfiles.TXT  bllfiles.TXT    cllfiles.TXT    really.txt.TXT
+    temp.TXT      tennis.TXT
+    ```
 
 ## sed
 1. Редактор потока данных (_stream editor_) или, для краткости, утилита `sed`, использует регулярные выражения для модификации потока данных.
