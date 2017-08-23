@@ -215,7 +215,7 @@
 
 1. The condition syntax
 
-    ```
+    ```bash
     if <condition or command>; then
         <code>
     elif <condition or command>; then
@@ -249,35 +249,52 @@
 
 3. **`for`** - assign each word in words to var . Stops when no words are left. **Do NOT** quote words.
 
-    ```
-    for VAR in WORDS; do
-        code
-    done
-    ```
+    * iterate through words
+        ```bash
+        for VAR in WORDS; do
+            code
+        done
+        ```
+    * iterate through files in pwd
 
-    ```
-    for (( i=0; i<max; i++ )); do
-        code
-    done
-    ```
+        ```bash
+        for file in *; do
+            echo $file
+        done
+        ```
+    * iterate through files according to template in pwd
 
-    * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
+        ```bash
+        for file in *.txt; do
+            echo $file
+        done
+        ```
+    * iterate till max
 
-    ```bash
-    for counter in `seq 1 20`; do
-        echo $counter
-    done
-    ```
+        ```bash
+        for (( i=0; i<max; i++ )); do
+            code
+        done
+        ```
 
-    ```bash
-    for counter in {1..20}; do
-        echo $counter
-    done
-    ```
+        * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
+
+    * iterate by number sequence
+        ```bash
+        for counter in `seq 1 20`; do
+            echo $counter
+        done
+        ```
+
+        ```bash
+        for counter in {1..20}; do
+            echo $counter
+        done
+        ```
 
 4. **`case`**
 
-    ```
+    ```bash
     case WORD in
         PATTERN1)
             code for pattern1;;
@@ -329,7 +346,7 @@
 
 5. **`read`** - reads input into a variable
 
-    ```
+    ```bash
     read x
     ```
 
