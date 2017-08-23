@@ -17,7 +17,7 @@
 
 ## Common
 
-1. The is a good practise to put hash-band line at the beginning of each script
+1. The is a good practise to put hash-band line at the beginning of each script to tell which shell should execute this script
 
     ```
     #!/bin/bash
@@ -183,24 +183,19 @@
     * **`shopt -s dotglob`** - include hidden files with path name expansion
 
 ## Conditions
+1. To get the info about conditional usage use<br>
+    * `man test`
+    * `man [`
+    * `help [[`<br>
+    * `help test`<br>
 
-1. The condition syntax
-
+1. To test some expression use
+    ```shell
+    [ 56 -gt 55 ] && echo true || echo false # true
+    test 56 -gt 55 && echo $? # 0
     ```
-    if <condition or command>; then
-        <code>
-    elif <condition or command>; then
-        <code>
-    else
-        <code>
-    fi
-    ```
 
-2. **`[[ ... ]]`** - contition expression
-    * not a command but special syntax
-    * not quotes need around variables
-
-3. Conditional expressions:
+1. Test options:
 
     | Expression | Meaning |
     | --- | ---- |
@@ -215,18 +210,24 @@
     * Same for switches (-e) and equals sign
     * `=` is the same as `==`
 
-4. To get the info about conditional usage use<br>
-    `help [[`<br>
-    `help test`<br>
-
-5. To compare numbers (only integer supported)<br>
+1. To compare numbers (only integer supported)<br>
     **`[[ arg1 OP arg2 ]]`** -  where OP: -eq, -ne, -lt, -gt
 
-6. The is the following operators: `!`, `&&`, `||`
+1. The condition syntax
 
-7. Some usefull regex:<br>
-    **`[0-9]?`** - will match a single digit or nothing at all<br>
-    **`[a-z]*`** - will match any lowecase text or nothing at all
+    ```
+    if <condition or command>; then
+        <code>
+    elif <condition or command>; then
+        <code>
+    else
+        <code>
+    fi
+    ```
+
+1. [The difference between `[ ]`, `[[ ]]`, `( )`, `(( ))`](https://unix.stackexchange.com/questions/306111/confused-about-operators-vs-vs-vs)
+
+1. The is the following operators: `!`, `&&`, `||`
 
 ## Control flow
 
@@ -261,6 +262,18 @@
     ```
 
     * Note: Inside for there is an arithmetic expression. So we do not need to use `$` to get variable value
+
+    ```shell
+    for counter in `seq 1 20`; do
+        echo $counter
+    done
+    ```
+
+    ```bash
+    for counter in {1..20}; do
+        echo $counter
+    done
+    ```
 
 4. **`case`**
 
