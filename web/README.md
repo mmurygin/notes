@@ -6,6 +6,7 @@
     - [DNS](dns.md)
     - [TCP](tcp.md)
     - [TLC](tlc.md)
+    - [HTTP](http.md)
 - [HTML](html.md)
 - [CSS](css.md)
 - [Cashing](caching.md)
