@@ -1,5 +1,12 @@
 # TCP
 
+## Table of content
+- [Зачем нужен TCP](#Зачем-нужен-TCP)
+- [TCP порты](#TCP-порты)
+- [Установление TCP соединения](#Установление-TCP-соединения)
+- [TCP клиент](#TCP-клиент)
+- [TCP сервер](#TCP-сервер)
+
 ## Зачем нужен TCP
 1. **`TCP`** - протокол, обеспечивающий надежную последовательную доставку данных. Фактически, TCP предоставляет интерфейс, похожий на файловый ввод\вывод для сетевых соединений.
 1. TCP обеспечивает
@@ -19,3 +26,60 @@
 
 ## Установление TCP соединения
 ![TCP handshake](../images/tcp-handshake.png)
+
+## TCP клиент
+```python
+import socket
+
+req = "Hello tcp!"
+
+# AF_INET for network connection
+# SOCK_STREAM - for TCP
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect(('127.0.0.1', 1234))
+
+s.send(req)
+res = s.recv(1024)
+s.close()
+```
+
+## TCP сервер
+```python
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind(('127.0.0.1', 1234))
+s.listen(10) # 10 - количество клиентов в очереди
+while True:
+    conn, addr = s.accept() # возвращается когда пришло новое соединение от клиента
+    while True:
+        data = conn.recv(1024)
+        if not data: break
+        conn.send(data)
+    conn.close()
+```
+
+## Правильное чтение и запись данных в сокет
+1. Когда мы вызываем `sock.recv(n)` это значит что мы запросили `n` байта из сокета, но сокет может нам вернуть количество в дипапзоне [0, n]. К примеру в случае если сокет вернул нам 10 байт, а нам нужно было 1024, то нужно вызывать метод `recv` ещё раз.
+    ```python
+    def reveive_from_socket(sock, msglen):
+        msg = ''
+        while len(msg) < msglen:
+            chunk = sock.recv(msglen - len(msg))
+            if chunk == ''
+                raise RuntimeError('broken')
+            msg = msg + chunk
+        return msg
+    ```
+
+    * как видно из этого примера получателю всегда желательно знать размер переданного сообщения.
+
+1. Когда мы хотим отправить данные в сокет, то опять же отправится число в интервале от [0, n], где `n` длина отправляемого сообщения, т.к. получатель может быть не готов получить такой объём данных - к примеру нет буфера такого размера.
+    ```python
+    def send_to_socket(sock, msg):
+        totalsent = 0
+        while totalsent < len(msg):
+            sent = sock.send(msg[totalsend:])
+            if sent == 0:
+                raise RuntimeError('broken')
+            totalsent = totalsent + sent
+    ```

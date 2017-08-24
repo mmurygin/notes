@@ -19,7 +19,6 @@
 1. **`d$`** - deletes from current position to the end of line
 1. **`d^`** - deletes from current backward to first non-white-space character
 1. **`d0`** - deletes from current backward to begining of line
-1. **`dw`** - deletes current to end of current word (including trailing space) 
+1. **`dw`** - deletes current to end of current word (including trailing space)
 1. **`db`** deletes current to begining of current word
-
 
