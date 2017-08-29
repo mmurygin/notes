@@ -3,6 +3,7 @@
 ## Table of content
 - [Common](#common)
 - [CRUD Users](#crud-users)
+- [User Passwords](#user-passwords)
 
 ## Common
 1. **`whoami`** - показывает имя учетной записи
@@ -103,3 +104,9 @@
     -rw-r--r--   1 root root  8980 апр 20  2016 examples.desktop
     -rw-r--r--   1 root root   655 июн 24  2016 .profile
     ```
+
+## User Passwords
+1. **`passwd`** - изменяет пароль текущего пользователя.
+    * Применяет несколько стандартных проверок на качество пароля.
+    * Пользователь `root` не обязан следовать правилам проверки.
+1. **`/etc/shadow`** - хранит зашифрованные пароли пользователей.
