@@ -68,14 +68,14 @@
 
 1. Решение проблемы блокирующего ввода-вывода:
     * множество потоков - multithreading<br>
-        :heavy_plus_sign: зкономия памяти: 1 клиент = 1 поток<br>
-        :heavy_minus_sign: требует аккуратной работы с памятью<br>
-        :heavy_minus_sign: как следствие, накладывает ограничение на выбор библиотек<br>
+        <span style="color: green">:heavy_plus_sign:</span>зкономия памяти: 1 клиент = 1 поток<br>
+        <span style="color: green">:heavy_minus_sign:</span>требует аккуратной работы с памятью<br>
+        <span style="color: green">:heavy_minus_sign:</span>как следствие, накладывает ограничение на выбор библиотек<br>
     * множество процессов - prefork, pool of workers<br>
-        :heavy_plus_sign: простота разработки<br>
-        :heavy_plus_sign: можно использовать любые библиотеки<br>
-        :heavy_minus_sign: большое потребление памяти: 1 клиент = 1 процесс<br>
-        :heavy_minus_sign: проблема с долгоживущими соединениями<br>
+        <span style="color: green">:heavy_plus_sign:</span>простота разработки<br>
+        <span style="color: green">:heavy_plus_sign:</span>можно использовать любые библиотеки<br>
+        <span style="color: green">:heavy_minus_sign:</span>большое потребление памяти: 1 клиент = 1 процесс<br>
+        <span style="color: green">:heavy_minus_sign:</span>проблема с долгоживущими соединениями<br>
     * комбинированный подход<br>
 
 1. Неблокирующий ввод-вывод
@@ -103,4 +103,5 @@
 1. Event-driven разработка
     * множество открытых файловых дескрипторов
     * выбор сокетов готовых к работе
-    * последовательная обработка событий
+    * последовательная обработка событий <br>
+    <span style="color: green">:heavy_plus_sign:</span><br>
