@@ -4,6 +4,7 @@
 - [Common](#common)
 - [CRUD Users](#crud-users)
 - [User Passwords](#user-passwords)
+- [CRUD User Groups](#crud-user-groups)
 
 ## Common
 1. **`whoami`** - показывает имя учетной записи
@@ -159,3 +160,47 @@
 1. Если пароль в `/etc/shadow` начинается с `!` то учетная запись не может использоваться.
 1. **`usermod -L username`** - блокировка записи
 1. **`usermod -U username`** - разблокировка записи
+
+## CRUD User Groups
+1. **`/etc/group`** - хранит информацию о членстве пользователях в группах
+    ```bash
+    $ tail -5 /etc/group
+    max:x:1000:
+    sambashare:x:124:max
+    docker:x:999:max
+    mysql:x:125:
+    debian-tor:x:126:
+    ```
+
+    * имя группы : зашифрованный пароль группы : идентификатор группы : список членов группы
+
+1. **`groupadd`** -  добавить группу
+1. **`groups username`** - список групп в которых состоит пользователь
+1. **`usermod -a -G groupname username`** - добавляет пользователя в группу
+1. **`groupmod`** - изменить параметры группы (`-n` изменить имя)
+1. **`groupdel`** - удалить группу
+1. **`gpasswd`** - делегирует функции контроля над группой другому пользователю
+
+    ```bash
+    root@$ gpasswd -A serena sports # user serena now have rights to edit sports user group
+    root@$ su - serena
+    serena@$ gpasswd -a harry sports # add user hary to group sports
+    ```
+
+    * **`/etc/gshadow`** - содержит информацию об администраторах групп пользователей
+    * **`gpasswd -A "" groupname`** - очищает список администраторов группы пользователей
+1. **`newgrp groupname`** - создаёт _дочернюю командную оболочку_ с новой _основной группой пользователей_
+    ```bash
+    $ touch st.txt
+    $ ls -l
+    total 0
+    -rw-r--r-- 1 root root 0 Sep  1 05:46 st.txt
+    $ newgrp test-gr
+    $ echo $SHLVL
+    2
+    $ touch st2.txt
+    $ ls -l
+    total 0
+    -rw-r--r-- 1 root root    0 Sep  1 05:46 st.txt
+    -rw-r--r-- 1 root test-gr 0 Sep  1 05:47 st2.tx
+    ```
