@@ -179,7 +179,7 @@
 1. **`usermod -a -G groupname username`** - добавляет пользователя в группу
 1. **`groupmod`** - изменить параметры группы (`-n` изменить имя)
 1. **`groupdel`** - удалить группу
-1. **`gpasswd`** - делегирует функции контроля над группой другому пользователю
+1. **`gpasswd -A`** - делегирует функции контроля над группой другому пользователю
 
     ```bash
     root@$ gpasswd -A serena sports # user serena now have rights to edit sports user group
