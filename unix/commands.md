@@ -59,69 +59,6 @@
     * **`HISTFILESIZE`** - количество команд которые сохраняются в файле истории команд
 1. Чтобы предтовратить сохранение команды в истории нужно использовать `space` вначале команды
 
-## File management commands
-1. Special symbols
-    * **`/`** - top level directory
-    * **`.`** - current directory
-    * **`..`** - parent directory
-    * **`~`** - home directory
-
-1. **`touch`** - create a file
-
-1. List files - **`ls`**
-    * **`ls dir`** - list contens of dir
-    * **`ls -l`** - list in long format
-    * **`ls -a`** - list all files
-    * **`ls -R`** - recursively list files in subdirectories
-    * **`ls -d`** - don't go into subdirectories, just list them
-    * **`ls -S`** - list by size
-    * **`ls -t`** - list by modification date
-    * **`ls -lh`** - list files in long format with human-readable size
-    * **`ls -F`** - list files and gets their types
-
-1. Copy files - **`cp`**
-    * **`cp a b`** - copy file **a** to **b**
-    * **`cp a b c dir/`** - copy files **a b c** into **dir/**
-    * **`cp -R old new`** - recursively copies directory old into new
-    * **`cp -i a b`** - ask before overwriting files
-
-1. **`mkdir`** - create directory
-    * **`mkdir -p`** - create directory recursively
-
-1. **`file`** - get info about file
-
-1. **`mv`** - rename file
-
-1. **`rename`** - rename files according to template
-    * change all `.txt` files extensions to `.png`
-        ```bash
-        rename 's/\.txt/\.png/ *.txt
-        ```
-
-1. **`find`** - поиск и обработка файлов рекурсивно
-    * поиск всех файлов в директории рекурсивно
-        ```bash
-        find /etc
-        ```
-
-    * Поиск только файлов
-        ```bash
-        find . -type f
-        ```
-
-    * Поиск всех файлов с расширением `.conf`
-        ```bash
-        find . -name "*.conf"
-        ```
-
-    * Поиск всех файлов и копирование их в по заданному пути
-        ```bash
-        find /data -exec cp {} /backup/ \;
-        ```
-
-1. **`locate`** - поиск файлов используя данные индексирования файловой системы. Эта утилита гораздо быстрее find, но может вернуть устаревшие данные. Для того чтобы обновить индексы нужно вызвать `updatedb`. В большинстве систем Linux утилита `updatedb` запускатся один раз в день.
-
-
 ## Get file content
 1. **`head`** - get first 10 lines of file
     * **`head -4`** - get first 4 files of file
