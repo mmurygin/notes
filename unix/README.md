@@ -3,7 +3,7 @@
 - [Commands](commands.md)
 - [Regex Commands](regex-commands.md)
 - [Configuration](configuration.md)
-- [File System](file-system.md)
+- [File management](file-management.md)
 - [Linux Cheatsheet](linux_bash_cheatsheet.pdf)
 - [Shell Scripts](shell-scripts.md)
 - [Docker](utils/docker.md)
