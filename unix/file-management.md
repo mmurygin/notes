@@ -4,8 +4,8 @@
 - [Common](#common)
 - [File System](#file-system)
 - [File Management commands](#file-management-commands)
-- [Механизмы владения файлами](#Механизмы-владения-файлами)
-- [Продвинутое управление правами доступа](#Продвинутое-управление-правами-доступа)
+- [Механизмы владения файлами](#механизмы-владения-файлами)
+- [Продвинутое управление правами доступа](#продвинутое-управление-правами-доступа)
 
 ## Common
 1. ["On a UNIX system, everything is a file; if something is not a file, it is a process."](http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html)

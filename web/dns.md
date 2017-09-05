@@ -1,6 +1,11 @@
 # DNS
 
 ## Table Of Content
+- [Common](#common)
+- [Определение IP адреса](#определение-ip-адреса)
+- [DNS records](#dns-records)
+- [DNS lookup utilites](#dns-lookup-utilites)
+- [Configuration](#configuration)
 
 ## Common
 1. **`DNS`** - это распределенная база данных, хранящая информацию о доменах, в первую очередь отображение доменных имён на `IP` адреса машин, обслуживающих эти домены.
