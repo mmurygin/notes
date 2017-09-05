@@ -3,31 +3,20 @@
 ## Table of content
 - [Установка](#установка)
 - [Запуск](#запуск)
-- [Файлы nginx](#файлы-nginx)
-- [Конфигурация](#конфигурация)
+- [Файлы nginx](#Файлы-nginx)
+- [Конфигурация](#Конфигурация)
 - [Location](#location)
-- [Доступ к файлам](#доступ-к-файлам)
-- [Настройка проксирования](#настройка-проксирования)
+- [Доступ к файлам](#Доступ-к-файлам)
 
 ## Установка
 
-1. Install
+1. Install from package repository
 
     ```bash
     sudo apt-get install nginx
     ```
 
-1. Check start nginx
-
-    ```bash
-    sudo systemctl start nginx
-    ```
-
-1. Check that it's running
-
-    ```
-    sudo systemctl status nginx
-    ```
+1. [Compiling and Installing From the Sources](https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/)
 
 ## Запуск
 1. Команда запуска
@@ -149,7 +138,7 @@ http {
     * `max` (4 колонка) - группа обладателя файла
 1. **Для того чтобы процесс мог открыть файл у него должны быть права на чтение файла и права на исполнение директорий (по всей иерархии) в которой лежит этот файл**
 
-## Настройка проксирования
+## Настройка проксирования в nginx
 ```
 upstream backend {
     server back1.example.com:8080 weight=1 max_fails-3;
