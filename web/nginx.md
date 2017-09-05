@@ -18,6 +18,11 @@
 
 1. [Compiling and Installing From the Sources](https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/)
 
+    * configure example
+        ```bash
+        ./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-debug --with-pcre --with-http_ssl_module
+        ```
+
 ## Запуск
 1. Команда запуска
     ```bash
