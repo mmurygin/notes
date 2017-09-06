@@ -1,5 +1,14 @@
 # Vim
 
+## Table of content
+- [Switching Modes](#switching-modes)
+- [Common](#common)
+- [Code Naviataion](#code-navigation)
+- [Go To](#go-to)
+- [Find](#find)
+- [Deleting](#deleting)
+- [Code editing](#code-editing)
+
 ## Switching modes
 1. **`a`** - go to editing mode and set cursor to new character
 1. **`i`** - go to edit mode and set cursor to current character
@@ -25,7 +34,7 @@
 1. **`nw`* - moves through `n` to the begining of the nth line
 1. **`%`** - jump to the next matching parenthesis
 
-## Go to line
+## Go To
 1. **`g10`** - go to line 10
 1. **`gg`** - go to begining of a file
 1. **`G`** - go to the end of a file
