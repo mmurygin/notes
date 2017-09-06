@@ -192,3 +192,64 @@
 
     * если установлен бит `setgid` то при запуске файла он будет с правами пользователей из группы владеющей файлом.
 1. `setuid` - позволяет запускать файл от лица его создателя, а не от лица текущего пользователя.
+
+## Списки контроля доступа
+1. Чтобы файловая система поддерживала _механизм списков контроля доступа_ она должна монтироваться с использованием параметра `acl` в файле `/etc/fstab`.
+1. **`getfacl`** - получает _список контроля доступа_ для файла
+    ```bash
+    $ getfacl file33
+    # file: file33
+    # owner: paul
+    # group: paul
+    user::rw-
+    group::r--
+    mask::rwx
+    other::r--
+    ```
+1. **`setfacl`** - устанавливает список контроля доступа
+    * **`setfacl -m u:username:binarycode filename`** - добавляет право доступа для пользователя
+        ```bash
+        $ setfacl -m u:sandra:7 file33
+        ```
+
+    * **`setfacl -m g:groupname:binarycode filename`** - добавляет право доступа для группы
+        ```bash
+        $ setfacl -m g:tennis:6 file33
+        ```
+
+    * результат описанных выше операций:
+        ```bash
+        $ getfacl file33
+        # file: file33
+        # owner: paul
+        # group: paul
+        user::rw-
+        user:sandra:rwx
+        group::r--
+        group:tennis:rw-
+        mask::rwx
+        other::r--
+        ```
+
+    * **`setfacl -x username|groupname filename`** - удаляет право доступа
+        ```bash
+        setfacl -x sandra file33
+        getfacl file33 | grep sandra
+        ```
+
+    * **`setfacl -b filename`** - удаление всего списка доступа
+
+1. _Маска прав списка контроля доступа_ описывает максимальные эффективные права доступа для любого из элементов этого _списка_. Данная _маска_ рассчитывается каждый раз, когда вы используете утилиту `setfacl` или `chmod`. Для предотвращения перерасчёта _маски_ нужно воспользоваться параметром `--no-mask`
+    ```bash
+    $ setfacl --no-mask -m u:sandra:7 file33
+    $ getfacl file33
+    # file: file33
+    # owner: paul
+    # group: paul
+    user::rw-
+    user:sandra:rwx                 #effective:rw-
+    group::r--
+    mask::rw-
+    other::r--
+    ```
+
