@@ -5,6 +5,7 @@
 - [Reverse proxy](#reverse-proxy)
 - [Application server](#application-server)
 - [CGI](#cgi)
+- [WSGI](#wsgi)
 
 ## Общая архитектура
 ![Frontend Backend](../images/frontend-backend.png)
@@ -63,3 +64,27 @@
     * Взаимодействие между application сервером и скриптом происходит через сокет.
 
     ![Fast CGI](../images/fast-cgi.png)
+
+## WSGI
+1. **`WSGI`**, PSGI, Rack - протоколы вызова функции обработчика из application сервера. Сам application server при этом может выполняться в отдельном процессе или совпадать с web сервером. Как правило, при использовании этих протоколов в качестве application сервера выступает отдельный легковесный процесс.
+    ```python
+    # environ conatins CGI-like variables
+    def wsgi_application(environ, start_response):
+        status = '200 OK'
+        headers = [
+            ('Content-Type', 'text/plain')
+        ]
+        body = 'Hello, world!'
+        start_response(status, headers)
+        return [body]
+    ```
+1. **`WSGI`** (Web Server Gateway Interface)
+    * Обработчик - функция или класс (что-то можно можно вызывать)
+    * Метод, QueryString, заголовки запроса - через аргумент **environ**
+    * Тело запроса передается через file-handle wsgi.input
+    * HTTP код ответа и заголовки ответа передаются через вызов функции **start_response**
+    * Тело ответа возвращается в виде списка (iterable) из обработчика
+    * Поток ошибок должен быть направлен в file-handle **wsgi.stderr**
+1. Взаимодействие Web Server'a и WSGI приложения
+
+    ![Web Server - WSGI](../images/wsgi.png)
