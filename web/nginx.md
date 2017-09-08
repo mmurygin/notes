@@ -4,6 +4,7 @@
 - [Установка](#установка)
 - [Запуск](#запуск)
 - [Файлы nginx](#Файлы-nginx)
+- [Directives and contexts](#directives-and-contexts)
 - [Конфигурация](#Конфигурация)
 - [Location](#location)
 - [Доступ к файлам](#Доступ-к-файлам)
@@ -50,74 +51,113 @@
 1. **`/var/log/nginx/error.log`** - лог ошибок
 1. **`/var/log/nginx/access.log`** - лог доступа
 
-## Конфигурация
-* Простейший конфиг для сервинга одной папки:
-    ```
-    events {
+## Directives and contexts
+1. _Context_ - аналог `scope`, т.е. то к чему применяются конфиги
+1. _Directive_ - инструкция внутри контекста
+1. Типы _directive_:
+    * _standart_ - стандартная директива, устанавливает свойство, переопределяется внутри вложенных контекстов
+        ```
+        gzip on;
+        ```
+    * _array_ - устанавливает одно из свойств массива. При переопределении внутри вложенных контекстов перезаписывается всё значение массива, а не отдельные элементы.
+        ```
+        # outer scope
+        access_log /var/logs/nginx/access.log main;
+        access_log /var/logs/nginx/notice.log notice;
 
-    }
-    http {
-        include mime.types;
-        server {
-            listen 80;
-            root /path-to-your-dir;
-        }
-    }
-    ```
-* Терминология
-    * **virtual host** - секция конфига отвечающая за обработку определённого домена (один веб сервер может обрабатывать несколько доментов).
-    * **location** - секция конфига, отвечающая за обслуживание определенной группы URL
-```
-user www www;
+        # inner scope will override all array
+        access_log /var/logs/nginx/inner.log debug;
+        ```
+    * _action_ - performs some action when hit. Does not inherited by child contexts.
+        ```
+        return 200;
+        ```
+    * _try_files_ - директива описывающая сервинг файлов. Определяет порядок поиска
+        ```
+        try_files $uri /some/reserve/dir =404;
+        ```
+1. **virtual host** - секция конфига отвечающая за обработку определённого домена (один веб сервер может обрабатывать несколько доментов).
+1. **location** - секция конфига, отвечающая за обслуживание определенной группы URL
+
+## Конфигурация
+```nginx
+# user and group for workers
+user www-data www-data;
+
+# the amount of workers (by default 1, auto sets it to the number of CPUs)
+worker_processes auto;
+
+# error log location and level
 error_log /var/log/nginx.error_log info;
+
+events {
+    # the maximum connections per worker
+    worker_connections 1024;
+
+    # accept multiple connections simultaneously or only one connection at a time (the default is on)
+    multi_accept on;
+}
+
+# the begining of http server config
 http {
-    include         conf/mime.types;
+    # include file with mime types
+    include /etc/nginx/mime.types;
+
+    # defaut mime type
     default_type    application/octet-stream;
+
+    # the log format
     log_format      simple '$remote_addr $request $status';
+
+    # client timeouts
+    client_body_timeout 12;
+    client_header_timeout 12;
+
+    # Use a higher keepalive timeout to reduce the need for repeated handshakes
+    keepalive_timeout 300;
+
+    # server timeout
+    send_timeout 10;
+
+    # virtual server config
     server {
-        listen      80;
-        server_name one.example.com www.one.exampe.com;
-        access_log  /var/log/nginx.access_log simple;
+        # nginx port
+        listen 80;
+
+        # root directory for site
+        root /www/site;
+
         location / {
-            root    /www/one.example.com;
-        }
-        location ~* ^.+\.(jpg|jpeg|gif)$ {
-            root    /www/images;
-            access_log off;
-            expires 30d;
+            root /www/site/index.html;
+
+            # adds some header to response
+            add_header "Cache-Control" "no-transform";
         }
     }
 }
 ```
-1. **`user`** - от какого пользователя и группы работают worker'ы
-1. **`error_log`** - куда и с каким уровнем отправлять логи
-1. **`http`** - начало конфига веб сервера
-1. **`include`** - подключает другой файл(ы) конфигов
-1. **`default_type`** - mime тип по умолчанию
-1. **`log_format`** - формат access логов
-1. **`server`** - начало секции с virtual host.
-1. **`listen`** - на каком IP адресе и порту слушает веб сервер.
-1. **`server_name`** - каким доменам данный хост соответствует.
+
+1. **`ulimit -n`** - gets linux core the restiction of maximum number of connections per CPU. It's best practise to use it number as `worker_connections` value.
 
 ## Location
 1. Ниже представлены приоритеты задания `location` в порядке убывания
     * **`location = /img/1.jpg`** - точное совпадение
     * **`location ^~ /pic/`** - префикс с приоритетом над регулярным выражением
-    * **`location ~ \.jpg$`** - совпадение по регулярному выражению
+    * **`location ~ \.jpg$`**, **`location ~* \.jpg$`** - casesensetive caseinsensetive совпадение по регулярному выражению
     * **`location /img/`** - совпадение по префиксу
 1. Если два `location` имеют одинаковый приоритет, то применяется тот который расположен **выше** в конфиге.
 1. Внутри `location` путь можно указать несколькими способами
     * `root` - абсолютный url
-        ```
+        ```nginx
         location ~* ^.+\.(jpg|jpeg|gif)$ {
             root /www/images
         }
-        ```s
+        ```
 
         * `/2015/10/img.png` -> `/www/images/2015/10/img.png`
 
     * `alias` - путь относительно префикса
-        ```
+        ```nginx
         location /sitemap/ {
             alias /home/www/generated;
         }
@@ -157,7 +197,7 @@ http {
 1. **Для того чтобы процесс мог открыть файл у него должны быть права на чтение файла и права на исполнение директорий (по всей иерархии) в которой лежит этот файл**
 
 ## Настройка проксирования в nginx
-```
+```nginx
 upstream backend {
     server back1.example.com:8080 weight=1 max_fails-3;
     server back2.example.com:8080 weight=2;
