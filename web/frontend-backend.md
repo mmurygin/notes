@@ -88,3 +88,12 @@
 1. Взаимодействие Web Server'a и WSGI приложения
 
     ![Web Server - WSGI](../images/wsgi.png)
+
+1. Задачи приложения работающего с application server.
+    * Анализ `PATH_INFO` и выбор конкретного обработчика
+    * Разбор конкретных заголовков, например `Cookie`
+    * Разбор `QUERY_STRING`
+    * Разбор тела запроса
+        * `x-www-form-urlencoded`
+        * `multipart/form-data`
+    * Вывод правильных заголовков ответа и отдача тела

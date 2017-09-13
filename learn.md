@@ -3,14 +3,15 @@
  - [x] [Test Driven Development: By Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=pd_lpo_sbs_14_t_0/141-5527470-2828927?_encoding=UTF8&psc=1&refRID=DHRP4HXS12J5QTNAQ5B3)
  - [x] [Building Microservices: Designing Fine-Grained Systems](http://shop.oreilly.com/product/0636920033158.do)
  - [ ] [Web-технологии](https://stepik.org/course/154/syllabus)
- - [ ] [Основы Linux](https://stepik.org/course/762/syllabus)
+ - [x] [Основы Linux](https://stepik.org/course/762/syllabus)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [You dont know JS](https://github.com/getify/You-Dont-Know-JS)
  - [ ] [xUnit Test Patterns: Refactoring Test Code](https://www.safaribooksonline.com/library/view/xunit-test-patterns/9780131495050/)
  - [ ] NodeJS event loop
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
  - [ ] [Head First Design Patterns](https://www.safaribooksonline.com/search/?query=%22Head%20First%20Design%20Patterns%22)
- - [ ] [Stream Handbook](https://github.com/substack/stream-handbook)
+ - [x] [Stream Handbook](https://github.com/substack/stream-handbook)
+ - [x] [NGINX Fundamentals](https://www.udemy.com/nginx-fundamentals/learn/v4/overview)
 
  ## External
  - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)

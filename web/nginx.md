@@ -8,6 +8,10 @@
 - [Конфигурация](#Конфигурация)
 - [Location](#location)
 - [Доступ к файлам](#Доступ-к-файлам)
+- [Настройка проксирования в nginx](#настройка-проксирования-в-nginx)
+- [Load Balancing](#load-balancing)
+- [Best Features](#best-features)
+- [Configure HTTPS](#configure-htts)
 
 ## Установка
 
@@ -19,20 +23,45 @@
 
 1. [Compiling and Installing From the Sources](https://www.nginx.com/resources/admin-guide/installing-nginx-open-source/)
 
+    1. install depencencies
+        ```bash
+        sudo apt-get update -y && \
+        sudo apt-get install -y build-essential \
+            libpcre3 \
+            libpcre3-dev \
+            libpcrecpp0v5 \
+            libssl-dev \
+            zlib1g-dev
+        ```
+
     * configure example
         ```bash
-        ./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-debug --with-pcre --with-http_ssl_module
+        ./configure --sbin-path=/usr/bin/nginx \
+            --conf-path=/etc/nginx/nginx.conf \
+            --pid-path=/var/run/nginx.pid \
+            --error-log-path=/var/log/nginx/error.log \
+            --http-log-path=/var/log/nginx/access.log \
+            --with-debug \
+            --with-pcre \
+            --with-http_ssl_module
         ```
 
 ## Запуск
 1. Команда запуска
-    ```bash
-    sudo /etc/init.d/nginx start
-    ```
-    * `sudo` т.к. сервер должен прослушивать 80 порт
+    * Если установлен через `apt-get`, то тогда автоматически настраивается linux `service` и создаётся `init` вскрипт. В таком случае можно запускать:
+        ```bash
+        sudo /etc/init.d/nginx start
+        ```
+
+    * Если `init` скрипт не создан, то можно запустить
+        ```bash
+        sudo nginx
+        ```
+
+    * `sudo` т.к. сервер должен прослушивать порт < 1000
 
 1. Чтение файла конфигурации
-1. Получение порта 80
+1. Получение порта 80|443
 1. Открытие (создание) логов
 1. Понижение привелегий (чтобы воркеры обрабатывающие запросы не имели прав `sudo`)
 1. Запуск дочерних процессов/потоков
@@ -43,10 +72,11 @@
 
     * внутри конфига можно подключать другие конфиги
 
-    ```
-    include /etc/nginx/site-enabled/*
-    ```
-1. **`/etc/init.d/nginx [start|stop|restart]`** запуск\остановка\перезапуск сервера
+        ```
+        include /etc/nginx/site-enabled/*
+        ```
+    * все относительные пути в конфиге nginx являются относительно директории указанной как `--prefix` во время установки
+
 1. **`/var/run/nginx.pid`** - id процесса nginx
 1. **`/var/log/nginx/error.log`** - лог ошибок
 1. **`/var/log/nginx/access.log`** - лог доступа
@@ -56,11 +86,11 @@
 1. _Directive_ - инструкция внутри контекста
 1. Типы _directive_:
     * _standart_ - стандартная директива, устанавливает свойство, переопределяется внутри вложенных контекстов
-        ```
+        ```nginx
         gzip on;
         ```
     * _array_ - устанавливает одно из свойств массива. При переопределении внутри вложенных контекстов перезаписывается всё значение массива, а не отдельные элементы.
-        ```
+        ```nginx
         # outer scope
         access_log /var/logs/nginx/access.log main;
         access_log /var/logs/nginx/notice.log notice;
@@ -69,11 +99,11 @@
         access_log /var/logs/nginx/inner.log debug;
         ```
     * _action_ - performs some action when hit. Does not inherited by child contexts.
-        ```
+        ```nginx
         return 200;
         ```
     * _try_files_ - директива описывающая сервинг файлов. Определяет порядок поиска
-        ```
+        ```nginx
         try_files $uri /some/reserve/dir =404;
         ```
 1. **virtual host** - секция конфига отвечающая за обработку определённого домена (один веб сервер может обрабатывать несколько доментов).
@@ -197,29 +227,96 @@ http {
 1. **Для того чтобы процесс мог открыть файл у него должны быть права на чтение файла и права на исполнение директорий (по всей иерархии) в которой лежит этот файл**
 
 ## Настройка проксирования в nginx
+
+[Reverse Proxy Guide](https://www.nginx.com/resources/admin-guide/reverse-proxy/)
+
+```nginx
+location /node {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://127.0.0.1:3000;
+}
+```
+
+* **`proxy_pass`** - проксирует запрос на указанный upstream
+* **`proxy_set_header`** - добавление\изменение заголовков HTTP сообщения
+    * можно установить заголовок `Host` для предоставления нужного заголовка хост для бекенда.
+    * `X-Real-IP` - устанавливает заголовок IP для того чтобы знать с какого IP пришёл запрос (в противном случае всегда будем получать запросы с IP прокси сервера.)
+
+
+## Load balancing
 ```nginx
 upstream backend {
+    least_conn;
     server back1.example.com:8080 weight=1 max_fails-3;
     server back2.example.com:8080 weight=2;
     server backup1.example.com:8080 backup;
 }
 
-proxy_set_header Host $proxy_host;
-proxy_set_header X-Real-IP: $remote_addr;
 location / {
     proxy_pass http://backend;
 }
-location /partner/ {
-    proxy_pass http://www.partner.com
-}
-location ~ \.\w\w\w?\w?$ {
-    root /www/static;
-}
 ```
-1. **`upstream`** - список серверов работающих под одним именем.
-    * **`weight`** - вес сервера при распределении запросов (более мощным серверам ставят больший weight)
-    * **`max_fails`** - максимальное количество фейлов перед тем как сервер будет отключен
-1. **`proxy_pass`** - проксирует запрос на указанный upstream
-1. **`proxy_set_header`** - добавление\изменение заголовков HTTP сообщения
-    * можно установить заголовок `Host` для предоставления нужного заголовка хост для бекенда.
-    * `X-Real-IP` - устанавливает заголовок IP для того чтобы знать с какого IP пришёл запрос (в противном случае всегда будем получать запросы с IP прокси сервера.)
+
+* **`upstream`** - список серверов работающих под одним именем.
+* **`ip_hash`** - если клиент был соединён с определённым сервером - продолжает его всегда туда направлять.
+* **`least_conn`** - направляет к тому серверу с которым установленно наименьшее количество соединений.
+* **`weight`** - вес сервера при распределении запросов (более мощным серверам ставят больший weight)
+* **`max_fails`** - максимальное количество фейлов перед тем как сервер будет отключен
+
+## Best Features
+1. Setting expires header
+    ```nginx
+    location ~* \.(css|js|jpg|png|gif)$ {
+        expires 1M;
+        add_header Pragma public;
+        add_header Cache-Control public; # tell that every proxy could cache it
+        add_header Vary Accept-Encoding; # intermideate proxy should split resource cache by Accept-Encoding
+    }
+    ```
+
+1. Configure gzip compression
+    ```nginx
+    gzip  on;
+    gzip_min_length 100;
+    gzip_comp_level 3;
+    gzip_types text/plain;
+    gzip_types text/css;
+    gzip_types application/javascript;
+
+    gzip_disable "msie6"; # disable gzip for user agent Internet Exporer 6
+    ```
+
+## Configure HTTPS
+1. [Generate self-signed certificate](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04)
+    ```
+    sudo mkdir /etc/nginx/ssl
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+    ```
+1. Add to nginx config
+    ```nginx
+    listen 443 ssl;
+
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
+    ```
+
+## Security
+1. During installation remove unused modules
+    ```bash
+    ./configure --help | grep without
+    ```
+
+    * remove `http_autoindex_module`
+
+1. Remove server version header
+    ```nginx
+    server_tokents off;
+    ```
+
+1. Block specific user agents
+    ```nginx
+    if ($http_user_agent ~* some_bot_pattern) {
+        return 403;
+    }
+    ```
+
