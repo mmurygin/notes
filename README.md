@@ -10,4 +10,3 @@
 - [Databases](databases)
 - [Computer Science](computer-science)
 - [C++](cpp)
-- [To learn](learn.md)

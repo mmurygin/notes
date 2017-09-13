@@ -18,4 +18,4 @@
  - [ ] [Algorithms](https://www.coursera.org/specializations/algorithms)
  - [ ] [Refactoring](https://www.safaribooksonline.com/library/view/refactoring-improving-the/0201485672/)
  - [ ] [Working Effectively with Legacy Code](https://www.safaribooksonline.com/library/view/working-effectively-with/0131177052/)
- - [x] [NGINX Fundamentals](https://www.udemy.com/nginx-fundamentals/learn/v4/overview)
+ - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/learn/v4/overview)
