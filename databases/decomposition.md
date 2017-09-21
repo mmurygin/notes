@@ -31,8 +31,10 @@
 ## Ошибки при проектировании БД
 1. Не корректный составной ключ
     * таблица
+
         | University | Researcher | Conference | City |
         | --- | --- | --- | --- |
+
     * Ключ {Researcher, Conference}:
     * с одной тороны кажется что всё норм, т.к. имееются следующие зависимости
         * `Researcher, Conference -> University`
@@ -43,8 +45,11 @@
     * таким образом детерминантом является не ключ а его часть, поэтому имеем нарушении нормальной формы Бойса-Кодда
 1. Не являющийся ключом детерминант
     * таблица Researchers
-        | University | Address | Resercher Key |
+
+        | University | Address | Resercher |
         | --- | --- | --- |
+        | | | Key |
+
     * С одной стороны зависимости выглядят вот так
         * `Researcher -> University`
         * `Researcher -> Address`
@@ -53,8 +58,11 @@
     * Получаем детерминант который не является ключом => нарушение нормальной формы
 1. Не все столбцы являющиеся ключевыми таковыми объявлены
     * таблица Researchers
-        | University | Researcher Key | Email |
+
+        | University | Researcher | Email |
         | --- | --- | --- |
+        | | Key | |
+
     * Email в данной ситуации должен быть объявлен как `Unique`
 1. Сввязь 1:N вместо M:N
     * таблица Researchers
