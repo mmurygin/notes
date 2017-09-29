@@ -4,6 +4,7 @@
 - [Optimization](optimization.md)
 - [Decomposition](decomposition.md)
 - [Queries](query.md)
+- [Postgres](postgres.md)
 - [MySQL](mysql)
     - [Common](mysql/common.md)
     - [QueryInfo Script](mysql/queryinfo.sql)
