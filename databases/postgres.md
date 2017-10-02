@@ -3,6 +3,21 @@
 ## Table Of Content
 - [Analize Query](#analize-query)
 
+## Commands
+1. List databases
+    ```
+    \list
+    \l
+    ```
+1. Connect to database
+    ```
+    \connect database_name
+    ```
+1. List all tables
+    ```
+    \dt
+    ```
+
 ## Analize Query
 ```sql
 EXPLAIN ANALYZE
