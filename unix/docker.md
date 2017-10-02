@@ -11,7 +11,12 @@
 - [Containers networking](#containers-networking)
 - [Docker Compose](#docker-compose)
 
-## Common
+## Install
+1. Install Docker
+
+    ```bash
+    curl -fsSL get.docker.com | sh
+    ```
 
 1. To use docker as non-root user add user to docker group:
 
@@ -19,14 +24,15 @@
     sudo usermod -aG docker $(whoami)
     ```
 
-2. Docker has a Client / Server architecture
+## Common
+1. Docker has a Client / Server architecture
     * Client takes user inputs and send them to the daemon
     * Daemon builds, runs and distributes containers
     * Client and daemon can run on the same host or on different hosts
     * Client: CLI or GUI (Kitematic)
     * Server: Docker Daemon (the same as Docker Engine)
 
-3. Get the info about cotainer (including mounted volumes)
+1. Get the info about cotainer (including mounted volumes)
 
     ```
     docker inspect <container_name>
