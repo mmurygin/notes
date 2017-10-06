@@ -6,7 +6,7 @@
 - [File management](file-management.md)
 - [Linux Cheatsheet](linux_bash_cheatsheet.pdf)
 - [Shell Scripts](shell-scripts.md)
-- [Docker](utils/docker.md)
+- [Docker](docker.md)
 - [User Management](user-management.md)
 - [Vim](vim.md)
 - [Trips and Tics](trips-and-tics.md)
