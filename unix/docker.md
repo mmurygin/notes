@@ -1,15 +1,19 @@
 # Docker
 
 ## Table of Content
+- [Install](#install)
 - [Common](#common)
-- [Images](#images)
+- [Running Container](#running-container)
 - [Containers](#containers)
+- [Networks](#networks)
+- [Images](#images)
 - [Creating new images](#creating-new-images)
 - [Dockerfile](#dockerfile)
 - [Volumes](#volumes)
 - [Share Containers](#share-containers)
 - [Containers networking](#containers-networking)
 - [Docker Compose](#docker-compose)
+- [Resources](#resources)
 
 ## Install
 1. Install Docker
@@ -31,37 +35,22 @@
     * Client and daemon can run on the same host or on different hosts
     * Client: CLI or GUI (Kitematic)
     * Server: Docker Daemon (the same as Docker Engine)
+1. Docker container it's just one or many processes inside linux.
 
-1. Get the info about cotainer (including mounted volumes)
+## Running Container
+1. Docker engine looks for that image locally in image cache, doesn't find anything
+1. Then look in remote image repository (defaults to Docker Hub)
+1. Downloads the latest version (by default)
+1. Creates new container based on that image and prepares to start
+1. Gives it a virtual IP on a private network inside docker engine
+1. If `--publish` is specified then engine opens port on a host and forward to port in container
+1. Starts container by using the CMD in the image Dockerfile
 
-    ```
-    docker inspect <container_name>
-    ```
-
-## Images
-
-1. Images
-    * Read only template used to create containers
-    * Built by you or other Docker users
-    * Stored in the Docker Hub or your local Registry
-
-2. To show all available images
-
-    ```
-    docker images
-    ```
-
-3. To remove image use
-
-    ```
-    docker rmi [-f] <image_id or image_name:tag>
-
-    ```
-4. Get the info about image layers
-
-    ```
-    docker history <image_id or name>
-    ```
+## Monitoring Container
+1. **`docker container top container_name`** - process list in one container
+1. **`docker container inspect container_name`** - details of one container config. Shows how container was run.
+1. **`docker container stats container_name`** - performance stats for all containers.
+1. **`docker container port container_name`**
 
 ## Containers
 1. Containers
@@ -119,13 +108,42 @@
 9. **`docker exec`**  - allows to execute command in a running container
 
     ```
-    docker exec <container_id>  some_node_script.js
+    docker exec container_id  some_node_script.js
     ```
 
 10. To get terminal access to the container use
 
     ```
-    docker exec -i -t <container id> /bin/bash
+    docker exec -i -t container_id bash
+    ```
+
+## Networks
+1. Each container connected to a private virtual network "bridge"
+1. Each virtual network routes through NAT firewall on host IP
+1. All containers on a virtual network can talk to each other without `--publish`
+
+## Images
+1. Images
+    * Read only template used to create containers
+    * Built by you or other Docker users
+    * Stored in the Docker Hub or your local Registry
+
+2. To show all available images
+
+    ```
+    docker images
+    ```
+
+3. To remove image use
+
+    ```
+    docker rmi [-f] <image_id or image_name:tag>
+
+    ```
+4. Get the info about image layers
+
+    ```
+    docker history <image_id or name>
     ```
 
 ## Creating new images
@@ -380,3 +398,8 @@
     ```bash
     docker-compose -f docker-compose.yml -f docker-compose.admin.yml run backup_db
     ```
+
+## Resources
+1. [Mike Coleman: Docker for Virtualization Admin](https://github.com/mikegcoleman/docker101/blob/master/Docker_eBook_Jan_2017.pdf)
+1. [Cgroups, namespaces, and beyond: what are containers made from?](https://www.youtube.com/watch?v=sK5i-N34im8&feature=youtu.be&list=PLBmVKD7o3L8v7Kl_XXh3KaJl9Qw2lyuFl)
+1. [--format](https://docs.docker.com/engine/admin/formatting/)
