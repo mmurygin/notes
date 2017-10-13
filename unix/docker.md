@@ -61,7 +61,7 @@
 2. To run a container use:
 
     ```
-    docker run [options] image [command] [args…]
+    docker container run [options] image [command] [args…]
     ```
 
     * **`-i`** flag tells docker to connect to STDIN in the container
@@ -83,29 +83,29 @@
 4. Containers can be specified using their ID or name
 
 5. To list containers:
-    * **`docker ps`** - list all running containers
-    * **`docker ps -a`** - list all containers (includes containers that are stopped)
+    * **`docker container ls`** - list all running containers
+    * **`docker container ls -a`** - list all containers (includes containers that are stopped)
 
 6. To start stopped container use
 
     ```
-    docker start <container ID>
+    docker container start <container ID>
     ```
 
 7. To stop container use
 
     ```
-    docker stop <container ID>
+    docker container stop <container ID>
     ```
     [Difference between docker stop and docker kill](http://superuser.com/questions/756999/whats-the-difference-between-docker-stop-and-docker-kill)
 
 8. To remove all containers:
 
     ```
-    docker rm $(docker ps -a -q)
+    docker container rm $(docker ps -a -q)
     ```
 
-9. **`docker exec`**  - allows to execute command in a running container
+9. **`docker container exec`**  - allows to execute command in a running container
 
     ```
     docker exec container_id  some_node_script.js
@@ -114,13 +114,25 @@
 10. To get terminal access to the container use
 
     ```
-    docker exec -i -t container_id bash
+    docker container exec -i -t container_id bash
     ```
 
 ## Networks
 1. Each container connected to a private virtual network "bridge"
 1. Each virtual network routes through NAT firewall on host IP
 1. All containers on a virtual network can talk to each other without `--publish`
+1. **`docker network ls`** - show networks
+1. **`docker network inspect`** - inspect a network
+1. **`docker network create --driver`** - create a network
+1. **`docker network connect`** - attach a network to container
+1. **`docker network disconnect`** - deatach a network from container
+1. **Docker DNS** - Docker daemon has a build-in DNS server that containers use by default
+1. **DNS Default Names** - docker defaults the hostname to the contianer's name, but we can set aliases.
+    ```bash
+    docker container run --net-alias nginx-alias nginx
+    ```
+1. Default bridge network doesn't have a build-in _DNS_ server.
+
 
 ## Images
 1. Images
@@ -131,19 +143,19 @@
 2. To show all available images
 
     ```
-    docker images
+    docker image ls
     ```
 
 3. To remove image use
 
     ```
-    docker rmi [-f] <image_id or image_name:tag>
+    docker image rm [-f] <image_id or image_name:tag>
 
     ```
 4. Get the info about image layers
 
     ```
-    docker history <image_id or name>
+    docker image history <image_id or name>
     ```
 
 ## Creating new images
@@ -228,47 +240,6 @@
 
 9. **ENV** - sets the environment variable
 
-## Volumes
-
-1. A **Vollume** is a designated directory in a container, which is designed to persist data, independent of the containers’s lify cycle
-    * Volume changes are excluded when updating an image
-    * Persist when a container is deleted
-    * Can be mapped to a host folder
-    * Can be shared between containers
-
-2. Used for
-    * De-couple the data that is stored from the container which created the data
-    * Good for sharing data between containers
-        * it's possible to setup a data containers which has a volume you mount in other containers
-    * Mounting folders from the host is good for testing purposes but generally not recommended for production use
-
-3. Execute a new container and mount the folder /myvolume into its file system
-
-    ```
-    docker run -d -P -v /myvolume nginx:1.7
-    ```
-
-4. Execute a new container and map the /data/src folder from the host into /test/src folder in the container
-
-    ```
-    docker run -i -t -v /data/src:/test/src nginx:1.7
-    ```
-
-5. To specify Volume in Dockerfile use
-    * VOLUME instruction creates a mount point
-    * Cannot map volumes to host directories
-    * Volumes are initialized when the container is executed
-    * Can specify arguments JSON array or string
-        * `VOLUME /myvol`
-        * `VOLUME /firstfolder  /secondfolder`
-        * `VOLUME [“myvol”, “myvol2”]`
-
-6. To fully remove container with volume run
-
-    ```
-    docker rm -v container_id
-    ```
-
 ## Share Containers
 
 1. At first we need to login to our docker account
@@ -295,78 +266,70 @@
     docker push <username>/<image_name>:<tag>
     ```
 
-## Containers networking
+## Volumes
 
-1. Containers have their own network and IP address
+1. A **Vollume** is a designated directory in a container, which is designed to persist data, independent of the containers’s lify cycle
+    * Volume changes are excluded when updating an image
+    * Persist when a container is deleted
+    * Can be mapped to a host folder
+    * Can be shared between containers
 
-2. To map exposed container ports to ports on the host machine use -p
-    * maps port 80 on the container to 8080 on the host
+1. Used for
+    * De-couple the data that is stored from the container which created the data
+    * Good for sharing data between containers
+        * it's possible to setup a data containers which has a volume you mount in other containers
+    * Mounting folders from the host is good for testing purposes but generally not recommended for production use
 
-        ```
-        docker run -d -p 8080:80 nginx:1.7
-        ```
+1. List all volumes
 
-3. To map ports exposed by the container to a port value on the host
+    ```bash
+    docker volume ls
+    ```
+
+1. If there is a `VOLUME` command in _Dockerfile_ then when container starts the docker engine creates a volume on a host and mount it to a volume directory in a container.
+    * when we run mysql docker engine creates volume for directory `/var/lib/mysql`
+
+    ```bash
+    $ docker image inspect --format='{{range $key, $value := .ContainerConfig.Volumes}}{{$key}}{{end}}' mysql:5.6
+    /var/lib/mysql
+    ```
+
+    * we should delete such volumes manually
+
+
+1. Run a new container and mount the folder /container-volume inside it's file system to some directory in host
 
     ```
-    docker run -d -P nginx:1.7
+    docker run  -v /container-volume nginx:1.7
     ```
 
-    * Host port numbers used go from 49153 to 65535
+1. Run a new container and map the /data/src folder from the host into /test/src folder in the container
 
-    * Only works for port defined in the EXPOSE instruction
+    ```
+    docker run -v /data/src:/test/src nginx:1.7
+    ```
 
-4. **Linking** is a communication method between containers which allows them to securely transfer data from one to another
+1. Run new container and map directory `/var/lib/mysql` to some _named_ volume
 
-    * Source and recipient containers
+    ```bash
+    docker run -v mysql-volume:/var/lib/mysql
+    ```
 
-    * Recipient containers have access to data on source containers
+1. To specify Volume in Dockerfile use
+    * VOLUME instruction creates a mount point
+    * Cannot map volumes to host directories
+    * Volumes are initialized when the container is executed
+    * Can specify arguments JSON array or string
+        * `VOLUME /myvol`
+        * `VOLUME /firstfolder  /secondfolder`
+        * `VOLUME [“myvol”, “myvol2”]`
 
-    * Links are established based on container names
+1. To fully remove container with volume run
 
-        ```
-        docker run -d --name database postgress
-        ```
+    ```
+    docker rm -v container_id
+    ```
 
-        ```
-        docker run -d -P --name website --link database:db nginx
-        ```
-
-5. **Container Network** - we can create a container network, then each container in this network can talk to another one
-    * Create a Custum Bridge Network
-
-        ```
-        docker network create --driver bridge network_name
-        ```
-
-    * Run Container in the Network
-
-        ```
-        docker run -d --net=network_name --name container_name container_image
-        docker run -d --net=isolated_network --name mongodb mongo
-        ```
-
-    * One container could be run in multiple networks
-
-    * Get the list of available networks
-
-        ```
-        docker network ls
-        ```
-
-    * Get info about network
-
-        ```
-        docker network inspect network_name
-
-        ```
-5. Usage of Linking
-    * Containers can talk to each other without having to expose ports to the host
-    * Essential for micro service application architecture
-    * Example
-        * Container with nodejs web app
-        * Container with postgres database
-        * Application on Nodejs need to connect to postgres
 
 ## Docker Compose
 

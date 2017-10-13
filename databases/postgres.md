@@ -19,6 +19,7 @@
     ```
 
 ## Analize Query
+
 ```sql
 EXPLAIN ANALYZE
     SELECT Conference.name, University.name
