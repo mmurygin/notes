@@ -28,6 +28,32 @@
     * Для `mysql` по умолчанию размер страницы `16kb` (можно настроить 64, 32, 8)
     * `postgresql` размер страницы - `8kb`
 
+## Обобщенные Табличные выражения
+1. По сути это представления которые живут в рамках одного запроса.
+    ```sql
+    WITH
+    SubmittedPapers AS (
+        SELECT ocnference_id, COUNT(*) AS paper_count,
+        FROM PaperConference
+        GROUP BY Conference_id
+    ),
+    KwPerPaper AS (
+        SELECT P.id as paper_id,
+            SUM(CASE
+                WHEN PK.keyword_id IS NULL THEN 0
+                ELSE 1 END) as kw_count
+        FROM Paper P
+            LEFT OUTHER JOIN PaperKeyword PK ON P.id = PK.paper_id
+        GROUP BY P.id
+    )
+
+    SELECT *
+    FROM KwPerPaper KP
+        JOIN PaperConference PC ON KP.paper_id = PC.paper_id
+        JOIN SubmittedPapers SP ON SP.conference_id = PC.conference_id
+    WHERE SP.paper_count > 100 AND KW.kw_count < 2;
+    ```
+
 ## Оконные функции
 1. Разбивает выборку на партиции (аналогично группировке строк)
 1. Сортирует каждую партицию по какому-то признаку
