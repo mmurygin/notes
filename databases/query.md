@@ -4,6 +4,8 @@
 - [Жизненный цикл запроса](#жизненный-цикл-запроса)
 - [HDD](#hdd)
 - [Оконные функции](#оконные-функции)
+- [Обобщенные Табличные выражения](#обобщенные-табличные-выражения)
+- [Рекурсивные запрсоы](#рекурсивные-запрос)
 
 ## Жизненный цикл запроса
 1. Приложение устанавливает соединение с БД
@@ -92,3 +94,42 @@
             ) as yoy_growth
         FROM SubmittedPapersPerEvent;
         ```
+
+## Рекурсивные запросы
+1. Позволяют при формировании запроса получать доступ к предыдущему результату.
+1. Расчёт ряда фибоначи:
+    ```sql
+    WITH RECURSIVE Fibonacci AS (
+    SELECT 1 AS ord, 1 as value, 1 as next_value
+
+    UNION ALL
+
+    SELECT ord + 1 as value, next_value, value + next_value
+    FROM Fibonacci
+    WHERE ord < 10
+    )
+
+    SELECT * from Fibonacci;
+    ```
+
+1. Обход дерева в ширину:
+    ```sql
+    CREATE TABLE Vertex (
+        id INT PRIMARY KEY,
+        value TEXT,
+        parent_id INT REFERENCES Vertex
+    );
+
+    WITH RECURSIVE Bfs AS (
+        SELECT V.id as vertex_id, V.parent_id as parent_id, V.value, 0 as level
+        FROM Vertex V
+        WHERE id = 42
+
+        UNION ALL
+
+        SELECT V.id as vertex_id, V.parent_id as parent_id, V.value, Bfs.level + 1 AS level
+        FROM Vertex V JOIN Bfs ON V.parent_id = Bfs.vertex_id
+    )
+
+    SELECT * FROM Bfs;
+    ```
