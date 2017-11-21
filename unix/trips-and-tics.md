@@ -13,6 +13,12 @@
     find . -name "*.js" -type f -exec cat {} \; | wc -c
     ```
 
+1. Get current connections info
+
+    ```bash
+    ss --options --extended --memory --processes --info
+    ```
+
 ## Usefull scripts
 
 1. To change terminal title add the following function to `.bashrc`:
