@@ -19,6 +19,17 @@
     ss --options --extended --memory --processes --info
     ```
 
+1. Show TLS Certificate info
+
+    ```bash
+    openssl s_client -state -connect google.com:443
+    ```
+
+1. Connect via HTTPS:
+    ```bash
+    openssl s_client -state -CAfile startssl.ca.crt -connect igvita.com:443
+    ```
+
 ## Usefull scripts
 
 1. To change terminal title add the following function to `.bashrc`:
