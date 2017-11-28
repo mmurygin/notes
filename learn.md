@@ -15,11 +15,11 @@
  - [x] [Encapsulation and SOLID](https://www.pluralsight.com/courses/encapsulation-solid)
  - [x] [Networking for Web Developers](https://www.udacity.com/course/networking-for-web-developers--ud256)
  - [x] [Client-Server Communication](https://www.udacity.com/course/client-server-communication--ud897)
- - [x] [Divide and Conquer, Sorting and Searching, and Randomized Algorithms](https://www.coursera.org/account/accomplishments/certificate/VKNTXH34LSLN)
+ - [x] [Divide and Conquer, Sorting and Searching, and Randomized Algorithms](https://www.coursera.org/learn/algorithms-divide-conquer) [certificate](https://www.coursera.org/account/accomplishments/certificate/VKNTXH34LSLN)
  - [x] [Scalable Microservices with Kubernetes](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
  - [x] [Основы Linux](https://stepik.org/course/762/syllabus)
- - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/learn/v4/overview)
- - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/certificate/UC-LK3I0LT2/)
+ - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/) [certificate](https://www.udemy.com/certificate/UC-V1XLJT5Q/)
+ - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/learn-devops-the-complete-kubernetes-course/) [certificate](https://www.udemy.com/certificate/UC-LK3I0LT2/)
  - [ ] [Web-технологии](https://stepik.org/course/154/syllabus)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
@@ -31,5 +31,5 @@
  - [x] [7 Habits of Highly Effective People](https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/0743269519)
 
  ## Success Courses
- - [x] [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/account/accomplishments/certificate/UMBVLABFAXS2)
- - [x] [A Mini Course on Better Reading](https://www.udemy.com/certificate/UC-VK4B84GC/)
+ - [x] [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn) [certificate](https://www.coursera.org/account/accomplishments/certificate/UMBVLABFAXS2)
+ - [x] [A Mini Course on Better Reading](https://www.udemy.com/read-more-books/) [certificate](https://www.udemy.com/certificate/UC-VK4B84GC/)
