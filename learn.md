@@ -13,8 +13,11 @@
 
  ## IT Courses
  - [x] [Encapsulation and SOLID](https://www.pluralsight.com/courses/encapsulation-solid)
- - [x] [Основы Linux](https://stepik.org/course/762/syllabus)
+ - [x] [Networking for Web Developers](https://www.udacity.com/course/networking-for-web-developers--ud256)
+ - [x] [Client-Server Communication](https://www.udacity.com/course/client-server-communication--ud897)
  - [x] [Divide and Conquer, Sorting and Searching, and Randomized Algorithms](https://www.coursera.org/account/accomplishments/certificate/VKNTXH34LSLN)
+ - [x] [Scalable Microservices with Kubernetes](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
+ - [x] [Основы Linux](https://stepik.org/course/762/syllabus)
  - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/learn/v4/overview)
  - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/certificate/UC-LK3I0LT2/)
  - [ ] [Web-технологии](https://stepik.org/course/154/syllabus)
