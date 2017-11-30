@@ -1,14 +1,20 @@
 # Networking
 
-## Как происходит HTTP запрос
-1. Браузер анализирует введенныё URL и извлекает имя хоста
-1. Используя систему `DNS` браузер преобразует домен в `ip` адрес
-1. Устанавливает `TCP` соединение с web-сервером
-1. Если протокол `https`, устанавливает `TLS` соединение поверх `TCP`
-1. Формирует `HTTP` запрос, отправляет его, получает в ответе документ
-1. Браузер закрывает соединение (для HTTP/1.0)
-1. Браузер анализирует (parse) HTML и загружает доп. ресурсы (`css`, `img`, `javascript`)
-1. Браузер отображает (rendering) HTML страницу (по мере получения её кода)
+## Arhitectual Design Principles
+1. **Shared use of single communication chanell.**
+    1. _statical multiplexing / packet switching_ - information for forwarding traffic contained in destination address of packet. It allows many senders to send data simultaniously via shared link
+1. **Interconnet many existing networks. Hide underlying technology from applications**.
+    1. Physical layer (sonet).
+    1. Link Layer (Ethernet). Provides point to point connectivity.
+    1. Network layer (IP). If a host has an IP address then Network Layer provides guarantee that a packet with host destination IP address, should reach the destination with the corresponding ip address.
+    1. Transport layer (TCP, UDP). Gurantee: reliable transport, congestion control
+    1. Application layer (HTTP, SMTP)
+1. Survivability. Network works even if some devices fail.
+    1. replication
+    1. fate sharing. If a device failes then all its state fails with it.
+1. Heterogeneity.
+1. Distributed Management.
+1. Network should be dump and minimal and _end points_ should be intelligent.
 
 ## Стэк сетевых протоколов
 ![Network Protocol Stack](../images/network-protocol-stack.png)
