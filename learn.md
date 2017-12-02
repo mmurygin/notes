@@ -19,6 +19,7 @@
  - [x] [Основы Linux](https://stepik.org/course/762/syllabus)
  - [x] [Scalable Microservices with Kubernetes](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
  - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/) [[certificate](https://www.udemy.com/certificate/UC-V1XLJT5Q/)]
+ - [x] [Web-технологии](https://stepik.org/course/154) [[certificate](https://stepik.org/certificate/89bd8756879450fe2a8e538e46959fcf30379cd9.pdf)]
  - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/learn-devops-the-complete-kubernetes-course/) [[certificate](https://www.udemy.com/certificate/UC-LK3I0LT2/)]
  - [ ] [Web-технологии](https://stepik.org/course/154/syllabus)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
