@@ -14,7 +14,16 @@
     1. fate sharing. If a device failes then all its state fails with it.
 1. Heterogeneity.
 1. Distributed Management.
-1. Network should be dump and minimal and _end points_ should be intelligent.
+1. End-to-End Argument. Network should be dump and minimal and _end points_ should be intelligent. End points should be responsible for:
+    * Error handling in file transfer
+    * End-to-end encryption
+    * TCP/IP split in error handling.
+
+## Switching
+1. To send a packet through the internet sender need an IP address and MAC address of reciever. `Ethernet` packet contains source and destination MAC addresses, `IP` packet contains source and destination `IP` addresses.
+1. Typically we know `DNS` name or IP address of reciever. To get the MAC address we use ARP protocol
+1. `ARP` (Address Resolution Protocol) - host broadcas query with an IP address: "Who has IP address x.x.x.x?" to every host on a LAN.
+1. When sender receives MAC address it constructs local ARP table (IP => MAC address)
 
 ## Стэк сетевых протоколов
 ![Network Protocol Stack](../images/network-protocol-stack.png)
@@ -23,8 +32,8 @@
 1. Порядок работы на клиенте:
     1. `HTTP`: формируется запрос. Вызывает функцию протокола `TLS`.
     1. `TLS`: шифрует данные, вызывает функцию протокола `TCP`.
-    1. `TCP`: добавляет контрольные суммы, делит на сегменты если это нужно, ставит свои флаги и передаёт данные протоколу более нижнего уровня (`IP`)
-    1. `IP`: передача данных через сеть интернет
+    1. `TCP`: добавляет контрольные суммы, делит на сегменты если это нужно, ставит свои флаги и передаёт данные протоколу более нижнего уровня (`IP`). Отвечает за `flow controle` и `congestion control`
+    1. `IP`: передача данных через сеть интернет. Отвечает за маршрутизацию пакета по сети.
 1. Порядок работы на сервере: `IP` => `TCP` => `TLS` => `HTTP`.
 
 ## Common
