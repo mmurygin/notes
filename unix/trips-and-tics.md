@@ -48,7 +48,7 @@
             sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
 
 
-        if [[ branch ]]; then
+        if [[ $branch ]]; then
             local -i MAX_LENGTH=30
             local -i branch_characters=${#branch}
 
