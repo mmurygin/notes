@@ -17,6 +17,14 @@
     ```
     \dt
     ```
+1. Describe table
+    ```
+    \d table
+    ```
+1. Show indexes
+    ```
+    \di
+    ```
 
 ## Analize Query
 
@@ -28,6 +36,19 @@ EXPLAIN ANALYZE
         JOIN Researcher ON (Participant.researcher_id = Researcher.researcher_id)
         JOIN University ON (Researcher.university_id = University.university_id);
 ```
+
+1. Get pg stats
+
+    ```sql
+    SELECT attname, n_distinct
+    FROM pg_stats
+    WHERE tablename='my-table-name';
+    ```
+
+1. Update pg stats
+    ```sql
+    analize;
+    ```
 
 ![Analize](../images/postgres-analize.png)
 

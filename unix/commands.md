@@ -3,6 +3,7 @@
 ## Table of Content
 
 - [Help](#help)
+- [Upgrade Packages](#upgrade-packages)
 - [History](#history)
 - [Common](#common)
 - [File management commands](#file-management-commands)
@@ -32,6 +33,24 @@
 1. To get help about linux file system use
     ```
     man heir
+    ```
+
+## Upgrade Packages
+1. To get Packet Source Lists
+    ```bash
+    cat /etc/apt/source.list
+    ```
+
+1. To update list of latest versions of the software from Packet Source Lists
+    ```bash
+    sudo apt-get update
+    ```
+
+    **This command doesn't install any new versions, only updates their list**
+
+1. To upgrade packages version
+    ```bash
+    sudo apt-get upgrade -y
     ```
 
 ## Common
