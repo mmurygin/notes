@@ -59,10 +59,12 @@
 1. Design for Testability
 1. Use the Front Door First
 1. Communicate Intent
-1. Don't Modify the SUT (minimize usage of mocks)
+1. Don't Modify the SUT
 1. Keep Tests Independent
-1. Isolate the SUT
+1. Isolate the SUT (stub all software that we do not control)
 1. Minimize Test Overlap
 1. Minimize Untestable Code
 1. Keep Test Logic Out of Production Code
 1. Verify One Condition per Test
+1. Test Concerns Separately
+1. Ensure Commensurate Effort and Responsibility
