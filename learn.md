@@ -45,6 +45,7 @@
  - [x] [Web-технологии](https://stepik.org/course/154) [[certificate](https://stepik.org/certificate/89bd8756879450fe2a8e538e46959fcf30379cd9.pdf)]
  - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/learn-devops-the-complete-kubernetes-course/) [[certificate](https://www.udemy.com/certificate/UC-LK3I0LT2/)]
  - [x] [Погружение в СУБД](https://stepik.org/course/3203) [[certificate](https://stepik.org/certificate/25dec41d56fa5b6345681ebe37e333f754167eba.pdf)]
+ - [x] [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
  - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)
