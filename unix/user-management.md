@@ -3,6 +3,7 @@
 ## Table of content
 - [Common](#common)
 - [CRUD Users](#crud-users)
+- [Add root access](#add-root-access)
 - [User Passwords](#user-passwords)
 - [CRUD User Groups](#crud-user-groups)
 
@@ -78,6 +79,8 @@
 
     * **`useradd -D`** - просмотр файла с дефолтными настройками для новых пользователей.
 
+1. **`adduser`** - shortcut for adding user interactively
+
 1. **`userdel`** - удаляет пользователя из системы
     ```bash
     userdel -r yanina
@@ -104,6 +107,13 @@
     -rw-r--r--   1 root root  3771 сен  1  2015 .bashrc
     -rw-r--r--   1 root root  8980 апр 20  2016 examples.desktop
     -rw-r--r--   1 root root   655 июн 24  2016 .profile
+    ```
+
+## Add root access
+1. Information about users with root access is stored in `/etc/sudoers`
+1. Add file with the following content inside `/etc/sudoers.d/`
+    ```
+    username ALL=(ALL) NOPASSWD:ALL
     ```
 
 ## User Passwords

@@ -5,10 +5,7 @@
 - [Help](#help)
 - [Upgrade Packages](#upgrade-packages)
 - [History](#history)
-- [Common](#common)
-- [File management commands](#file-management-commands)
-- [Get file content](#get-file-content)
-- [Filters](#filters)
+- [Syntax](#syntax)
 - [System utils](#system-utils)
 
 ## Help
@@ -54,7 +51,14 @@
     sudo apt-get upgrade -y
     ```
 
-## Common
+1. To Remove unused packages
+    ```bash
+    sudo apt-get autoremove
+    ```
+
+1. To browse packages navigate to [packages.ubuntu.com](packages.ubuntu.com)
+
+## Syntax
 1. **`''`** escape everything inside.
 1. **`""`** don’t escape **`$`**, **`{}`**. But escape **`~`** (use **`$HOME`** instead).
 1. **`\`** - escapes one symbol
