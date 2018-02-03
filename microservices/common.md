@@ -1,5 +1,20 @@
 # Microservices
 
+## Table of content
+- [Principles](#principles)
+- [Common](#common)
+- [API](#api)
+- [Bounded Context](#bounded-context)
+- [Monilith partitioning](#monilith-partitioning)
+- [Migration from monolith](#migration-from-monolith)
+- [Deployment](#deployment)
+- [Tests](#tests)
+- [Monitoring](#monitoring)
+- [Scaling](#scaling)
+- [Documentation:](#documentation)
+- [Articles](#articles)
+- [Books](#books)
+
 ## Principles
 ![Microservices principles](../images/microservices.png)
 
@@ -23,6 +38,16 @@
 ## Bounded Context
 1. We should split bounded context according to a buissness goals, not according to a data models.
 1. Share only necessay fields of shared models
+
+## Monilith partitioning
+1. Design your partitioning in the way, which allows parallel development of new features.
+1. Partitioning strategies:
+    * Patition by noun, e.g. Catalog Service
+    * Partition by verb, e.g. Checkout UI
+    * Partition by subdomain
+    * Single Responsibility Principle
+    * Unix utilities - do one focussed thing well
+
 
 ## Migration from monolith
 1. Identify bounded contexts
