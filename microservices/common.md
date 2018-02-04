@@ -2,6 +2,7 @@
 
 ## Table of content
 - [Principles](#principles)
+- [Architecture](#architecture)
 - [Common](#common)
 - [API](#api)
 - [Bounded Context](#bounded-context)
@@ -17,6 +18,14 @@
 
 ## Principles
 ![Microservices principles](../images/microservices.png)
+
+## Architecture
+![Microservices architecture](../images/microservices-architecture.png)
+1. Service component - is a portion or a building block of an application, which does one specific function. It could contains multiple classes or modules.
+    * Infrastructure services - logging, error handling, security, auditing
+    * Functional services - perform some source of buisness function
+1. API layer allows us to route some part of a traffic to new version and everything else to old one.
+1. Favor rewrite over maintenance - when we have microservice it easy to rewrite them than to maintain them.
 
 ## Common
 1. The goal is create fully isolated service. Which could and should be deployed independenly.
@@ -39,7 +48,7 @@
 1. We should split bounded context according to a buissness goals, not according to a data models.
 1. Share only necessay fields of shared models
 
-## Monilith partitioning
+## Monolith partitioning
 1. Design your partitioning in the way, which allows parallel development of new features.
 1. Partitioning strategies:
     * Patition by noun, e.g. Catalog Service
@@ -47,7 +56,6 @@
     * Partition by subdomain
     * Single Responsibility Principle
     * Unix utilities - do one focussed thing well
-
 
 ## Migration from monolith
 1. Identify bounded contexts
@@ -63,7 +71,7 @@
 1. Test docker images not standalone code
 1. Use dedicated system for providing configuration
 1. Use blue\green deployment
-1. Use "canary releasing" - when we deploy two version of service and send some amount of traffic on it
+1. Use "canary releasing" - when we deploy two version of service and send some amount of traffic on it. We could use some endpoint proxy before any of our microservice to route traffic through it and decide how much of a traffic goes into new version.
 1. Pass configuration only throw `ENV` variables
 
 ## Tests
