@@ -1,7 +1,70 @@
 # Anti-Patterns
 
 ## Table of content
+- [Description](#description)
+- [Data Driven Migration](#data-driven-migration)
+- [Hop on the Bus](#hop-on-the-bus)
+- [Timeout](#timeout)
 
 ## Description
 
 **Antipattern** - something that seems like a good idea when you begin, but leads you into trouble.
+
+## Data Driven Migration
+1. **Migration monolithic data to dedicated databases along with microservices.**
+1. We should treat data and data migration with care.
+1. It's better to split application at first, and then after some time split data. Because it's really hard, reasky and expensive to migrate data back, otherwise it's really easy to split your application into microservices wrong way at the begining.
+1. **Analysys**
+    1. Map services to existing data tables to identify ownership
+    1. Identify data overlap and dependencies between services
+    1. Develop functional migration plan for each service
+    1. Develop separate data migration plan for each service.
+    1. Implement migration in two steps: functional migration, then data migration.
+1. **Goals**
+    1. Avoid frequent data migration
+    1. Identify data sharing needs to help determine service granularity
+
+## All the World a Stage
+1. **Placing too much focus on technology and infrastructure (staging iterations) and not enough on business functionality**
+1. If we put a lot of effort on an infrastructure and forget to enhance buiseness functionality we will end up with good infrastructure and unhappy business. In most cases we don't need full devops environment to introduce a couple of services, because when we have couple of services we could do most of the work manually.
+1. **Analysis**
+    1. Identify the staging iterations in your iteration plan
+    1. Identify dependencies between staging and functional iterations
+    1. Identify opportunities for parallel staging tasks
+1. **Goals**
+    1. Reduce staging iterations
+    1. Deliver business functionality faster
+
+## Hop on the Bus
+1. **Adding an integration hub to your microservices architecture.** e.g. Apache Camel, Muel, Shuttle
+1. Disadvantages:
+    * Creates coupling between microservices
+    * Descreases performance
+    * Increases complexity
+    * Governance
+    * Could kill deployment pipeline
+    * Complicates development and testing
+1. **Analysis**
+    1. Identify requests requiring transformation
+    1. Identify requests requiring orchestration
+    1. Identify requests that access third-party systems
+    1. Analyze use of messaging microservices (Adapter, Gateway, Transform, Orchestrator)
+1. **Goals**
+    1. Provide messaging capabilities without the use of an integration hub
+    1. Favor choreography over orchestration
+
+## Timeout
+1. **Using timeout values when waiting for a response from a remote service call**
+1. We want to avoid cases when server successfully processed requests, but client got request timeout.
+1. To set correct timeout we could use: **timeout = (max response time under load) * 2**
+1. To handle correct timeout we should use circuit breaker. The best way to implement it is to monitor real user transactions.
+1. Reading
+    * [Martin Fowler Circuit Breaker](https://martinfowler.com/bliki/CircuitBreaker.html)
+    * [Release It](https://www.amazon.com/Release-Production-Ready-Software-Pragmatic-Programmers/dp/0978739213)
+1. **Analysis**
+    * Document your strategy for reacting to server responsiveness
+    * Identify opportunities for using the circuit breaker pattern
+    * Externalize your timeout values through configuration properties or external data driven values
+1. **Goal**
+    * Reduce the time to determine if a service is non-responsible
+    * Avoid timing-out requests when the service has recovered
