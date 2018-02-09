@@ -5,6 +5,7 @@
 - [Data Driven Migration](#data-driven-migration)
 - [Hop on the Bus](#hop-on-the-bus)
 - [Timeout](#timeout)
+- [Reach in Reporting](#reach-in-reporting)
 
 ## Description
 
@@ -68,3 +69,20 @@
 1. **Goal**
     * Reduce the time to determine if a service is non-responsible
     * Avoid timing-out requests when the service has recovered
+
+## Reach in Reporting
+1. **Pulling data from each microservice or its corresponding database for reporting purposes**
+1. There are the following ways to implement reporting in microservices architecture
+    * **db pull** - when we pull data from directly from databases of different microservices.
+        * **`-`** bounded context
+        * **`+`** timeliness
+    * **http pull** - when we get data from different microservices using http requests
+        * **`+-`** bounded context
+        * **`-`** timeliness
+    * **batch pull** - when we get data from different microservices at the specific period of time (every hour, nightly)
+        * **`+-`** bounded context
+        * **`+-`** timeliness
+    * **event push** - we publish events what happened with every microservice, reports service handle and process these events
+        * **`+`** bounded context
+        * **`+`** timeliness
+
