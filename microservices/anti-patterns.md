@@ -6,6 +6,7 @@
 - [Hop on the Bus](#hop-on-the-bus)
 - [Timeout](#timeout)
 - [Reach in Reporting](#reach-in-reporting)
+- [I was taught to share](#i-was-taught-to-share)
 
 ## Description
 
@@ -85,4 +86,26 @@
     * **event push** - we publish events what happened with every microservice, reports service handle and process these events
         * **`+`** bounded context
         * **`+`** timeliness
+1. **Analysis**
+    * List your reporting requirements and the timeliness of reports
+    * Can you maintain a separate reporting database or warehouse?
+    * List the data required for reporting from each service
+1. **Goals**
+    * Maintain a strong bounded context for each service and its corresponding data
+    * Provide timely data for reporting
 
+## I was taught to share
+1. **Sharing too many modules and custom libraries between microservices.**
+1. If we have too many modules it's really tricky to stay them up to date.
+1. It's better to not create modules like `common`, because this module will be changed very fast and it would be really hard to follow. It's much better to have multiple small modules. The finer the granuallity of the modules the easier to change it.
+1. Sometimes we can just replicate (copy/past) some code between microservices.
+    * the fewer dependencies between microservices the easier is to change, test and deploy them
+    * this method is better to use for almost mutable modules
+1. If we have some shared library between 2 or 3 services, and that shared library changes too fast which causes changes in services then it's worth considering to consolidate these services
+1. **Analysis**
+    * Identify shared library and shared module dependencies
+    * Document your versioning strategy for shared libraries
+    * Break apart shared libraries into smaller context-based libraries
+1. **Goals**
+    * Reduce the number of shared modules between services
+    * Create fine-graned shared libraries to control change
