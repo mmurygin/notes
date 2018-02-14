@@ -26,6 +26,7 @@
  - [x] [Encapsulation and SOLID](https://www.pluralsight.com/courses/encapsulation-solid) [[certificate](https://app.pluralsight.com/learner/user/courses/encapsulation-solid/certificate)]
  - [x] [Git Essntial Training](https://www.lynda.com/Git-tutorials/Git-Essential-Training/100222-2.html)
  - [x] [Learn and Understand NodeJS](https://www.udemy.com/understand-nodejs/)
+ - [x] [Learn AngularJS 1.x](https://www.codecademy.com/learn/learn-angularjs)
  - [x] [Gulp Basics](https://teamtreehouse.com/library/gulp-basics)
  - [x] [Shell Scripting with Bash](https://www.pluralsight.com/courses/bash-shell-scripting)
  - [x] [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development)
@@ -46,6 +47,8 @@
  - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/learn-devops-the-complete-kubernetes-course/) [[certificate](https://www.udemy.com/certificate/UC-LK3I0LT2/)]
  - [x] [Погружение в СУБД](https://stepik.org/course/3203) [[certificate](https://stepik.org/certificate/25dec41d56fa5b6345681ebe37e333f754167eba.pdf)]
  - [x] [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
+ - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-101)
+ - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-102)
  - [ ] [Stream adventure](https://github.com/workshopper/stream-adventure)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
