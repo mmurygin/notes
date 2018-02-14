@@ -48,7 +48,7 @@
  - [x] [Погружение в СУБД](https://stepik.org/course/3203) [[certificate](https://stepik.org/certificate/25dec41d56fa5b6345681ebe37e333f754167eba.pdf)]
  - [x] [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
  - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-101)
- - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-102)
+ - [x] [Learn ReactJS: Part II](https://www.codecademy.com/learn/react-102)
  - [ ] [Stream adventure](https://github.com/workshopper/stream-adventure)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
