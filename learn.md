@@ -14,9 +14,10 @@
  - [x] [Building Microservices: Designing Fine-Grained Systems](http://shop.oreilly.com/product/0636920033158.do)
  - [ ] [You dont know JS](https://github.com/getify/You-Dont-Know-JS)
  - [ ] [xUnit Test Patterns: Refactoring Test Code](https://www.safaribooksonline.com/library/view/xunit-test-patterns/9780131495050/)
- - [ ] NodeJS event loop
- - [ ] [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.safaribooksonline.com/library/view/design-patterns-elements/0201633612/)
+ - [x] NodeJS event loop
  - [x] [Stream Handbook](https://github.com/substack/stream-handbook)
+ - [ ] [NodeJS Design Patterns](https://www.packtpub.com/web-development/nodejs-design-patterns-second-edition)
+ - [ ] [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.safaribooksonline.com/library/view/design-patterns-elements/0201633612/)
  - [ ] [Head First Design Patterns](https://www.safaribooksonline.com/search/?query=%22Head%20First%20Design%20Patterns%22)
  - [ ] [Refactoring](https://www.safaribooksonline.com/library/view/refactoring-improving-the/0201485672/)
  - [ ] [Working Effectively with Legacy Code](https://www.safaribooksonline.com/library/view/working-effectively-with/0131177052/)
@@ -25,6 +26,7 @@
  - [x] [Encapsulation and SOLID](https://www.pluralsight.com/courses/encapsulation-solid) [[certificate](https://app.pluralsight.com/learner/user/courses/encapsulation-solid/certificate)]
  - [x] [Git Essntial Training](https://www.lynda.com/Git-tutorials/Git-Essential-Training/100222-2.html)
  - [x] [Learn and Understand NodeJS](https://www.udemy.com/understand-nodejs/)
+ - [x] [Learn AngularJS 1.x](https://www.codecademy.com/learn/learn-angularjs)
  - [x] [Gulp Basics](https://teamtreehouse.com/library/gulp-basics)
  - [x] [Shell Scripting with Bash](https://www.pluralsight.com/courses/bash-shell-scripting)
  - [x] [Docker for Web Developers](https://www.pluralsight.com/courses/docker-web-development)
@@ -43,7 +45,11 @@
  - [x] [Nginx Fundamentals](https://www.udemy.com/nginx-fundamentals/) [[certificate](https://www.udemy.com/certificate/UC-V1XLJT5Q/)]
  - [x] [Web-технологии](https://stepik.org/course/154) [[certificate](https://stepik.org/certificate/89bd8756879450fe2a8e538e46959fcf30379cd9.pdf)]
  - [x] [Learn DevOps: The Complete Kubernetes Course](https://www.udemy.com/learn-devops-the-complete-kubernetes-course/) [[certificate](https://www.udemy.com/certificate/UC-LK3I0LT2/)]
- - [x] [Погружение в СУБД](https://stepik.org/course/3203)[[certificate](https://stepik.org/certificate/25dec41d56fa5b6345681ebe37e333f754167eba.pdf)]
+ - [x] [Погружение в СУБД](https://stepik.org/course/3203) [[certificate](https://stepik.org/certificate/25dec41d56fa5b6345681ebe37e333f754167eba.pdf)]
+ - [x] [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
+ - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-101)
+ - [x] [Learn ReactJS: Part II](https://www.codecademy.com/learn/react-102)
+ - [ ] [Stream adventure](https://github.com/workshopper/stream-adventure)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
  - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)
