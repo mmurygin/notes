@@ -2,11 +2,11 @@
 
 ## Table Of Content
 - [Description](#description)
-- [Static Contract](#static-contract)
 - [Developer without a cause](#developer-without-a-cause)
 - [Jump on the Bandwagon](#jump-on-the-bandwagon)
 - [Logging Can Wait](#logging-can-wait)
 - [Using Too Much ACID](#using-too-much-acid)
+- [Static Contract](#static-contract)
 - [Service Orphan](#service-orphan)
 - [Are We There Yet](#are-we-there-yet)
 - [Give it a REST](#give-it-a-rest)
@@ -37,29 +37,6 @@
 1. **Goal**
     * Minimize inter-service communication
     * Strive for high cohesion between operations in a service
-
-## Static Contract
-1. **Not versioning your service contracts from the very start (or not at all)**
-1. There are two ways of doing service contract versioning:
-    * Protocol-aware versioning
-        * REST: we put version number in the header.
-            * `Accept: application/**vnd**.service.tracev2+json`
-        * Message Queue: set version in message metadata
-    * Protocol-agnostic versioning
-        * Add version to payload
-            * must parse payload to get version number
-            * payload schema can get complex
-        * Add version to url or to topic name
-1. Reading
-    * [Consumer-Driven Contract](https://martinfowler.com/articles/consumerDrivenContracts.html)
-1. **Analisys**
-    * Where is the version documentation for each contract?
-    * Document the procedures for communicating contract changes
-    * How many versions for each contract do you support?
-    * Do you have procedures defined for deprecating older versions?
-1. **Goals**
-    * Support backwards compatibility with your services
-    * Ensure effective communication when contract changes are made
 
 
 ## Developer without a cause
@@ -100,11 +77,45 @@
     * What are your pain points?
     * What are your primary architecture drivers?
     * Does microservices fit these needs?
+1. **Analysis**
+    * List the technical and business pain points in your current application and environment
+    * List the reasons why you are considering using microservices.
+        * why do we use\don't use microservices
+        * whe do we use\don't use event sysstem
+    * Do the characteristic and advantages of microservices address your pain points and buiseness needs?
+1. **Goals**
+    * Make sure microservices it the right arthitecture style for your situation and business needs
 
 ## Logging Can Wait
-
+1. **Addressing distributed logging concerns late in the development lifecycle**
+1. We should generate **correlation id**
 
 ## Using Too Much ACID
+1. **Relying too much on ACID transactions when using a microservices architecture**
+
+
+## Static Contract
+1. **Not versioning your service contracts from the very start (or not at all)**
+1. There are two ways of doing service contract versioning:
+    * Protocol-aware versioning
+        * REST: we put version number in the header.
+            * `Accept: application/**vnd**.service.tracev2+json`
+        * Message Queue: set version in message metadata
+    * Protocol-agnostic versioning
+        * Add version to payload
+            * must parse payload to get version number
+            * payload schema can get complex
+        * Add version to url or to topic name
+1. Reading
+    * [Consumer-Driven Contract](https://martinfowler.com/articles/consumerDrivenContracts.html)
+1. **Analisys**
+    * Where is the version documentation for each contract?
+    * Document the procedures for communicating contract changes
+    * How many versions for each contract do you support?
+    * Do you have procedures defined for deprecating older versions?
+1. **Goals**
+    * Support backwards compatibility with your services
+    * Ensure effective communication when contract changes are made
 
 
 ## Service Orphan
