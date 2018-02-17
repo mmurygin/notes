@@ -5,6 +5,7 @@
 - [CRUD Users](#crud-users)
 - [Add root access](#add-root-access)
 - [User Passwords](#user-passwords)
+- [Блокировка пользователей](#блокировка-пользователей)
 - [CRUD User Groups](#crud-user-groups)
 
 ## Common
