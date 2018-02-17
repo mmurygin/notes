@@ -3,6 +3,14 @@
 ## Table Of Content
 - [Description](#description)
 - [Static Contract](#static-contract)
+- [Developer without a cause](#developer-without-a-cause)
+- [Jump on the Bandwagon](#jump-on-the-bandwagon)
+- [Logging Can Wait](#logging-can-wait)
+- [Using Too Much ACID](#using-too-much-acid)
+- [Service Orphan](#service-orphan)
+- [Are We There Yet](#are-we-there-yet)
+- [Give it a REST](#give-it-a-rest)
+- [Dare to be Diffeernt](#date-to-be-different)
 
 ## Description
 **Pitfall** - something that was never a good idea, even from the start
@@ -52,3 +60,60 @@
 1. **Goals**
     * Support backwards compatibility with your services
     * Ensure effective communication when contract changes are made
+
+
+## Developer without a cause
+1. **Making programming and design decisions without taking the business drivers into account**
+1. Microservices architecture style have pros and cons, as any other style. So we should take into account them when we choose the style for our applicaiton
+1. **Analisys**
+    * Identify and document the business drivers and reasons for using a microservices architecture.
+    * Answer the following questions:
+        * Why are you doing microservices?
+        * What are your primary business drivers?
+        * What characteristics are most important?
+            * performance
+            * deployment and change control
+            * scaleability
+            * robustness
+1. **Goals**
+    * Always make design and programming decisions withing the context of business drivers
+
+## Jump on the Bandwagon
+1. **Embracing microservices before analyzing capabilities, drivers and business needs.**
+1. Advantages:
+    * Deployment (we could deploy single service)
+    * Testability (we don't need to test the whole application while deploying single service)
+    * Change control (minimizing the number of people we need to coordinate to deploy service)
+    * Modularity (app is moduled by default)
+    * Scalability
+    * Development
+1. Disadvantages:
+    * Performance
+    * Complexity
+    * Devops
+    * Org change (we should change our organization according to our services)
+    * Relaiability
+    * Feasibility
+1. Analyze your technical and business needs and goals
+    * What are your goal?
+    * what are you trying to accomplish?
+    * What are your pain points?
+    * What are your primary architecture drivers?
+    * Does microservices fit these needs?
+
+## Logging Can Wait
+
+
+## Using Too Much ACID
+
+
+## Service Orphan
+
+
+## Are We There Yet
+
+
+## Give it a REST
+
+
+## Dare to be Diffeernt
