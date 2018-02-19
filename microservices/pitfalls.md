@@ -88,11 +88,22 @@
 
 ## Logging Can Wait
 1. **Addressing distributed logging concerns late in the development lifecycle**
-1. We should generate **correlation id**
+1. We should generate **correlation/context id**
+1. **Analysis**
+    * Identify the context of each request(e.g. order number, customer id, confirmation number, etc.)
+    * Create a logging API wrapper around you current logging tool
+1. **Goals**
+    * Consolidate logs from multiple services to identify the request flow of a specific request
 
 ## Using Too Much ACID
 1. **Relying too much on ACID transactions when using a microservices architecture**
-
+1. **Analysis**
+    * Create a mapping of business requests to microservices calls.
+    * Identify those requests that require multiple services. Are ACID transactions required? If so consolidate services.
+    * List the services databases requiring eventual consistency. Come up with a pattern to do eventual consistency (event based, request based, batch based)
+1. **Goals**
+    * Identify which requests require an ACID transactions
+    * Identify how and when you will do eventual consistency
 
 ## Static Contract
 1. **Not versioning your service contracts from the very start (or not at all)**
@@ -119,12 +130,13 @@
 
 
 ## Service Orphan
-
+1. **Not Designating a specific owner for a service**
 
 ## Are We There Yet
-
+1. **Not accuratly knowing how long the remote access portion of the request will take**
 
 ## Give it a REST
-
+1. **Using restful web services throughout your entire microservices architecture without fully analyzing your remote access needs**
 
 ## Dare to be Diffeernt
+1. **Not using a common service template or common custom base image**
