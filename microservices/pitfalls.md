@@ -130,7 +130,7 @@
 
 
 ## Service Orphan
-1. **Not Designating a specific owner for a service**
+1. **Not designating a specific owner for a service (or a class of services)**
 
 ## Are We There Yet
 1. **Not accuratly knowing how long the remote access portion of the request will take**
