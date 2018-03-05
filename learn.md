@@ -14,7 +14,7 @@
  - [x] [Building Microservices: Designing Fine-Grained Systems](http://shop.oreilly.com/product/0636920033158.do)
  - [ ] [You dont know JS](https://github.com/getify/You-Dont-Know-JS)
  - [ ] [xUnit Test Patterns: Refactoring Test Code](https://www.safaribooksonline.com/library/view/xunit-test-patterns/9780131495050/)
- - [x] NodeJS event loop
+ - [x] NodeJS event loop [1](https://jsblog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810) [2](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
  - [x] [Stream Handbook](https://github.com/substack/stream-handbook)
  - [ ] [NodeJS Design Patterns](https://www.packtpub.com/web-development/nodejs-design-patterns-second-edition)
  - [ ] [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.safaribooksonline.com/library/view/design-patterns-elements/0201633612/)
@@ -49,6 +49,7 @@
  - [x] [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
  - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-101)
  - [x] [Learn ReactJS: Part II](https://www.codecademy.com/learn/react-102)
+ - [x] [Microservices AntiPatterns and Pitfalls](https://www.safaribooksonline.com/library/view/microservices-antipatterns-and/9781491963937/)
  - [ ] [Stream adventure](https://github.com/workshopper/stream-adventure)
  - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)

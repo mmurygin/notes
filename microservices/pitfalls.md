@@ -128,15 +128,46 @@
     * Support backwards compatibility with your services
     * Ensure effective communication when contract changes are made
 
-
 ## Service Orphan
 1. **Not designating a specific owner for a service (or a class of services)**
+1. **Analysis**
+    * Identify each service owner and the services they own (have service owners attached to a specific domain)
+    * Document the communication procedures between service owners
+1. **Goals**
+    * Associate service with specific service owners
+    * Ensure service owners effectively communicate with one another
 
 ## Are We There Yet
 1. **Not accuratly knowing how long the remote access portion of the request will take**
+1. In many cases remote access part of the job would take a big percent of the request time, so it's good to know how long does it take to implement and optimize between-services communication.
+1. **Analysis**
+    * Establish the average latency time for your remote access call
+    * Deternime which requests need to be optimized based on multiple network hops
+1. **Goals**
+    * Understand your network latency for service access and make corresponding ajustments
 
 ## Give it a REST
 1. **Using restful web services throughout your entire microservices architecture without fully analyzing your remote access needs**
+1. In many cases it's better to use **Message Queues** instead of REST.
+1. **Analysis**
+    * Identify requests that can leverage asynchronous processing
+    * Determine if you have broadcast capability needs
+    * Determine if you have remote request transaction needs
+1. **Goals**
+    * Understand your remote processing capabilities needs
+    * Improve performance through messaging capabilities
 
 ## Dare to be Diffeernt
 1. **Not using a common service template or common custom base image**
+1. It's great to implement service template for new service. It solve a lot of issues new developer will meet in implementing new microservice/
+1. Things to put inside service template
+    * call to authentication service
+    * hook for authorization
+    * hook for contract validation
+    * common error handling
+    * common logging
+1. **Analysis**
+    * List the operations and hooks within your service template. Are there operations that can be added to the template?
+    * Are development teams using the same base image and service template?
+1. **Goals**
+    * Encapsulate as much common framework code as possible in your service templates and base images to increase productivity and consistency when creating services.
