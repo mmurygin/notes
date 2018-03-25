@@ -32,4 +32,8 @@ struct SmartPtr {
 private:
     Data * data_;
 };
+
 ```
+
+## Ссылки
+1. https://compscicenter.ru/courses/cpp-1/2015-autumn/
