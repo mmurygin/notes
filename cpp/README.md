@@ -11,4 +11,4 @@
 - [OOP](oop.md)
 - [Operator Overloading](operator-overloading.md)
 - [Smart Ptr](smart-ptr.md)
-- [Static](static.md)
+- [Static, Inline, Friend](static-inline-friend.md)
