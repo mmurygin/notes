@@ -12,3 +12,4 @@
 - [Operator Overloading](operator-overloading.md)
 - [Smart Ptr](smart-ptr.md)
 - [Static, Inline, Friend](static-inline-friend.md)
+- [Templates](templates.md)
