@@ -1,6 +1,7 @@
 ## C++
 
 - [Compilation](compilation.md)
+- [Execution](execution.md)
 - [Dynamic memory](dynamic-memory.md)
 - [Pointers and references](pointers-references.md)
 - [Arrays](arrays.md)
@@ -9,3 +10,5 @@
 - [Structs / Classes](structs-classes.md)
 - [OOP](oop.md)
 - [Operator Overloading](operator-overloading.md)
+- [Smart Ptr](smart-ptr.md)
+- [Static](static.md)
