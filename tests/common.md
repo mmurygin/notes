@@ -1,7 +1,13 @@
 # Tests Common
 
+## Table of Content
+- [Test Smells](#test-smells)
+- [Goals of Test Automation](#goals-of-test-automation)
+- [Philosophy](#philosophy)
+- [Principles of Test Automation](#principles-of-test-automation)
+
 ## Test Smells
-** Before start removing some smell we need to estimate its benefits and cost**
+**Before start removing some smell we need to estimate its benefits and cost**
 
 1. Project Smells
     * Production Bugs
