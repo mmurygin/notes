@@ -64,3 +64,5 @@
  - [x] [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn) [[certificate](https://www.coursera.org/account/accomplishments/certificate/UMBVLABFAXS2)]
  - [x] [A Mini Course on Better Reading](https://www.udemy.com/read-more-books/) [[certificate](https://www.udemy.com/certificate/UC-VK4B84GC/)]
  - [x] [Become A Learning Machine 2.0: Read 300 Books This Year](https://www.udemy.com/become-a-learning-machine-read-300-books/) [[certificate](https://www.udemy.com/certificate/UC-4MXIOXGB/)]
+ - [x] [Stanford Introduction to Food and Health](https://www.coursera.org/learn/food-and-health)
+ - [x] [Health Masterclass: How To Transform Your Health & Life](https://www.udemy.com/health-masterclass-how-to-transform-your-health-life/) [[certificate](https://www.udemy.com/certificate/UC-UAMYBPYQ/)]
