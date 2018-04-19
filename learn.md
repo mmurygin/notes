@@ -3,8 +3,8 @@
 ## Table of contents
 - [IT Books](#it-books)
 - [IT Courses](#it-courses)
-- [Success Books](#success-books)
-- [Success Courses](#success-courses)
+- [Soft Skills Books](#soft-skills-books)
+- [Soft Skills Courses](#soft-skills-courses)
 
 ## IT Books
  - [x] [WebGL Programming Guide](https://www.amazon.com/WebGL-Programming-Guide-Interactive-Graphics/dp/0321902920)
@@ -56,11 +56,11 @@
  - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)
  - [ ] [Algorithms](https://www.coursera.org/specializations/algorithms)
 
-## Success Books
+## Soft Skills Books
  - [x] [A mind for numbers](https://www.amazon.com/Mind-Numbers-Science-Flunked-Algebra-ebook/dp/B00G3L19ZU)
  - [x] [7 Habits of Highly Effective People](https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/0743269519)
 
-## Success Courses
+## Soft Skills Courses
  - [x] [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn) [[certificate](https://www.coursera.org/account/accomplishments/certificate/UMBVLABFAXS2)]
  - [x] [A Mini Course on Better Reading](https://www.udemy.com/read-more-books/) [[certificate](https://www.udemy.com/certificate/UC-VK4B84GC/)]
  - [x] [Become A Learning Machine 2.0: Read 300 Books This Year](https://www.udemy.com/become-a-learning-machine-read-300-books/) [[certificate](https://www.udemy.com/certificate/UC-4MXIOXGB/)]
