@@ -13,3 +13,4 @@
 - [Smart Ptr](smart-ptr.md)
 - [Static, Inline, Friend](static-inline-friend.md)
 - [Templates](templates.md)
+- [GDB debugger](debug.md)
