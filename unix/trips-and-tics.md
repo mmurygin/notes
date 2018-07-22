@@ -30,6 +30,12 @@
     openssl s_client -state -CAfile startssl.ca.crt -connect igvita.com:443
     ```
 
+## Compiled programs
+1. Show binary dependencies
+    ```bash
+    ldd binary-path
+    ```
+
 ## Usefull scripts
 
 1. To change terminal title add the following function to `.bashrc`:
