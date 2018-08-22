@@ -1,5 +1,13 @@
 # Trips and tics
 
+## Man pages
+1. `man man`
+1. `man apropos`
+1. `man whatis`
+1. `man 3 getaddinfo`
+1. `man inet`
+1. `man 7 ip`
+
 ## Usefull commands
 1. Get the lines number of a directory
 
