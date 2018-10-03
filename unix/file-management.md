@@ -79,7 +79,46 @@
         find /data -exec cp {} /backup/ \;
         ```
 
+    * **-iname** - case insencetive search
+        ```bash
+        find / -iname "test.txt"
+        ```
+
+    * **-not** - reverse search
+        ```bash
+        find / -not -name "test.txt"
+        ```
+
+    ** **-size** - specify file filter
+        ```bash
+        find /usr/bin -size +27000c #finds all file with size > 27000b
+        ```
+
+        * `c` - bytes
+        * `k` - kilo bytes
+        * `M` - mega bytes
+
+
+    * **-mtime** - filter by creation day
+        ```bash
+        find / -type f -mtime 1
+        ```
+
+    * **-user** - filter by user
+    * **-perm** - filter by permission
+    * **-exec** - exec command on found files
+        ```bash
+        find / -name "test.txt" -exec chmod 700 {} \;
+        ```
+
 1. **`locate`** - поиск файлов используя данные индексирования файловой системы. Эта утилита гораздо быстрее find, но может вернуть устаревшие данные. Для того чтобы обновить индексы нужно вызвать `updatedb`. В большинстве систем Linux утилита `updatedb` запускатся один раз в день.
+
+1. **`df`** - show disk partitions
+
+    * show in human readable format
+        ```bash
+        df -h
+        ```
 
 ## Механизмы владения файлами
 1. **`ls -l`** посмотреть права доступа к файлам

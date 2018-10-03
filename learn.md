@@ -50,10 +50,11 @@
  - [x] [Learn ReactJS: Part I](https://www.codecademy.com/learn/react-101)
  - [x] [Learn ReactJS: Part II](https://www.codecademy.com/learn/react-102)
  - [x] [Microservices AntiPatterns and Pitfalls](https://www.safaribooksonline.com/library/view/microservices-antipatterns-and/9781491963937/)
- - [ ] [Stream adventure](https://github.com/workshopper/stream-adventure)
- - [ ] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
+ - [x] [Основы программирования для Linux](https://stepik.org/course/548/)
+ - [x] [Программирование на языке C++](https://stepik.org/course/7/syllabus)
+ - [x] [Stream adventure](https://github.com/workshopper/stream-adventure)
+ - [ ] [Introduction to Operating Systems](https://eu.udacity.com/course/introduction-to-operating-systems--ud923)
  - [ ] [Курс по рефакторингу](https://refactoring.guru/ru/refactoring/course)
- - [ ] [Основы программирования для Linux](https://stepik.org/course/548/)
  - [ ] [Algorithms](https://www.coursera.org/specializations/algorithms)
 
 ## Soft Skills Books

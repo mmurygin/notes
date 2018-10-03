@@ -32,6 +32,14 @@
     man heir
     ```
 
+## Man pages
+1. `man man`
+1. `man apropos`
+1. `man whatis`
+1. `man 3 getaddinfo`
+1. `man inet`
+1. `man 7 ip`
+
 ## Upgrade Packages
 
 1. To get Packet Source Lists
