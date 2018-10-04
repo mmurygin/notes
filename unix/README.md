@@ -1,9 +1,7 @@
 ## Unix Notes
 
 - [Common](common.md)
-- [Filters](filters.md)
-- [Regex Commands](regex-commands.md)
-- [Configuration](configuration.md)
+- [Text Processing](text-processing.md)
 - [File management](file-management.md)
 - [Linux Cheatsheet](linux_bash_cheatsheet.pdf)
 - [Shell Scripts](shell-scripts.md)
@@ -12,4 +10,5 @@
 - [User Management](user-management.md)
 - [Vim](vim.md)
 - [Trips and Tics](trips-and-tics.md)
+- [Configuration](configuration.md)
 - [Resources](resources.md)

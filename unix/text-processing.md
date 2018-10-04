@@ -1,16 +1,37 @@
-# Regex commands
-
-## Table of contents
-- [Версии синтаксисов регулярных выражений](#версии-синтаксисов-регулярных-выражений)
+# Text Processing
+- [Get file content](#get-file-content)
 - [grep](#grep)
 - [rename](#rename)
 - [sed](#sed)
+- [Other Filters](#other-filters)
 
-## Версии синтаксисов регулярных выражений
-1. **`BRE`** - Basic Regular Expression
-1. **`ERE`** - Extended Regular Expression
-1. **`PCRE`** - Perl Regular Expressions
-1. В зависимости от используемого инструмента может использоваться один или несколько упомянутых выше синтаксисов.
+## Get file content
+1. **`head`** - get first 10 lines of file
+    * **`head -4`** - get first 4 files of file
+    * **`head -4c`** - get first 4 bytes of file
+1. **`tail`** - get last 10 lines of file
+    * **`tail -4`** - get last 4 files of file
+    * **`tail -4c`** - get last 4 bytes of file
+1. **`cat`** - copy data from `stdin` to `stdout`.
+    * **`cat file1 file2 file3`** - concatenates 3 files
+    * create a file with content (stop - here is a special marker of end of input - we could specify any word, most common is EOF)
+        ```bash
+        cat > hot.txt <<stop
+        some string
+        stop
+        ```
+    * copy file1 to file2
+        ```bash
+        cat file1 > file2
+        ```
+1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
+1. **`tac`** - print file with reversed string order
+    ```bash
+    $ tac count.txt
+    три
+    два
+    один
+    ```
 
 ## grep
 1. Ищет строки соответствующие паттерну
@@ -264,7 +285,85 @@
     2014+04+01
     $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\3:\2:\1/'
     01:04:2014
-    ```
 
-## Ресурсы
-1. [stepik Основы Линукс](https://stepik.org/lesson/30012/step/2?course=%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Linux&unit=10741)
+## Other Filters
+1. `cat` - при размещении фильтра cat между двумя программными каналами не будет осуществляться какой-либо обработки передающихся через них данных.
+
+    ```bash
+    $ tac count.txt | cat | cat | cat | cat | cat
+    три
+    два
+    один
+    ```
+1. **`tee`** - перемещает данные из стандартного потока ввода stdin в стандартный поток вывода stdout, а также записывает их в файл.
+
+    ```bash
+    $ tac count.txt | tee temp.txt | tac
+    один
+    два
+    три
+    $ cat temp.txt
+    три
+    два
+    один
+    ```
+1. **`cut`** - извлекает данные из столбцов расположенных в файлах таблиц с указанием разделителя столбцов или количества байт данных в столбцах
+
+    * разделить строку по двоеточию и вывести 1 и 3 столбцы
+        ```bash
+        cut -d: -f1,3 /etc/passwd | tail -4
+        ```
+
+    * разделить строку по пробелам
+        ```bash
+        cut -d" " -f1 file.txt
+        ```
+
+1. **`tr`** - преобразование символов в потоке
+
+    * заменить символ в строке
+        ```bash
+        cat tennis.txt | tr 'e' 'E'
+        ```
+
+    * **`-d`** - удалить символ
+        ```bash
+        cat tennis.txt | tr -d e
+        ```
+
+    * заменить последовательность символов
+        ```bash
+        cat tennis.txt | tr 'a-z' 'A-Z'
+        ```
+
+1. **`wc`** - подсчитывает строки, слова и символы
+1. **`sort`** - сортирует строки
+
+    * сортировка строк
+        ```bash
+        sort music.txt
+        ```
+
+    * **`-k`** - сортировка строк по 1 столбцу
+        ```bash
+        sort -k1 country.txt
+        ```
+
+    * **`-n`** - числовая сортировка
+        ```bash
+        $ sort -k3 country.txt
+        Belgium, Brussels, 10
+        Germany, Berlin, 100
+        Italy, Rome, 50
+        France, Paris, 60
+
+        Iran, Teheran, 70
+        $ sort -n -k3 country.txt
+        Belgium, Brussels, 10
+        Italy, Rome, 50
+        France, Paris, 60
+        Iran, Teheran, 70
+        Germany, Berlin, 100
+        ```
+
+1. **`uniq`** - отфильтровывает повторяющиеся строки
