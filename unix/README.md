@@ -11,4 +11,5 @@
 - [Vim](vim.md)
 - [Trips and Tics](trips-and-tics.md)
 - [Configuration](configuration.md)
+- [Hardware](hardware.md)
 - [Resources](resources.md)

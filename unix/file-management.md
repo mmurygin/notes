@@ -1,12 +1,12 @@
 # File System
 
-## Table of content
 - [Common](#common)
-- [File System](#file-system)
-- [File Management commands](#file-management-commands)
-- [Механизмы владения файлами](#механизмы-владения-файлами)
-- [Продвинутое управление правами доступа](#продвинутое-управление-правами-доступа)
-- [Списки контроля доступа](#Списки-контроля-доступа)
+- [File system](#file-system)
+- [File management commands](#file-management-commands)
+- [Механизмы владения файлами](#%D0%BC%D0%B5%D1%85%D0%B0%D0%BD%D0%B8%D0%B7%D0%BC%D1%8B-%D0%B2%D0%BB%D0%B0%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0%D0%BC%D0%B8)
+- [Продвинутое управление правами доступа](#%D0%BF%D1%80%D0%BE%D0%B4%D0%B2%D0%B8%D0%BD%D1%83%D1%82%D0%BE%D0%B5-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%D0%BC%D0%B8-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0)
+- [Списки контроля доступа](#%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8F-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0)
+- [Ссылки на файлы](#%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8-%D0%BD%D0%B0-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B)
 
 ## Common
 1. ["On a UNIX system, everything is a file; if something is not a file, it is a process."](http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html)

@@ -1,20 +1,19 @@
 # Commands
 
-## Table of Content
-
 - [Help](#help)
+- [Usefull man pages](#usefull-man-pages)
 - [Upgrade Packages](#upgrade-packages)
-- [History](#history)
 - [Syntax](#syntax)
+- [History](#history)
 - [System utils](#system-utils)
 
 ## Help
 
 1. **`man`** - prints help for command
-
     ```
     man cmd
     ```
+
 1. **`man -k`** - get all pages which contain specified string
     ```
     man -k syslog
@@ -32,7 +31,18 @@
     man heir
     ```
 
-## Man pages
+1. Update mandb database
+    ```bash
+    mandb
+    ```
+
+1. List documentation for all installed packages
+    ```bash
+    ls /usr/share/lib
+    ```
+
+
+## Usefull man pages
 1. `man man`
 1. `man apropos`
 1. `man whatis`
