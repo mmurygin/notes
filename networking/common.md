@@ -44,7 +44,7 @@
     ```bash
     netstat -r # show routes
     ```
-    
+
     ```bash
     netstat --ip -l -p # show listening ports
     ```
