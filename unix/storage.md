@@ -10,3 +10,9 @@
 1. List block devices
     * **`blkid`**
     * **`lsblk`**
+
+## Disk Formatting
+1. Working with partitions
+    * **`fdisk`**
+    * **`gparted`**
+    * **`parted`**

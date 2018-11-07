@@ -54,9 +54,11 @@
 1. **`$1`** - get the first param of the script
 1. **`$2`** - get the second param of the script
 1. **`$#`** - the number of script arguments
-1. **`“$@”`** - equivalent to `“$1”, “$2”, ..,  “$N”`
-1. **`“$*”`** - equivalent to `“$1 $2 $3… $N”`
+1. **`“$@”`** - equivalent to `“$1”, “$2”, ..,  “$N”` (arguments in array)
+1. **`“$*”`** - equivalent to `“$1 $2 $3… $N”`(arguments in string)
 1. **`$$`** - `PID` of current process
+1. **`$?`** - status of the last command
+1. **`$!`** - PID last command
 1. iterate through the script params
     ```bash
     while (( $# )); do
