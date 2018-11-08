@@ -156,6 +156,7 @@
     * **`${#var_name[@]}`** - gets the array length
     * **`${!var_name[@]}`** - gets all array indices (there can be gaps in the indices)
     * **`declare -A var_name`**  - declares dictionary
+    * **`echo ${array[*]}`** - print all elements in array
     * More info http://goo.gl/g6xtca
 
 12. To put some string multistring value to a variable use
@@ -249,11 +250,15 @@
     | Expression | Meaning |
     | --- | ---- |
     | [[ $str ]] | str is not empty |
+    | [[ -n $str ]] | str is not empty |
+    | [[ -z $str ]] | str is empty |
     | [[ $str = pattern ]] | checks unix pattern matching |
     | [[ $str=sometning ]] | always return true. **Do not do like this!** |
     | [[ $str = ~sometning ]] | checks regular expression matching |
     | [[ -e $filename ]] | checks if file exists |
     | [[ -d $dirname ]] | checks if directory exists |
+    | [[ -s $filename ]] | check if file has size more than 0 |
+    | [[ -[rwx] $filename ]] | check if file is available for read/write/execute |
 
     * Spaces around the expression are very important
     * Same for switches (-e) and equals sign
