@@ -14,4 +14,5 @@
 - [Trips and Tics](trips-and-tics.md)
 - [Configuration](configuration.md)
 - [Hardware](hardware.md)
+- [Bash Cheetsheet](linux_bash_cheatsheet.pdf)
 - [Resources](resources.md)
