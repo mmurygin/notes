@@ -1,11 +1,13 @@
-## Unix Notes
+## Linux
 
-- [Common](common.md)
+- [Help](help.md)
+- [Essential Commands](essential-commands.md)
+- [History](history.md)
+- [Package Management](package-management.md)
 - [Text Processing](text-processing.md)
 - [File management](file-management.md)
 - [Linux Cheatsheet](linux_bash_cheatsheet.pdf)
 - [Shell Scripts](shell-scripts.md)
-- [Docker](docker.md)
 - [Vagrant](vagrant.md)
 - [User Management](user-management.md)
 - [Vim](vim.md)
