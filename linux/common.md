@@ -2,8 +2,7 @@
 
 - [Help](#help)
 - [Usefull man pages](#usefull-man-pages)
-- [Upgrade Packages](#upgrade-packages)
-- [Syntax](#syntax)
+- [Package management](#upgrade-packages)
 - [History](#history)
 - [System utils](#system-utils)
 
@@ -54,7 +53,7 @@
 
 1. To get Packet Source Lists
     ```bash
-    cat /etc/apt/source.list
+    ls /etc/apt/source.list.d/
     ```
 
 1. To update list of latest versions of the software from Packet Source Lists
@@ -71,10 +70,17 @@
 
 1. To Remove unused packages
     ```bash
-    sudo apt-get autoremove
+    sudo apt-get autoremove -y
     ```
 
 1. To browse packages navigate to [packages.ubuntu.com](packages.ubuntu.com)
+
+1. **`dpkg`** - get info about installed packages.
+
+    * Get the full list of installed packages
+        ```bash
+        dpkg -l
+        ```
 
 ## Syntax
 1. **`''`** escape everything inside.
@@ -126,17 +132,3 @@
     ```bash
     kill -9 process-id
     ```
-
-1. **`ps`** - get the processes list snapshoot
-
-    * get the full process list
-        ```bash
-        sudo ps aux
-        ```
-
-1. **`dpkg`** - get info about installed packages.
-
-    * Get the full list of installed packages
-        ```bash
-        sudo dpkg -l
-        ```

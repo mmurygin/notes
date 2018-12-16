@@ -1,7 +1,7 @@
 # My learning notes
 
 - [Web Development](web)
-- [Unix](unix)
+- [Linux](linux)
 - [Networking](networking)
 - [Javascript](js)
 - [Google Cloud](google-cloud)

@@ -14,11 +14,6 @@
     ssh-add path_to_ssh_key
     ```
 
-1. To get current shell level
-    ```bash
-    echo $SHLVL
-    ```
-
 1. Aliases
     * **`alias`** - list all aliases
     * **`alias bb='echo bb'`** - create an alias
