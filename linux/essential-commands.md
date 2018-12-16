@@ -8,6 +8,9 @@
     ```bash
     time ls
     ```
+1. **`whoami`**
+1. **`uname`** - shows information about the system
+1. **`last`** shows the last login users
 
 ## Working with archives
 1. **`gzip`** - сжать файл

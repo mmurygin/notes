@@ -10,11 +10,11 @@
 ## Globbing
 1. **globbing** - file name substitution by bash
 1. Restricted amount of BRE is used for globbing
-    * **`*`**
-    * **`?`**
-    * **`[xyz]`**
-    * **`[a-z]`**
-    * **`[^az]`**
+    * **`*`** - any character any number of times
+    * **`?`** - any character one time
+    * **`[xyz]`** - x, y or z
+    * **`[a-z]`** - characters from a to z
+    * **`[^az]`** - not a or z
     * **`{a*, b*}`** - a* or b*
 
 ## Версии синтаксисов регулярных выражений
