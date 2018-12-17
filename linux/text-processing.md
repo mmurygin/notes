@@ -1,11 +1,11 @@
 # Text Processing
 * [Globbing](#globbing)
-* [Версии синтаксисов регулярных выражений](#%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81%D0%BE%D0%B2-%D1%80%D0%B5%D0%B3%D1%83%D0%BB%D1%8F%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D1%8B%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9)
-* [Get file content](#get-file-content)
+* [Regex](#regex)
 * [grep](#grep)
-* [rename](#rename)
 * [sed](#sed)
-* [Other Filters](#other-filters)
+* [awk](#awk)
+* [rename](#rename)
+* [Usefull utilities](#usefull-utilities)
 
 ## Globbing
 1. **globbing** - file name substitution by bash
@@ -17,58 +17,50 @@
     * **`[^az]`** - not a or z
     * **`{a*, b*}`** - a* or b*
 
-## Версии синтаксисов регулярных выражений
-1. **`BRE`** - Basic Regular Expression
+## Regex
+1. **`man 7 regex`** - get help about regex
+1. It's better to use quotes **''** to prevent shell globbing
+1. There are the following types of regular expressions in linux
+    * **BRE** - basic regular expressions
+        * `grep`
+        * `sed`
+    * **ERE** - extended regular expressions
+        * `egrep`
+        * `awk`
+        * `perl`
+    * **PRE** - perl regular exressions
+1. **With `BRE` we need to escape symbols like `{}`, `()`, `+`, `?`, `|`**
+1. Regexp
     * **`^`** - start of a string
+        * `^abc` => abc, abcdef, abc123
     * **`$`** - end of a string
-    * **`.`** - any symbol
+        * `abc$` => abc, llabc, 456abc
+    * **`.`** - any symbol (except a new line)
+        * `a.c` => abc, aaa, a2c
+    * **`*`** - null or more of the preceding character
+        * `ab*c` => ac, abc, abbbbc
+    * **`+`** - one or more of the preceding characters
+        * `ab+c` => abc, abbbc
+    * **`?`** null or one of the preceding character
+        * `ab?c` => ac, abc
     * **`\`** - escape symbol
-    * **`[A-Z]`** - symbols range
-    * **`[xyz]`** - one of
-    * **`[^xyz]`** - not one of
-    * **`*`** - any symbol any number of times
-1. **`ERE`** - Extended Regular Expression (`perl`, `egrep`, `awk`)
-    * **`{m,n}`** - from `m` to `n` occurencies
-    * **`{m}`** - exactly `m` occurencies
-    * **`?`** - 0 or 1 occurencies
-    * **`+`** - 1 or more occurencies
-    * **`()`** - group symbols
-    * **`|`** - any of
-1. **`PCRE`** - Perl Regular Expressions
-1. В зависимости от используемого инструмента может использоваться один или несколько упомянутых выше синтаксисов.
+    * **`{..}`** - explicit quantity of preceding character
+        * **`{m,n}`** - from `m` to `n` occurencies
+        * **`{m}`** - exactly `m` occurencies
+            * `ab{2}c` => abbc
+    * **`[...]`** - explicit set of characters to match
+        * **`[A-Z]`** - symbols range
+            * `^[a-c]` => axxx, bxx, cxx
+        * **`[xyz]`** - one of
+        * **`[^xyz]`** - not one of
+    * **`(...)`** - group of characters
+        * `(123){3}` => 123123123
 
-## Get file content
-1. **`head`** - get first 10 lines of file
-    * **`head -4`** - get first 4 files of file
-    * **`head -4c`** - get first 4 bytes of file
-1. **`tail`** - get last 10 lines of file
-    * **`tail -4`** - get last 4 files of file
-    * **`tail -4c`** - get last 4 bytes of file
-1. **`cat`** - copy data from `stdin` to `stdout`.
-    * **`cat file1 file2 file3`** - concatenates 3 files
-    * create a file with content (stop - here is a special marker of end of input - we could specify any word, most common is EOF)
-        ```bash
-        cat > hot.txt <<stop
-        some string
-        stop
-        ```
-    * copy file1 to file2
-        ```bash
-        cat file1 > file2
-        ```
-1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
-1. **`tac`** - print file with reversed string order
-    ```bash
-    $ tac count.txt
-    три
-    два
-    один
-    ```
-1. **`fmt`** - formats text
 
 ## grep
-1. Ищет строки соответствующие паттерну
-1. Переключение версий регулярных выражений
+1. Search lines which match pattern
+1. It's best practise to use **''** around regex to prevent shell globbing
+1. Set regexp version (default is BRE)
     * **`grep -E`** - use Extended Regular Expression
     * **`grep -G`** - use Basic Regular Expression
     * **`grep -P`** - use Perl Regular Expressions
@@ -146,20 +138,20 @@
         Fleur
         Floor
 
-        $ grep a$ names
+        $ grep 'a$' names
         Tania
         Laura
         Valentina
-        $ grep r$ names
+        $ grep 'r$' names
         Fleur
         Floor
         ```
 
     * **`^`** - совпадение в начале строки
         ```bash
-        $ grep ^Val names
+        $ grep '^Val' names
         Valentina
-        $ grep ^F names
+        $ grep '^F' names
         Fleur
         Floor
         ```
@@ -195,44 +187,6 @@
     $ grep 'r$' names
     Fleur
     Floor
-    ```
-
-## rename
-1. _Осуществляет переименование файлов по шаблону_
-1. Реализация утилиты `rename` отличается между дистрибутивами _Debian_ и _Red Hat_
-1. **`'s/to_replace_regex/replace_value/`**Поиск и переименование файлов по шаблону:
-
-    ```bash
-    $ ls
-    abc       allfiles.TXT  bllfiles.TXT  Scratch   tennis2.TXT
-    abc.conf  backup        cllfiles.TXT  temp.TXT  tennis.TXT
-    $ rename 's/TXT/text/' *
-    $ ls
-    abc       allfiles.text  bllfiles.text  Scratch    tennis2.text
-    abc.conf  backup         cllfiles.text  temp.text  tennis.text
-    ```
-1. **`'s/regex/str/g`** - замена всех вхожденй строки
-    ```bash
-    $ touch aTXT.TXT
-    $ rename -n 's/TXT/txt/g' aTXT.TXT
-    aTXT.TXT renamed as atxt.txt
-    ```
-1. **`'s/regex/str/i`** - замена без учета регистра
-    ```bash
-    $ ls
-    file1.text  file2.TEXT  file3.txt
-    $ rename 's/.text/.txt/i' *
-    $ ls
-    file1.txt  file2.txt  file3.txt
-    ```
-1. **Изменение расширений**
-    ```bash
-    $ ls *.txt
-    allfiles.txt  bllfiles.txt  cllfiles.txt  really.txt.txt  temp.txt  tennis.txt
-    $ rename 's/.txt$/.TXT/' *.txt
-    $ ls *.TXT
-    allfiles.TXT  bllfiles.TXT    cllfiles.TXT    really.txt.TXT
-    temp.TXT      tennis.TXT
     ```
 
 ## sed
@@ -337,15 +291,71 @@
     $ echo 2014-04-01 | sed 's/\(....\)-\(..\)-\(..\)/\3:\2:\1/'
     01:04:2014
 
-## Other Filters
-1. `cat` - при размещении фильтра cat между двумя программными каналами не будет осуществляться какой-либо обработки передающихся через них данных.
+## awk
+1. [Tutorial (rus)](https://www.opennet.ru/docs/RUS/awk/)
+1. Print column
+    ```bash
+    awk -F: '{print $1}' /etc/passwd
+    ```
+
+## rename
+1. _Осуществляет переименование файлов по шаблону_
+1. Реализация утилиты `rename` отличается между дистрибутивами _Debian_ и _Red Hat_
+1. **`'s/to_replace_regex/replace_value/`**Поиск и переименование файлов по шаблону:
 
     ```bash
-    $ tac count.txt | cat | cat | cat | cat | cat
-    три
-    два
-    один
+    $ ls
+    abc       allfiles.TXT  bllfiles.TXT  Scratch   tennis2.TXT
+    abc.conf  backup        cllfiles.TXT  temp.TXT  tennis.TXT
+    $ rename 's/TXT/text/' *
+    $ ls
+    abc       allfiles.text  bllfiles.text  Scratch    tennis2.text
+    abc.conf  backup         cllfiles.text  temp.text  tennis.text
     ```
+1. **`'s/regex/str/g`** - замена всех вхожденй строки
+    ```bash
+    $ touch aTXT.TXT
+    $ rename -n 's/TXT/txt/g' aTXT.TXT
+    aTXT.TXT renamed as atxt.txt
+    ```
+1. **`'s/regex/str/i`** - замена без учета регистра
+    ```bash
+    $ ls
+    file1.text  file2.TEXT  file3.txt
+    $ rename 's/.text/.txt/i' *
+    $ ls
+    file1.txt  file2.txt  file3.txt
+    ```
+1. **Изменение расширений**
+    ```bash
+    $ ls *.txt
+    allfiles.txt  bllfiles.txt  cllfiles.txt  really.txt.txt  temp.txt  tennis.txt
+    $ rename 's/.txt$/.TXT/' *.txt
+    $ ls *.TXT
+    allfiles.TXT  bllfiles.TXT    cllfiles.TXT    really.txt.TXT
+    temp.TXT      tennis.TXT
+    ```
+
+## Usefull utilities
+1. **`cat`** - copy data from `stdin` to `stdout`.
+    * **`cat file1 file2 file3`** - concatenates 3 files
+    * create a file with content (stop - here is a special marker of end of input - we could specify any word, most common is EOF)
+        ```bash
+        cat > hot.txt <<stop
+        some string
+        stop
+        ```
+    * copy file1 to file2
+        ```bash
+        cat file1 > file2
+        ```
+    * при размещении фильтра cat между двумя программными каналами не будет осуществляться какой-либо обработки передающихся через них данных.
+        ```bash
+        $ tac count.txt | cat | cat | cat | cat | cat
+        три
+        два
+        один
+        ```
 1. **`tee`** - перемещает данные из стандартного потока ввода stdin в стандартный поток вывода stdout, а также записывает их в файл.
 
     ```bash
@@ -418,3 +428,18 @@
         ```
 
 1. **`uniq`** - отфильтровывает повторяющиеся строки
+1. **`head`** - get first 10 lines of file
+    * **`head -4`** - get first 4 files of file
+    * **`head -4c`** - get first 4 bytes of file
+1. **`tail`** - get last 10 lines of file
+    * **`tail -4`** - get last 4 files of file
+    * **`tail -4c`** - get last 4 bytes of file
+1. **`less`** get file content and format it into multiple pages (use space to navigate between them).
+1. **`tac`** - print file with reversed string order
+    ```bash
+    $ tac count.txt
+    три
+    два
+    один
+    ```
+1. **`fmt`** - formats text
