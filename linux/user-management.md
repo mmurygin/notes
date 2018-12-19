@@ -3,15 +3,15 @@
 ## Table of content
 - [Common](#common)
 - [CRUD Users](#crud-users)
+- [CRUD User Groups](#crud-user-groups)
 - [Add root access](#add-root-access)
 - [User Passwords](#user-passwords)
 - [Блокировка пользователей](#блокировка-пользователей)
-- [CRUD User Groups](#crud-user-groups)
 
 ## Common
 1. **`whoami`** - показывает имя учетной записи
 1. **`who`** - предоставляет информацию о том, какие пользователи осуществили вход в систему
-1. **`who am i`** - выводит информацию о сессии текущего пользователя
+1. **`whoami`** - выводит информацию о сессии текущего пользователя
 1. **`w`** - показывает информацию о пользователях, которые осуществили вход в систему, а так же о том, чем они занимаются
 1. **`id`** - показывает идентификатор текущего пользователя, основной идентификатор группы, а так же список групп, в которых состоит текущий пользователя.
     ```bash
@@ -48,6 +48,11 @@
         ```
 
 ## CRUD Users
+1. Files with default settings
+    * `/etc/default/useradd`
+    * `/etc/login.defs`
+    * `/etc/skel` - content of this directory will be copied to new user's home
+
 1. Локальная база данных учетных записей пользователей расположена в файле **`/etc/passwd`**.
     ```bash
     $ cat /etc/passwd | grep -E 'max|root'
@@ -110,6 +115,51 @@
     -rw-r--r--   1 root root   655 июн 24  2016 .profile
     ```
 
+## CRUD User Groups
+1. **`/etc/group`** - хранит информацию о членстве пользователях в группах
+    ```bash
+    $ tail -5 /etc/group
+    max:x:1000:
+    sambashare:x:124:max
+    docker:x:999:max
+    mysql:x:125:
+    debian-tor:x:126:
+    ```
+
+    * имя группы : зашифрованный пароль группы : идентификатор группы : список членов группы
+
+1. **`groupadd`** -  добавить группу
+1. **`groups username`** - список групп в которых состоит пользователь
+1. **`usermod -a -G groupname username`** - добавляет пользователя в группу
+1. **`groupmod`** - изменить параметры группы (`-n` изменить имя)
+1. **`groupdel`** - удалить группу
+1. **`gpasswd -A`** - делегирует функции контроля над группой другому пользователю
+
+    ```bash
+    root@$ gpasswd -A serena sports # user serena now have rights to edit sports user group
+    root@$ su - serena
+    serena@$ gpasswd -a harry sports # add user hary to group sports
+    ```
+
+    * **`/etc/gshadow`** - содержит информацию об администраторах групп пользователей
+    * **`gpasswd -A "" groupname`** - очищает список администраторов группы пользователей
+1. **`newgrp groupname`** - создаёт _дочернюю командную оболочку_ с новой _основной группой пользователей_
+    ```bash
+    $ touch st.txt
+    $ ls -l
+    total 0
+    -rw-r--r-- 1 root root 0 Sep  1 05:46 st.txt
+    $ newgrp test-gr
+    $ echo $SHLVL
+    2
+    $ touch st2.txt
+    $ ls -l
+    total 0
+    -rw-r--r-- 1 root root    0 Sep  1 05:46 st.txt
+    -rw-r--r-- 1 root test-gr 0 Sep  1 05:47 st2.tx
+    ```
+
+
 ## Add root access
 1. Information about users with root access is stored in `/etc/sudoers`
 1. Add file with the following content inside `/etc/sudoers.d/`
@@ -171,47 +221,3 @@
 1. Если пароль в `/etc/shadow` начинается с `!` то учетная запись не может использоваться.
 1. **`usermod -L username`** - блокировка записи
 1. **`usermod -U username`** - разблокировка записи
-
-## CRUD User Groups
-1. **`/etc/group`** - хранит информацию о членстве пользователях в группах
-    ```bash
-    $ tail -5 /etc/group
-    max:x:1000:
-    sambashare:x:124:max
-    docker:x:999:max
-    mysql:x:125:
-    debian-tor:x:126:
-    ```
-
-    * имя группы : зашифрованный пароль группы : идентификатор группы : список членов группы
-
-1. **`groupadd`** -  добавить группу
-1. **`groups username`** - список групп в которых состоит пользователь
-1. **`usermod -a -G groupname username`** - добавляет пользователя в группу
-1. **`groupmod`** - изменить параметры группы (`-n` изменить имя)
-1. **`groupdel`** - удалить группу
-1. **`gpasswd -A`** - делегирует функции контроля над группой другому пользователю
-
-    ```bash
-    root@$ gpasswd -A serena sports # user serena now have rights to edit sports user group
-    root@$ su - serena
-    serena@$ gpasswd -a harry sports # add user hary to group sports
-    ```
-
-    * **`/etc/gshadow`** - содержит информацию об администраторах групп пользователей
-    * **`gpasswd -A "" groupname`** - очищает список администраторов группы пользователей
-1. **`newgrp groupname`** - создаёт _дочернюю командную оболочку_ с новой _основной группой пользователей_
-    ```bash
-    $ touch st.txt
-    $ ls -l
-    total 0
-    -rw-r--r-- 1 root root 0 Sep  1 05:46 st.txt
-    $ newgrp test-gr
-    $ echo $SHLVL
-    2
-    $ touch st2.txt
-    $ ls -l
-    total 0
-    -rw-r--r-- 1 root root    0 Sep  1 05:46 st.txt
-    -rw-r--r-- 1 root test-gr 0 Sep  1 05:47 st2.tx
-    ```
