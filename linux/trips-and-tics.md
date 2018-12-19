@@ -1,5 +1,10 @@
 # Trips and tics
 
+- [Usefull commands](#usefull-commands)
+- [Compiled programs](#compiled-programs)
+- [Usefull installations](#usefull-installations)
+- [Usefull scripts](#usefull-scripts)
+
 ## Usefull commands
 1. Get the lines number of a directory
 
@@ -34,6 +39,12 @@
 1. Show binary dependencies
     ```bash
     ldd binary-path
+    ```
+
+## Usefull installations
+1. Install docker
+    ```bash
+    sudo curl -sSL https://get.docker.com/ | sh && sudo gpasswd -a ${USER} docker
     ```
 
 ## Usefull scripts
