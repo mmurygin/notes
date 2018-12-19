@@ -6,6 +6,7 @@
 - [Package Management](package-management.md)
 - [Text Processing](text-processing.md)
 - [File management](file-management.md)
+- [Logging](logging.md)
 - [Shell Scripts](shell-scripts.md)
 - [User Management](user-management.md)
 - [Vim](vim.md)
