@@ -49,6 +49,46 @@
 1. To browse packages navigate to [packages.ubuntu.com](packages.ubuntu.com)
 
 ## RPM
+1. List all packages installed on the system
+  ```bash
+  rpm -qa
+  ```
+
+1. Get package info
+  ```bash
+  rpm -qi package-name
+  ```
+
+1. List all files within a package
+  ```bash
+  rpm -ql package-name
+  ```
+
+1. List all configuration files within a package
+  ```bash
+  rpm -qc package-name
+  ```
+
+1. List all documentation files within a package
+  ```bash
+  rpm -qd package-name
+  ```
+
+1. To query data about not installed package
+  ```bash
+  rpm -qpi file # option p means query file
+  ```
+
+1. Get all scripts which are installed during the package installation
+  ```bash
+  rpm -qp --scripts pacakge-file
+  ```
+
+1. Get package name by file
+  ```bash
+  rpm -qf file-name
+  ```
+ 
 
 ## Yum
 
