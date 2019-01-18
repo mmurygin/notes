@@ -45,3 +45,9 @@
 1. `man 3 getaddinfo`
 1. `man inet`
 1. `man 7 ip`
+
+
+## Readming man
+1. `[ARG]` - there is an optional argument
+1. `[ARG]`... - there are zero or more optional arguments
+1. `[[month] year]` - if there is one argument it will be treated at `year` (remove a `[]`); if there are 2 arguments they will be treated at `month year`

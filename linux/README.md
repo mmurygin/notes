@@ -1,7 +1,7 @@
 ## Linux
 
 - [Help](help.md)
-- [Essential Commands](essential-commands.md)
+- [Essential Tools](essential-tools.md)
 - [History](history.md)
 - [Package Management](package-management.md)
 - [Text Processing](text-processing.md)

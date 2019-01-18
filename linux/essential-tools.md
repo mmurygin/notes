@@ -13,6 +13,10 @@
 1. **`last`** shows the last login users
 
 ## Working with archives
+1. **`tar cf filename.tar dir1 dir2`** - create tar file from multiple dirs
+1. **`tar czf filename.tar.gz dir`** - create tar file and pipe it through gzip
+1. **`tar xf filename.tar`** - extract file
+1. **`tar xzf filename.tar`** - unzip and extract file
 1. **`gzip`** - сжать файл
     ```bash
     gzip text.txt

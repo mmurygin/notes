@@ -55,7 +55,15 @@
         * **`[^xyz]`** - not one of
     * **`(...)`** - group of characters
         * `(123){3}` => 123123123
-
+1. The above table describes the difference between `BRE` \ `ERE` an `PRE`
+| Name                                      | BRE and ERE   | PRE
+| ----------------------------------------- | :------------ | :- |
+| any digit                                 | [[:digit:]]   | \d |
+| new line                                  | -             | \n |
+| tab                                       | -             | \t |
+| carriage return                           | -             | \r |
+| space,tab,new line,cariage return         | -             | \s |
+| not space,tab, new line, carriage return  | -             | \S |
 
 ## grep
 1. Search lines which match pattern
