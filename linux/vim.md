@@ -11,6 +11,7 @@
 * [Copying and Pasting](#copying-and-pasting)
 * [Find](#find)
 * [Multiple Edition](#multiple-edition)
+* [Searching](#searching)
 
 ## Switching modes
 1. **`a`** - go to editing mode and set cursor to new character
@@ -85,3 +86,6 @@
 1. Go to edit mode `shift i`
 1. Write something
 1. Press `esc` twice
+
+## Searching
+1. To set word boundaries during search use `/<pattern/>`
