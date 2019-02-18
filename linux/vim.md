@@ -2,7 +2,6 @@
 
 ## Table of content
 * [Table of content](#table-of-content)
-* [Switching modes](#switching-modes)
 * [Common](#common)
 * [Code navigation](#code-navigation)
 * [Go To](#go-to)
@@ -12,11 +11,7 @@
 * [Find](#find)
 * [Multiple Edition](#multiple-edition)
 * [Searching](#searching)
-
-## Switching modes
-1. **`a`** - go to editing mode and set cursor to new character
-1. **`i`** - go to edit mode and set cursor to current character
-1. **`esc`** - go to command mode
+* [Find and replace](#find-and-replace)
 
 ## Common
 1. **`.`** - repeat last command
@@ -39,15 +34,16 @@
 1. **`%`** - jump to the next matching parenthesis
 
 ## Go To
-1. **`g10`** - go to line 10
+1. **`:10`** - go to line 10
 1. **`gg`** - go to begining of a file
 1. **`G`** - go to the end of a file
 
 ## Code editing
 1. **`i`** - go to the edit mode under cursor
 1. **`a`** - go to the edit mode starting with next character to cursort
-1. **`o`** - insert new line and go to edit mode
-1. **`O`** - move to the end of line and go to edit mode
+1. **`A`** - go to the end of line and start edit mode
+1. **`o`** - insert new line after the current
+1. **`O`** - insert new line before the current 
 1. **`r`** - replace one character and not go to edit mode
 1. **`cc`** - delete current line and go to edit mode
 1. **`cw`**- delete next word and go to edit mode
@@ -89,3 +85,6 @@
 
 ## Searching
 1. To set word boundaries during search use `/<pattern/>`
+
+## Find and replace
+1. **`:%s/old/new/g`** - replace all occurences of old with new
