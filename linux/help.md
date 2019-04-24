@@ -2,6 +2,8 @@
 
 - [Man](#man)
 - [Usefull man pages](#usefull-man-pages)
+- [Info](#info)
+- [Reading command description](#reading-command-description)
 
 ## Man
 
@@ -32,12 +34,6 @@
     mandb
     ```
 
-1. List documentation for all installed packages
-    ```bash
-    ls /usr/share/lib
-    ```
-
-
 ## Usefull man pages
 1. `man man`
 1. `man apropos`
@@ -46,8 +42,16 @@
 1. `man inet`
 1. `man 7 ip`
 
+## Info
+1. `info` - more advance tool for storing and reading documentations
+1. `info --apropos some-command` - search through info documentation
+1. `info info` - documentation on how to use info
 
-## Readming man
+## Reading command description
 1. `[ARG]` - there is an optional argument
 1. `[ARG]`... - there are zero or more optional arguments
 1. `[[month] year]` - if there is one argument it will be treated at `year` (remove a `[]`); if there are 2 arguments they will be treated at `month year`
+
+## Additional documentation sources
+1. `/usr/share/doc` - contains files which were install within a package
+1. `rpm -qd package-name` - query all documentation files which were installed within package
