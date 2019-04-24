@@ -9,6 +9,7 @@
 
 ## Globbing
 1. **globbing** - file name substitution by bash
+1. **`man 7 glob`** - globbing overview
 1. Restricted amount of BRE is used for globbing
     * **`*`** - any character any number of times
     * **`?`** - any character one time
@@ -56,6 +57,7 @@
     * **`(...)`** - group of characters
         * `(123){3}` => 123123123
 1. The above table describes the difference between `BRE` \ `ERE` an `PRE`
+
 | Name                                      | BRE and ERE   | PRE
 | ----------------------------------------- | :------------ | :- |
 | any digit                                 | [[:digit:]]   | \d |
