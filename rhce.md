@@ -77,6 +77,18 @@
 1. link aggregation
     1. config: `'{"runner": {"name": "roundrobin"}}'`
 
+1. To create permanent static routes create file inside '/etc/sysconfig/network-scripts/route-interface`
+    
+    ```
+    cat /etc/sysconfig/network-scripts/route-eth0
+    10.0.10.0/24 via 10.0.10.4 dev eth0
+    ```
+1. IPv6 when set ipv6 address not to forget to put network mask
+  
+    ```
+    nmcli c modify 'System eth1' ipv6.method manual ipv6.address fd00::210/64
+    ```
+
 ## NFS
 1. before
     1. Add principal `kadmin.local -x ipa-setup-override-restrictions`
@@ -127,6 +139,14 @@
     ```
 
 1. `postqueue [-p] [-f]`
+
+## SELinux
+1. install policies documentation
+    ```
+    yum provides sepolicy
+    yum install -y policycoreutils-devel
+    sepolicy manpage -p /usr/share/man/man8
+    ```
 
 ## Questions
 1. login with ssh (without ipa-client)
