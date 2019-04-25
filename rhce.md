@@ -140,6 +140,33 @@
 
 1. `postqueue [-p] [-f]`
 
+## NTP
+1. configure ntp peer
+    ```
+    # /etc/chrony.conf
+    server someserver.com iburst
+    peer peer-hostname-or-ip
+    allow 10.0.10./24
+    ```
+
+1. allow firewall and restart service
+    ```
+    systemctl restart chronyd
+    firewall-cmd --permanent --add-service=ntp
+    firewall-cmd --reload
+    ```
+
+1. server fallback
+    ```
+    # /etc/chrony.conf
+    local stratum 10
+    ```
+
+1. check sources
+    ```
+    chronyc sources
+    ```
+
 ## SELinux
 1. install policies documentation
     ```
