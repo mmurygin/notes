@@ -10,4 +10,5 @@
 - [Databases](databases)
 - [Computer Science](computer-science)
 - [C++](cpp)
+- [RHCE](rhce.md)
 - [To Learn](learn.md)
