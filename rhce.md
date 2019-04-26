@@ -1,5 +1,21 @@
 # RHCE
 
+## Table of contents
+* [Provide repo from disk via ftp](#provide-repo-from-disk-via-ftp)
+* [Kerberous auth](#kerberous-auth)
+* [NFS](#nfs)
+* [Samba](#samba)
+* [Scripts](#scripts)
+* [Networking](#networking)
+* [DNS](#dns)
+* [Mail](#mail)
+* [HTTP](#http)
+* [Mariadb](#mariadb)
+* [SSH](#ssh)
+* [NTP](#ntp)
+* [SELinux](#selinux)
+* [Questions](#questions)
+
 ## Provide repo from disk via ftp
 1. try to mount iso disk manually to get file system type:
     ```bash
@@ -109,9 +125,10 @@
         write list = @sales
         path = /srv/samba/sales
         ```
-        
+
     1. `systemctl enable --now smb nmb`
     1. `firewall-cmd --permanent --add-service=samba && firewall-cmd --reload`
+    1. enable home dirs: set selinux var to on `samba_enable_home_dirs`
 1. **client**
     1. `yum install -y samba-client cifs-utils`
     1. view available shares
@@ -128,7 +145,7 @@
         ```
         # single user mount
         //server/path /path-to-mount cifs _netdev,credentials=/path-to-creds
-        
+
         # multiple users mount
         //server/path /path-to-mount cifs _netdev,credentials=/path-to-creds,sec=ntlmssp,multiuser
         ```
@@ -145,7 +162,7 @@
     su user
     cifscreds add server.home.local
     toush /mnt/f1
-    ```    
+    ```
 
 1. **tips**
     1. `cifscreds` works only after `su user`. the argument `-u` for some reason does not work
@@ -248,7 +265,7 @@
     ```
     ssh -fNL 10.0.10.3:2022:10.0.10.4:80 server.home.local
     ```
-  
+
 ## NTP
 1. configure ntp peer
     ```
