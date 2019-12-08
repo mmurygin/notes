@@ -1,5 +1,8 @@
 # Performance Test
 
+  * [Tools](#tools)
+  * [Types](#types)
+
 ## Tools
 1. Infrastructure tests
     * Disks - **fio**

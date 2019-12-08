@@ -1,4 +1,8 @@
 # Scaling Frontend
+
+  * [Architecture](#architecture)
+  * [The role of reverse proxy](#the-role-of-reverse-proxy)
+
 ## Architecture
 1. CDN
 1. LoadBalancer

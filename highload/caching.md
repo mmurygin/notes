@@ -13,3 +13,7 @@
 1. Static files headers
 
     ![Static files headers](./img/static-files-headers.jpg)
+
+1. Non cachable objects HTTP headers
+
+    ![Non cachable objects](./img/non-cachable-files-headers.jpg)

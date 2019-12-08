@@ -14,5 +14,7 @@
 - [Configuration](configuration.md)
 - [Hardware](hardware.md)
 - [Bash Cheetsheet](linux_bash_cheatsheet.pdf)
+- [Storage](storage.md)
 - [Vagrant](vagrant.md)
+- [Docker](docker.md)
 - [Resources](resources.md)

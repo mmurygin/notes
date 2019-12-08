@@ -1,5 +1,17 @@
 # DataStore
 
+  * [Performance](#performance)
+  * [Replication](#replication)
+    + [Binary logs and two-phase commits](#binary-logs-and-two-phase-commits)
+    + [Why](#why)
+    + [How](#how)
+    + [Trics](#trics)
+    + [High Availability](#high-availability)
+  * [Sharding](#sharding)
+    + [Pros](#pros)
+    + [Challenges](#challenges)
+  * [NoSQL](#nosql)
+
 ## Performance
 1. It's worth to pay attention on **Active Dataset size** - it's the size of most used data. For example, there could be 1TB data in total, but only 1GB is used actively. It means, that if this 1G could be placed into memory - we won't ever read from disk.
 
