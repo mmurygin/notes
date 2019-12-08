@@ -60,7 +60,7 @@
 
 1. CDN
 
-    ![CND](./img/cdn.png)
+    ![CND](./img/cdn.jpg)
 
 ## Scaling Object Cache
 1. Data partitioning for object cache is quite simple. There are a lot of libraries which allow to accept multiple cache servers.
