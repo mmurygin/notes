@@ -60,7 +60,13 @@
 
 1. CDN
 
-    ![CND](./img/cdn.jpg)
+    * CDN Self Hosted App
+
+        ![CND Self Hosted](./img/cdn-self-hosted.jpg)
+
+    * CDN AWS
+
+        ![CDN AWS](./img/cdn-aws.jpg)
 
 ## Scaling Object Cache
 1. Data partitioning for object cache is quite simple. There are a lot of libraries which allow to accept multiple cache servers.
