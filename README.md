@@ -1,15 +1,12 @@
 # My learning notes
 
+- [Computer Science](computer-science)
 - [Linux](linux)
+- [Programming Languages](lang)
 - [HighLoad](highload)
 - [Networking](networking)
 - [Web Development](web)
-- [Javascript](js)
-- [Google Cloud](google-cloud)
 - [Microservices](microservices)
 - [Testing](tests)
 - [Databases](databases)
-- [Computer Science](computer-science)
-- [C++](cpp)
-- [RHCE](rhce.md)
 - [To Learn](learn.md)
