@@ -6,4 +6,3 @@
 - [Assembly](assembly.md)
 - [Algorithms](algs.md)
 - [Hashing](hashing.md)
-- [Python](python.md)
