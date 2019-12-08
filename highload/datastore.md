@@ -1,5 +1,8 @@
 # DataStore
 
+## Performance
+1. It's worth to pay attention on **Active Dataset size** - it's the size of most used data. For example, there could be 1TB data in total, but only 1GB is used actively. It means, that if this 1G could be placed into memory - we won't ever read from disk.
+
 ## Replication
 
 ### Binary logs and two-phase commits
@@ -42,3 +45,25 @@
     * It's easier to perform maintanance in this case
     * Although it's possible to perform writes on both masters - it's not recomended. Because of the complexity of this setup and complexity of handling the conflicts
     * In case when we have only one master for writes we could easily switch to another master in case of failure.
+
+
+## Sharding
+1. **Sharding** it is data partitioning by some predefined partition keys and rules.
+    * for example we could place every user with odd id in database 1 and every user with even id with database2
+
+### Pros
+1. With sharding we could implement horizontal scalability of our reads and writes, in addition to this we could partition data, and as a result we the number of data that we store depends on the number of servers, but not the size of the server.
+
+### Challenges
+1. Developers should have knowledge on how to choose partition key and how to work correctly with shared data
+1. It's become challenging (or sometimes impossible) to perform aggregation queries between shards
+1. It's very difficult to reshard data - for example at the begginning you had 2 shards, but now to fullfill all the requirements you need 4 shards. So it's very difficult to reshard data on life servers with simple setup. There are two ways to handle resharding:
+    * Have separate database, which is responsible for storing and providing connectivity between entity id and shard id
+    * Prepare shards in advance
+        * Estimate the amount of data that you will have
+        * How many shards do you need to maintain this amount of data (for example we have 16)
+        * Create a separate database for every future shard (so we have 16 databases in total)
+        * Put all this databases into the minimun amount of servers (for example 2 servers with 8 databases each)
+        * When you need to scale horizontally just move some databases to another servers
+
+## NoSQL

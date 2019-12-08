@@ -8,6 +8,4 @@
     - [frontend-backend](frontend-backend.md)
     - [nginx](nginx.md)
 - [MVC](mvc.md)
-- [Cashing](caching.md)
-- [Security](security.md)
 - [Google Analytics](google-analytics.md)
