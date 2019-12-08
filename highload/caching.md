@@ -78,7 +78,7 @@
 
     * When the new shard is added - adjust key range a little bit
 
-        ![Keys Partitioning New shard](./img/keys-paritioning-new-shard.jpg)
+        ![Keys Partitioning New shard](./img/keys-partitioning-new-shard.jpg)
 
 ## Caching Tips
 1. Decrease **Key Space**
