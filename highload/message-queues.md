@@ -25,3 +25,18 @@
 1. **Threating Message Queue as Database** - by deleting or updating messages in the queue
 1. **Coupling Message Producers with Consumers** - e.g. by sharing common classes for data serialization\desirialization
 1. **Lack of Poison Message Handling**
+
+## Existed Solutions
+1. **Amazon SQS** - the easies and cheapest way to get started. If you don't manage very highload app with a lot of customer demands it's the best option
+1. **RabbitMQ**
+    **+** supports routing
+    **+** configuring lifetime via REST API
+    **-** doesn't have scheduled message delivery
+    **-** doesn't have good horizontal scaling
+1. **ActiveMQ**
+    **+** some queue code could be embeded into your app (if it's written in Java), by doing it you decrease coupling even more
+    **+** have message groups to perform In-Order Delivery
+    **-** performs badly at highload
+
+## Scalability
+1. We could easily distribute messages between different brokers just by choosing random from the brokers pool. Random distribution works well for most cases, but if you use ActiveMQ with message groups you should use message group id as a partition key.
