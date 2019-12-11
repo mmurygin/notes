@@ -17,6 +17,8 @@
 
 ## Replication
 
+    ![Replication](./img/master-slave-replication.jpg)
+
 ### Binary logs and two-phase commits
 1. All the writes which go to database at first are written to the binlog file
 1. Binlog file could be:
@@ -58,13 +60,22 @@
     * Although it's possible to perform writes on both masters - it's not recomended. Because of the complexity of this setup and complexity of handling the conflicts
     * In case when we have only one master for writes we could easily switch to another master in case of failure.
 
+    ![Master-Master Relication](./img/master-master-replication.jpg)
+
+### Challenges
+1. Replication lag
+1. Increased complexity
+1. No built-in support for restoring from failure
+
 
 ## Sharding
 1. **Sharding** it is data partitioning by some predefined partition keys and rules.
     * for example we could place every user with odd id in database 1 and every user with even id with database2
 
+    ![Sharding](./img/sharding.jpg)
+
 ### Pros
-1. With sharding we could implement horizontal scalability of our reads and writes, in addition to this we could partition data, and as a result we the number of data that we store depends on the number of servers, but not the size of the server.
+1. With sharding we could implement horizontal scalability of our reads and writes, in addition to this we could partition data, and as a result the number of data that we store depends on the number of servers, but not the size of the server.
 
 ### Challenges
 1. Developers should have knowledge on how to choose partition key and how to work correctly with shared data
@@ -78,4 +89,16 @@
         * Put all this databases into the minimun amount of servers (for example 2 servers with 8 databases each)
         * When you need to scale horizontally just move some databases to another servers
 
+## Replication and Sharding example
+
+![Replication and Sharing](./img/replication-and-sharding.jpg)
+
 ## NoSQL
+
+### Cassandra
+1. All nodes in a Cassandra cluster are functionally equal. Clients can connect to any of Cassandra's nodes, and when they connect that node becomes the client's session coordinator. Clients do not need to know which nodes have what data, nor do they have to be aware of outages, repairing data, or replication.
+1. Read
+    ![Cassandra Read](./img/cassandra-read.jpg)
+
+1. Write
+    ![Cassanra Write](./img/cassandra-write.jpg)
