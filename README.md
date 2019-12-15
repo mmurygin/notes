@@ -1,9 +1,9 @@
 # My learning notes
 
 - [Computer Science](computer-science)
+- [HighLoad](highload)
 - [Linux](linux)
 - [Programming Languages](lang)
-- [HighLoad](highload)
 - [Networking](networking)
 - [Web Development](web)
 - [Microservices](microservices)
