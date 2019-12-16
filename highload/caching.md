@@ -80,7 +80,7 @@
 
         ![Keys Partitioning New shard](./img/keys-partitioning-new-shard.jpg)
 
-## Caching Tips
+## Caching Optimization
 1. Decrease **Key Space**
 1. Increase **TTL**
 1. Decrease **Object size**
@@ -106,3 +106,11 @@
     aggregated time spent = time spent per request * number of requests
     ```
 
+## Caching and Availability
+1. Cache should be used only for speeding up requests, not for handling load. Because if you system can not handle load without cache you decrease availability:
+1. Cache servers are not very reliable by it's nature. So they could failure.
+1. If you system could not workd without cache you should take into account the following:
+    * **Thunering herd** - when one of the popular keys are not in the cache a lot of concurrent requests will go for the same key => and you system could process a huge amount identical requests simultaneously
+    * **Cold Cache** - after the restart you need to "heat" the cache because if it's empty you will get enormous load on the database. To handle after restart:
+        * lock reads
+        * run script for putting popular keys into cache
