@@ -1,5 +1,10 @@
 # Message Queues
 
+## Messaging problems
+1. What if topic gets too big for one computer?
+1. What if one computer is not reliable enough?
+1. How strongly can we guarantee delivery?
+
 ## Benefits
 1. **Enabling Asynchronous Processing**
     * Interacting with remote servers - when you don't want to depend on the remote server availability - push message to queue and perform job when remote server is available

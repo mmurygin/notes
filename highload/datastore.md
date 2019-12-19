@@ -12,7 +12,25 @@
     + [Challenges](#challenges)
   * [NoSQL](#nosql)
 
+## SQL vs NoSQL
+1. SQL
+    * Pros
+        * stores data in uniform way, so that you could query anything
+        * data is consitent in the meaning of relations
+        * no dublicated data => easy to update
+    * Cons
+        * challenging to scale horizontally
+1. NoSQL
+    * Pros
+        * easy to scale horizontally
+    * Cons
+        * there is data dublication
+        * data ara not stored in uniform way, that means that you are restricred in the variety of queires you can perform
+        * some queries will be very heavy, especially "join-like". And most of the NoSQL engines does not supports joins
+1. Usually if you don't need scale it's better to use traditional SQL database
+
 ## Performance
+1. General advice
 1. It's worth to pay attention on **Active Dataset size** - it's the size of most used data. For example, there could be 1TB data in total, but only 1GB is used actively. It means, that if this 1G could be placed into memory - we won't ever read from disk.
 
 ## Replication
