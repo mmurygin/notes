@@ -3,6 +3,7 @@
 - [Computer Science](computer-science)
 - [HighLoad](highload)
 - [Linux](linux)
+- [SRE](sre)
 - [Programming Languages](lang)
 - [Networking](networking)
 - [Web Development](web)
