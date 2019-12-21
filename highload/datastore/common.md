@@ -9,6 +9,7 @@
         * consistensy, regarding foreign keys
     * Cons
         * challenging to scale horizontally
+        * difficult to change schema on a big running system
 1. NoSQL
     * Pros
         * easy to scale horizontally

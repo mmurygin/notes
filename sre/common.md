@@ -26,5 +26,16 @@
 1. There are two types of work on improving reliability
     * reactvie - well trained incident response
     * proactive - removing bottlenecks, automating processes and isolating failure.
+1. There is always tension between reliability and new features. The more features you release the less reliabile you become.
 
+## MTT
+1. Minimal time to recovery consist of:
+    * time to discover
+    * time to resolution
+1. It's also very important to consider the "impact" of the issue.
 
+## SLA and SLO
+1. Service Level Agreement - promise to customers, if this promise is failed there are financial (or other) consequences.
+1. Service Level Objective - internal promise to meet customers objectives. Should be more strict than SLA, because usually customers are affected much earlier than the SLA breach
+
+    ![SLA vs SLO](./img/slo-sla.png)
