@@ -1,6 +1,6 @@
 # SRE
 
-## Key Areas of DevOps culture
+## SRE Tasks
 ![SRE Tasks](./img/sre-tasks.png)
 
 1. **Reduce Organization Silos** - reduce the barier between developers and operation guys.
@@ -17,4 +17,14 @@
 1. Measure Everyting
     * amount of toil we have
     * the reliability of our systems
+
+## Reliability
+1. **Reliability** - when system is able to perform it's functions.
+1. Reliability is the most important feature.
+1. Users, not monitoring decide reliability.
+1. Well engineered software could get you up to the three nines (not more!)
+1. There are two types of work on improving reliability
+    * reactvie - well trained incident response
+    * proactive - removing bottlenecks, automating processes and isolating failure.
+
 

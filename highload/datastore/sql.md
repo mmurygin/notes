@@ -1,4 +1,4 @@
-# DataStore
+# SQL
 
   * [Performance](#performance)
   * [Replication](#replication)
@@ -10,24 +10,7 @@
   * [Sharding](#sharding)
     + [Pros](#pros)
     + [Challenges](#challenges)
-  * [NoSQL](#nosql)
 
-## SQL vs NoSQL
-1. SQL
-    * Pros
-        * stores data in uniform way, so that you could query anything
-        * data is consitent in the meaning of relations
-        * no dublicated data => easy to update
-    * Cons
-        * challenging to scale horizontally
-1. NoSQL
-    * Pros
-        * easy to scale horizontally
-    * Cons
-        * there is data dublication
-        * data ara not stored in uniform way, that means that you are restricred in the variety of queires you can perform
-        * some queries will be very heavy, especially "join-like". And most of the NoSQL engines does not supports joins
-1. Usually if you don't need scale it's better to use traditional SQL database
 
 ## Performance
 1. General advice
@@ -35,7 +18,7 @@
 
 ## Replication
 
-    ![Replication](./img/master-slave-replication.jpg)
+    ![Replication](../img/master-slave-replication.jpg)
 
 ### Binary logs and two-phase commits
 1. All the writes which go to database at first are written to the binlog file
@@ -78,7 +61,7 @@
     * Although it's possible to perform writes on both masters - it's not recomended. Because of the complexity of this setup and complexity of handling the conflicts
     * In case when we have only one master for writes we could easily switch to another master in case of failure.
 
-    ![Master-Master Relication](./img/master-master-replication.jpg)
+    ![Master-Master Relication](../img/master-master-replication.jpg)
 
 ### Challenges
 1. Replication lag
@@ -90,7 +73,7 @@
 1. **Sharding** it is data partitioning by some predefined partition keys and rules.
     * for example we could place every user with odd id in database 1 and every user with even id with database2
 
-    ![Sharding](./img/sharding.jpg)
+    ![Sharding](../img/sharding.jpg)
 
 ### Pros
 1. With sharding we could implement horizontal scalability of our reads and writes, in addition to this we could partition data, and as a result the number of data that we store depends on the number of servers, but not the size of the server.
@@ -109,14 +92,5 @@
 
 ## Replication and Sharding example
 
-![Replication and Sharing](./img/replication-and-sharding.jpg)
+![Replication and Sharing](../img/replication-and-sharding.jpg)
 
-## NoSQL
-
-### Cassandra
-1. All nodes in a Cassandra cluster are functionally equal. Clients can connect to any of Cassandra's nodes, and when they connect that node becomes the client's session coordinator. Clients do not need to know which nodes have what data, nor do they have to be aware of outages, repairing data, or replication.
-1. Read
-    ![Cassandra Read](./img/cassandra-read.jpg)
-
-1. Write
-    ![Cassanra Write](./img/cassandra-write.jpg)
