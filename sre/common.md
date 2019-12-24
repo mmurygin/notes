@@ -36,6 +36,6 @@
 
 ## SLA and SLO
 1. Service Level Agreement - promise to customers, if this promise is failed there are financial (or other) consequences.
-1. Service Level Objective - internal promise to meet customers objectives. Should be more strict than SLA, because usually customers are affected much earlier than the SLA breach
+1. Service Level Objective - internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach
 
     ![SLA vs SLO](./img/slo-sla.png)
