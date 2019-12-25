@@ -59,10 +59,18 @@
         * improve canary analysis
         * engineering service to work in partial failure case
 
-## SLA and SLO
-1. Service Level Agreement - promise to customers, if this promise is failed there are financial (or other) consequences.
-1. Service Level Objective - internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach
+## SLA, SLO, SLI
+1. **Service Level Agreement** (SLA) - promise to customers, if this promise is failed there are financial (or other) consequences.
+1. **Service Level Objective** (SLO) - internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach
 
     ![SLA vs SLO](./img/slo-sla.png)
 
 1. SLO need to be adjusted over the time.
+1. **Service Level Indicator** (SLI) - the metric used to measure SLO.
+1. How to choose good SLI:
+    * it should be quantifiable
+    * it should be close to user expirience (users do not care if your database is down or if the load balancer is overloaded, from their perspective the website is down or slow)
+    * should be stable without a big variance
+
+    ![Choosing SLI](./img/choosing-sli.png)
+

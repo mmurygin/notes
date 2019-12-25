@@ -1,6 +1,7 @@
 ## Linux
 
 - [Help](help.md)
+- [Troubleshooting](troubleshooting.md)
 - [Essential Tools](essential-tools.md)
 - [History](history.md)
 - [Package Management](package-management.md)
