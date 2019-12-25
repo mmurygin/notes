@@ -38,13 +38,35 @@
         * PostgreSQL it's not an issue, because most of the work slave perform is IO bound (physical replicaion)
         * it's an issue for MySQL, because most of the slave work is CPU bound (due to logical binlog format). So we need to pay attention and monitor at the replication lag. MySQL 5.7+ can update different tables in multiple threads. This way we decrease the influence of single-threaded apply.
 
+### Setting up New Followers
+1. Take a consistent shapshot of the leader's database
+1. Copy snapshoot to the follower
+1. Start follower, when follower connects to the leader it will stream and appply the difference between snapshoot and current state.
 
-### Binlog (WAL)
+### Handling Node Outages
+#### Follower Failure
+1. Just spin up new folloer with the traditional steps
+
+#### Leader Failure
+1. One of the followers is choosen as new leader
+1. Clients need to be reconfigured to send their writes to the new leader
+1. Other followers need to start consuming data changes from the new leader
+
+
+#### Challenges with Leader Failover
+1. If we use authomatic failover we could wrongly detect leader as failed (for example when leader is overloaded on CPU and can not respond to queries). In this case after we perform failover process we could have two leaders. STONITH is required here to prevent **split brain**. Whan would happend if we apply big migration? In some cases, both nodes could be down.
+1. If we use async replication the new leader may not have received all the writes from the old one. As a result we will lose data. It could be even more dangerous in case when external system depends on this data (for example Github issue with Redis and private repositories)
+1. What is the right timeout before the leader is declared dead? If it's to high we will loose availability, if it's to low we will perform unnecessary failovers (it's especially dangerous when system struggling with highload or network problems, because we make them even worse).
+
+### Implementation of replication logs
 1. All the writes at first are written to the binlog file
 1. Binlog (WAL) file could be:
-    * Physical - contain exact changes within pages (used in PostgreSQL). As a result we have bite-to-bite equality between master and slave
+    * Physical - contain phisical changes within pages
+        **+** byte-to-byte correspondence between leader and follower
+        **+** no additional CPU load on follower for performing statement
+        **-** very sensetive to database version changes. It's more difficult to perform update without downtime
     * Statement based (like INSERT INTO....)
-        * the downside of this type of replication that not all the statements produce identical results on master and slave. So developers and DBAs need to pay attention on this
+        **-** all the statements produce identical results on master and slave. As a result we could have different data on master and slave
     * Row-Based - the actual changes are replicated.
         * **+** all the operations are supported
         * **-** the size of binary log is much bigger (especially for write intensive applications, when writes happens in batches)
@@ -54,3 +76,7 @@
     * Binarylog allows to perform replication and point in time recovery.
 
 
+### Replication Lag
+1. Reading Your Own Writes
+1. Monotonic Reads
+1. Consistent Prefix Read
