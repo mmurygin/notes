@@ -74,3 +74,24 @@
 
     ![Choosing SLI](./img/choosing-sli.png)
 
+## SLI
+### Request / response SLI
+1. **Availability** - the proportion of valid requests served successfully
+1. **Latency** - the proportion of valid requests served faster than a threshold. Should be set on the long tail. For example 99% of the requests should be served within 100ms. But it's always worth to consider other percentiles like (75%, 90%, 95%).
+1. **Quality** - the proportion of valid requests served without degrading quality. For example in case of an outage you could serve stale requests from cache. In this case, you still fullfill latency and availability SLI, but you work with degraded quality.
+
+### Data Processing SLI
+1. **Freshness** - the proportion of valid data updated more recently than a threshold.
+    * for batch processing
+        ![Fresshness of batch processing workload](./img/batch-freshness.png)
+
+    * for stream processing
+        ![Stream freshness](./img/stream-freshness.png)
+1. **Correctness** - the proportion of valid data producing correct output. The measurement of correctness should be independent from the code calculating data, otherwise in case when the result is incorrect we will still count it as correct one.
+1. **Coverage** - the proportion of valid data processed successfully (similar to availability for request/response).
+1. **Throughput** - the proportion of time where the data processing rate is faster than a threshold (similar to latency for request/response). Easy to explain in bytes per second, the system should expose this metric.
+
+### Storage SLI
+1. **Availability**
+1. **Latency**
+1. **Durability**

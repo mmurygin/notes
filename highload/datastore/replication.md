@@ -1,6 +1,6 @@
 # Replication
 
-## Goal
+## Use Cases
 1. Scale read requests horizontally
 1. Increase availability
     * failover
@@ -77,6 +77,32 @@
 
 
 ### Replication Lag
-1. Reading Your Own Writes
-1. Monotonic Reads
-1. Consistent Prefix Read
+1. Reading your own writes - when you write something and immideately read it you get the old value. To prevent:
+    * if user edited value read it only from master during some time
+    * track the `updatedAt` field and read from master when `updatedAt` within some interval
+1. Monotonic reads - the effect of moving back in time. For example there was a list with one element, someone added 1 more element to it. At the same time, you queiried that list and saw the result as 2 elements, then you queiried againg (request went to slave where changes were not applied) and you get the list with only one element.
+    * one way of achieving monotonic reads it to make sure that each user always makes their reads from the same replica.
+1. Consistent prefix read - happens in partitioned databases.
+    ![Consistent prefix read](./img/consistent-prefix-read.png)
+
+
+## Multi-Leader Replication
+### General Idea
+![Multi Leader Replication](./img/multi-leader-replication.png)
+
+### Use Cases
+1. You do not scale writes with multi-leader deployment. Because you still need to apply all changes to both masters!
+1. Multi-Datacenter Operation
+    * improve performance - backend talk only with database located in the same datacenter
+    * tolerance of datacenter outages
+    * tolerance of network problems - traffic between datacenters usually goes over the public internet, which is less reliable than local network. A single leader configuration is very sensitive to problem in this inter-datacenter link.
+1. Clients with Offline Operation
+    * mobile clients
+    * remote clients where internet is not always available
+    * collobarative editing (like google docs)
+
+### Challenges
+1. The biggest challenge in multi-master configuration is handling and resolution of conflicts. It's very difficult to implement right, so if possible avoid multi-leader configuration.
+
+
+## Leaderless Replication
