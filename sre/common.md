@@ -112,6 +112,11 @@
     * interactive response (~0.4s)
 
 ## Setting SLOs
+1. Steps
+    * Choose an **SLI specification for the menu** - high-level descriptions of a dimension of reliability that we would like to measure about our service, ideally taking the form "the proportion of valid events that were good"
+    * Define **SLI Implementations** - concrete definitions of what the events are, what makes them valid for inclusion into the SLI, what makes them good, and how/where they are measured
+    * Walk through the user journey and look for coverage gaps.
+    * Set aspirational SLO targets based on business needs.
 1. Users happinest depends on past expirience. If you performed extremely well, than degraded performance a little bit => user will be unhappy.
 1. **Achievable targets** - represent past performance. It's good to start from historical data when you first set your SLO.
 1. **Aspirational targets** - represent business needs. When you set your SLO based on historical data you can not be sure that customers are happy with it (but anyway it's a good start). So once you set historical SLO work with your businees to set Aspirational SLOs. Keep in mind the faster you want to build - the more expensive it is.
