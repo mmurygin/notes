@@ -95,3 +95,24 @@
 1. **Availability**
 1. **Latency**
 1. **Durability**
+
+
+## Managing Complexity
+1. It's best to have 1-3 SLI for each user journey.
+    * Not all metrics make good SLIs.
+    * More SLIs result in higher cognitive load.
+    * More SLIs lower signal-to-noise ratio.
+1. Priorotize only journey that have significant impart on user expirience.
+1. Usually we have much more metrics than SLI
+    * SLIs tell us that something went wrong
+    * Metrics tell us what exactly went wrong
+1. It is usefull to devide thresholds up to 3 buckets:
+    * background processing (the highest latency treshold, e.g. 5s)
+    * write response (e.g. 1.5s because users are use to have writes slover than read)
+    * interactive response (~0.4s)
+
+## Setting SLOs
+1. Users happinest depends on past expirience. If you performed extremely well, than degraded performance a little bit => user will be unhappy.
+1. **Achievable targets** - represent past performance. It's good to start from historical data when you first set your SLO.
+1. **Aspirational targets** - represent business needs. When you set your SLO based on historical data you can not be sure that customers are happy with it (but anyway it's a good start). So once you set historical SLO work with your businees to set Aspirational SLOs. Keep in mind the faster you want to build - the more expensive it is.
+1. Coninually improve your SLO until then good enough for user happinest.
