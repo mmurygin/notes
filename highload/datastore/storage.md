@@ -63,7 +63,7 @@
 1. Used as a separate datastore to perform not-critical analytics queries
 1. Stream data example:
     ![Data Warehouse Streaming](./img/data-warehouse-streaming.png)
-1. For analytics queires it's usefull to store data in formats like **start**
+1. For analytics queires it's usefull to store data in formats like **star**
     ![Data Warehouse Start](./img/data-warehouse-start.png)
 
 ## Column-Oriented databases
