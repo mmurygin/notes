@@ -1,5 +1,20 @@
 # Design
 
+* [Reliability](#reliability)
+* [Scalability](#scalability)
+* [Maintainability](#maintainability)
+* [Simplicity](#simplicity)
+  + [Loose Coupling](#loose-coupling)
+  + [Don't Repeat YourSelf](#dont-repeat-yourself)
+  + [Coding to Contract](#coding-to-contract)
+  + [Draw Diagrams](#draw-diagrams)
+  + [Single Responsibility](#single-responsibility)
+  + [Open-CLosed Principle](#open-closed-principle)
+  + [Depenency Injection](#depenency-injection)
+  + [Inversion Of Control](#inversion-of-control)
+* [Design For Scale](#design-for-scale)
+  + [Self Healing](#self-healing)
+
 ## Reliability
 1. **Reliability** - the system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error)
 1. Works correctly means
@@ -45,7 +60,7 @@
 1. **Avoid Overengineering** -  do not try to predict every possible case how you software will be used. Good design allows you to add more details and features later on, but does not require you to build a massive solution up front.
 1. Try TDD - in addition to testability you will gain the view on your system from customer point of view
 
-## Loose Coupling
+### Loose Coupling
 1. Decrease the amount of connection between your modules and services.
     ![Loose Coupling](./img/loose-coupling.jpg)
 1. Avoid unnecessary coupling
@@ -53,25 +68,25 @@
     * prevent the necessety of having knowledge on which order your API method should be used
     * avoid circular depencencies and try to make things hierarchical
 
-## Don't Repeat YourSelf
+### Don't Repeat YourSelf
 1. Following an inefficient process (e.g. timewasting meetings)
 1. Lack of automation
 1. Copy-Paste programming
 1. Do not repeat someone else (try to use existed solution instead of building your own)
 
-## Coding to Contract
+### Coding to Contract
 
-## Draw Diagrams
+### Draw Diagrams
 
-## Single Responsibility
+### Single Responsibility
 
-## Open-CLosed Principle
+### Open-CLosed Principle
 1. Code should be open for extension and closed for modification. It means that code should be able to support new features without extensions
 1. Good example is taking compare function as an argument of sort function
 
-## Depenency Injection
+### Depenency Injection
 
-## Inversion Of Control
+### Inversion Of Control
 
 ## Design For Scale
 1. Adding more clones
