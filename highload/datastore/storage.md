@@ -53,7 +53,6 @@
 
 ## OLTP vs OLAP
 | **Property**         | **OLTP**                                          | **OLAP**                                  |
-
 |----------------------|---------------------------------------------------|-------------------------------------------|
 | Main Read pattern    | Small number of records per query, fetched by key | Aggregate over large number of records    |
 | Main write pattern   | Random-access, low-latency writes for user input  | Bulk import or event stream               |
