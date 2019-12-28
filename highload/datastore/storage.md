@@ -53,6 +53,7 @@
 
 ## OLTP vs OLAP
 | **Property**         | **OLTP**                                          | **OLAP**                                  |
+
 |----------------------|---------------------------------------------------|-------------------------------------------|
 | Main Read pattern    | Small number of records per query, fetched by key | Aggregate over large number of records    |
 | Main write pattern   | Random-access, low-latency writes for user input  | Bulk import or event stream               |
@@ -62,9 +63,9 @@
 ## DataWarehouse
 1. Used as a separate datastore to perform not-critical analytics queries
 1. Stream data example:
-    [Data Warehouse Streaming](./img/data-warehouse-streaming.png)
+    ![Data Warehouse Streaming](./img/data-warehouse-streaming.png)
 1. For analytics queires it's usefull to store data in formats like **start**
-    [Data Warehouse Start](./img/data-warehouse-start.png)
+    ![Data Warehouse Start](./img/data-warehouse-start.png)
 
 ## Column-Oriented databases
 
