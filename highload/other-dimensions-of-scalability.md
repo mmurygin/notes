@@ -1,4 +1,4 @@
-# General Demensions of Scalability
+# General Dimensions of Scalability
 
 ## Scaling Productivity Through Automation
 1. Add Automated Tests

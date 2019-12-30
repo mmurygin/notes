@@ -2,8 +2,8 @@
 
 - [Design](design.md)
 - [Frontend](frontend.md)
-- [Datastore](datastore)
 - [Caching](caching.md)
-- [Load Test](load-tests.md)
+- [Datastore](datastore)
 - [Message Queues](message-queues.md)
-- [General](general.md)
+- [Load Test](load-tests.md)
+- [Other Dimensions of Scalability](other-dimensions-of-scalability.md)

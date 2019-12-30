@@ -15,6 +15,7 @@
 * [Design For Scale](#design-for-scale)
   + [Self Healing](#self-healing)
 
+
 ## Reliability
 1. **Reliability** - the system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error)
 1. Works correctly means
@@ -88,10 +89,15 @@
 
 ### Inversion Of Control
 
+## Architecture
+![Scalable Architecture](./img/scalable-architecture.png)
+
 ## Design For Scale
-1. Adding more clones
-1. Functional Partitioning
-1. Data Partitioning
+1. Vertical Scaling
+1. Horizontal Scaling
+    * Replication (add clones)
+    * Functional Partitioning
+    * Data Partitioning
 
 ## Self Healing
 1. System is never up, it's always particially down

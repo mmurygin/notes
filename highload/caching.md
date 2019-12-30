@@ -46,7 +46,6 @@
 1. Browsers Cache
 1. Caching Proxy - setup up by enterprice companies or ISP.
     * this type of proxies loses popularity because of wide spreading of HTTPS (now proxies can not decrypt headers to examine traffic)
-
     ![Caching Proxy](./img/caching-proxy.jpg)
 
 1. Reverse Proxy
@@ -67,6 +66,8 @@
     * CDN AWS
 
         ![CDN AWS](./img/cdn-aws.jpg)
+
+1. Object Cache - the cache of database queries
 
 ## Scaling Object Cache
 1. Data partitioning for object cache is quite simple. There are a lot of libraries which allow to accept multiple cache servers.
@@ -105,6 +106,14 @@
     ```
     aggregated time spent = time spent per request * number of requests
     ```
+
+## Cache Eviction Strategies
+1. FIFO
+1. LIFO
+1. Last Recently Used (LRU)
+1. Most Recently Used (MRU)
+1. Least Frequently Used (LFU) - count the number of times cache was used.
+1. Random Replacement
 
 ## Caching and Availability
 1. Cache should be used only for speeding up requests, not for handling load. Because if you system can not handle load without cache you decrease availability:
