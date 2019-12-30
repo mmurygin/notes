@@ -23,7 +23,7 @@
         * it's very challenging to get uniform distribution with such partition strategy
 1. Hash Range
     * Pros:
-        * easy to add new partition
+        * easy to add new partition (with consistent hashing)
         * uniform data distribution
     * Cons:
         * not sorting
