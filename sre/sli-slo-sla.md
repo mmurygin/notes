@@ -15,7 +15,7 @@
 
     ![Choosing SLI](./img/choosing-sli.png)
 
-## Setup SLI
+## SLI
 ### Specification vs Implementation
 1. **SLI Specification** - what are you going to measure
 1. **SLI Implementation** - how are you going to measure it.
@@ -41,10 +41,13 @@
 ### Data Processing SLI
 1. **Freshness** - the proportion of valid data updated more recently than a threshold.
     * for batch processing
+
         ![Fresshness of batch processing workload](./img/batch-freshness.png)
 
     * for stream processing
+
         ![Stream freshness](./img/stream-freshness.png)
+
 1. **Correctness** - the proportion of valid data producing correct output. The measurement of correctness should be independent from the code calculating data, otherwise in case when the result is incorrect we will still count it as correct one.
 1. **Coverage** - the proportion of valid data processed successfully (similar to availability for request/response).
 1. **Throughput** - the proportion of time where the data processing rate is faster than a threshold (similar to latency for request/response). Easy to explain in bytes per second, the system should expose this metric.
