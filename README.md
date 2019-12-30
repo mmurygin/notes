@@ -1,9 +1,9 @@
 # My learning notes
 
-- [Computer Science](computer-science)
 - [HighLoad](highload)
-- [Linux](linux)
 - [SRE](sre)
+- [Computer Science](computer-science)
+- [Linux](linux)
 - [Programming Languages](lang)
 - [Networking](networking)
 - [Web Development](web)
