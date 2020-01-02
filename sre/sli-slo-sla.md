@@ -1,5 +1,17 @@
 # SLI, SLO, SLA
 
+* [Definitions](#definitions)
+* [SLI Specification](#sli-specification)
+  + [Specification vs Implementation](#specification-vs-implementation)
+  + [Steps to Define SLI](#steps-to-define-sli)
+  + [Request / response SLI](#request--response-sli)
+  + [Data Processing SLI](#data-processing-sli)
+  + [Storage SLI](#storage-sli)
+* [SLI Implementation](#sli-implementation)
+  + [Request/Response Sources of data](#requestresponse-sources-of-data)
+* [Managing Complexity](#managing-complexity)
+* [Setting SLOs](#setting-slos)
+
 ## Definitions
 1. **Service Level Agreement** (SLA) - promise to customers, if this promise is failed there are financial (or other) consequences.
 1. **Service Level Objective** (SLO) - internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach
@@ -25,13 +37,12 @@
 ### Steps to Define SLI
 1. Choose one application for which you want to define SLOs.
 1. Decide who the "users" are for this app.
-1. Consider common wayt your users interact with your system.
+1. Define main journeys through which users interact with your app.
 1. Draw a high-level diagram of your system:
     * key component
     * request flow
     * data flow
     * critical dependencies
-1. Use common sence:)
 
 ### Request / response SLI
 1. **Availability** - the proportion of valid requests served successfully
