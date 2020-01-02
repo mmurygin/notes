@@ -1,16 +1,19 @@
 Happy user for this journey is a user which could buy in-game currency.
 
-It's request / response type of interaction. So we will define SLO for availability and latency. From the client's point of view there are two requests:
+It's request / response type of interaction. So we will define SLO for availability, latency and quality. From the client's point of view there are two requests:
 1. /api/getSKUs
 2. /api/completePurchase
 
 
 Where to monitor:
-1. We will monitor events on our Load Balancer.
-2. Pros:
-    * we do not depend on the part of the system which are out of our control (e.g. network - we won't have external network performance to influence SLI)
-3. Cons:
-    * We do not monitor the exact user expirience, because to do it we should monitor on the client (browser or mobile phone)
+1. We will gather logs from two sides:
+    * Load Balancer
+        * when we monitor on Load Balancer we cover all the real users
+    * BlackBox prober
+        * required in addition to Load Balancer to detect the failure of Load Balancer.
+        * also check the response body to capture the requests with wrong HTTP status
+
+What to monitor:
 
 
 Availability SLI (for both of the above urls):

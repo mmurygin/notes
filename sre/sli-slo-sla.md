@@ -15,7 +15,7 @@
 
     ![Choosing SLI](./img/choosing-sli.png)
 
-## SLI
+## SLI Specification
 ### Specification vs Implementation
 1. **SLI Specification** - what are you going to measure
 1. **SLI Implementation** - how are you going to measure it.
@@ -56,6 +56,14 @@
 1. **Availability**
 1. **Latency**
 1. **Durability**
+
+
+## SLI Implementation
+### Request/Response Sources of data
+1. Application server logs
+1. Load balancer monitoring
+1. Black-box monitoring
+1. Client-side instrumentation
 
 
 ## Managing Complexity
