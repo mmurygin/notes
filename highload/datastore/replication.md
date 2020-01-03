@@ -23,15 +23,15 @@
 1. A slave knowns the master IP and queiries it for the changes in binlog file since the last sync.
 1. The types of replication
     * **async** (default) - master doesn't know anything about slaves. Slave connect to master and stream binlog.
-        **+** good performance (we do not wait until slave apply this log)
-        **+** good availability (if slave is down master continue to work)
-        **-** bad durability (if master is down and we perform failover from slave - then we will lose data that wasn't streamed to this slave)
+        * **+** good performance (we do not wait until slave apply this log)
+        * **+** good availability (if slave is down master continue to work)
+        * **-** bad durability (if master is down and we perform failover from slave - then we will lose data that wasn't streamed to this slave)
         **-** eventual consistency and stale reads
     * **sync** - master waits until all slaves apply changes
-        **+** strong consistency
-        **+** durability
-        **-** decrease in performance
-        **-** decrease in availability
+        * **+** strong consistency
+        * **+** durability
+        * **-** decrease in performance
+        * **-** decrease in availability
     * **semi-sync** - the is one or more sync slaves and rest of them are async
 1. Challenges in implementation:
     * in mysql slave applies queries in single thread (to avoid dealing with concurrency).
@@ -62,11 +62,11 @@
 1. All the writes at first are written to the binlog file
 1. Binlog (WAL) file could be:
     * Physical - contain phisical changes within pages
-        **+** byte-to-byte correspondence between leader and follower
-        **+** no additional CPU load on follower for performing statement
-        **-** very sensetive to database version changes. It's more difficult to perform update without downtime
+        * **+** byte-to-byte correspondence between leader and follower
+        * **+** no additional CPU load on follower for performing statement
+        * **-** very sensetive to database version changes. It's more difficult to perform update without downtime
     * Statement based (like INSERT INTO....)
-        **-** all the statements produce identical results on master and slave. As a result we could have different data on master and slave
+        * **-** all the statements produce identical results on master and slave. As a result we could have different data on master and slave
     * Row-Based - the actual changes are replicated.
         * **+** all the operations are supported
         * **-** the size of binary log is much bigger (especially for write intensive applications, when writes happens in batches)

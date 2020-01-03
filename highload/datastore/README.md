@@ -3,5 +3,5 @@
 - [Common](common.md)
 - [Storage](storage.md)
 - [Replication](replication.md)
-- [Sharding](sharding.md)
+- [Partition](partition.md)
 - [NoSQL](no-sql.md)
