@@ -1,5 +1,23 @@
 # Replication
 
+* [Use Cases](#use-cases)
+* [Types of replication](#types-of-replication)
+* [Leader and Followers](#leader-and-followers)
+  + [General Idea](#general-idea)
+  + [Implementation](#implementation)
+  + [Setting up New Followers](#setting-up-new-followers)
+  + [Handling Node Outages](#handling-node-outages)
+    - [Follower Failure](#follower-failure)
+    - [Leader Failure](#leader-failure)
+    - [Challenges with Leader Failover](#challenges-with-leader-failover)
+  + [Implementation of replication logs](#implementation-of-replication-logs)
+  + [Replication Lag](#replication-lag)
+* [Multi-Leader Replication](#multi-leader-replication)
+  + [General Idea](#general-idea-1)
+  + [Use Cases](#use-cases-1)
+  + [Challenges](#challenges)
+* [Leaderless Replication](#leaderless-replication)
+
 ## Use Cases
 1. Scale read requests horizontally
 1. Increase availability
