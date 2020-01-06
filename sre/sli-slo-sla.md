@@ -99,3 +99,11 @@
     * interactive response (~0.4s)
 
 
+
+## Documenting SLO
+1. Every SLO should contain the following:
+    * Why the threshold is where it is
+    * Why the SLIs are appropriate for measuring the SLO.
+    * Identify monitoring data deliberately excluded from SLIs
+1. Keep SLOs documentation in version control
+    * ideally next to the monitoring configurations, so that everything is in one place

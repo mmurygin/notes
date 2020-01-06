@@ -74,7 +74,9 @@
 #### Challenges with Leader Failover
 1. If we use authomatic failover we could wrongly detect leader as failed (for example when leader is overloaded on CPU and can not respond to queries). In this case after we perform failover process we could have two leaders. STONITH is required here to prevent **split brain**. Whan would happend if we apply big migration? In some cases, both nodes could be down.
 1. If we use async replication the new leader may not have received all the writes from the old one. As a result we will lose data. It could be even more dangerous in case when external system depends on this data (for example Github issue with Redis and private repositories)
-1. What is the right timeout before the leader is declared dead? If it's to high we will loose availability, if it's to low we will perform unnecessary failovers (it's especially dangerous when system struggling with highload or network problems, because we make them even worse).
+1. What is the right timeout before the leader is declared dead? If it's to high we will loose availability, if it's to low we will perform unnecessary failovers
+    * it's especially dangerous when system struggling with highload or network problems, because we make them even worse
+    * it's also bad when database performs a resouce consuming actions, then it declared dead, then another leader starts to perform the same action => declared dead, and so on...
 
 ### Implementation of replication logs
 1. All the writes at first are written to the binlog file
