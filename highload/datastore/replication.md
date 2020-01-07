@@ -77,6 +77,7 @@
 1. What is the right timeout before the leader is declared dead? If it's to high we will loose availability, if it's to low we will perform unnecessary failovers
     * it's especially dangerous when system struggling with highload or network problems, because we make them even worse
     * it's also bad when database performs a resouce consuming actions, then it declared dead, then another leader starts to perform the same action => declared dead, and so on...
+1. How to make sure that utility that perform automatic failover is also high available
 
 ### Implementation of replication logs
 1. All the writes at first are written to the binlog file

@@ -34,6 +34,8 @@
     * One of the solution of joins problem is to denormolize data
 1. **Aggregation** - aggregation between shards in some cases challenging, in some cases impossible.
 1. **Referal ingerity** (foreign keys) - we will loose this feature.
+1. **Queryin secondary indexes** requires hitting every shard
+1. **Schema changes** is nightmare
 1. It's very **difficult to repartition** data - for example at the begginning you had 2 shards, but now to fullfill all the requirements you need 4 shards. So it's very difficult to reshard data on life servers with simple setup. There are two ways to handle resharding:
     * Have separate database, which is responsible for storing and providing connectivity between entity id and shard id
     * Prepare shards in advance
