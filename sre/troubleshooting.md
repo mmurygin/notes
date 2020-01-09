@@ -40,6 +40,12 @@
 
 ## Postmortem
 **Downtime is like a present - it's good until you have the same twice.**
+1. Principles:
+    * Blameless
+    * Should be writen for all major or user-facing incidents
+    * Should be reviewed
+    * Should be shared withing an organization.
+    * Can be used as a training material
 1. Content:
     * What went wrong
     * How you tracked down the problem
