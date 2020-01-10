@@ -38,6 +38,14 @@
     * which apps were released
     * which configs were updated
 
+## Mitigation Technics
+1. Rolling back a bad software push
+1. "Draining" traffic away from an affected cluster/datacenter
+1. Feature isolation
+1. Blocking or rate-limiting unwanted traffic
+1. Bringing up additional serving capacity
+
+
 ## Postmortem
 **Downtime is like a present - it's good until you have the same twice.**
 1. Principles:
