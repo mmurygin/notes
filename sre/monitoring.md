@@ -57,9 +57,13 @@
 
 ## In Real Life
 1. Monitoring Components
+
     ![Monitoring Scheme](./img/monitoring-scheme.png)
+
 1. Global monitoring
+
     ![Global monitoring](./img/global-monitoring.png)
+
 1. There is a set of labels for every metric. Metrics could be filtered by one or many labels.
 1. Label types:
     * type of metric, e.g. _http-response_

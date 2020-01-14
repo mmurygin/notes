@@ -1,6 +1,10 @@
 # Scaling Frontend
 
   * [Architecture](#architecture)
+  * [Load Balancing](#load-balancing)
+  * [Load Balancing Methods](#load-balancing-methods)
+  * [Load Balancer Tasks](#load-balancer-tasks)
+  * [Load Balancing algorithms](#load-balancing-algorithms)
   * [The role of reverse proxy](#the-role-of-reverse-proxy)
 
 ## Architecture
@@ -67,7 +71,6 @@
     * **-** no adjustment based on CPU power
     * **-** the count of the connection to the backend does not include the requests from other load balancers
 1. Weighted Round Robin - backends track the amount of served requests and resource utilization (mostly CPU) and sends them to the load balancer, so that LB could choose the best client.
-1. Least Response Time
 1. Least Bandwidth
 1. IP Hash
 
