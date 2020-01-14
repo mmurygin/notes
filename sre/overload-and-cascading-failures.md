@@ -14,8 +14,8 @@
     * have backoff and jitter
     * use clear response code and consider how different failures should be handled.
 
-## Cascading failures
-### Resource exhaustion
+## Resource exhaustion
+### Causes
 1. **Cascading failure** is a failure which grows over time as a result of positive (exacerbating) feedback.
 1. Overloaded CPU
     * to many requests
@@ -28,7 +28,7 @@
 1. Not enough file descriptors
 1. Not enough capacity during maintanance or rolling update
 
-### Preventing Resource ExhaustionFailures
+### Prevention
 1. Load test the server's capacity limits
 1. Test failure mode for overload
 1. Serve degraded requests
@@ -66,5 +66,12 @@
 1. Planned Changes, Drains or Turndowns
 1. Request Profile Changes
 
-## Testing for Cascading Failures
-1.
+## Immediate Steps to Address Cascading Failures
+1. Increase Resources
+1. Stop Health Check Failures/Deaths
+1. Restart Servers
+    * be carefull not to trigger the issue with slow startup and cold cashing
+1. Enter Degraded Modes
+1. Eliminate Batch Load
+1. Eliminate Bad Traffic
+1. Drop Traffic
