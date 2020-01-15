@@ -13,14 +13,6 @@
     + [Alerts Philosophy](#alerts-philosophy)
     + [Alerts best practices](#alerts-best-practices)
   * [In Real Life](#in-real-life)
-  * [Goals](#goals)
-  * [The Four Golden Signals](#the-four-golden-signals)
-  * [Additional usefull metrics](#additional-usefull-metrics)
-  * [Monitoring Best Practicies](#monitoring-best-practicies)
-  * [Alerts Questions](#alerts-questions)
-  * [Alerts Philosophy](#alerts-philosophy)
-  * [Alerts best practices](#alerts-best-practices)
-  * [In Real Life](#in-real-life)
 
 ## Philosophy
 
