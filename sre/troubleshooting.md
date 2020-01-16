@@ -11,7 +11,7 @@
         * assign Incident Commander, Operation and Communication leads
         * create communication chanell
 1. Follow Incident Response policy.
-1. [Mitigate](#mitigation-technics)
+1. [Mitigate](#mitigation-technics) [Stop Cascading Failure](#immediate-steps-to-address-cascading-failures)
     * make the system work with current circumstances (stop the bleeding)
 1. [Find the root cause](#finding-the-root-cause).
 1. Implement / schedule long term fix
@@ -25,6 +25,17 @@
 1. Feature isolation
 1. Blocking or rate-limiting unwanted traffic
 1. Bringing up additional serving capacity
+
+
+## Immediate Steps to Address Cascading Failures
+1. Increase Resources
+1. Stop Health Check Failures/Deaths
+1. Restart Servers
+    * be carefull not to trigger the issue with slow startup and cold cashing
+1. Enter Degraded Modes
+1. Eliminate Batch Load
+1. Eliminate Bad Traffic
+1. Drop Traffic
 
 ## Finding the root cause
 1. Gather Information
