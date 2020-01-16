@@ -13,9 +13,10 @@
     + [Human Actions](#human-actions)
   * [Immediate Steps to Address Cascading Failures](#immediate-steps-to-address-cascading-failures)
 
-## Causes
-### Resource Overload
+## Definition
 1. **Cascading failure** is a failure which grows over time as a result of positive (exacerbating) feedback.
+
+### Resource Overload
 1. Overloaded CPU
     * to many requests
     * excessively long queue lengths
@@ -27,17 +28,6 @@
 1. Not enough file descriptors
 1. Not enough capacity during maintanance or rolling update
 
-### Slow Startup and Cold Cashing
-#### Causes
-1. Maintanance
-1. Rolling Update
-1. Service Restart
-
-#### Prevention
-1. Overprovision
-1. Slowly increase the load to the new cluster
-1. Prevent recoursive links between services
-
 ### Triggering Conditions for Cascading Failures
 1. Process Death
 1. Process Updates
@@ -45,6 +35,7 @@
 1. Organic Growth
 1. Planned Changes, Drains or Turndowns
 1. Request Profile Changes
+
 
 ## Preventive Actions
 ### Client
@@ -62,12 +53,15 @@
     * the smaller timeout the bigger probability of false timeouted request
 
 ### Load Balancers
+1. Control the size of the queue
 1. RPS limits for every client
     * e.g. limit by IP could help dealing with DoS
 1. Keep into account backend utilization before sending requests (e.g. load average)
 1. [Circuit bracker](https://martinfowler.com/bliki/CircuitBreaker.html)
 
 ### Server
+1. Rate Limits
+1. Control the size of the queue
 1. Serve requests with degraded quality in case of overload
 1. Drop requests in of overload
     * it's better to surve 2k rps and drop 500 extra, then drop all 2.5k requests
@@ -94,3 +88,16 @@
 1. Eliminate Batch Load
 1. Eliminate Bad Traffic
 1. Drop Traffic
+
+
+## Misc
+### Slow Startup and Cold Cashing
+#### Causes
+1. Maintanance
+1. Rolling Update
+1. Service Restart
+
+#### Prevention
+1. Overprovision
+1. Slowly increase the load to the new cluster
+1. Prevent recoursive links between services
