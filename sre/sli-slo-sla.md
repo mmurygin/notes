@@ -14,14 +14,11 @@
   + [Managing Complexity](#managing-complexity)
 
 ## Definitions
+1. **Service Level Indicator (SLI)** - the quantitative measurement of user happines
+1. **Service Level Objective (SLO)** - the threshold on SLI when users are happy. Should be adjusted over time. internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach.
 1. **Service Level Agreement** (SLA) - promise to customers, if this promise is failed there are financial (or other) consequences.
-1. **Service Level Objective** (SLO) - internal promise to meet customers objectives. Should be stronger than SLA, because usually customers are affected much earlier than the SLA breach
 
     ![SLA vs SLO](./img/slo-sla.png)
-
-1. SLO need to be adjusted over the time.
-1. **Service Level Indicator** (SLI) - the metric used to measure SLO.
-1. How to choose good SLI:
 
 ### Specification vs Implementation
 1. **SLI Specification** - what are you going to measure
@@ -31,6 +28,7 @@
 ## SLI Specification
 
 ### How good SLI looks like
+1. It should be measurable and meningfull by user
 1. It should be quantifiable
 1. It should be close to user expirience (users do not care if your database is down or if the load balancer is overloaded, from their perspective the website is down or slow)
 1. It should be stable without a big variance
@@ -97,7 +95,6 @@
     * background processing (the highest latency treshold, e.g. 5s)
     * write response (e.g. 1.5s because users are use to have writes slover than read)
     * interactive response (~0.4s)
-
 
 
 ## Documenting SLO

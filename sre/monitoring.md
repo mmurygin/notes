@@ -79,6 +79,37 @@
     * data collection, aggregation, and alertig configuration that is rarely exercised should be up for removal
     * signals that are collected, but not exposed in any prebacked dashboard nor used by any alert, are candidates for removal
 
+### Virtual Machine
+1. CPU Usage
+1. Memory
+1. Disk Traffic
+1. Network Usage
+1. Clock Drift
+
+### Database Metrices
+1. Connections (threads in mysql)
+1. QPS
+1. Queries duration
+1. Replication lag
+1. IOPs
+1. Disk Usage
+
+### Message Queues
+1. Queue Length
+1. Publish Rate
+1. Consumption rate
+
+### Cache
+1. Cache evicted ratio
+1. Cache hit ratio (hit / (hit + miss)
+
+### DNS
+1. Zone transfers (when slave sync with master)
+1. QPS
+    * at least QPS for server
+    * better QPS per zone
+    * the best QPS per view
+
 
 ## Alerts
 ### Alerts Questions
