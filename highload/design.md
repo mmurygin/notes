@@ -16,6 +16,14 @@
   + [Self Healing](#self-healing)
 
 
+## Tradeoffs
+1. When you develop software you always try to find the tradeoffs between:
+    * Uptime
+    * Latency
+    * Velocity - the speed of features integration
+    * Scale
+    * Security
+
 ## Reliability
 1. **Reliability** - the system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error)
 1. Works correctly means
