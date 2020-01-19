@@ -26,7 +26,6 @@
 1. Blocking or rate-limiting unwanted traffic
 1. Bringing up additional serving capacity
 
-
 ## Immediate Steps to Address Cascading Failures
 1. Increase Resources
 1. Stop Health Check Failures/Deaths
@@ -38,6 +37,7 @@
 1. Drop Traffic
 
 ## Finding the root cause
+1. Segment and reduce the problem space
 1. Gather Information
     * logs
     * monitoring
@@ -72,6 +72,7 @@
 **Downtime is like a present - it's good until you have the same twice.**
 1. Principles:
     * Blameless
+        * people are never root cause
     * Should be writen for all major or user-facing incidents
     * Should be reviewed
     * Should be shared withing an organization.
