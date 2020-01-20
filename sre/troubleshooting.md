@@ -37,12 +37,14 @@
 1. Drop Traffic
 
 ## Finding the root cause
+[Five Why's](http://bit.ly/2RCLKhq)
 1. Segment and reduce the problem space
 1. Gather Information
     * logs
     * monitoring
     * tracing
     * send custom requests
+1. Inspect the request path and identify the bottleneck
 1. Form a hypotheesis
     * what changed
     * simplify and reduce
