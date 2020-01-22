@@ -19,7 +19,6 @@
     * the reliability of our systems
 
 ## Reliability
-1. **Reliability** - when system is able to perform it's functions.
 1. Reliability is the most important feature.
 1. Users, not monitoring decide reliability.
 1. Well engineered software could get you up to the three nines (not more!)

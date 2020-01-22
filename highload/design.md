@@ -25,6 +25,9 @@
     * Security
 
 ## Reliability
+1. **Failure is not an option, it's mandatory.**
+1. **Anticipate Failure, design for failure and fail gracefully.**
+1. A **high available**, or **resilient**, web application is one that continues to function despite expected or unexpected failure of the components of the system. If a single instance failed, or entire zone expiriences a problem, a resilient application remains fault tolerant - continue to function and repair itself automatically, if necessary.
 1. **Reliability** - the system should continue to work correctly (performing the correct function at the desired level of performance) even in the face of adversity (hardware or software faults, and even human error)
 1. Works correctly means
     * The application performs the function that the user expected.
@@ -32,27 +35,29 @@
     * Its performance is good enough for the required use case, under the expected load and data value.
     * The system prevents any unauthorized access and abuse.
 1. Types of adversities:
-    * Hardware failure. Usually we use redundant hardware to deal with this kind of failure
-    * Software Errors.
-        * Examples:
-            * A software bug that causes every instance of an application server to crash when given a particular bad input.
-            * A runaway process that uses up some shared resources - CPU time, memory, disk space or network bandwidth
-            * A service that system depends on that slows down, becomes unresponsive, or starts returning correpted responses
-            * Cascading faulures, where a small fault in on component triggers a fault in another component, which in turn triggers futher faults
-        * To deal with use:
-            * thorough testing
-            * process isolation
-            * allowing processes to cras hand restart
-            * measuring
-            * monitoring
-    * Human Errors.
-        * To deal with:
-            * Design systems in a way that minimizes opportunities for error.
-            * Decouple the places where people make the most mistakes from the places where they can cause failures.
-            * Test throughly at all levels, from unit to e2e and manual
-            * Allow quick and easy recovery from human erros.
-            * Setup detailed and clear monitoring, such as perormance metrics and error rates.
-            * Implement good management practices and training
+1. Hardware failure:
+    * Mitigation:
+      * redundancy
+1. Software Errors.
+    * Examples:
+        * A software bug that causes every instance of an application server to crash when given a particular bad input.
+        * A runaway process that uses up some shared resources - CPU time, memory, disk space or network bandwidth
+        * A service that system depends on that slows down, becomes unresponsive, or starts returning correpted responses
+        * Cascading faulures, where a small fault in on component triggers a fault in another component, which in turn triggers futher faults
+    * Mitigation:
+        * thorough testing
+        * process isolation
+        * monitoring
+        * canary releases
+1. Human Errors.
+    * Mitigation:
+        * Design systems in a way that minimizes opportunities for error.
+        * Decouple the places where people make the most mistakes from the places where they can cause failures.
+        * Test throughly at all levels, from unit to e2e and manual
+        * Allow quick and easy recovery from human erros.
+        * Setup detailed and clear monitoring, such as perormance metrics and error rates.
+        * Implement good management practices and training
+
 
 ## Scalability
 1. **Scalability** - as system grows (in data volume, traffic volume or complexity) there should be reasonable ways of dealing with that growth.
