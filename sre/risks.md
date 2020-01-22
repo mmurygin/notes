@@ -19,3 +19,7 @@
     * Time to resolution
     * Percentage of users impacted
 
+## Reducing risks
+1. Perform education
+1. Perform "wheel of missfortune"
+1. Train the staff by injecting real bug in prodution system.

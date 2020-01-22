@@ -59,6 +59,8 @@
 1. **Saturation**
 
 ### Additional usefull metrics
+1. External uptime checks
+1. Blackbox monitoring
 1. **Intended Changes** - changes is the number one source of any issues. It's very usefull to have all the change logs in one place. Type of changes:
     * release of new software version
     * configuration update
@@ -93,6 +95,7 @@
 1. Replication lag
 1. IOPs
 1. Disk Usage
+1. The correctness of data
 
 ### Message Queues
 1. Queue Length

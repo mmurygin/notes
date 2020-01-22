@@ -63,7 +63,7 @@
 ### Request/Response Sources of data
 1. Application server logs
 1. Load balancer monitoring
-1. Black-box monitoring
+1. **Black-box monitoring**
 1. Client-side instrumentation
 
 ### Pipeline processing source of data
