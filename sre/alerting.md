@@ -38,8 +38,15 @@
 ## Strategies
 ### Target Error Rate >= SLO Threshold
 ```yaml
+record: job:slo_errors_per_request:ratio_rate10m
+expr:
+  sum(rate(slo_errors[10m])) by (job)
+    /
+  sum(rate(slo_requests[10m])) by (job)
+
 - alert: HighErrorRate
   expr: job:slo_errors_per_request:ratio_rate10m{job="myjob"} >= 0.001
 ```
 
+![Target Error Rate Pros and Cons](alert-target-error-rate.png)
 
