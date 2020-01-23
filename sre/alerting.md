@@ -38,16 +38,17 @@
 ## Strategies
 
 ### SLO
-    ```yaml
-    record: job:slo_errors_per_request:ratio_rate10m
-    expr:
-      sum(rate(slo_errors[10m])) by (job)
-        /
-      sum(rate(slo_requests[10m])) by (job)
-    ```
+```yaml
+record: job:slo_errors_per_request:ratio_rate10m
+expr:
+  sum(rate(slo_errors[10m])) by (job)
+    /
+  sum(rate(slo_requests[10m])) by (job)
+```
 
 ### Target Error Rate >= SLO Threshold
 1. Rule
+
     ```yaml
     - alert: HighErrorRate
       expr: job:slo_errors_per_request:ratio_rate10m{job="myjob"} >= 0.001
@@ -60,6 +61,7 @@
 
 ### Increased Alert Window
 1. Rule
+
     ```yaml
     - alert: HighErrorRate
        expr: job:slo_errors_per_request:ratio_rate36h{job="myjob"} > 0.001
@@ -75,11 +77,13 @@
 
 ### Alert duration
 1. Rule
+
     ```yaml
     - alert: HighErrorRate
     expr: job:slo_errors_per_request:ratio_rate1m{job="myjob"} > 0.001
     for: 1h
     ```
+
 1. Pros and cons
     * **+** Good precision.
     * **+** Good reset time.
