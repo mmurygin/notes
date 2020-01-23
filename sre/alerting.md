@@ -36,17 +36,55 @@
 1. **Reset time** - how long does alert fires after issue has been mitigated.
 
 ## Strategies
+
+### SLO
+    ```yaml
+    record: job:slo_errors_per_request:ratio_rate10m
+    expr:
+      sum(rate(slo_errors[10m])) by (job)
+        /
+      sum(rate(slo_requests[10m])) by (job)
+    ```
+
 ### Target Error Rate >= SLO Threshold
-```yaml
-record: job:slo_errors_per_request:ratio_rate10m
-expr:
-  sum(rate(slo_errors[10m])) by (job)
-    /
-  sum(rate(slo_requests[10m])) by (job)
+1. Rule
+    ```yaml
+    - alert: HighErrorRate
+      expr: job:slo_errors_per_request:ratio_rate10m{job="myjob"} >= 0.001
+    ```
+1. Pros and cons
+    * **+** Good Recall. All the significant events are detected
+    * **+** Good Detection Time. Once we consumed 10-minutes error budget the alert will fire
+    * **+** Good Reset Time. Alert will stop firing once the windows is over (10 min)
+    * **-** Extremely bad precision.
 
-- alert: HighErrorRate
-  expr: job:slo_errors_per_request:ratio_rate10m{job="myjob"} >= 0.001
-```
+### Increased Alert Window
+1. Rule
+    ```yaml
+    - alert: HighErrorRate
+       expr: job:slo_errors_per_request:ratio_rate36h{job="myjob"} > 0.001
+    ```
 
-![Target Error Rate Pros and Cons](alert-target-error-rate.png)
+1. Pros and cons
+    * **+** Still good recall.
+    * **+** Still good detection time.
+    * **+** Good precision. Because we will trigger the alert once the 36hours error budget is spent.
+    * **-** Very bad reset time. Once fired alert will continue firing during the whole window
+
+    ![Alert long window Threshold](./img/alert-long-window-treshold.png)
+
+### Alert duration
+1. Rule
+    ```yaml
+    - alert: HighErrorRate
+    expr: job:slo_errors_per_request:ratio_rate1m{job="myjob"} > 0.001
+    for: 1h
+    ```
+1. Pros and cons
+    * **+** Good precision.
+    * **+** Good reset time.
+    * **-** Extremely Bad Recall. If significant event last less than an hour we won't trigger it. As a result we could spend all our error budget without triggering alert.
+    * **-** Very bad detection time (1h).
+
+    ![Alert threhold period](./img/alert-threshold-period.png)
 
