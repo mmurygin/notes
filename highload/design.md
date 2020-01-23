@@ -16,13 +16,14 @@
   + [Self Healing](#self-healing)
 
 
-## Tradeoffs
+## Design
 1. When you develop software you always try to find the tradeoffs between:
     * Uptime
     * Latency
     * Velocity - the speed of features integration
     * Scale
     * Security
+
 
 ## Reliability
 1. **Failure is not an option, it's mandatory.**
@@ -73,6 +74,43 @@
     * keep modules small and understandable
 1. **Avoid Overengineering** -  do not try to predict every possible case how you software will be used. Good design allows you to add more details and features later on, but does not require you to build a massive solution up front.
 1. Try TDD - in addition to testability you will gain the view on your system from customer point of view
+
+## Capacity Planning
+1. Consider all the dimencions of capacity planning
+    * CPU
+    * Memory
+    * Network
+    * Disk throughput
+    * Disk IOPs
+1. Forecast
+    * Monitor growth.
+    * Predict future demands.
+        * take peak periods into account
+        * account for working with DDoS attacks
+    * Plan for future launches.
+    * Should be iterative:
+        * What was the prediction last time?
+        * Compare with actual. High or low?
+        * Account for error in prediction model.
+        * Make prediction for the next time.
+    * Testing beats tradition
+        * do not expect the same level of growth as was after marketing compaign.
+        * have at least N+2 servers (1 for hw failure, 1 for rolling update)
+        * add head room to deal with non-linearity of demands
+        * add overhead to instance estimate.
+1. Workload estimation
+    * the amount of traffic you need to handle
+        * how many users
+        * read requests (2x-5x above average)
+        * write requests (2x-5x above average)
+    * what will be the network bandwidth
+    * the amount of data you need to store and query
+        * the growth of data in 5 years
+1. Allocate
+1. Test first
+    * isolated environment
+    * canary release
+    * Max of 16Gbit / seconds
 
 ### Loose Coupling
 1. Decrease the amount of connection between your modules and services.

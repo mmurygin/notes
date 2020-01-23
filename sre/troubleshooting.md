@@ -1,5 +1,9 @@
 # Troubleshooting
 
+## Definition
+1. **Troubleshooting** is the process of identifying, analyzing and solving problems. Mostly in running application.
+1. **Debugging** is the process of identifying, analyzing and removing bugs in the system. Mostly in the application code.
+
 ## Incident Response
 1. Define the issue
     * understand the current status of the system
