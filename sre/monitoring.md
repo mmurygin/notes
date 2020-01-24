@@ -2,9 +2,9 @@
 
   * [Philosophy](#philosophy)
     + [Goals](#goals)
+    + [Common Scheme](#common-scheme)
     + [Anti-Patterns](#anti-patterns)
     + [Design Patterns](#design-patterns)
-    + [Common Scheme](#common-scheme)
   * [Metrics](#metrics)
     + [The Four Golden Signals](#the-four-golden-signals)
     + [Additional usefull metrics](#additional-usefull-metrics)
@@ -18,15 +18,15 @@
 
 ## Philosophy
 
-### Common Scheme
-![Monitoring Scheme](./img/monitoring-scheme.png)
-
 ### Goals
 1. **Alerting**
 1. **Debugging**
 1. **Capacity Planning**
 1. **Expiriments** - compare before and after
 1. **Business Analisys**
+
+### Common Scheme
+![Monitoring Scheme](./img/monitoring-scheme.png)
 
 ### Anti-Patterns
 1. Tool Obsession
@@ -106,6 +106,7 @@
 1. IOPs
 1. Disk Usage
 1. The correctness of data
+    * to prevent the cases when we slowly loose data
 
 ### Message Queues
 1. Queue Length
