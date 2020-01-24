@@ -1,27 +1,74 @@
 # Troubleshooting
 
+  * [Definition](#definition)
+  * [Incident Response](#incident-response)
+    + [Structured Incident Responds includes:](#structured-incident-responds-includes)
+    + [Steps](#steps)
+  * [Responding to minor problems](#responding-to-minor-problems)
+    + [Steps](#steps-1)
+    + [Clarify the problem](#clarify-the-problem)
+    + [Find the reproduction case](#find-the-reproduction-case)
+    + [Dealing with intermittent issues](#dealing-with-intermittent-issues)
+  * [Mitigation](#mitigation)
+    + [Technics](#technics)
+    + [Immediate Steps to Address Cascading Failures](#immediate-steps-to-address-cascading-failures)
+  * [Root Cause](#root-cause)
+    + [Finding the root cause](#finding-the-root-cause)
+    + [Tools](#tools)
+    + [Dealing with slowness](#dealing-with-slowness)
+  * [Improving troubleshooting processes](#improving-troubleshooting-processes)
+    + [Making Troubleshooint easier](#making-troubleshooint-easier)
+  * [Prepare](#prepare)
+    + [Troubleshooting Pitfalls](#troubleshooting-pitfalls)
+  * [Postmortem](#postmortem)
+    + [Practices](#practices)
+    + [Analyzing and reducing the amount of incidents](#analyzing-and-reducing-the-amount-of-incidents)
+
+
 ## Definition
 1. **Troubleshooting** is the process of identifying, analyzing and solving problems. Mostly in running application.
 1. **Debugging** is the process of identifying, analyzing and removing bugs in the system. Mostly in the application code.
 
+
 ## Incident Response
+
+### Structured Incident Responds includes:
+1. Monitoring
+1. Alerting
+1. Incident Response Policy
+    * on-call
+    * playbooks
+
 ### Steps
 1. Define the issue and gather the information
-    * understand the current status of the system
+    * understand the current status of the system using monitoring
     * escalate if it's necessary
         * is incident user-facing?
-        * how many of error budget is burned
+        * how fast is error budget burning
     * if escalated:
         * document the incident
         * assign Incident Commander, Operation and Communication leads
         * create communication chanell
-1. [Mitigate](#mitigation-technics) [Stop Cascading Failure](#immediate-steps-to-address-cascading-failures)
-    * make the system work with current circumstances (stop the bleeding)
+1. **Mitigate** - make the system work with current circumstances (stop the bleeding)
+    * [General Techmics](#technics)
+    * [Stop Cascading Failure](#immediate-steps-to-address-cascading-failures)
     * **Document what you do**
 1. [Find the root cause](#finding-the-root-cause).
 1. Implement / schedule long term fix
 1. [Write postmortem](#postmortem)
 1. Mitigate the consequences (data loss).
+
+
+## Responding to minor problems
+
+### Steps
+1. [Clarify the problem](#clarify-the-problem)
+1. [Find the reproduction case](#find-the-reproduction-case)
+    * after finding reproduction case we could free up user
+    * [Dealing with intermittent issues](#dealint-with-intermittent-issues)
+1. **Mitigate** - create short term solution
+1. [Find the root cause](#finding-the-root-cause)
+1. Implement / schedule long term fix
 
 ### Clarify the problem
 1. What are you trying to do?
@@ -73,7 +120,7 @@
     * send custom requests
 1. Form a hypotheesis
     * **Start with simplier to check hypothesis**
-    * What Changed
+    * What changed?
     * Segment problem space
         * if steps number is low: just go through them one by one
         * if steps number is high: use binary search to reduce problem (git bisect)
@@ -109,8 +156,8 @@
 ### Dealing with slowness
 1. Find the bottleneck
 
-## Improving troubleshooting processes
 
+## Improving troubleshooting processes
 ### Making Troubleshooint easier
 1. Building observability
     * logs
