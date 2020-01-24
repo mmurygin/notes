@@ -1,5 +1,8 @@
 # SRE
 
+## SRE Pyramid
+![SRE Pyramid](./img/sre-pyramid.png)
+
 ## SRE Tasks
 ![SRE Tasks](./img/sre-tasks.png)
 

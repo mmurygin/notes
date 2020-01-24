@@ -5,7 +5,8 @@
 1. **Debugging** is the process of identifying, analyzing and removing bugs in the system. Mostly in the application code.
 
 ## Incident Response
-1. Define the issue
+### Steps
+1. Define the issue and gather the information
     * understand the current status of the system
     * escalate if it's necessary
         * is incident user-facing?
@@ -14,23 +15,46 @@
         * document the incident
         * assign Incident Commander, Operation and Communication leads
         * create communication chanell
-1. Follow Incident Response policy.
 1. [Mitigate](#mitigation-technics) [Stop Cascading Failure](#immediate-steps-to-address-cascading-failures)
     * make the system work with current circumstances (stop the bleeding)
+    * **Document what you do**
 1. [Find the root cause](#finding-the-root-cause).
 1. Implement / schedule long term fix
-1. Mitigate the consequences (data loss).
 1. [Write postmortem](#postmortem)
-1. Mitigate the consequences
+1. Mitigate the consequences (data loss).
 
-## Mitigation Technics
+### Clarify the problem
+1. What are you trying to do?
+1. What steps did you follow?
+1. What was the exprected result?
+1. What was the actual result?
+
+### Find the reproduction case
+1. Isolate
+1. Segment and reduce
+
+### Dealing with intermittent issues
+1. If you could modify the running code:
+    * Add more logs to understand the conditions when issue happens
+1. If code modification is not an option
+    * Turn on debug mode on a software
+1. If above two do not work:
+    * Monitor the environment
+1. If reset helps it's more likely that the issue is conneted with software bug about resource management. Because when we restart the machine
+    * we cleanup memory
+    * we cleanup network connections
+    * we cleanup opened file descriptors
+    * we cleanup cache
+
+## Mitigation
+### Technics
 1. Rolling back a bad software push
 1. "Draining" traffic away from an affected cluster/datacenter
+1. Bringing up additional serving capacity
 1. Feature isolation
 1. Blocking or rate-limiting unwanted traffic
-1. Bringing up additional serving capacity
 
-## Immediate Steps to Address Cascading Failures
+### Immediate Steps to Address Cascading Failures
 1. Increase Resources
 1. Stop Health Check Failures/Deaths
 1. Restart Servers
@@ -40,31 +64,54 @@
 1. Eliminate Bad Traffic
 1. Drop Traffic
 
-## Finding the root cause
-[Five Why's](http://bit.ly/2RCLKhq)
-1. Segment and reduce the problem space
+## Root Cause
+### Finding the root cause
 1. Gather Information
     * logs
     * monitoring
     * tracing
     * send custom requests
-1. Inspect the request path and identify the bottleneck
 1. Form a hypotheesis
-    * what changed
+    * **Start with simplier to check hypothesis**
+    * What Changed
+    * Segment problem space
+        * if steps number is low: just go through them one by one
+        * if steps number is high: use binary search to reduce problem (git bisect)
     * simplify and reduce
-    * follow up the broken response and identify which components works and which does not
+    * bin search or go trough the broken response and identify which components works and which does not
 1. Test the hypothesis
+    * if it's possible it's better to test our hypothesis in stage/dev environment instead of produciton
+        * we won't break something important
+        * we won't interfere with other users
     * find evidencies
     * change the system and observe expected result
 
-## Troubleshooting Pitfalls
-1. Looking at symptoms that aren't relevant or misunderstanding the meaning of system metrics.
-1. Misunderstanding how to change the system to test hypothesys.
-1. Comming up with wildly improbable theories about what's wrong, or latching onto causes of past problems.
-1. Hunting down spurious correlations that are actually coincidences or are correlated with shared causes
-1. Correlation is not a causations.
+### Tools
+1. Which processes consumes CPU
+    * top
+        * load average
+    * atop
+        * can group by process name
+1. What proccess is doing:
+    * **`strace`**
+    * **`ltrace`**
+1. Disk load:
+    * **`iotop`**
+        * **iowait** - time spend waiting on IO events
+    * **`iostat`**
+    * **`vmstat`** - virtual memory stats
+1. Inspect current traffic on network interfaces
+    * **`iftop`**
+1. Inspect network packets
+    * **`tcpdump`**
+    * **`wireshark`**
 
-## Making Troubleshooint easier
+### Dealing with slowness
+1. Find the bottleneck
+
+## Improving troubleshooting processes
+
+### Making Troubleshooint easier
 1. Building observability
     * logs
     * black box and white box monitoring
@@ -74,7 +121,28 @@
     * which apps were released
     * which configs were updated
 
+## Prepare
+1. Create an incident response policy
+    * including escalation policy
+    * communication chanell
+    * contact list
+1. Have mitigation steps for as more outages as possible.
+1. It's good to have playbooks for every alert
+1. Train team and explore how the incident was handled.
+    * role game
+    * controlled emergency
+    * hands-on exercises / labs
+
+### Troubleshooting Pitfalls
+1. Looking at symptoms that aren't relevant or misunderstanding the meaning of system metrics.
+1. Misunderstanding how to change the system to test hypothesys.
+1. Comming up with wildly improbable theories about what's wrong, or latching onto causes of past problems.
+1. Hunting down spurious correlations that are actually coincidences or are correlated with shared causes
+1. Correlation is not a causations.
+
+
 ## Postmortem
+### Practices
 **Downtime is like a present - it's good until you have the same twice.**
 1. Principles:
     * Blameless
@@ -92,19 +160,8 @@
     * What went well
     * What did we learned
 
-## Prepare
-1. Create an incident response policy
-    * including escalation policy
-    * communication chanell
-    * contact list
-1. Have mitigation steps for as more outages as possible.
-1. It's good to have playbooks for every alert
-1. Train team and explore how the incident was handled.
-    * role game
-    * controlled emergency
-    * hands-on exercises / labs
 
-## Analyzing and reducing the amount of incidents
+### Analyzing and reducing the amount of incidents
 1. Keep a History of Outages
 1. Ask the Big, Even Improbable, Question: What if...?
 1. Encourage Proactive Testing

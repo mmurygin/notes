@@ -21,7 +21,7 @@
 1. Does everyone from the notification list really need to be notified?
 
 
-## Alerting Consideration
+### Alerting Consideration
 1. **Precision** - proportion of the alerts which correspond to the real outage
     ```
     precision = real incidents triggers / all alerts triggerd
@@ -36,6 +36,9 @@
 1. **Reset time** - how long does alert fires after issue has been mitigated.
 
 ## Strategies
+
+### EWMA
+1. **E**exponentially **W**eighed **M**oving **A**verage
 
 ### SLO
 ```yaml
@@ -80,8 +83,8 @@ expr:
 
     ```yaml
     - alert: HighErrorRate
-    expr: job:slo_errors_per_request:ratio_rate1m{job="myjob"} > 0.001
-    for: 1h
+      expr: job:slo_errors_per_request:ratio_rate1m{job="myjob"} > 0.001
+      for: 1h
     ```
 
 1. Pros and cons
@@ -91,4 +94,101 @@ expr:
     * **-** Very bad detection time (1h).
 
     ![Alert threhold period](./img/alert-threshold-period.png)
+
+### Alert on a Burn Rate
+1. **Burn Rate** is how fast, relative to SLO, service consumes error budget.
+
+    ![Burn Rate](./img/burn-rate.png)
+
+1. If we set a window (1h) and the amount of budget that we could spend (e.g. 5%) we could setup a pretty good alert if the burn rate is more than 5% in 1 hour window.
+    * 5% of monthy error budget = 720h * 0.05 = 36
+
+    ```yaml
+    - alert: HighErrorRate
+      expr: job:slo_errors_per_request:ratio_rate1h{job="myjob"} > 36 * 0.001
+    ```
+
+1. Pros and cons
+    * **+** Very good precision
+    * **+** Very good detection time
+    * **-** Bad Recall (35x error rate will never trigger alert, but will consue all error budget in 20.5h
+    * **-** Bad Rest timem (1h)
+
+### Multiple burn rate alerts
+1. We could improve the above solution by using multiple burn rate alerts.
+1. 2% burn rate for 1h, 5% burn rate for 6h, 10% burn rate for 3days
+
+    ![Multiple burn rates](./img/multiple-burn-rates.png)
+
+1. Rule
+    ```yaml
+    - expr: (
+          job:slo_errors_per_request:ratio_rate1h{job="myjob"} > (14.4*0.001)
+        or
+          job:slo_errors_per_request:ratio_rate6h{job="myjob"} > (6*0.001)
+        )
+      severity: page
+
+    - expr: job:slo_errors_per_request:ratio_rate3d{job="myjob"} > 0.001
+      severity: ticket
+    ```
+
+1. Pros and cons
+    * **+** Good Precision
+    * **+** Good Detection time (because of 1h window)
+    * **+** Good Recall (because of 3days window)
+    * **+** Different severity levels for different kind of emergencies
+    * **-** Even bigger reset time (because of 3days alert)
+    * **-** More windows and metrics to reason about
+    * **-** The necessety of the alert aggregation tool (not to trigger multiple alerts at the same time)
+
+### Multiwindow, Multi-Burn-Rate
+1. Enhanceent to the multple burn rate alerts is to track if we still consuming error budget with smaller time window. Google suggests to use 1/12 of initial window.
+
+    ![Alert multiple Burn Rates](./img/alert-multiple-burn-rates.png)
+
+1. Rule
+    ```yaml
+    expr: (
+            job:slo_errors_per_request:ratio_rate1h{job="myjob"} > (14.4*0.001)
+          and
+            job:slo_errors_per_request:ratio_rate5m{job="myjob"} > (14.4*0.001)
+          )
+        or
+          (
+            job:slo_errors_per_request:ratio_rate6h{job="myjob"} > (6*0.001)
+          and
+            job:slo_errors_per_request:ratio_rate30m{job="myjob"} > (6*0.001)
+          )
+    severity: page
+
+    expr: (
+            job:slo_errors_per_request:ratio_rate24h{job="myjob"} > (3*0.001)
+          and
+            job:slo_errors_per_request:ratio_rate2h{job="myjob"} > (3*0.001)
+          )
+        or
+          (
+            job:slo_errors_per_request:ratio_rate3d{job="myjob"} > 0.001
+          and
+            job:slo_errors_per_request:ratio_rate6h{job="myjob"} > 0.001
+          )
+    severity: ticket
+    ```
+1. Pros
+    **+** Better precision (we do not react on jitter)
+    **+** Still good recall
+    **+** Still Good Detection time
+    **+** Good reset time
+    **-** A lot of parametrs to specify
+
+
+
+
+
+
+
+
+
+
 
