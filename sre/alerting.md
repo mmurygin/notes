@@ -1,5 +1,19 @@
 # Alerts
 
+  * [Philosophy](#philosophy)
+    + [Best Practices](#best-practices)
+    + [Minimize the amount of alerts](#minimize-the-amount-of-alerts)
+    + [Alerting Consideration](#alerting-consideration)
+  * [Strategies](#strategies)
+    + [EWMA](#ewma)
+    + [SLO](#slo)
+    + [Target Error Rate >= SLO Threshold](#target-error-rate--slo-threshold)
+    + [Increased Alert Window](#increased-alert-window)
+    + [Alert duration](#alert-duration)
+    + [Alert on a Burn Rate](#alert-on-a-burn-rate)
+    + [Multiple burn rate alerts](#multiple-burn-rate-alerts)
+    + [Multiwindow, Multi-Burn-Rate](#multiwindow-multi-burn-rate)
+
 ## Philosophy
 
 ### Best Practices
@@ -35,7 +49,7 @@
 1. **Detection time** - how long does it take to send notificaiton in various conditions.
 1. **Reset time** - how long does alert fires after issue has been mitigated.
 
-## Strategies
+## Tools
 
 ### EWMA
 1. **E**exponentially **W**eighed **M**oving **A**verage
@@ -49,6 +63,7 @@ expr:
   sum(rate(slo_requests[10m])) by (job)
 ```
 
+## Strategies
 ### Target Error Rate >= SLO Threshold
 1. Rule
 
