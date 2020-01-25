@@ -98,30 +98,34 @@
 1. Rolling back a bad software push
 1. "Draining" traffic away from an affected cluster/datacenter
 1. Bringing up additional serving capacity
-1. Feature isolation
-1. Blocking or rate-limiting unwanted traffic
+1. [Feature isolation]
 
 ### Immediate Steps to Address Cascading Failures
-1. Increase Resources
-1. Stop Health Check Failures/Deaths
+1. Bringing up additional serving capacity
+1. Eliminate Bad Traffic
+1. Eliminate Batch Load
+1. Enter Degraded Modes
 1. Restart Servers
     * be carefull not to trigger the issue with slow startup and cold cashing
-1. Enter Degraded Modes
-1. Eliminate Batch Load
-1. Eliminate Bad Traffic
+1. Stop Health Check Failures/Deaths
 1. Drop Traffic
 
 ## Root Cause
 ### Finding the root cause
 1. Gather Information
-    * logs
+    * Does all users affected or only subset of them? What is common between affected users?
+    * What changed?
+        * source code
+        * configs
+        * libraries service depends on
+        * external services library depends on
+    * Does it depends on the server where the app is running?
+    * logs [add logs to required parts if necessary]
     * monitoring
     * tracing
     * send custom requests
 1. Form a hypotheesis
     * **Start with simplier to check hypothesis**
-    * What changed?
-    * Does all users affected or only subset of them? What is common between affected users?
     * Segment problem space
         * if steps number is low: just go through them one by one
         * if steps number is high: use binary search to reduce problem (git bisect)
@@ -133,6 +137,7 @@
         * we won't interfere with other users
     * find evidencies
     * change the system and observe expected result
+1. Fix the issue
 
 ### Tools
 1. Which processes consumes CPU
@@ -176,6 +181,9 @@
     ```
 
 1. Fix the issue and prove the fix with the same measurement that was done at step 1.
+
+
+### Dealing with crashes
 
 
 ## Improving troubleshooting processes
