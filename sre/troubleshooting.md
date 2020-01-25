@@ -121,6 +121,7 @@
 1. Form a hypotheesis
     * **Start with simplier to check hypothesis**
     * What changed?
+    * Does all users affected or only subset of them? What is common between affected users?
     * Segment problem space
         * if steps number is low: just go through them one by one
         * if steps number is high: use binary search to reduce problem (git bisect)
@@ -152,9 +153,26 @@
 1. Inspect network packets
     * **`tcpdump`**
     * **`wireshark`**
+1. Measure the time for completenes of the programm
+    * **`time`**
 
 ### Dealing with slowness
+1. Determine and measure what "slow" means.
 1. Find the bottleneck
+1. Possible suspects:
+    * memory leaks
+    * data growth
+    * hardware failure - when many segments of hdd are corrupted it starts to perform slow, after this it's the matter of time when we will start losing data
+    * malicious software
+1. Profile
+    * to profile python script use `pprofile3` and `kcachegrind`
+
+    ```bash
+    pprofile3 -f callgrind -o profile.out ./my-script.py
+    kcachegrind profile.out
+    ```
+
+1. Fix the issue and prove the fix with the same measurement that was done at step 1.
 
 
 ## Improving troubleshooting processes
