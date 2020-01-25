@@ -160,11 +160,14 @@
 1. Determine and measure what "slow" means.
 1. Find the bottleneck
 1. Possible suspects:
+    * overloaded CPU
+    * overloaded memory
     * memory leaks
-    * data growth
+    * slow software
+    * data growth (e.g. parsing to big files)
     * hardware failure - when many segments of hdd are corrupted it starts to perform slow, after this it's the matter of time when we will start losing data
     * malicious software
-1. Profile
+1. Profile the source code
     * to profile python script use `pprofile3` and `kcachegrind`
 
     ```bash
