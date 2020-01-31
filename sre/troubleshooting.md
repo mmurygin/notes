@@ -160,6 +160,30 @@
     * **`wireshark`**
 1. Measure the time for completenes of the programm
     * **`time`**
+1. Debug programms
+    * **`gdb`** - for c/c++ programs
+        ```bash
+        # enable core files generation
+        ulimit -c unlimited
+
+        # run programm and generate core file in case of crash
+        ./my-programm
+        Segmentation fault (core dumped)
+
+        gdb -c core
+
+        (gdb) backtrace # view call stack
+        (gdb) up        # move in the call stack by one function
+        (gdb) list      # show lines around the current one
+        (gdb) print var # print variable value
+        ```
+    * **`pdb3`**
+        ```bash
+        pdb3 python-script.py args
+        (Pdb) next              # go to next line
+        (Pdb) continue          # continue until finish or crash
+        (Pdb) print(var_name)   # print variable value
+        ```
 
 ### Dealing with slowness
 1. Determine and measure what "slow" means.
