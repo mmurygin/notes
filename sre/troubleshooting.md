@@ -97,6 +97,7 @@
 ### Technics
 1. Rolling back a bad software push
 1. "Draining" traffic away from an affected cluster/datacenter
+    * Remove the broken machine from the pool of services
 1. Bringing up additional serving capacity
 1. [Feature isolation]
 
@@ -253,6 +254,7 @@
     * Can be used as a training material
 1. Content:
     * What went wrong
+    * What the impact of the issue was
     * How you tracked down the problem
     * How you fixed the problem
     * How to prevent it from happening again.

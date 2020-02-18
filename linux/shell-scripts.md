@@ -303,6 +303,13 @@
 
 3. **`for`** - assign each word in words to var . Stops when no words are left. **Do NOT** quote words.
 
+    * range loop
+        ```bash
+        for i in {1..10}; do
+            echo $i
+        done
+        ```
+
     * iterate through words
         ```bash
         for VAR in WORDS; do
