@@ -1,10 +1,9 @@
 # Alerts
-
-  * [Philosophy](#philosophy)
+ * [Philosophy](#philosophy)
     + [Best Practices](#best-practices)
     + [Minimize the amount of alerts](#minimize-the-amount-of-alerts)
     + [Alerting Consideration](#alerting-consideration)
-  * [Strategies](#strategies)
+ * [Strategies](#strategies)
     + [EWMA](#ewma)
     + [SLO](#slo)
     + [Target Error Rate >= SLO Threshold](#target-error-rate--slo-threshold)
@@ -17,19 +16,30 @@
 ## Philosophy
 
 ### Best Practices
-1. Every time the pager goes off, I should be able to react with a sense of urgency. I can only react with a sense of urgency a few times a day before I become fatigued.
+1. Don't use emails for alerts. Depending on the criticality send alert to:
+    * response/action required immediately - send this to pager, phone, pagerduty, etc.
+    * awareness needed, but immediate action not required - send it to the chat.
+    * record for historical/diagnostic purpose - send it to log system.
+1. Log all alerts and remediation time for analysis.
+1. Every alert should have attached runbook for an on-call engineer. Runbook content:
+    * What is this services, and what does it do?
+    * Who is responsible for it?
+    * What dependencies does it have?
+    * What does the infrastructure for it look like?
+    * What metrics and logs does it emit, and what do they mean?
+    * What alerts are set up for it, and why?
 1. Every page should be actionable.
 1. Every page response should require intelligence. If a page merely merits a robotic response, it shouldn't be a page.
 1. Pages should be about a novel problem or an event that hasn't been seen before.
-1. Alerts should not flap
+1. Alerts should not flap.
 1. One event should trigger as less alerts as possible.
-    * when there are a lot of triggered alerts in case of an incident - it creates a lot of noice and complicates troubleshooting.
-1. It's great when every alert have attached runbook for on-call engineer.
+    * when there are a lot of triggered alerts in case of an incident - it creates a lot of noise and complicates troubleshooting.
 1. **Test your monitoring system** - as you setup your monitoring system you could not be fired by an alert for months or years, so it's very important to be sure over time that your alerts are not broken.
 
 ### Minimize the amount of alerts
+1. Every time the pager goes off, I should be able to react with a sense of urgency. I can only react with a sense of urgency a few times a day before I become fatigued.
 1. Does this rule detect an otherwise undetected condition that is urgent, actionable, and actively or imminently user-visible?
-1. Will I ever be able to ignore this alert, knowing it's beningn? When and why will I be able to ignore this alert, and how can I avoid this scenario?
+1. Will I ever be able to ignore this alert, knowing it fires? When and why will I be able to ignore this alert, and how can I avoid this scenario?
 1. Does this alert definitely indicate that users are being negatively affected? Are there detectable cases in which users aren't being negatively impacted, such as drained traffic or test deployments, that should be filtered out?
 1. Can I take action in response to this alert? Is that action urgent, or could it wait until morning? Could the action be safely automated?
 1. Does everyone from the notification list really need to be notified?
@@ -38,7 +48,7 @@
 ### Alerting Consideration
 1. **Precision** - proportion of the alerts which correspond to the real outage
     ```
-    precision = real incidents triggers / all alerts triggerd
+    precision = real incidents triggers / all alerts trigger
     ```
 
 1. **Recall** - the proportion of significant events detected
@@ -46,7 +56,8 @@
     recall = detected significant events / all significant events
     ```
 
-1. **Detection time** - how long does it take to send notificaiton in various conditions.
+1. **Detection time** - how long does it take to send notification in various conditions.
+
 1. **Reset time** - how long does alert fires after issue has been mitigated.
 
 ## Tools
@@ -69,7 +80,7 @@ expr:
 
     ```yaml
     - alert: HighErrorRate
-      expr: job:slo_errors_per_request:ratio_rate10m{job="myjob"} >= 0.001
+      expr: job:slo_errors_per_request:ratio_rate10m{job="my_job"} >= 0.001
     ```
 1. Pros and cons
     * **+** Good Recall. All the significant events are detected
@@ -82,7 +93,7 @@ expr:
 
     ```yaml
     - alert: HighErrorRate
-       expr: job:slo_errors_per_request:ratio_rate36h{job="myjob"} > 0.001
+       expr: job:slo_errors_per_request:ratio_rate36h{job="my_job"} > 0.001
     ```
 
 1. Pros and cons
@@ -98,7 +109,7 @@ expr:
 
     ```yaml
     - alert: HighErrorRate
-      expr: job:slo_errors_per_request:ratio_rate1m{job="myjob"} > 0.001
+      expr: job:slo_errors_per_request:ratio_rate1m{job="my_job"} > 0.001
       for: 1h
     ```
 
@@ -120,7 +131,7 @@ expr:
 
     ```yaml
     - alert: HighErrorRate
-      expr: job:slo_errors_per_request:ratio_rate1h{job="myjob"} > 36 * 0.001
+      expr: job:slo_errors_per_request:ratio_rate1h{job="my_job"} > 36 * 0.001
     ```
 
 1. Pros and cons
@@ -138,13 +149,13 @@ expr:
 1. Rule
     ```yaml
     - expr: (
-          job:slo_errors_per_request:ratio_rate1h{job="myjob"} > (14.4*0.001)
+          job:slo_errors_per_request:ratio_rate1h{job="my_job"} > (14.4*0.001)
         or
-          job:slo_errors_per_request:ratio_rate6h{job="myjob"} > (6*0.001)
+          job:slo_errors_per_request:ratio_rate6h{job="my_job"} > (6*0.001)
         )
       severity: page
 
-    - expr: job:slo_errors_per_request:ratio_rate3d{job="myjob"} > 0.001
+    - expr: job:slo_errors_per_request:ratio_rate3d{job="my_job"} > 0.001
       severity: ticket
     ```
 
@@ -165,28 +176,28 @@ expr:
 1. Rule
     ```yaml
     expr: (
-            job:slo_errors_per_request:ratio_rate1h{job="myjob"} > (14.4*0.001)
+            job:slo_errors_per_request:ratio_rate1h{job="my_job"} > (14.4*0.001)
           and
-            job:slo_errors_per_request:ratio_rate5m{job="myjob"} > (14.4*0.001)
+            job:slo_errors_per_request:ratio_rate5m{job="my_job"} > (14.4*0.001)
           )
         or
           (
-            job:slo_errors_per_request:ratio_rate6h{job="myjob"} > (6*0.001)
+            job:slo_errors_per_request:ratio_rate6h{job="my_job"} > (6*0.001)
           and
-            job:slo_errors_per_request:ratio_rate30m{job="myjob"} > (6*0.001)
+            job:slo_errors_per_request:ratio_rate30m{job="my_job"} > (6*0.001)
           )
     severity: page
 
     expr: (
-            job:slo_errors_per_request:ratio_rate24h{job="myjob"} > (3*0.001)
+            job:slo_errors_per_request:ratio_rate24h{job="my_job"} > (3*0.001)
           and
-            job:slo_errors_per_request:ratio_rate2h{job="myjob"} > (3*0.001)
+            job:slo_errors_per_request:ratio_rate2h{job="my_job"} > (3*0.001)
           )
         or
           (
-            job:slo_errors_per_request:ratio_rate3d{job="myjob"} > 0.001
+            job:slo_errors_per_request:ratio_rate3d{job="my_job"} > 0.001
           and
-            job:slo_errors_per_request:ratio_rate6h{job="myjob"} > 0.001
+            job:slo_errors_per_request:ratio_rate6h{job="my_job"} > 0.001
           )
     severity: ticket
     ```
@@ -195,7 +206,7 @@ expr:
     **+** Still good recall
     **+** Still Good Detection time
     **+** Good reset time
-    **-** A lot of parametrs to specify
+    **-** A lot of parameters to specify
 
 
 

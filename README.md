@@ -1,5 +1,4 @@
 # My learning notes
-https://mmurygin.github.io/notes/
 
 - [HighLoad](highload)
 - [SRE](sre)

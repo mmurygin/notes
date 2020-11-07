@@ -1,5 +1,4 @@
 # Monitoring
-
   * [Philosophy](#philosophy)
     + [Goals](#goals)
     + [Common Scheme](#common-scheme)
@@ -7,10 +6,10 @@
     + [Design Patterns](#design-patterns)
   * [Metrics](#metrics)
     + [The Four Golden Signals](#the-four-golden-signals)
-    + [Additional usefull metrics](#additional-usefull-metrics)
-    + [Metric Best Practicies](#metric-best-practicies)
+    + [Additional useful metrics](#additional-useful-metrics)
+    + [Metric Best Practices](#metric-best-practices)
     + [Virtual Machine](#virtual-machine)
-    + [Database Metrices](#database-metrices)
+    + [Database Metrics](#database-metrics)
     + [Message Queues](#message-queues)
     + [Cache](#cache)
     + [DNS](#dns)
@@ -20,16 +19,19 @@
 
 ### Goals
 1. **Alerting**
-1. **Debugging**
+1. **Troubleshooting**
 1. **Capacity Planning**
-1. **Expiriments** - compare before and after
-1. **Business Analisys**
+1. **Error budget calculation** to choose where to focus effort: new features or reliability
+1. **Experiments** - compare before and after
+1. **Business Analysis**
 
 ### Common Scheme
 ![Monitoring Scheme](./img/monitoring-scheme.png)
 
 ### Anti-Patterns
 1. Tool Obsession
+    * Not base your decisions on tools you have
+    * Try to have the minimal amount of tools to fullfil your needs, at it simplifies the system. But at the same time don't be afraid of introducing a new tool, if it brings a benefits. The general rule is: **if a need can be fulfilled with a tool which you already use - reuse this tool, other way introduce a new one**
 1. Monitoring-as-a-Job
     * it's good to have observability team, which goal is to build monitoring infrastructure that developer teams will use
     * observability team should not setup metrics and alerts, because this team does not now the application insight
@@ -39,18 +41,23 @@
     * you ignore alerts
     * you are checking system for metrics every five minutes or even less
     * you aren't storing historical metric data
-    * **OS metrics are not usefull for alerting**
+    * **OS metrics are not useful for alerting**
 1. Using Monitoring as a Crutch
     * Monitoring should be the only one solution for poorly built app problem. In addition to monitoring it's good to improve app itself.
-    * Monitoring doesn't fix broken things
+    * Monitoring doesn't fix broken things, so don't forget to fix issue found with monitoring.
 1. Manual configuration
+    * Adding services / servers to the monitoring should be automated. Otherwise it takes from you unnecessary amount of time, it also complicates and slows down the monitoring process. Like if a developer needs to spend an hour trying to add server to monitoring - he will likely ignore it, on the other hand if it takes just a few minutes - he will do it.
+    * If you have a runbook (readme) with a list of manual steps to make something work, consider automating this list of steps.
 
 ### Design Patterns
 1. Composable monitoring - use multiple specialized tools and couple them loosely together.
-1. Monitoring from the User Perspective
-    * start monitoring closer to user
-1. Buy, Not Build
-1. Continual Improvement
+    * Collect data (pull or push)
+    * Storage data - usually time series database (TSDB)
+    * Analysis / Reports
+    * Alert - alerting is not the only goal of monitoring
+1. **Start monitoring from the users perspective**. Create SLIs based on service usage by the end user. This is the most important metrics, all the web service metrics and infrastructure metrics come later and usually they are not used for alerting, only for troubleshooting.
+1. **Buy, Not Build** - always start with existed monitoring solution (buy some), and only if you outgrown this tool you could consider creating your own.
+1. **Continual Improvement** - don't stop when you have something working.
 
 
 ## Metrics
@@ -68,26 +75,26 @@
     * GoRoutines
     * Queue size
 
-### Additional usefull metrics
+### Additional useful metrics
 1. External uptime checks
 1. Blackbox monitoring
-1. **Intended Changes** - changes is the number one source of any issues. It's very usefull to have all the change logs in one place. Type of changes:
+1. **Intended Changes** - changes is the number one source of any issues. It's very useful to have all the change logs in one place. Type of changes:
     * release of new software version
     * configuration update
     * infrastructure update
     * hardware update
-1. **Dependencies** - you should always monitor your dependencies. So that, in case of emergency you could immideately understand that service dependency is the root cause of issue.
+1. **Dependencies** - you should always monitor your dependencies. So that, in case of emergency you could immediately understand that service dependency is the root cause of issue.
     * the health of dependency
     * availability, latency and errors of dependent service
 
-### Metric Best Practicies
+### Metric Best Practices
 1. Every collected metric should have a [purpose](#goals)
 1. Worry about your tail
 1. Use the combination of **whitebox** and **blackbox** monitoring.
     * with white box monitoring you could analyze the internal metrics for you application
-    * if the server is down or DNS is down you white box monitoring wan't see it.
-1. As simple as possible, no simplier
-    * the rules that catch real incidents most often should be as simple, preductable, and reliable as possible
+    * if the server is down or DNS is down you white box monitoring won't see it.
+1. As simple as possible, no simpler
+    * the rules that catch real incidents most often should be as simple, predictable, and reliable as possible
     * data collection, aggregation, and alertig configuration that is rarely exercised should be up for removal
     * signals that are collected, but not exposed in any prebacked dashboard nor used by any alert, are candidates for removal
 
@@ -98,7 +105,7 @@
 1. Network Usage
 1. Clock Drift
 
-### Database Metrices
+### Database Metrics
 1. Connections (threads in mysql)
 1. QPS
 1. Queries duration
