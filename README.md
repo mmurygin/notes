@@ -1,7 +1,7 @@
 # My learning notes
 
-- [HighLoad](highload)
 - [SRE](sre)
+- [HighLoad](highload)
 - [Computer Science](computer-science)
 - [Linux](linux)
 - [Programming Languages](lang)
