@@ -61,6 +61,17 @@
 
 
 ## Metrics
+### Types
+1. System monitoring
+    * physical hosts
+    * networking
+    * containers
+1. Application monitoring
+    * Requests
+    * Errors
+    * Duration
+1. Business monitoring
+    * How well we perform as a business
 ### The Four Golden Signals
 1. **Latency**
 1. **Traffic**
