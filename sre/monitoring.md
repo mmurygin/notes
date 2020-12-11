@@ -61,6 +61,7 @@
 
 
 ## Metrics
+
 ### Types
 1. System monitoring
     * physical hosts
@@ -72,7 +73,24 @@
     * Duration
 1. Business monitoring
     * How well we perform as a business
-### The Four Golden Signals
+
+
+### RED
+1. Useful for online-serving systems (line REST API).
+1. **Requests**
+1. **Errors**
+1. **Duration**
+
+
+## USE
+1. Useful for ofline-servicing systems and batch jobs.
+1. **Utilization** - how full your service is
+1. **Saturation** - the amount of queued work
+1. **Errors**
+
+
+## The Four Golden Signals (google)
+
 1. **Latency**
 1. **Traffic**
 1. **Errors**

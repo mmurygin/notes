@@ -11,15 +11,15 @@
     + [Alert duration](#alert-duration)
     + [Alert on a Burn Rate](#alert-on-a-burn-rate)
     + [Multiple burn rate alerts](#multiple-burn-rate-alerts)
-    + [Multiwindow, Multi-Burn-Rate](#multiwindow-multi-burn-rate)
+    + [Multi-window, Multi-Burn-Rate](#multiwindow-multi-burn-rate)
 
 ## Philosophy
 
 ### Best Practices
 1. Don't use emails for alerts. Depending on the criticality send alert to:
-    * response/action required immediately - send this to pager, phone, pagerduty, etc.
-    * awareness needed, but immediate action not required - send it to the chat.
-    * record for historical/diagnostic purpose - send it to log system.
+    * Response/action required immediately - send this to pager, phone, Pager Duty, etc.
+    * Awareness needed, but immediate action not required - send it to the chat.
+    * Record for historical/diagnostic purpose - send it to log system.
 1. Log all alerts and remediation time for analysis.
 1. Every alert should have attached runbook for an on-call engineer. Runbook content:
     * What is this services, and what does it do?
@@ -33,7 +33,7 @@
 1. Pages should be about a novel problem or an event that hasn't been seen before.
 1. Alerts should not flap.
 1. One event should trigger as less alerts as possible.
-    * when there are a lot of triggered alerts in case of an incident - it creates a lot of noise and complicates troubleshooting.
+    * When there are a lot of triggered alerts in case of an incident - it creates a lot of noise and complicates troubleshooting.
 1. **Test your monitoring system** - as you setup your monitoring system you could not be fired by an alert for months or years, so it's very important to be sure over time that your alerts are not broken.
 
 ### Minimize the amount of alerts
@@ -43,6 +43,10 @@
 1. Does this alert definitely indicate that users are being negatively affected? Are there detectable cases in which users aren't being negatively impacted, such as drained traffic or test deployments, that should be filtered out?
 1. Can I take action in response to this alert? Is that action urgent, or could it wait until morning? Could the action be safely automated?
 1. Does everyone from the notification list really need to be notified?
+
+
+## Tips
+1. For batch jobs is good to have a simple alert on the last successful run.
 
 
 ### Alerting Consideration
