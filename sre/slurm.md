@@ -1,10 +1,15 @@
+# Monitoring
+
+## Table of Contents
 - [SLI and SLOs](#sli-and-slos)
   * [Availability](#availability)
     + [SLI](#sli)
     + [Error Budget](#error-budget)
+    + [Alert](#alert)
   * [Latency](#latency)
     + [SLI](#sli-1)
     + [Error Budget](#error-budget-1)
+    + [Alert](#alert-1)
 - [Application Metrics](#application-metrics)
   * [Requests](#requests)
   * [Latency](#latency-1)
@@ -13,8 +18,10 @@
   * [Container memory usage](#container-memory-usage)
   * [Pods running](#pods-running)
     + [Metric](#metric)
-    + [Alert](#alert)
+    + [Alert](#alert-2)
 - [Grafana Dashboard](#grafana-dashboard)
+  * [SLIs, SLOs](#slis-slos)
+  * [Infra Metrics](#infra-metrics)
 
 ## SLI and SLOs
 
