@@ -14,10 +14,12 @@
   * [Requests](#requests)
   * [Latency](#latency-1)
 - [Infrastructure Metrics](#infrastructure-metrics)
+  * [Replication Lag](#replication-lag)
+    + [Metric](#metric)
   * [Container CPU Usage](#container-cpu-usage)
   * [Container memory usage](#container-memory-usage)
   * [Pods running](#pods-running)
-    + [Metric](#metric)
+    + [Metric](#metric-1)
     + [Alert](#alert-2)
 - [Grafana Dashboard](#grafana-dashboard)
   * [SLIs, SLOs](#slis-slos)
@@ -200,6 +202,57 @@ histogram_quantile(0.50, sum(rate(http_server_request_duration_seconds_bucket{ap
 ```
 
 ## Infrastructure Metrics
+
+### Replication Lag
+
+#### Metric
+
+1. *Good event* - we performed a scrape and replication delay is below X seconds.
+
+	```yml
+	kind: PrometheusRule
+	apiVersion: monitoring.coreos.com/v1
+	metadata:
+	  name: prometheus-mysql-slo-rules
+	  namespace: $city
+	spec:
+	  groups:
+	    - name: mysql-slo
+	      rules:
+	      - record: $city:job:mysql_slave_replication_delay_is_below_threshold
+	        expr: mysql_slave_status_seconds_behind_master{namespace="$city"} <= bool 10
+	      - record: $city:job:mysql_slave_replication_delay_is_above_threshold
+	        expr: mysql_slave_status_seconds_behind_master{namespace="$city"} > bool 10
+	```
+
+1. The number of good events:
+
+	```bash
+	sum_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m])
+	```
+
+1. The number of total events
+
+	```bash
+	count_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m])
+	```
+
+1. SLI by slave
+
+	```bash
+	100
+	  * sum_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m])
+	  / count_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m])
+	```
+
+1. SLI for all slaves
+
+	```bash
+	100
+	  * sum(sum_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m]))
+	  / sum(count_over_time($city:job:mysql_slave_replication_delay_is_below_threshold[5m]))
+	```
+
 
 ### Container CPU Usage
 

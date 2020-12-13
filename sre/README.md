@@ -7,3 +7,4 @@
 - [Troubleshooting](troubleshooting.md)
 - [On-Call](on-call.md)
 - [Slurm](slurm.md)
+- [Resilience engineerign](resilience.md)
