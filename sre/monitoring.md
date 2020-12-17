@@ -21,7 +21,8 @@
 1. **Alerting**
 1. **Troubleshooting**
 1. **Capacity Planning**
-1. **Error budget calculation** to choose where to focus effort: new features or reliability
+1. **Error budget calculation**
+    * where to focus effort: new features or reliability
 1. **Experiments** - compare before and after
 1. **Business Analysis**
 
@@ -58,28 +59,29 @@
 1. **Start monitoring from the users perspective**. Create SLIs based on service usage by the end user. This is the most important metrics, all the web service metrics and infrastructure metrics come later and usually they are not used for alerting, only for troubleshooting.
 1. **Buy, Not Build** - always start with existed monitoring solution (buy some), and only if you outgrown this tool you could consider creating your own.
 1. **Continual Improvement** - don't stop when you have something working.
+1. **Test your monitoring system**
 
 
 ## Metrics
 
 ### Types
-1. System monitoring
-    * physical hosts
-    * networking
-    * containers
+1. Business monitoring
+    * How well we perform as a business
 1. Application monitoring
     * Requests
     * Errors
     * Duration
-1. Business monitoring
-    * How well we perform as a business
-
+1. System monitoring
+    * physical hosts
+    * networking
+    * containers
 
 ### RED
 1. Useful for online-serving systems (line REST API).
 1. **Requests**
 1. **Errors**
 1. **Duration**
+    * use percentiles
 
 
 ## USE
@@ -89,9 +91,9 @@
 1. **Errors**
 
 
-## The Four Golden Signals (google)
-
+### The Four Golden Signals (google)
 1. **Latency**
+    * use percentiles
 1. **Traffic**
 1. **Errors**
 1. **Saturation**

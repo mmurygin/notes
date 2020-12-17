@@ -20,6 +20,7 @@
     * Response/action required immediately - send this to pager, phone, Pager Duty, etc.
     * Awareness needed, but immediate action not required - send it to the chat.
     * Record for historical/diagnostic purpose - send it to log system.
+1. Every alert should have an owner.
 1. Log all alerts and remediation time for analysis.
 1. Every alert should have attached runbook for an on-call engineer. Runbook content:
     * What is this services, and what does it do?
@@ -34,7 +35,7 @@
 1. Alerts should not flap.
 1. One event should trigger as less alerts as possible.
     * When there are a lot of triggered alerts in case of an incident - it creates a lot of noise and complicates troubleshooting.
-1. **Test your monitoring system** - as you setup your monitoring system you could not be fired by an alert for months or years, so it's very important to be sure over time that your alerts are not broken.
+1. **Test your alerting system** - as you setup your monitoring system you could not be fired by an alert for months or years, so it's very important to be sure over time that your alerts are not broken.
 
 ### Minimize the amount of alerts
 1. Every time the pager goes off, I should be able to react with a sense of urgency. I can only react with a sense of urgency a few times a day before I become fatigued.
