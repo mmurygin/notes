@@ -21,10 +21,10 @@
 1. **Alerting**
 1. **Troubleshooting**
 1. **Capacity Planning**
-1. **Error budget calculation**
-    * where to focus effort: new features or reliability
-1. **Experiments** - compare before and after
+1. **Prioritization**
+    * calculate error budget and determine where to focus effort: new features or reliability.
 1. **Business Analysis**
+1. **Experiments** - compare before and after
 
 ### Common Scheme
 ![Monitoring Scheme](./img/monitoring-scheme.png)
