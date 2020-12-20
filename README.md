@@ -10,4 +10,3 @@
 - [Microservices](microservices)
 - [Testing](tests)
 - [Databases](databases)
-- [To Learn](learn.md)
