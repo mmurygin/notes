@@ -32,7 +32,8 @@
     * the reliability of our systems
 
 ## Observability
-* Everything that happens with our system is events (like http request, read packet from network, allocate more memory and so on). It will be great if we could collect all the events for observability, but it's not practical. That's why there are many ways to collect data and use it in a special ways:
+Everything that happens with our system is events (like http request, read packet from network, allocate more memory and so on). It will be great if we could collect all the events for observability, but it's not practical. That's why there are many ways to collect data and use it in a special ways:
+
 1. **Profiling** - we have some of the context for limited amount of time (like `tcpdump`)
 1. **Tracing**  - get some proportion of events that pass through some functions of interest and store this timing. Usually used to see the request path and how much time each step took.
 1. **Logging** - store almost all the context for a limited set of events. There are the following types:

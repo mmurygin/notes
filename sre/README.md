@@ -1,5 +1,6 @@
 # SRE
 
+- [DevOps](devops.md)
 - [Common](common.md)
 - [Monitoring](monitoring.md)
 - [Alerting](alerting.md)

@@ -8,6 +8,6 @@
     ![Tired backup](./img/tired-backup.png)
 
 ## Protection methods
-**Soft Deleteion** => **Laxy Deletion** => **Hard Deletion**
+**Soft Deleteion** => **Lazy Deletion** => **Hard Deletion**
 1. Soft deletion - objects are visible by clients in trash
 1. Lazy deletion - objects are not visible to clients, but they are still not deleted for some time to prevent from the mistake of internal developer.

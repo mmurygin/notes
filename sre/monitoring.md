@@ -5,14 +5,19 @@
     + [Anti-Patterns](#anti-patterns)
     + [Design Patterns](#design-patterns)
   * [Metrics](#metrics)
-    + [The Four Golden Signals](#the-four-golden-signals)
+    + [Types](#types)
+    + [Best Practices](#best-practices)
+    + [RED](#red)
+    + [USE](#use)
+    + [The Four Golden Signals (google)](#the-four-golden-signals-google)
     + [Additional useful metrics](#additional-useful-metrics)
-    + [Metric Best Practices](#metric-best-practices)
+  * [Metrics Examples](#metrics-examples)
     + [Virtual Machine](#virtual-machine)
     + [Database Metrics](#database-metrics)
     + [Message Queues](#message-queues)
     + [Cache](#cache)
     + [DNS](#dns)
+  * [Visualization](#visualization)
   * [In Real Life](#in-real-life)
 
 ## Philosophy
@@ -76,16 +81,29 @@
     * networking
     * containers
 
+
+### Best Practices
+1. Every collected metric should have a [purpose](#goals)
+1. Worry about your tail
+1. Use the combination of **whitebox** and **blackbox** monitoring.
+    * with white box monitoring you could analyze the internal metrics for you application
+    * if the server is down or DNS is down you white box monitoring won't see it.
+1. As simple as possible, no simpler
+    * the rules that catch real incidents most often should be as simple, predictable, and reliable as possible
+    * data collection, aggregation, and alertig configuration that is rarely exercised should be up for removal
+    * signals that are collected, but not exposed in any prebacked dashboard nor used by any alert, are candidates for removal
+
+
 ### RED
-1. Useful for online-serving systems (line REST API).
+Useful for online-serving systems (line REST API).
 1. **Requests**
 1. **Errors**
 1. **Duration**
     * use percentiles
 
 
-## USE
-1. Useful for ofline-servicing systems and batch jobs.
+### USE
+Useful for ofline-servicing systems and batch jobs.
 1. **Utilization** - how full your service is
 1. **Saturation** - the amount of queued work
 1. **Errors**
@@ -106,29 +124,19 @@
     * GoRoutines
     * Queue size
 
+
 ### Additional useful metrics
-1. External uptime checks
-1. Blackbox monitoring
+1. **Dependencies** - you should always monitor your dependencies. So that, in case of emergency you could immediately understand that service dependency is the root cause of issue.
+    * the health of dependency
+    * availability, latency and errors for all requests to dependency.
 1. **Intended Changes** - changes is the number one source of any issues. It's very useful to have all the change logs in one place. Type of changes:
     * release of new software version
     * configuration update
     * infrastructure update
     * hardware update
-1. **Dependencies** - you should always monitor your dependencies. So that, in case of emergency you could immediately understand that service dependency is the root cause of issue.
-    * the health of dependency
-    * availability, latency and errors of dependent service
+1. External uptime checks and blackbox monitoring.
 
-### Metric Best Practices
-1. Every collected metric should have a [purpose](#goals)
-1. Worry about your tail
-1. Use the combination of **whitebox** and **blackbox** monitoring.
-    * with white box monitoring you could analyze the internal metrics for you application
-    * if the server is down or DNS is down you white box monitoring won't see it.
-1. As simple as possible, no simpler
-    * the rules that catch real incidents most often should be as simple, predictable, and reliable as possible
-    * data collection, aggregation, and alertig configuration that is rarely exercised should be up for removal
-    * signals that are collected, but not exposed in any prebacked dashboard nor used by any alert, are candidates for removal
-
+## Metrics Examples
 ### Virtual Machine
 1. CPU Usage
 1. Memory
@@ -162,13 +170,11 @@
     * better QPS per zone
     * the best QPS per view
 
+## Visualization
+1. Stack related graphs vertically.
+1. Use the correct (and expected) scale and unit in your axes.
+
 ## In Real Life
-1. Global monitoring
+1. Google Monitoring
 
     ![Global monitoring](./img/global-monitoring.png)
-
-1. There is a set of labels for every metric. Metrics could be filtered by one or many labels.
-1. Label types:
-    * type of metric, e.g. _http-response_
-    * source of data, e.g. _instance-name_
-    * locality or aggregation of the data, e.g. _zone_ or _datacenter_
