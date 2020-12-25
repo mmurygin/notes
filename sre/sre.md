@@ -14,8 +14,6 @@
 ![SRE Pyramid](./img/sre-pyramid.png)
 
 ## SRE Tasks
-![SRE Tasks](./img/sre-tasks.png)
-
 1. **Reduce Organization Silos** - reduce the barier between developers and operation guys.
     * share the ownership of production with developers
 1. **Accept Failure as Normal**
