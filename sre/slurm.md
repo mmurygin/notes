@@ -299,8 +299,8 @@ spec:
 
 ### SLIs, SLOs
 
-[Dashboard JSON](./grafana-sli-slo.json)
+[Dashboard JSON](./data/grafana-sli-slo.json)
 
 ### Infra Metrics
 
-[Dashboard JSON](./infra-dashboard.json)
+[Dashboard JSON](./data/infra-dashboard.json)

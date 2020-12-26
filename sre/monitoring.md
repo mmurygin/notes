@@ -173,6 +173,8 @@ Useful for ofline-servicing systems and batch jobs.
 ## Visualization
 1. Stack related graphs vertically.
 1. Use the correct (and expected) scale and unit in your axes.
+1. Add thresholds to graphs when relevant.
+1. Enable shared crosshairs across graphs (possible in grafana).
 
 ## In Real Life
 1. Google Monitoring
