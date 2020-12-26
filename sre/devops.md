@@ -1,5 +1,11 @@
 # DevOps
 
+  * [Core Values](#core-values)
+  * [Principles](#principles)
+  * [SRE Pyramid](#sre-pyramid)
+  * [SRE Tasks](#sre-tasks)
+  * [Observability](#observability)
+
 ## Core Values
 1. **C**ulture
     * remove the wall between dev and ops
@@ -28,3 +34,34 @@
     * Learning and applying new things and getting fast feedback on changes, instead of going into analysis paralysis.
     * Better way to learn something is to try it, if we have an efficient tool chain for experimentation - we enforce this culture.
     * Working code wins.
+
+## SRE Pyramid
+![SRE Pyramid](./img/sre-pyramid.png)
+
+## SRE Tasks
+1. **Reduce Organization Silos** - reduce the barier between developers and operation guys.
+    * share the ownership of production with developers
+1. **Accept Failure as Normal**
+    * blameless postmortem
+    * make sure that failure won't happend the same way second time
+    * use error budget
+1. **Implement Gradual Change**
+    * small releases instead of big one
+    * canary releases
+1. **Leverage Tooling & Automation**
+    * automate manual work (eliminate toil)
+1. **Measure Everyting**
+    * amount of toil we have
+    * the reliability of our systems
+
+## Observability
+Everything that happens with our system is events (like http request, read packet from network, allocate more memory and so on). It will be great if we could collect all the events for observability, but it's not practical. That's why there are many ways to collect data and use it in a special ways:
+
+1. **Profiling** - we have some of the context for limited amount of time (like `tcpdump`)
+1. **Tracing**  - get some proportion of events that pass through some functions of interest and store this timing. Usually used to see the request path and how much time each step took.
+1. **Logging** - store almost all the context for a limited set of events. There are the following types:
+    * Transaction logs - critical business records that you must keep save at all cost
+    * Request logs - HTTP requests or database calls.
+    * Application logs - some system level events, like backups, maintanance and so on.
+    * Debug logs - detailed logs for troubleshooting., maintanance and so on.
+1. **Metrics** - a lot of aggregated events, mostly without context (just a few labels).
