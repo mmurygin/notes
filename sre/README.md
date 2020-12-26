@@ -7,6 +7,6 @@
 - [Logging](logging.md)
 - [Troubleshooting](troubleshooting.md)
 - [On-Call](on-call.md)
-- [Resilience engineering](resilience.md)
+- [Reliability engineering](reliability-engineering.md)
 - [Data Integrity](data-integrity.md)
 - [Slurm](slurm.md)
