@@ -152,6 +152,7 @@ expr:
     ![Multiple burn rates](./img/multiple-burn-rates.png)
 
 1. Rule
+
     ```yaml
     - expr: (
           job:slo_errors_per_request:ratio_rate1h{job="my_job"} > (14.4*0.001)
@@ -179,6 +180,7 @@ expr:
     ![Alert multiple Burn Rates](./img/alert-multiple-burn-rates.png)
 
 1. Rule
+
     ```yaml
     expr: (
             job:slo_errors_per_request:ratio_rate1h{job="my_job"} > (14.4*0.001)
@@ -206,6 +208,7 @@ expr:
           )
     severity: ticket
     ```
+
 1. Pros
     **+** Better precision (we do not react on jitter)
     **+** Still good recall

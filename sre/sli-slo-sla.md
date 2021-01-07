@@ -20,6 +20,8 @@
 
     ![SLA vs SLO](./img/slo-sla.png)
 
+1. **Error budget** - defined as 100% minus the goal for that objective. For example, if there have been 1,000,000 requests to the HTTP server in the previous four weeks, the HTTP availability error budget is 5% `(100%–95%) of 1,000,000 = 50,000 errors`
+
 ### Specification vs Implementation
 1. **SLI Specification** - what are you going to measure
 1. **SLI Implementation** - how are you going to measure it.
