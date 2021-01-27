@@ -21,6 +21,7 @@
     * Awareness needed, but immediate action not required - send it to the chat.
     * Record for historical/diagnostic purpose - send it to log system.
 1. Every alert should have an owner.
+    * if everyone owns alert then nobody in reality owns it.
 1. Log all alerts and remediation time for analysis.
 1. Every alert should have attached runbook for an on-call engineer. Runbook content:
     * What is this services, and what does it do?
@@ -29,7 +30,7 @@
     * What does the infrastructure for it look like?
     * What metrics and logs does it emit, and what do they mean?
     * What alerts are set up for it, and why?
-1. Every page should be actionable.
+1. Every page should be important - if it's possible to ignore alert engineers will ignore it, so as a result it's just unnecessary distraction.
 1. Every page response should require intelligence. If a page merely merits a robotic response, it shouldn't be a page.
 1. Pages should be about a novel problem or an event that hasn't been seen before.
 1. Alerts should not flap.

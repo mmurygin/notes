@@ -70,16 +70,24 @@
 ## Metrics
 
 ### Types
-1. Business monitoring
-    * How well we perform as a business
-1. Application monitoring
+1. Business monitoring - how well we perform as a business.
+    * purchases per second (for e-commerce)
+    * views per second for blog / news
+1. Frontend Monitoring
+    * Can be done with sending logs from frontend
+    * Or by using Applicaiton Performance Monitor (APM)
+1. Application (backend) monitoring
     * Requests
     * Errors
     * Duration
-1. System monitoring
-    * physical hosts
-    * networking
-    * containers
+1. Software (platform) monitoring
+    * databases
+    * container platform
+1. System monitoring (physical hosts)
+    * CPU
+    * Memory
+    * Disk IO
+1. Networking monitoring
 
 
 ### Best Practices

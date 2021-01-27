@@ -49,6 +49,12 @@
         * engineering service to work in partial failure case
 
 
+## Failure Types
+1. Recent changes - some new changes introduced a bug.
+1. Depencency - one of the critical dependencies failed.
+1. Capacity - server receive more requests than it can handle.
+1. Requests flow - users use some unexpected workflow which causes the issue.
+
 ## Practices
 1. Retry.
 2. Timeout.
