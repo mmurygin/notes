@@ -50,16 +50,19 @@
 
 
 ## Failure Types
-1. Recent changes - some new changes introduced a bug.
-1. Depencency - one of the critical dependencies failed.
-1. Capacity - server receive more requests than it can handle.
-1. Requests flow - users use some unexpected workflow which causes the issue.
+1. **Recent changes** - some new changes introduced a bug.
+1. **Dependency** - one of the critical dependencies failed.
+1. **Capacity** - server receive more requests than it can handle.
+1. **Requests flow** - users use some unexpected workflow which causes the issue.
 
 ## Practices
-1. Retry.
-2. Timeout.
-3. Monitor dependencies.
-4. rate limit.
+1. **Use only minimal amount of required data** - get _nice to have data_ in additional requests and do not block main functionality in case of failure of _nice to have_ services.
+1. **Retry** - retry idempotent requests with backoff, jitter and max_retries.
+1. **Timeout calls** to external APIs. To not exhaust connections in case of slow \ irresponsible dependency.
+1. **Rate limit clients** - to avoid one incorrect client breaking all the customers.
+1. **Finish transactions from failed nodes** - e.g. a node started transaction and failed. We should finish such transactions on healthy nodes.
+1. **Show cached data** - cache responses from external dependencies and show them in case of failure. Stale data is better than no data at all.
+1. **Communicate with users that you expirience issues and working on fix**
 
 
 ## Managing Risks
