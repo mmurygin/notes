@@ -1,5 +1,5 @@
 # Programming Languages
 
 - [C++](cpp)
-- [Python](python.md)
+- [Python](python)
 - [JavaScript](js)
