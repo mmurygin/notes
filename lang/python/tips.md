@@ -45,3 +45,16 @@ if count := fresh_fruit.get('lemon', 0):
 else:
     out_of_stock()
 ```
+
+## Use catch-all while unpacking
+
+```python
+# get the top from a list
+car_ages = [0, 9, 4, 8, 7, 20, 19, 1, 6, 15]
+car_ages_descending = sorted(car_ages, reverse=True)
+oldest, second_oldest, *others = car_ages_descending
+
+# header and body
+it = generate_csv()
+header, *rows = it
+```
