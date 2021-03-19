@@ -1,5 +1,31 @@
 # Python Tips
 
+## Getting Help
+1. List methods
+
+    ```python
+    dir(obj)
+    ```
+
+1. Print help
+
+    ```python
+    help(obj)
+    ```
+
+## List comprehension
+
+```python
+>>> [ord(x) for x in 'spaam']                # List of character ordinals
+[115, 112, 97, 97, 109]
+>>> {ord(x) for x in 'spaam'}                # Sets remove duplicates
+{112, 97, 115, 109}
+>>> {x: ord(x) for x in 'spaam'}             # Dictionary keys are unique
+{'p': 112, 'a': 97, 's': 115, 'm': 109}
+>>> (ord(x) for x in 'spaam')                # Generator of values
+<generator object <genexpr> at 0x000000000254DAB0>
+```
+
 ## Difference Between bytes and str
 1. 1 byte != 1 character in string, it all depends on encoding
 1. [What every SD should know about Unicode](http://www.joelonsoftware.com/articles/Unicode.html)

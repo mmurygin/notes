@@ -1,0 +1,3 @@
+# Puppet
+
+- [Basics](basics.md)
