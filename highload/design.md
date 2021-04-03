@@ -18,11 +18,11 @@
 
 ## Design
 1. When you develop software you always try to find the tradeoffs between:
-    * Uptime
-    * Latency
+    * Reliability
+    * Throughput
     * Velocity - the speed of features integration
-    * Scale
     * Security
+    * Scalability
 
 
 ## Reliability
