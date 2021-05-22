@@ -80,13 +80,6 @@
 1. With the above convention we could measure risk as **Bad Minutes / Year**
 
 
-### Downtime
-1. Consist of:
-    * Time to detection
-    * Time to resolution
-    * Percentage of users impacted
-
-
 ### Reducing risks
 1. Perform education
 1. Perform "wheel of misfortune"

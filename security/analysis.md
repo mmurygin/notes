@@ -1,25 +1,25 @@
-# Анализ
+# Analysis
 
-  - [Типы анализов](#типы-анализов)
-  - [Поверхность атаки](#поверхность-атаки)
+  - [Types](#types)
+  - [Attack Surface](#attack-surface)
   - [DNS / WHOIS / NETWORK](#dns--whois--network)
   - [Search Engines](#search-engines)
   - [Web Content](#web-content)
 
 
-## Типы анализов
-1. `Black box analysis` - когда мы анализируем систему ничего не зная о ней. Т.е. система это некоторый черный ящик, котороый что-то принимает и что-то отдаёт. При анализе у нас некоторая цель и мы используем все доступные средства для её достижения.
-    * нулевая информация о цели
-    * точка входа
-        * домен
-        * веб сайт
-        * ip адресс
-        * имя человека
-    * чаще всего используется с целью найти одну уязвимость и проникнуть.
-1. `White box analysys` - когда изначально у нас есть широкие знания о системе.
-    * Задача ставится как найти все возможные уязвимости системы.
+## Types
+1. **Black box analysis** - when we analyse system without internal knowledge about it. Usually we have a goal to inject into the system.
+    * zero information about the target
+    * entry point
+        * domain
+        * ip address
+        * person name
+    * usually is used to find one vulnerability in the system and exploit it.
+1. `White box analysys` - initially we have extended knowledge about the system (possibly provided by system owner).
+    * The goal is to find all possible vulnerabilities
 
-## Поверхность атаки
+## Attack surface
+### Definition
 1. Изначально у нас есть одна точка входа. Для того чтобы повысить шансы успешной компрометации системы мы проводим анализ, с целью **увеличения поверхности атаки**. Т.е. находим смежные домены, адреса и т.д.
 1. Методы первоначальной разведки:
     * пассивный анализ - полностью легальны, основанны на открытой информации
@@ -35,15 +35,17 @@
         * подбор портов
         * подбор пользователей
 
-## DNS / WHOIS / NETWORK
-1. Инструменты анализа
-    * `nslookup [-q=ns|mx|axfr|txt|...] {name} {server}`
+### Extending Attack Surface
+#### DNS
+1. Tools
+    * `nslookup [-q=ns|mx|txt|...] {name} {server}`
         * `server` - это `DNS` сервер через который мы хотим произвести запрос
     * `host {name} {server}`
-    * dig [@server] {name} [type]
+    * `dig [@server] {name} [type]`
 1. Для расширения поверхности атаки можно попробовать найти все домены данной доменной зоны. К примеру, мы хотим атаковать `example.com`, полезно было бы узнать все используемые домены данной зоны, к примеру `www.example.com`, `my.example.com`, etc.
-1. Пример поиска поддоменов для учебной зоны _zonetransfer.me`
+1. Пример поиска поддоменов для учебной зоны `zonetransfer.me`
     * ищем авторитетные днс сервера для искомой зоны
+
         ```bash
         nslookup -q=ns zonetransfer.me
         ```
@@ -51,13 +53,23 @@
     * ищем все поддомены
 
         ```bash
-        dig zonetransfer.me @dnsserver_from_above_response axfr
+        dig zonetransfer.me @authorative-name-server axfr
         ```
 
-1. **`whois IP`** - получает сеть (хостинг провайдера_ к которой принадлежит данный IP адресс. Как результат можно расширить поверхность атаки на всю подсеть
-1. **`whoid domain`** - показывает регистрационную информацию хозяина домена.
+#### Whois
+1. Get network the IP belongs to:
 
-## Search Engines
+    ```bash
+    whois ip-address
+    ```
+
+1. Get domain owher data
+
+    ```bash
+    whois domain-name
+    ```
+
+#### Search Engines
 1. Два слова без кавычек - ищется вхождение этих двух слов
 1. Два слова в кавычках - ищется вхождение выражения в том виде, в котором оно записанно в кавычках
 1. Специальные директивы
