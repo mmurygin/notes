@@ -37,6 +37,10 @@
 * per**cent**
 * ca**the**dral
 * **cri**tic
+* **cri**ticise
+* **cri**ticism
+* **max**imise
+* **mi**nimise
 * environ**men**tal
 * **doc**ument
 * docu**men**tary
@@ -51,3 +55,10 @@
 * **da**tabases
 * **ify** (do not change stress): **cla**ssify, i**den**tify, **jus**tify, **mo**dify, **no**tify, **qua**lify, **sim**plify, **spe**cify, **tes**tify, **ve**rify
 * **o**perating
+* **o**perator
+* **ca**pitalise
+* gui**tar**
+* pi**a**no - **pi**anist
+* ad**min**istrator
+* **mon**itor
+* **a**nalyse - a**na**lysis - ana**ly**tics - ana**ly**tical
