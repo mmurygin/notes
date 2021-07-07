@@ -43,8 +43,9 @@
 1. **`a`** - go to the edit mode starting with next character to cursort
 1. **`A`** - go to the end of line and start edit mode
 1. **`o`** - insert new line after the current
-1. **`O`** - insert new line before the current 
+1. **`O`** - insert new line before the current
 1. **`r`** - replace one character and not go to edit mode
+1. **`s`** - delete charcter under cursor and enter edit mode
 1. **`cc`** - delete current line and go to edit mode
 1. **`cw`**- delete next word and go to edit mode
 1. **`:m line_number or +\- number`** - moves current line
@@ -87,4 +88,19 @@
 1. To set word boundaries during search use `/<pattern/>`
 
 ## Find and replace
-1. **`:%s/old/new/g`** - replace all occurences of old with new
+1. Everywhere:
+
+    ```
+    :%s/old/new/g
+    ```
+
+1. In the selected text
+
+    * select text with `ctrl+V`
+
+    * then type **`:`**
+
+    ```
+    '<,'>s/old/new/g
+    ```
+

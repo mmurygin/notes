@@ -11,14 +11,42 @@
     * each node should have only one role
     * made up only from profiles
 
+## Docs
+1. Get list of resources
+
+    ```
+    puppet describe --list
+    ```
+
+1. Get resource documentation
+
+    ```
+    puppet describe service
+    ```
+
+
 ## Development
+1. View puppet resource
+
+    ```
+    puppet resource file /tmp/test
+    ```
+
 1. Validate file
+
     ```
     puppet parser validate file
     ```
 
-1. View changes without applying
+1. Preview changes
 
     ```
     puppet agent -t --noop
     ```
+
+1. Preview changes with file diff
+
+    ```
+    puppet agent -t --noop --show_diff
+    ```
+

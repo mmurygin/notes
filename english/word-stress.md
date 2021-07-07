@@ -62,3 +62,6 @@
 * ad**min**istrator
 * **mon**itor
 * **a**nalyse - a**na**lysis - ana**ly**tics - ana**ly**tical
+* **any**way
+* **de**tailed
+* **in**dicate
