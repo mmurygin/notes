@@ -12,33 +12,33 @@
     * 55% **visual**,
     * 38% **vocal**,
     * 7% **verbal**.
+1. Nonverbal actions:
+    * head nod
+    * eye contact
+    * open posture
 1. People have limited attention.
 1. Communication is about meaning, not about dumping a lot of information into peoples heads.
 1. Good communicator is a good listener.
 1. Good speech always has some kind of emotional context or connection.
 
 
-## Introducing Yourself
-1. Give your name
-1. Where you work
-1. Job Title
-1. A little details about what do you do
-
-
-## Keep a Conversation Going
-1. Nonverbal actions:
-    * head nod
-    * eye contact
-    * open posture
-1.Show your interest and understanding:
-    * Really?
-    * Great / Good
-    * That's interesting / surprising / great
-1. Ask questions:
+## Small talk
+1. Introduce yourself
+    * Give your name
+    * Where you work
+    * Job Title
+    * A little details about what do you do
+1. Ask questions and be a good listener
     * So how do you know her?
     * And how do you like Amsterdam?
     * Oh, When was the last time?
     * What happened?
+1.Show your interest and understanding:
+    * Really?
+    * Great / Good
+    * That's interesting / surprising / great
+1. Find what you and other person have in common.
+
 
 ## Real Live Language
 1. **So...** - to make a question seem less direct
