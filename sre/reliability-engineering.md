@@ -1,12 +1,6 @@
 # Reliability Engineering
 
-  * [Philosophy](#philosophy)
-  * [Improving Reliability](#improving-reliability)
-  * [Practices](#practices)
-  * [Managing Risks](#managing-risks)
-    + [Risks definitions](#risks-definitions)
-    + [Downtime](#downtime)
-    + [Reducing risks](#reducing-risks)
+[[_TOC_]]
 
 ## Philosophy
 1. Reliability is the most important feature.
