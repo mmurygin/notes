@@ -10,4 +10,5 @@
 - [On-Call](on-call.md)
 - [Reliability engineering](reliability-engineering.md)
 - [Data Integrity](data-integrity.md)
+- [Risks](risks.md)
 - [Slurm](slurm.md)
