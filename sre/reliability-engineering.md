@@ -48,6 +48,37 @@
         * improve canary analysis
         * engineering service to work in partial failure case
 
+## Stability
+**A stable system keeps processing transactions, even when transient impulses, persisstent stresses or component failures disrupt normal processing.**
+
+## Anti-Patterns
+### Integration Points
+1. Every integration point will eventually fail in some way, and you need to be prepared for that failure.
+1. Be ready, that every dependency could be slow to reply, do not reply at all or reply with error.
+1. Defense:
+    * Circuit Breaker
+    * Timeouts
+    * Decoupling Middleware
+    * Handshaking
+
+### Chain Reaction
+1. Failure of one server in the pool causes the failure of others.
+1. There are two sources of chain reaction:
+    * increased load forced one server in the pool to fail, which increased load on other servers and as a result the next one failed as well.
+    * resources leak (e.g. memory) in the application could be the reason of server failure, as a result of decreased capacity other servers will go into resource exhaustion state more quickly and the crack will propagate.
+1. Defense:
+    * Autoscaling
+    * Bulkhead
+
+### Cascading Failure
+1. When the failure of one component causes the failure of dependent components.
+1. Defense:
+    * Make sure that your service stays up, when one or many dependencies go down
+    * Pay Close attention on resources pool (e.g. connection pool, thread pool)
+    * Circuit Breaker
+    * Timeouts
+
+
 
 ## Failure Types
 1. **Recent changes** - some new changes introduced a bug.
