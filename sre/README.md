@@ -6,7 +6,7 @@
 - [Logging](logging.md)
 - [Alerting](alerting.md)
 - [Incident Management](incident-management.md)
-- [Postmortems](#postmortems.md)
+- [Postmortems](postmortems.md)
 - [Troubleshooting](troubleshooting.md)
 - [On-Call](on-call.md)
 - [Resilience engineering](resilience-engineering.md)
