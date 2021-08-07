@@ -10,8 +10,8 @@
     * Timing is surprise
     * Timing is important
     * Situation not well understood at the beginning
-    * Involve many people with diffent skills
-1. Define incident serverity levels.
+    * Involve many people with different skills
+1. Define incident severity levels.
 
 
 ## Timeline
@@ -24,7 +24,7 @@
 1. Solving the wrong problem
 1. People making things worse
 1. Too many people involved
-1. Stackeholders left in the dark
+1. Stakeholders left in the dark
 1. Everyone stepping on each other toes.
 
     ![Boys playing football](./img/boys-playing-football.jpg)
@@ -122,4 +122,11 @@ People involve as incident grows:
     * better to call someone by name and ask him to do this action
 1. Time box every task
 1. Get explicit acknowledgment
+
+
+## Crisis Patterns
+1. Thematic Vagabonding (butterfly minds) - you jump from one hypothesis to another very quickly without spending enough time on everyone of them.
+1. Goal Fixation - you spend too much time trying to confirm a single hypothesis. You rationally ignoring signals of other contributing factors, because you think you know it (gut feeling).
+1. Heroism - when someone goes and fix it silently. If he didn't fix it then he wasted precious time, if we fixed it then we promotes a culture of smart individuals - which is not a scalable solution.
+1. Distraction - irrelevant noise in comm channels, e.g. doing postmortems while the incident.
 
