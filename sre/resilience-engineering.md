@@ -1,4 +1,4 @@
-# Reliability Engineering
+# Resilience Engineering
 
   * [Philosophy](#philosophy)
   * [Improving Reliability](#improving-reliability)
@@ -7,6 +7,29 @@
     + [Risks definitions](#risks-definitions)
     + [Downtime](#downtime)
     + [Reducing risks](#reducing-risks)
+
+## Definitions
+1. **Resilience** - a system is resilient if it can adjust its functioning prior to, during, or following events (changes, disturbances, and opportunities), and thereby sustain required operations under both expected and unexpected conditions.
+
+
+## Safety
+1. **Safety** - it the system quality that is necessary and sufficient to ensure that the number of events that can be harmful to workers, the public, or the environment is acceptably low.
+1. Safety 1:
+    * absence of incidents;
+    * people and their activities are considered as threat to safety;
+    * safety activity is centered around creating barriers and removing causes.
+1. Safety 2:
+    * errors are routing part of any complex system;
+    * there is no a clear division between system working and being broken;
+    * people create safety by their adaptability.
+
+
+## Stages
+1 **Anticipation** - knowing what to expect
+1.**Monitoring** - knowing what to look for
+1.**Response** - knowing what to do
+1.**Learning** - - knowing what has happened
+
 
 ## Philosophy
 1. Reliability is the most important feature.
@@ -77,6 +100,11 @@
     * Pay Close attention on resources pool (e.g. connection pool, thread pool)
     * Circuit Breaker
     * Timeouts
+
+
+## Patterns
+### Circuit Breaker
+
 
 
 
