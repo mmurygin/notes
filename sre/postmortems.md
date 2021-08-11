@@ -1,6 +1,8 @@
 # Postmortem
 **Downtime is like a present - it's good until you have the same twice.**
 
+**The goal of Postmortem is to understand how your system REALLY works**
+
 ## Basic
 1. Real incidents
     *  Real incidents are not unusual.
@@ -59,6 +61,8 @@ Remember:
 1. What hindered detection?
 1. What hindered diagnosis?
 1. What hindered resolution?
+1. Was the incident response effective?
+1. What could have gone terribly wrong?
 1. Look at the incident response itself, as well as the other causes.
 
 E.g. engineer updated the config wrong:
@@ -68,32 +72,64 @@ E.g. engineer updated the config wrong:
 * How did no review catch it?
 * How could it propagate to multiple systems undetected?
 
+## Corrective Actions
+1. Ask:
+    * How can we eliminate this class of outages?
+    * How can we reduce the change of recurrence of this outage?
+    * How can we improve detection, diagnosis and resolution?
+    * How can we reduce impact?
+1. Be specific.
+1. Prepare a list of suggestions.
+    * Quick Fixes
+        * bug fixes
+        * workarounds
+        * band-aids
+        * adding a monitor
+    * Design Changes
+        * deeper reworking of one or more technical components or processes
+    * Process Changes
+        * performing tasks differently
+1. Determine feasibility and level of efforts to implement proposals
+    * **If you can do something, doesn't mean that you should do it!**
+1. Don't forget **Efficiency-Thoroughness Trade-Off Principle**
+    * The ETTO principle is the principle that there is a trade-off between efficiency or effectiveness on one hand, and thoroughness (such as safety assurance and human reliability) on the other.
 
 
+## Postmortem Meeting
+[Debriefing Facilitation Guide](https://extfiles.etsy.com/DebriefingFacilitationGuide.pdf)
 
-## Practices
-1. Principles:
-    * Blameless
-        * people are never root cause
-    * Should be written for all major or user-facing incidents
-    * Should be reviewed
-    * Should be shared withing an organization.
-    * Can be used as a training material
-1. Content:
-    * What went wrong
-    * What the impact of the issue was
-    * How you tracked down the problem
-    * How you fixed the problem
-    * How to prevent it from happening again.
-1. Conclusions:
-    * what went well
-    * What could have gone terribly wrong?
-    * How can we do to avoid such issues in the future?
-    * Follow Up Actions
+
+## Sharing
+The downtime reduces users confidence and loyalty to your product.
+
+So we need to be transparent about what happened and how are we going to prevent it from happening again in the future.
+
+Transparency:
+1. Builds trust - this guys knows what they are doing.
+1. Increases perception of reliability.
+1. Reduces support costs
+1. Controls the message
+
+### Sharing publicly template
+1. Summary of what happened
+1. What happened in details
+    * What went well
+    * What didn't go well
+    * How and when it was restored
+    * What is the user impact (e.g. lost transactions, lost of PII)
+1. What We're Doing About it
 
 
 ## Analyzing and reducing the amount of incidents
 1. Keep a History of Outages
-1. Ask the Big, Even Improbable, Question: What if...?
-1. Encourage Proactive Testing
+1. Do Retrospective
+    * Focus on fact
+    * Be positive; amplify the good
+    * Look below the surface for the second story of how things happen
+    * Think about it; don't jump to solutions.
+1. Analyze near misses (when things almost got wrong)
+    * Where did safety work?
+    * Where were there issues?
+    * Are there recurring minor issues?
+
 
