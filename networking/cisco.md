@@ -71,3 +71,58 @@
     login local
     transport input ssh
     ```
+
+## Router config
+1. Set IP address
+
+    ```
+    conf t
+    int f0/0
+    ip address 10.0.0.1 255.255.255.0
+    ```
+
+## VLAN config
+
+### Switch
+1. View VLANs
+
+    ```
+    show vlan
+    show interface f0/1 switchport
+    ```
+
+1. Create VLAN
+
+    ```
+    conf t
+    vlan 10
+    name "vlan-name"
+    ```
+
+1. Add interface to VLAN
+
+    ```
+    cont t
+    int f0/0
+    # set mode as access
+    # alternative is trunk mode when it sends packets for all the wlans
+    switchport mode access
+    switchport access vlan 10
+    ```
+
+
+### Router
+
+    ```
+    conf t
+
+    # create subinterface 10
+    int f0/0.10
+
+    # set IP address for a new interface
+    ip address 10.0.0.1 255.255.255.0
+
+    # set VLAN 10 for this interface
+    encapsulation dot1Q 10
+    ```
+
