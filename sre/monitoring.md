@@ -142,7 +142,9 @@ Useful for ofline-servicing systems and batch jobs.
     * configuration update
     * infrastructure update
     * hardware update
-1. External uptime checks and blackbox monitoring.
+1. **External uptime checks.**
+1. **Blackbox monitoring.**
+1. **Number of alerts per service.**
 
 ## Metrics Examples
 ### Virtual Machine

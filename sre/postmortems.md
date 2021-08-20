@@ -36,6 +36,11 @@
 Remember:
 **People make what they consider to be the best decision given the information available to them at the time**
 
+## Research
+1. Stack traces.
+1. Forensic logs.
+1. Images (cores, dumps, etc.)
+
 
 ## Content
 [Postmortem Template](https://docs.google.com/document/d/1-tKNWXPBsplAtkqXvksLUXS6VoC7D_qD80IGo2EAKbY/edit?usp=sharing)

@@ -1,12 +1,20 @@
 # Resilience Engineering
 
+**All software will fail, but good software fails well**
+
+  * [Definitions](#definitions)
+  * [Safety](#safety)
   * [Philosophy](#philosophy)
   * [Improving Reliability](#improving-reliability)
+  * [Stability](#stability)
+  * [Anti-Patterns](#anti-patterns)
+    + [Integration Points](#integration-points)
+    + [Chain Reaction](#chain-reaction)
+    + [Cascading Failure](#cascading-failure)
+  * [Patterns](#patterns)
+    + [Circuit Breaker](#circuit-breaker)
+  * [Failure Types](#failure-types)
   * [Practices](#practices)
-  * [Managing Risks](#managing-risks)
-    + [Risks definitions](#risks-definitions)
-    + [Downtime](#downtime)
-    + [Reducing risks](#reducing-risks)
 
 ## Definitions
 1. **Resilience** - a system is resilient if it can adjust its functioning prior to, during, or following events (changes, disturbances, and opportunities), and thereby sustain required operations under both expected and unexpected conditions.
@@ -22,13 +30,6 @@
     * errors are routing part of any complex system;
     * there is no a clear division between system working and being broken;
     * people create safety by their adaptability.
-
-
-## Stages
-1 **Anticipation** - knowing what to expect
-1.**Monitoring** - knowing what to look for
-1.**Response** - knowing what to do
-1.**Learning** - - knowing what has happened
 
 
 ## Philosophy
@@ -105,14 +106,25 @@
 ## Patterns
 ### Circuit Breaker
 
-
-
-
 ## Failure Types
 1. **Recent changes** - some new changes introduced a bug.
 1. **Dependency** - one of the critical dependencies failed.
 1. **Capacity** - server receive more requests than it can handle.
 1. **Requests flow** - users use some unexpected workflow which causes the issue.
+
+## Resilience in Microservices world.
+1. **Fail quickly and safely**
+    * the scope of failure should collapse completely;
+    * nothing outside the scope of failure should be impacted (limit blast radius).
+1. Post-mortems are fundamental ways to understand how your system really works.
+1. Use circuit breakers
+    * treat all your downstream services as attackers.
+1. Measure all the things
+    * you can't understand or improve what you can't measure
+1. Have a failure budget.
+    * expect that any of your upstream dependencies can be broken / slow / stuck forever
+    * expect that any of your downstream dependencies can bombard you with requests
+1. Instrumentation and observability have no equals.
 
 ## Practices
 1. **Use only minimal amount of required data** - get _nice to have data_ in additional requests and do not block main functionality in case of failure of _nice to have_ services.
@@ -122,5 +134,3 @@
 1. **Finish transactions from failed nodes** - e.g. a node started transaction and failed. We should finish such transactions on healthy nodes.
 1. **Show cached data** - cache responses from external dependencies and show them in case of failure. Stale data is better than no data at all.
 1. **Communicate with users that you expirience issues and working on fix**
-
-
