@@ -21,11 +21,11 @@
 
 ## Design TradeOffs
 When you develop software you always try to find the tradeoffs between:
-    * Scalability
-    * Reliability
-    * Simplicity
-    * Velocity - the speed of features integration
-    * Security
+* Scalability
+* Reliability
+* Simplicity
+* Velocity - the speed of features integration
+* Security
 
 ### Scalability
 1. **Scalability** - the ability to handle more users, clients, data, transactions, or requests without affecting the user experience.
