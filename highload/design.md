@@ -1,31 +1,54 @@
 # Design
+  * [Design TradeOffs](#design-tradeoffs)
+    + [Scalability](#scalability)
+    + [Maintainability](#maintainability)
+    + [Simplicity](#simplicity)
+    + [Reliability](#reliability)
+  * [Principles](#principles)
+    + [Loose Coupling](#loose-coupling)
+    + [Don't Repeat YourSelf](#dont-repeat-yourself)
+    + [Coding to Contract](#coding-to-contract)
+    + [Draw Diagrams](#draw-diagrams)
+    + [Single Responsibility](#single-responsibility)
+    + [Open-Closed Principle](#open-closed-principle)
+    + [Depenency Injection](#depenency-injection)
+    + [Inversion Of Control](#inversion-of-control)
+    + [Self Healing](#self-healing)
+  * [Capacity Planning](#capacity-planning)
+  * [Architecture](#architecture)
+  * [Design For Scale](#design-for-scale)
 
-* [Reliability](#reliability)
-* [Scalability](#scalability)
-* [Maintainability](#maintainability)
-* [Simplicity](#simplicity)
-  + [Loose Coupling](#loose-coupling)
-  + [Don't Repeat YourSelf](#dont-repeat-yourself)
-  + [Coding to Contract](#coding-to-contract)
-  + [Draw Diagrams](#draw-diagrams)
-  + [Single Responsibility](#single-responsibility)
-  + [Open-CLosed Principle](#open-closed-principle)
-  + [Depenency Injection](#depenency-injection)
-  + [Inversion Of Control](#inversion-of-control)
-* [Design For Scale](#design-for-scale)
-  + [Self Healing](#self-healing)
 
-
-## Design
-1. When you develop software you always try to find the tradeoffs between:
+## Design TradeOffs
+When you develop software you always try to find the tradeoffs between:
+    * Scalability
     * Reliability
-    * Throughput
+    * Simplicity
     * Velocity - the speed of features integration
     * Security
-    * Scalability
 
+### Scalability
+1. **Scalability** - the ability to handle more users, clients, data, transactions, or requests without affecting the user experience.
 
-## Reliability
+1. Scalability dimensions:
+    * handling more data
+    * handling higher thoughput (rps)
+    * how many engineers can be working on the system
+
+### Maintainability
+1. **Maintainability** - over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it productively.
+
+### Simplicity
+1. **The most important principle is keeping things simple.**
+    * the simplier the system the easiers is to evolve, maintain and optimize.
+1. **Hide Complexity and Build Abstractions**
+    * hide complexity behind simple API
+    * keep modules small and understandable
+1. Aim for **local simplicity** - you can look at any single class, module, or application and quickly understand what its purpose is and how it works.
+1. **Avoid Overengineering** -  do not try to predict every possible case how you software will be used. Good design allows you to add more details and features later on, but does not require you to build a massive solution up front.
+1. Try TDD - in addition to testability you will gain the view on your system from customer point of view
+
+### Reliability
 1. **Failure is not an option, it's mandatory.**
 1. **Anticipate Failure, design for failure and fail gracefully.**
 1. A **high available**, or **resilient**, web application is one that continues to function despite expected or unexpected failure of the components of the system. If a single instance failed, or entire zone expiriences a problem, a resilient application remains fault tolerant - continue to function and repair itself automatically, if necessary.
@@ -59,21 +82,40 @@
         * Setup detailed and clear monitoring, such as perormance metrics and error rates.
         * Implement good management practices and training
 
+## Principles
 
-## Scalability
-1. **Scalability** - as system grows (in data volume, traffic volume or complexity) there should be reasonable ways of dealing with that growth.
+### Loose Coupling
+1. Decrease the amount of connection between your modules and services.
+    ![Loose Coupling](./img/loose-coupling.jpg)
+1. Avoid unnecessary coupling
+    * don't make anything public unless it's really required
+    * prevent the necessety of having knowledge on which order your API method should be used
+    * avoid circular depencencies and try to make things hierarchical
 
-## Maintainability
-1. **Maintainability** - over time, many different people will work on the system (engineering and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it productively.
+### Don't Repeat YourSelf
+1. Following an inefficient process (e.g. timewasting meetings)
+1. Lack of automation
+1. Copy-Paste programming
+1. Do not repeat someone else (try to use existed solution instead of building your own)
 
-## Simplicity
-1. **The most important principle is keeping things simple.**
-    * the simplier the system the easiers is to evolve, maintain and optimize.
-1. **Hide Complexity and Build Abstractions**
-    * hide complexity behind simple API
-    * keep modules small and understandable
-1. **Avoid Overengineering** -  do not try to predict every possible case how you software will be used. Good design allows you to add more details and features later on, but does not require you to build a massive solution up front.
-1. Try TDD - in addition to testability you will gain the view on your system from customer point of view
+### Coding to Contract
+
+### Draw Diagrams
+
+### Single Responsibility
+
+### Open-Closed Principle
+1. Code should be open for extension and closed for modification. It means that code should be able to support new features without extensions
+1. Good example is taking compare function as an argument of sort function
+
+### Depenency Injection
+
+### Inversion Of Control
+
+### Self Healing
+1. System is never up, it's always particially down
+1. Draw the system diagram and identify **Single Points of Failure**
+1. Evaluate if it worths to add redundancy level to SPF
 
 ## Capacity Planning
 1. Consider all the dimencions of capacity planning
@@ -112,45 +154,18 @@
     * canary release
     * Max of 16Gbit / seconds
 
-### Loose Coupling
-1. Decrease the amount of connection between your modules and services.
-    ![Loose Coupling](./img/loose-coupling.jpg)
-1. Avoid unnecessary coupling
-    * don't make anything public unless it's really required
-    * prevent the necessety of having knowledge on which order your API method should be used
-    * avoid circular depencencies and try to make things hierarchical
-
-### Don't Repeat YourSelf
-1. Following an inefficient process (e.g. timewasting meetings)
-1. Lack of automation
-1. Copy-Paste programming
-1. Do not repeat someone else (try to use existed solution instead of building your own)
-
-### Coding to Contract
-
-### Draw Diagrams
-
-### Single Responsibility
-
-### Open-CLosed Principle
-1. Code should be open for extension and closed for modification. It means that code should be able to support new features without extensions
-1. Good example is taking compare function as an argument of sort function
-
-### Depenency Injection
-
-### Inversion Of Control
 
 ## Architecture
 ![Scalable Architecture](./img/scalable-architecture.png)
 
 ## Design For Scale
 1. Vertical Scaling
+    * at some point becomes expensive
+    * it's challenging to utilize all available hardware:
+        * app is written without wide use of threads
+        * lock contention
 1. Horizontal Scaling
-    * Replication (add clones)
-    * Functional Partitioning
+    * Functional Partitioning - the process of dividing a system based on functionality to scale independently
+    * Horizontal scaling (add clones)
     * Data Partitioning
 
-## Self Healing
-1. System is never up, it's always particially down
-1. Draw the system diagram and identify **Single Points of Failure**
-1. Evaluate if it worths to add redundancy level to SPF

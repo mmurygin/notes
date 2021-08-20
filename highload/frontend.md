@@ -8,6 +8,7 @@
   * [The role of reverse proxy](#the-role-of-reverse-proxy)
 
 ## Architecture
+1. GeoDNS for load balancing between DCs.
 1. CDN
 1. LoadBalancer
 1. Remove State from App
@@ -27,6 +28,7 @@
     * Smart Clients - not a good idea because to change infra you need to change clients.
     * DNS
         * **-** a lot of caches, some of them could ingnore TTL, as a result it's impossible to perform rolling update, or replace servers or increase capacity and so on
+        * **-** uneven distribution in case of more active cliends
         * **-** restricted amount of servers in DNS response (512 bytes)
 	* Hosted Solution (ELB)
 	* Software Based (Nginx, HAProxy)
@@ -82,5 +84,3 @@
     1. That's why reverse proxy is very good for handling incoming connections, because we don't spend time on creating new thread/process for every connection and do not consume memory/cpu time.
 1. SSL termination
 1. Serve static - after some time we will have all the static in memory (because linux caches file which were read from disk), and if there are enough memory to remain all static files there - we will always serve them from memory.
-
-

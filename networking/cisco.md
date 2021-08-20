@@ -126,3 +126,10 @@
     encapsulation dot1Q 10
     ```
 
+## Hints
+
+1. Configure the list of interfaces
+
+    ```
+    int range f0/1-24
+    ```
