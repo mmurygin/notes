@@ -110,7 +110,7 @@
 ## Cache Eviction Strategies
 1. FIFO
 1. LIFO
-1. Last Recently Used (LRU)
+1. Least Recently Used (LRU)
 1. Most Recently Used (MRU)
 1. Least Frequently Used (LFU) - count the number of times cache was used.
 1. Random Replacement

@@ -1,11 +1,15 @@
 # Cisco Shortcuts
 
-## Info
-1. `show ip interface brief` - show int info from global path
+## General
+1. `?` shows the list of available options (like tab in linux)
 1. `do <command>` - run admin commands from global config
+1. `show running-config` show the current configs
+1. `w` - save configs
+1. `no ip domain-lookup` - disable ip domain lookup
 
 
-## Global Configs
+
+## Auth
 1. Enable sync console (to avoid bad user expirience during typing)
 
     ```
@@ -72,7 +76,12 @@
     transport input ssh
     ```
 
+## Switching
+1. `show ip interface brief` - show int info from global path
+
 ## Router config
+1. `show ip route` - show the list of routes
+
 1. Set IP address
 
     ```
