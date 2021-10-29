@@ -52,7 +52,7 @@
 * **in**novation
 * **ac**curacy
 * **or**ganiser
-* **da**tabases
+* **da**tabase `ˈdeɪtəbeɪs`
 * **ify** (do not change stress): **cla**ssify, i**den**tify, **jus**tify, **mo**dify, **no**tify, **qua**lify, **sim**plify, **spe**cify, **tes**tify, **ve**rify
 * **o**perating
 * **o**perator
@@ -65,3 +65,7 @@
 * **any**way
 * **de**tailed
 * **in**dicate
+* NETworking
+* soveNIR
+* refeREE
+* guaranTEE
