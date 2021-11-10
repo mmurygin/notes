@@ -79,7 +79,9 @@
 ## Switching
 1. `show ip interface brief` - show int info from global path
 
-## Router config
+## Routing
+
+### Static Configs
 1. `show ip route` - show the list of routes
 
 1. Set IP address
@@ -87,8 +89,52 @@
     ```
     conf t
     int f0/0
+    no shutdown
     ip address 10.0.0.1 255.255.255.0
     ```
+
+1. Create loopback address
+
+    ```
+    conf t
+    int loopback 1
+    ip address 10.0.0.1 255.255.255.0
+    ```
+
+1. Set default route
+    ```
+    ip route 0.0.0.0 0.0.0.0 g0/0 10.1.0.99
+    ```
+
+
+### OSPF
+1. View OSPF data
+
+    ```
+    show ip protocols
+    show ip ospf
+    show ip ospf interface brief
+    show ip ospf neighbour
+    ```
+
+1. Enable OSPF
+
+    ```
+    route ospf <process-id>
+
+    # advertise any network with 10.x.x.x
+    network 10.0.0.0 0.255.255.255 area 0
+
+    # advertise any network
+    network 0.0.0.0 255.255.255.255 area 0
+
+    # set base for cost calculation to 1Gb/s
+    auto-cost reference-bandwidth 1000
+
+    # advertize default role
+    network-information originate
+    ```
+
 
 ## VLAN config
 
