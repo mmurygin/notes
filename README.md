@@ -12,4 +12,5 @@
 - [Testing](tests)
 - [Databases](databases)
 - [Security](security)
+- [Soft Skills](soft-skills)
 - [English](english)
