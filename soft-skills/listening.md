@@ -17,3 +17,25 @@
     * especially when the topic is important for the person you are talking with
 1. Debating before people finished they thougts.
 1. Asking them to repeat.
+
+
+## Prepare for high-stakes conversation
+1. Pick the right environment
+1. Identify the right time so that the other participant is ready to talk about it
+1. Be ready to focus
+
+
+## Listen effectively
+1. Use silence and space
+1. Use eye contact
+1. Be mindful of body language
+1. Use empathy
+    * I have a failed project too when I joined the company
+1. Ask open-ended questions
+1. Use the "help me understand" approach
+
+
+## How to stop Interrupting
+1. Take notes
+1. Focus on breathing
+1. You gain nothing from interrupting
