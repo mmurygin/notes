@@ -3,6 +3,13 @@
 ## Before the interview
 1. Review CV
 1. Make sure you know questions you are going to ask before you enter interview room
+1. Research the candidate
+1. Always start the interivew on time
+1. A good start sets the tone
+1. A positive attitude
+1. Know who you are looking for
+1. Close the interview correctly
+1. Don't schedule anything directly after the interview
 
 ## Introduction
 1. Introduct youself
@@ -43,3 +50,9 @@ Example:
 ### To avoid
 1. Closed questions
 1. Questions which contain an answer.
+
+### STAR
+1. Situation
+1. Task
+1. Action
+1. Result

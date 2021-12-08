@@ -28,6 +28,16 @@ If you want to be a bit more precise here is the rule:
 
 ## Tenses
 
+### Past Simple
+1. Completed action in the past.
+
+### Past Perfect
+1. An action has finished before another action in the past
+
+### Past Perfect Continious
+1. An action started in the past and continued happening until another moment in the past.
+1. Usually used together with past simple.
+
 ### Present Perfect
 1. Something happened, occured or was finished in the past and there is some result or consequence that affects us, impacts us right now in the current moment.
     * I've cleaned the kitchen and now it looks great
