@@ -3,6 +3,18 @@
 
 **The goal of Postmortem is to understand how your system REALLY works**
 
+
+## Safety
+1. **Safety** - it the system quality that is necessary and sufficient to ensure that the number of events that can be harmful to workers, the public, or the environment is acceptably low.
+1. Safety 1:
+    * absence of incidents;
+    * people and their activities are considered as threat to safety;
+    * safety activity is centered around creating barriers and removing causes.
+1. Safety 2:
+    * errors are routing part of any complex system;
+    * there is no a clear division between system working and being broken;
+    * people create safety by their adaptability.
+
 ## Basic
 1. Real incidents
     *  Real incidents are not unusual.
