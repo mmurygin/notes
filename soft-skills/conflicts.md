@@ -60,7 +60,7 @@
 1. Sulking
 1. Bearing grudges
 
-### Dealking with agressive people
+### Strategies
 There could be two ways to deal with them
 1. Find a way to live with this behavior
     * Practice detachment - I won't be feeling bad about myself because of their words / actions
