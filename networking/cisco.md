@@ -1,5 +1,16 @@
 # Cisco Shortcuts
 
+  * [General](#general)
+  * [Auth](#auth)
+  * [Switching](#switching)
+    + [VLAN config](#vlan-config)
+      - [Switch](#switch)
+      - [Router](#router)
+  * [Routing](#routing)
+    + [Static Configs](#static-configs)
+    + [OSPF](#ospf)
+  * [Hints](#hints)
+
 ## General
 1. `?` shows the list of available options (like tab in linux)
 1. `do <command>` - run admin commands from global config
@@ -87,6 +98,7 @@
     ```
     show vlan
     show interface f0/1 switchport
+    show interface trunk
     ```
 
 1. Create VLAN
@@ -102,13 +114,26 @@
     ```
     cont t
     int f0/0
-    # set mode as access
-    # alternative is trunk mode when it sends packets for all the vlans
+
     switchport mode access
     switchport access vlan 10
     ```
 
-#### Router
+1. Set interace as a trunk
+
+    ```
+    int f0/1
+
+    # required for old switches, default value for new
+    switchport trunk encapsulation dot1q
+
+    switchport mode trunk
+
+    # disable Dynamic Trunk Protocol (DTP)
+    switchport nonegotiate
+    ```
+
+#### Router on a Stick
 
     ```
     conf t
@@ -116,11 +141,11 @@
     # create subinterface 10
     int f0/0.10
 
-    # set IP address for a new interface
-    ip address 10.0.0.1 255.255.255.0
-
     # set VLAN 10 for this interface
     encapsulation dot1Q 10
+
+    # set IP address for a new interface
+    ip address 10.0.0.1 255.255.255.0
     ```
 
 

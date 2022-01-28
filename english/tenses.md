@@ -6,7 +6,19 @@
 1. Completed action in the past.
 
 ### Past Perfect
+![Past Perfect](./img/past-perfect.png)
+
 1. An action has finished before another action in the past
+
+### Past Continuous
+1. An action cotinued in the past in the time of speaking.
+    * When I arrived from work, he was watching TV.
+    * I tried to call her, but she was busy washing her hair.
+1. Questoins
+    * Was he running late?
+    * Was she visiting you?
+    * What were you doing at 2pm?
+1. Often used with past simple.
 
 ### Past Perfect Continious
 1. An action started in the past and continued happening until another moment in the past.
@@ -25,7 +37,7 @@
         * Do you want to see this movie tonight? Oh, I've already seen that.
     * **yet** (only in negative sentense and questions)
         * Have you seen that movie? No, I haven't seen it yet.
-    * (in US past simple is used more
+    * (in US past simple is used more)
 1. have ever - asking about things that people have done / not done in their life until the present time
     * Have you ever been in Paris? No, I have never been there
     * Have you ever been in a car crash?
