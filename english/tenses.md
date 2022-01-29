@@ -26,6 +26,7 @@
         * I met him 10 years ago.
 
 ### Present Perfect Continious
+Action which started in the past and continue at the present moment.
 
 
 ## Past
