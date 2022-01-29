@@ -1,4 +1,4 @@
 # Dutch
 
-- [Vocabular](vocabular.md)
+- [Vocabulary](vocabulary.md)
 - [Grammar](grammar.md)
