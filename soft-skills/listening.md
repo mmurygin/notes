@@ -1,6 +1,6 @@
 # Listening
 
-{:toc}
+{:toc:}
 
 ## Bad Listeners
 
@@ -52,10 +52,13 @@
     * Can I just clarify? You're saying that...
     * My understanding is that ...
     * Let me make sure I've got this right; you're saying ...
+    * So let's recap on what has been said and agreed.
 1. Do not take people's language to the extreme
     * it's especially common, when we are criticized
 1. Ask them for possible solutions
     * do not provide people with solutions until they asked
+1. Build on what has been said
+    * What you said about... is really interesting. I think we should discuss this more.
 
 
 
