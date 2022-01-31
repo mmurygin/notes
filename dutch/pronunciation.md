@@ -4,6 +4,7 @@
 {:toc}
 
 ## Short Vovels
+|-------|-----|------|--------------------------------|
 | **a** | man | man  | as in "h**a**rd", but shorter. |
 | **e** | lek | leak | as in "s**e**t", but shorter.  |
 | **i** | lip | lip  | as in "b**i**t", but shorter.  |
