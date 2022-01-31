@@ -1,6 +1,5 @@
 # Listening
 
-* TOC
 {:toc}
 
 ## Bad Listeners
