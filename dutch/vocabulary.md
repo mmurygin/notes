@@ -1,4 +1,7 @@
-# Vocabular
+# Vocabulary
+
+* TOC
+{:toc}
 
 ## Say it in Dutch
 
@@ -6,7 +9,7 @@
 |-----------------------------------|-----------------------------|
 | Hoe zeg je ... ?                  | How do you say ...?         |
 | Hoe schrijf je ... ?              | How do you write ...?       |
-| Hoe spreek je ... uit?            | How do you say ... ?        |
+| Hoe spreek je ... uit?            | How do you spell ... ?      |
 | Kun je langzamer spreken?         | Can you speek a bit slowly? |
 | Ik behrijp/snap het niet.         | I don't understand it.      |
 | Ik weet het niet.                 | I don't know it.            |
@@ -33,6 +36,7 @@
 | **Waarom?**                             | **Why?**                                   |
 | **Hoeveel** broers heb je?              | **How much** brothers do you have?         |
 | **Hoelang** blijf je in Nederlands?     | **How long** are you staing in Neherlands? |
+| Wil je ook?                             | Would you like?                            |
 
 ## Restaurant
 
