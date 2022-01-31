@@ -40,41 +40,44 @@
 
 ## Restaurant
 
-
+### Entering the cafe
 | Ik                                              | Ober                                         |
 |-------------------------------------------------|----------------------------------------------|
-| **Entering the cafe**                           |                                              |
 | Heb je een tafeltje voor 2?                     |                                              |
 | Hallo, ik will graag ontbijten/lunchen/dineren. |                                              |
 | (Yes, you can set in the back.)                 | Ja, jullie mogen achterin gaan zitten.       |
-|                                                 |                                              |
-| **Making and order**                            |                                              |
-|                                                 | Hoe kan ik jullie helpen?                    |
-|                                                 | Wat kan ik voor jullie doen?                 |
-| Mogen wij de menukaart alsjeblieft?             |                                              |
-|                                                 | Tuurlijk! Die ga ik even voor jullie pakken. |
-| (Are you ready to make an order)                | Hebben jullie al een keuze kunnen maken?     |
-|                                                 |                                              |
-| Mag ik ..., alsjeblieft?                        |                                              |
-| Ja, Ik wil graag ...                            |                                              |
-| Eiren met koffie graag.                         |                                              |
-| Doe mij maar een broodje hummus.                |                                              |
-| Hebben jullie verse jus?                        |                                              |
-| Wat zit er in de tomatensoep?                   |                                              |
-| Hebben jullie ook veganistische opties?         |                                              |
-| (Enjoy your food / Enjoy )                      | Eet smakelijk! / Geniet ervan!               |
-|                                                 | Is alles naar wens?                          |
-| (Is everything to your liking?)                 | Is het allemaal lekker?                      |
-|                                                 | Heeft het allemaal gesmaakt?                 |
-|                                                 | Did it all taste nice?                       |
-| Ja, het was heerlijk!                           |                                              |
-| Mogen wij nog iets bestellen?                   | (Can we order something else?)               |
-|                                                 |                                              |
-| **Paying**                                      |                                              |
-| Ik will graag betalen.                          |                                              |
-| Ik will graag afrekenen.                        |                                              |
-| Mag ik betallen?                                |                                              |
-| Mag ik de rekening, alsjeblieft?                |                                              |
-| Mag ik contant betallen?                        | (Can I pay with cache. )                     |
-| Maak er maar 34 euro van.                       | (Make it / round it up to 34 euro)           |
-| Laat de rest maar zitten.                       | (Keep the change)                            |
+
+### Making an order
+| Ik                                      | Ober                                         |
+|-----------------------------------------|----------------------------------------------|
+| (How can I help you?)                   | Hoe kan ik jullie helpen?                    |
+| (What can I do for you?)                | Wat kan ik voor jullie doen?                 |
+| Mogen wij de menukaart alsjeblieft?     |                                              |
+|                                         | Tuurlijk! Die ga ik even voor jullie pakken. |
+| (Are you ready to make an order)        | Hebben jullie al een keuze kunnen maken?     |
+|                                         |                                              |
+| Mag ik ..., alsjeblieft?                |                                              |
+| Ja, Ik wil graag ...                    |                                              |
+| Eiren met koffie graag.                 |                                              |
+| Doe mij maar een broodje hummus.        |                                              |
+| Hebben jullie verse jus?                |                                              |
+| Wat zit er in de tomatensoep?           |                                              |
+| Hebben jullie ook veganistische opties? |                                              |
+| (Enjoy your food / Enjoy )              | Eet smakelijk! / Geniet ervan!               |
+|                                         | Is alles naar wens?                          |
+| (Is everything to your liking?)         | Is het allemaal lekker?                      |
+|                                         | Heeft het allemaal gesmaakt?                 |
+|                                         | Did it all taste nice?                       |
+| Ja, het was heerlijk!                   |                                              |
+| Mogen wij nog iets bestellen?           | (Can we order something else?)               |
+
+### Paying
+| Ik                               | Ober                               |
+|----------------------------------|------------------------------------|
+| Ik will graag betalen.           |                                    |
+| Ik will graag afrekenen.         |                                    |
+| Mag ik betallen?                 |                                    |
+| Mag ik de rekening, alsjeblieft? |                                    |
+| Mag ik contant betallen?         | (Can I pay with cache. )           |
+| Maak er maar 34 euro van.        | (Make it / round it up to 34 euro) |
+| Laat de rest maar zitten.        | (Keep the change)                  |
