@@ -1,6 +1,11 @@
 # Listening
 
-## Why we are bad listeners
+* TOC
+{:toc}
+
+## Bad Listeners
+
+### Why
 **When you don't listen, you end up alienate people**
 
 1. We always interrupt
@@ -11,12 +16,11 @@
     * we starting debating
 
 
-## Bad Listener Signs
+### Signs
 1. Interrupting.
 1. Changing topics.
     * especially when the topic is important for the person you are talking with
 1. Debating before people finished they thoughts.
-1. Asking them to repeat.
 
 
 ## Prepare for high-stakes conversation
@@ -26,29 +30,34 @@
 
 
 ## Listen effectively
-1. Use silence and space
-1. Use eye contact
 1. Be mindful of body language
-1. Use empathy
-    * I have a failed project too when I joined the company
+    * smiling
+    * making eye contact frequently
+    * adopting an open posture: for example, leaning forward towards the speaker demonstrate your interest
+    * not leaning back in your chair with your arms crossed in from of you as if to say 'Come on then, interest me'
+1. **DO NOT INTERRUPT**
+    * You gain nothing from interrupting
+    * Take notes
+    * Focus on breathing
+1. Pause to think of questions, rather than formulating them in your mind while the speaker is talking.
+    * Small pauses for thought can reassure your speaking partner that you are engaged by what they have said.
 1. Ask open-ended questions
 1. Use the "help me understand" approach
-
-
-## How to stop Interrupting
-1. Take notes
-1. Focus on breathing
-1. You gain nothing from interrupting
-
-## How to show that you are listening
+    * Can you tell me more?
+    * OK, got on please.
+    * Gotcha.
+    * Why is that?
+1. Develop empathy.
+    * Try to gain a deeper understanding of how the speaker feels.
 1. Assimilate, restate, and show you understand the impact
+    * Can I just clarify? You're saying that...
+    * My understanding is that ...
+    * Let me make sure I've got this right; you're saying ...
 1. Do not take people's language to the extreme
     * it's especially common, when we are criticized
-1. Ask people to expand
-    * Why is that?
-    * How did it make you feel?
 1. Ask them for possible solutions
     * do not provide people with solutions until they asked
+
 
 
 ## How to listen when someone annoys you
