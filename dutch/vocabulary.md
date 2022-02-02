@@ -41,6 +41,7 @@
 ## Restaurant
 
 ### Entering the cafe
+
 | Ik                                              | Ober                                         |
 |-------------------------------------------------|----------------------------------------------|
 | Heb je een tafeltje voor 2?                     |                                              |
@@ -48,6 +49,7 @@
 | (Yes, you can set in the back.)                 | Ja, jullie mogen achterin gaan zitten.       |
 
 ### Making an order
+
 | Ik                                      | Ober                                         |
 |-----------------------------------------|----------------------------------------------|
 | (How can I help you?)                   | Hoe kan ik jullie helpen?                    |
@@ -72,6 +74,7 @@
 | Mogen wij nog iets bestellen?           | (Can we order something else?)               |
 
 ### Paying
+
 | Ik                               | Ober                               |
 |----------------------------------|------------------------------------|
 | Ik will graag betalen.           |                                    |
