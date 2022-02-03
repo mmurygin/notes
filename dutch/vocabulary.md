@@ -36,7 +36,13 @@
 | **Waarom?**                             | **Why?**                                   |
 | **Hoeveel** broers heb je?              | **How much** brothers do you have?         |
 | **Hoelang** blijf je in Nederlands?     | **How long** are you staing in Neherlands? |
-| Wil je ook?                             | Would you like?                            |
+
+## Meeting People
+
+| dutch                 | english                            |
+|-----------------------|------------------------------------|
+| Ken je Daniel?        | Do you know Daniel?                |
+| Wil je iets drinken ? | Would you like something to drink? |
 
 ## Restaurant
 
@@ -52,6 +58,7 @@
 
 | Ik                                      | Ober                                         |
 |-----------------------------------------|----------------------------------------------|
+| Mag ik bestellen?                       |                                              |
 | (How can I help you?)                   | Hoe kan ik jullie helpen?                    |
 | (What can I do for you?)                | Wat kan ik voor jullie doen?                 |
 | Mogen wij de menukaart alsjeblieft?     |                                              |
