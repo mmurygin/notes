@@ -39,10 +39,15 @@
 
 ## Meeting People
 
-| dutch                 | english                            |
-|-----------------------|------------------------------------|
-| Ken je Daniel?        | Do you know Daniel?                |
-| Wil je iets drinken ? | Would you like something to drink? |
+| dutch                  | english                            |
+|------------------------|------------------------------------|
+| Ken je Daniel?         | Do you know Daniel?                |
+| Wil je iets drinken ?  | Would you like something to drink? |
+| WIl je ook een birtje? | Would you like a beer to?          |
+| Bel me morgen!         | Call me tomorrow!                  |
+| Dat doe ik.            | I'll do that                       |
+| Ga zitten.             | Sit down.                          |
+| Nu niet.               | Not now.                           |
 
 ## Restaurant
 
