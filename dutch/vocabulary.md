@@ -19,7 +19,26 @@
 | Wat bedoel je?                    | What do you mean?           |
 | Mag ik iets vragen?               | May I ask a question?       |
 
-## Questions
+## Hoe Gaat Het
+
+* Alles goed?
+* Hoe gaat het (met jou / met u) ?
+* Hoe is het (met jou / met u) ?
+
+|----|-----------------|
+| ++ | prima           |
+| ++ | fantastish      |
+| ++ | uitstekend      |
+| ++ | heel goed       |
+| ++ | hartstikke goed |
+| +  | goed            |
+| +- | het gaat wel    |
+| +- | niet zo (goed)  |
+| -  | niet goed       |
+| -  | slecht          |
+
+
+## Vraag Woorden
 
 | dutch                                   | english                                    |
 |-----------------------------------------|--------------------------------------------|
@@ -96,3 +115,37 @@
 | Mag ik contant betallen?         | (Can I pay with cache. )           |
 | Maak er maar 34 euro van.        | (Make it / round it up to 34 euro) |
 | Laat de rest maar zitten.        | (Keep the change)                  |
+
+
+## Afspraak Maken
+1. Heb je vrijdag iets te doen?
+    * Nee, nog niet.
+    * Nee, ik heb geen plannen.
+1. Ga je mee (naar) museum?
+    * Ja, leuk.
+    * Ja, graag.
+    * Ja, goed idee.
+    * Nee, ik kan niet.
+    * Nee, dat vind ik niet zo leuk.
+    * Nee, ik heb geen zin.
+1. Zullen we voor zaterdag een afspraak maken?
+1. Zullen we naar een museum gaan?
+    * Ja, dat kan.
+    * Ja, dat is goed.
+    * Nee, dat lukt niet.
+    * Nee, ik heb al een afspraak.
+    * Nee, dan kan ik niet.
+1. Hoe laat spreken we af?
+    * Om drie uur.
+    * Om half negen.
+1. Waar spreken we af?
+    * Bij de bioscoop.
+    * Voor het museum.
+    * Op het station.
+    * In het cafe.
+1. Ik zie je zaterdag
+    * Oke, tot zaterdag!
+    * Prima, tot dan!
+
+[!Afspraak Maken](./img/afspraak-maken.png)
+
