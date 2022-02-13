@@ -5,19 +5,24 @@
 
 ## Say it in Dutch
 
-| dutch                             | english                     |
-|-----------------------------------|-----------------------------|
-| Hoe zeg je ... ?                  | How do you say ...?         |
-| Hoe schrijf je ... ?              | How do you write ...?       |
-| Hoe spreek je ... uit?            | How do you spell ... ?      |
-| Kun je langzamer spreken?         | Can you speek a bit slowly? |
-| Ik behrijp/snap het niet.         | I don't understand it.      |
-| Ik weet het niet.                 | I don't know it.            |
-| Kun jet dat herhalen alsjeblieft? | Can you repeat that please? |
-| (Ik heb) een vraag.               | I have a question.          |
-| Wat betekent ...?                 | What does ... mean?         |
-| Wat bedoel je?                    | What do you mean?           |
-| Mag ik iets vragen?               | May I ask a question?       |
+| dutch                                            | english                     |
+|--------------------------------------------------|-----------------------------|
+| Hoe zeg je ... ?                                 | How do you say ...?         |
+| Hoe schrijf je ... ?                             | How do you write ...?       |
+| Hoe spreek je ... uit?                           | How do you spell ... ?      |
+| Hoe spel je dat?                                 | How do you spell that?      |
+| Kun je / kunt u ... spellen?                     | Can you spell ...?          |
+| Kun je langzamer spreken?                        | Can you speek a bit slowly? |
+| Ik behrijp/snap het niet.                        | I don't understand it.      |
+| Ik weet het niet.                                | I don't know it.            |
+| Kun jet dat herhalen alsjeblieft?                | Can you repeat that please? |
+| (Ik heb) een vraag.                              | I have a question.          |
+| Wat betekent ...?                                | What does ... mean?         |
+| Wat bedoel je?                                   | What do you mean?           |
+| Mag ik iets vragen?                              | May I ask a question?       |
+| Wat zegt u?                                      | Sorry?                      |
+| Kun je / Kunt u dat nog een keer / eens zeggen ? | Could you say that again?   |
+
 
 ## Hoe Gaat Het
 
@@ -72,11 +77,11 @@
 
 ### Entering the cafe
 
-| Ik                                              | Ober                                         |
-|-------------------------------------------------|----------------------------------------------|
-| Heb je een tafeltje voor 2?                     |                                              |
-| Hallo, ik will graag ontbijten/lunchen/dineren. |                                              |
-| (Yes, you can set in the back.)                 | Ja, jullie mogen achterin gaan zitten.       |
+| Ik                                              | Ober                                   |
+|-------------------------------------------------|----------------------------------------|
+| Heb je een tafeltje voor 2?                     |                                        |
+| Hallo, ik will graag ontbijten/lunchen/dineren. |                                        |
+| (Yes, you can set in the back.)                 | Ja, jullie mogen achterin gaan zitten. |
 
 ### Making an order
 
@@ -148,4 +153,55 @@
     * Prima, tot dan!
 
 [!Afspraak Maken](./img/afspraak-maken.png)
+
+## General
+
+### Nouns
+
+|-|-|
+
+### Verbs
+
+| infinitive | imperfect        | perfect  |
+|------------|------------------|----------|-------------------|
+| zeggen     | zei, zeiden      | gezegd   | say               |
+| werken     |                  |          | work              |
+| luisteren  |                  |          | to listen         |
+| tellen     |                  |          | to count          |
+| bellen     |                  |          | to make a call    |
+| kunnen     | kon, konden      | gekund   | can               |
+| geven      | gaf, gaven       | gegeven  | to give           |
+| sturen     |                  |          | send              |
+| bedoelen   |                  |          | to mean           |
+| praten     |                  |          | to talk, to speak |
+| brengen    | bracht, brachten | gebracht | to brign          |
+| mogen      | mocht, mochten   | gemogen  | may               |
+
+
+
+
+### Adjectives
+
+|-------|--------|
+| acter | behind |
+
+
+
+### Auxilary
+|------------|----------|
+| what leuk! | how nice |
+| nu         | now      |
+| maar       | but      |
+| al         | already  |
+| daar       | there    |
+| tot        | up to    |
+| dan        | then     |
+| eigenlijk  | really   |
+| even       | just     |
+
+
+## Phrazes
+1. Kun u me helpen mevrouw?
+1. Ik weet het niet.
+1. Pardon mevrouw, mag ik u iets vragen?
 
