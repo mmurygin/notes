@@ -22,6 +22,7 @@
 | Mag ik iets vragen?                              | May I ask a question?       |
 | Wat zegt u?                                      | Sorry?                      |
 | Kun je / Kunt u dat nog een keer / eens zeggen ? | Could you say that again?   |
+| Het spijt me                                     | I'm sorry                   |
 
 
 ## Hoe Gaat Het
@@ -158,24 +159,28 @@
 
 ### Nouns
 
-|-|-|
+|-------------|--------|
+| het kaartje | ticket |
+
 
 ### Verbs
 
-| infinitive | imperfect        | perfect  |
-|------------|------------------|----------|-------------------|
-| zeggen     | zei, zeiden      | gezegd   | say               |
-| werken     |                  |          | work              |
-| luisteren  |                  |          | to listen         |
-| tellen     |                  |          | to count          |
-| bellen     |                  |          | to make a call    |
-| kunnen     | kon, konden      | gekund   | can               |
-| geven      | gaf, gaven       | gegeven  | to give           |
-| sturen     |                  |          | send              |
-| bedoelen   |                  |          | to mean           |
-| praten     |                  |          | to talk, to speak |
-| brengen    | bracht, brachten | gebracht | to brign          |
-| mogen      | mocht, mochten   | gemogen  | may               |
+| infinitive | imperfect           | perfect    |
+|------------|---------------------|------------|----------------|
+| zeggen     | zei, zeiden         | gezegd     | say            |
+| werken     |                     |            | work           |
+| luisteren  |                     |            | listen         |
+| tellen     |                     |            | count          |
+| bellen     |                     |            | make a call    |
+| kunnen     | kon, konden         | gekund     | can            |
+| geven      | gaf, gaven          | gegeven    | give           |
+| sturen     |                     |            | send           |
+| bedoelen   |                     |            | mean           |
+| praten     |                     |            | talk, to speak |
+| brengen    | bracht, brachten    | gebracht   | brign          |
+| mogen      | mocht, mochten      | gemogen    | may            |
+| verstaan   | vestond, verstonden | verstaan   | understand     |
+| schrijven  | schreef, schreven   | geschreven | write          |
 
 
 
@@ -187,21 +192,25 @@
 
 
 
-### Auxilary
-|------------|----------|
-| what leuk! | how nice |
-| nu         | now      |
-| maar       | but      |
-| al         | already  |
-| daar       | there    |
-| tot        | up to    |
-| dan        | then     |
-| eigenlijk  | really   |
-| even       | just     |
+### Auxiliary
+|--------------|-----------------|
+| what leuk!   | how nice        |
+| nu           | now             |
+| maar         | but             |
+| al           | already         |
+| daar         | there           |
+| tot          | up to           |
+| dan          | then            |
+| eigenlijk    | really          |
+| even         | just            |
+| nog een keer | again           |
+| ja zekker    | of course, sure |
 
 
 ## Phrazes
 1. Kun u me helpen mevrouw?
 1. Ik weet het niet.
 1. Pardon mevrouw, mag ik u iets vragen?
-
+1. Is deze plaats vrij?
+1. Waar ga jij naar toe?
+1. Wat ga je dit weekend doen?
