@@ -67,6 +67,7 @@
 | dutch                  | english                            |
 |------------------------|------------------------------------|
 | Ken je Daniel?         | Do you know Daniel?                |
+| Wie is dat?            | How is it?                         |
 | Wil je iets drinken ?  | Would you like something to drink? |
 | WIl je ook een birtje? | Would you like a beer to?          |
 | Bel me morgen!         | Call me tomorrow!                  |
@@ -152,6 +153,8 @@
 1. Ik zie je zaterdag
     * Oke, tot zaterdag!
     * Prima, tot dan!
+1. Ik bel je morgen nog wel (I will ket you know tomorrow).
+1. Hoe laat kom je?
 
 [!Afspraak Maken](./img/afspraak-maken.png)
 
@@ -170,30 +173,48 @@
 
 ### Nouns
 
-|-------------|--------|
-| het kaartje | ticket |
+|------------------------|-----------------|
+| het kaartje            | ticket          |
+| het verhaal (verhalen) | story           |
+| het volgende           | the following   |
+| het lokett             | ticket office   |
+| de dagkaart            | day ticket      |
+| de stallig             | storage         |
+| de hele dag            | all day         |
+| get rijbewijs          | driving licence |
+| de prijs               | price           |
 
 
 ### Verbs
 
 | infinitive | imperfect           | perfect    |
-|------------|---------------------|------------|----------------|
-| zeggen     | zei, zeiden         | gezegd     | say            |
-| werken     |                     |            | work           |
-| luisteren  |                     |            | listen         |
-| tellen     |                     |            | count          |
-| bellen     |                     |            | make a call    |
-| kunnen     | kon, konden         | gekund     | can            |
-| geven      | gaf, gaven          | gegeven    | give           |
-| sturen     |                     |            | send           |
-| bedoelen   |                     |            | mean           |
-| praten     |                     |            | talk, to speak |
-| brengen    | bracht, brachten    | gebracht   | brign          |
-| mogen      | mocht, mochten      | gemogen    | may            |
-| verstaan   | vestond, verstonden | verstaan   | understand     |
-| schrijven  | schreef, schreven   | geschreven | write          |
-
-
+|------------|---------------------|------------|------------------------|
+| zeggen     | zei, zeiden         | gezegd     | to say                 |
+| werken     |                     |            | to work                |
+| luisteren  |                     |            | to listen              |
+| tellen     |                     |            | to count               |
+| bellen     |                     |            | to make a call         |
+| kunnen     | kon, konden         | gekund     | can                    |
+| geven      | gaf, gaven          | gegeven    | to give                |
+| sturen     |                     |            | to send                |
+| bedoelen   |                     |            | mean                   |
+| praten     |                     |            | to talk, to speak      |
+| brengen    | bracht, brachten    | gebracht   | to brign               |
+| mogen      | mocht, mochten      | gemogen    | may                    |
+| verstaan   | vestond, verstonden | verstaan   | understand             |
+| schrijven  | schreef, schreven   | geschreven | to write               |
+| vliegen    | vloog, vlogen       | gevlogen   | to fly                 |
+| bezoeken   | bezocht, bezochten  | bezocht    | to visit               |
+| bekijken   |                     |            | to look at             |
+| moeten     | moest, moesten      | gemoeten   | must / to have to      |
+| uitstappen |                     |            | to get oof (the train) |
+| wandelen   | wandelde            | gewandeld  | to walk / to hike      |
+| huren      | huurde              | gehurd     | to rent                |
+| krijgen    | kreeg               | gekergen   | to get                 |
+| betallen   | betaalde            | betaald    | to pay                 |
+| gebruiken  | gebruikte           | gebruikt   | to use                 |
+| laten zien |                     |            | to show                |
+| laten      | liet                | gelaten    | to let                 |
 
 
 ### Adjectives
@@ -205,23 +226,33 @@
 
 ### Auxiliary
 |--------------|-----------------|
-| what leuk!   | how nice        |
 | nu           | now             |
 | maar         | but             |
-| al           | already         |
 | daar         | there           |
 | dan          | then            |
+| nou          | well            |
 | tot          | up to           |
 | eigenlijk    | really          |
 | even         | just            |
 | nog een keer | again           |
 | ja zekker    | of course, sure |
+| ja hoor      | sure            |
+| veel         | a lot           |
+| nog neet     | not yet         |
+| what leuk!   | how nice        |
+| al           | already         |
+| zonder       | without         |
 
 
 ## Phrazes
-1. Kun u me helpen mevrouw?
-1. Ik weet het niet.
-1. Pardon mevrouw, mag ik u iets vragen?
-1. Is deze plaats vrij?
-1. Waar ga jij naar toe?
-1. Wat ga je dit weekend doen?
+|---------------------------------------|------------------------------------|
+| Kun u me helpen mevrouw?              | Can you help me maam?              |
+| Pardon mevrouw, mag ik u iets vragen? |                                    |
+| Is deze plaats vrij?                  |                                    |
+| Waar ga jij naar toe?                 | Where are you going?               |
+| Waar ga je heen?                      | Where are you going?               |
+| Wat ga je dit weekend doen?           | What do you do at this weekend?    |
+| Je kent dat wel                       | You know it.                       |
+| Weet je / Weet u ...?                 | Do you know ...?                   |
+| Ken je / Kent u ...?                  | Do you know ...?                   |
+| Weet jij iets van vliegtuigen?        | Do you know anything about planes? |
