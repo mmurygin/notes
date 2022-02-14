@@ -157,6 +157,17 @@
 
 ## General
 
+### Days of Week
+
+|-----------|
+| Maandag   |
+| Dinsdag   |
+| Woensdag  |
+| Donderdag |
+| Vrijdag   |
+| Zaterdag  |
+| Zondag    |
+
 ### Nouns
 
 |-------------|--------|
@@ -199,8 +210,8 @@
 | maar         | but             |
 | al           | already         |
 | daar         | there           |
-| tot          | up to           |
 | dan          | then            |
+| tot          | up to           |
 | eigenlijk    | really          |
 | even         | just            |
 | nog een keer | again           |
