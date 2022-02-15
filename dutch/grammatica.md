@@ -15,6 +15,7 @@
 | we       | ons      | us              |
 | jullie   | jullie   | you             |
 | ze / zij | ze / hen | them            |
+|----------|----------|-----------------|
 
 
 ## Possessive Pronouns
@@ -29,6 +30,7 @@
 | we       | ons, onze  | our             |
 | jullie   | jullie     | your            |
 | ze / zij | hun        | their           |
+|----------|------------|-----------------|
 
 ## Word Order
 
@@ -39,7 +41,7 @@
 
 ## Modals
 
-### Zullen & Willen
+### Willen
 
 #### Conjugations
 
@@ -49,7 +51,20 @@
 | u                   | wil    |
 | hij / zij           | wil    |
 | wij / jullie / zijn | willen |
+|---------------------|--------|
 
+#### Usage
+1. dezire
+
+    |-----------------------------------|------------------------------------------|
+    | Ik wil vanavond iets lekker koken | I **want** to cook something tasty today |
+    |-----------------------------------|------------------------------------------|
+
+1. request
+
+#### Zullen
+
+#### Conjugations
 
 |---------------------|--------|
 | Ik                  | zal    |
@@ -57,5 +72,13 @@
 | u                   | zal    |
 | hij / zij           | zal    |
 | wij / jullie / zijn | zullen |
+|---------------------|--------|
 
+#### Usage
+1. Future
 
+    |-----------------------------------|------------------------------------------|
+    | Ik wil vanavond iets lekker koken | I **will** to cook something tasty today |
+    |-----------------------------------|------------------------------------------|
+
+1. Promise
