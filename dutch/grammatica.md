@@ -55,11 +55,7 @@
 
 #### Usage
 1. dezire
-
-    |-----------------------------------|------------------------------------------|
-    | Ik wil vanavond iets lekker koken | I **want** to cook something tasty today |
-    |-----------------------------------|------------------------------------------|
-
+    * Ik wil vanavond iets lekker koken  - I **want** to cook something tasty today.
 1. request
 
 #### Zullen
@@ -76,9 +72,11 @@
 
 #### Usage
 1. Future
-
-    |-----------------------------------|------------------------------------------|
-    | Ik wil vanavond iets lekker koken | I **will** to cook something tasty today |
-    |-----------------------------------|------------------------------------------|
-
+    * Ik zal vanavond iets lekker koken. _I **will** to cook something tasty today._
 1. Promise
+1. Proposal
+    * Zal ik vandavond iets lekker koken? _**Shall** I cook something tasty today?_
+1. Probability
+    * Ik zal misschien vandavond gaan koken. _I **might** cook something today._
+1. Plan
+    * Ik zal op vacantie gaan. _I **will** go on holiday.__
