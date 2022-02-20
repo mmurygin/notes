@@ -64,6 +64,105 @@
 
 ## Boodschappen
 
+|--------------|---------------------------------------|
+| boodschappen | grocery shopping                      |
+| winkelen     | shopping for luxury goods and clothes |
+| pinnen       | debit card                            |
+| de kasssa    | cashier                               |
+|--------------|---------------------------------------|
+
+### Your Turn
+
+| Klant           | Verkoper                  |
+| --------------- | ------------------------- |
+|                 | Wie is er aan de beurt?   |
+| Ik, geloof ik   | Wie mag ik helpen?        |
+|                 | (Who is the next)         |
+
+### Buying
+
+| Klant                         | Verkoper                 |
+|-------------------------------|--------------------------|
+|                               | Zegt u het maar.         |
+|                               | Zeg het maar.            |
+|                               | Hoe kan ik u helpen?     |
+| Mag ik ...                    |                          |
+| Ik will graag wat kersen.     |                          |
+|                               | Dat kan. Hoeveel?        |
+| Hoe duur zijn ze?             |                          |
+|                               | Ze kosten 2.50 per pond. |
+| Doe je dan maar een pond.     |                          |
+|                               | Anders nog iets?         |
+| Een kilo appeles, alstubleft. |                          |
+| Een pond kaas, graag.         |                          |
+|                               | Mag het iets meer zijn?  |
+|                               | (Can it be a bit more)   |
+| Ja, hoor. Dat it prima.       |                          |
+|                               | Anders nog iets?         |
+| Verkoopt u ook eieren?        | Ja, natuurlijk. Hoeveel? |
+|                               | Anders nog iets?         |
+| Ik heb ook boter nodig.       |                          |
+
+
+### Paying
+
+| Klant           | Verkoper                       |
+|-----------------|--------------------------------|
+|                 | Dat is 10 euro.                |
+|                 | Dat is dan 10 euro bij elkaar. |
+|                 | Dat wordt 10 euro.             |
+| alstublieft     |                                |
+| (there you are) |                                |
+|                 | Dank u wel.                    |
+
+### Fruits and Vegetables
+
+| Dutch         | English    | Russian                          |
+|---------------|------------|----------------------------------|
+| de courgette  | zucchini   | кабачок                          |
+| de andijvie   | endive     | среднее между салатом и капустой |
+| de aardappels | potatoes   |                                  |
+| de bloemkool  | califlower | цветная капуста                  |
+| de peterselie | parsley    | петрушка                         |
+
+
+### Quantities
+
+| Dutch              | English          |
+|--------------------|------------------|
+| een gram           | gram             |
+| een ons            | 100 gram         |
+| een pond           | 500 gram         |
+| een halve kilo     | 500 gram         |
+| een kilo           | 1000 gram        |
+| anderhalf          | one and a half   |
+| tweeeneenhalf      | two and a half   |
+| viereneenhalf      | fier and a half  |
+| zo'n               | about / rougly   |
+| ongeveer           | about            |
+| de fles            | bottle           |
+| de doos            | box              |
+| het pak            | carton (коробка) |
+| de zak             | bag              |
+| de krat            | crate (ящик)     |
+| het bakje (de bak) | punnet (поднос)  |
+| het bosje (de bos) | bunch            |
+
+
+### If you want more or less
+* Mag het iets meer zijn?
+* Mag het iets minder zijn?
+
+### Anything else
+* Anders nog iets?
+* Dat was het?
+
+### Paying
+* Dat is tien euro vieftig.
+* Dat is tien euro bij elkaar.
+* Alstublieft (here you are).
+
+
 ## Restaurant
 
 ### Entering the cafe
