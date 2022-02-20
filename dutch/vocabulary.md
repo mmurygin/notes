@@ -62,18 +62,7 @@
 | **Hoeveel** broers heb je?              | **How much** brothers do you have?         |
 | **Hoelang** blijf je in Nederlands?     | **How long** are you staing in Neherlands? |
 
-## Meeting People
-
-| dutch                  | english                            |
-|------------------------|------------------------------------|
-| Ken je Daniel?         | Do you know Daniel?                |
-| Wie is dat?            | How is it?                         |
-| Wil je iets drinken ?  | Would you like something to drink? |
-| WIl je ook een birtje? | Would you like a beer to?          |
-| Bel me morgen!         | Call me tomorrow!                  |
-| Dat doe ik.            | I'll do that                       |
-| Ga zitten.             | Sit down.                          |
-| Nu niet.               | Not now.                           |
+## Boodschappen
 
 ## Restaurant
 
@@ -157,6 +146,19 @@
 1. Hoe laat kom je?
 
 [!Afspraak Maken](./img/afspraak-maken.png)
+
+## Meeting People
+
+| dutch                  | english                            |
+|------------------------|------------------------------------|
+| Ken je Daniel?         | Do you know Daniel?                |
+| Wie is dat?            | How is it?                         |
+| Wil je iets drinken ?  | Would you like something to drink? |
+| WIl je ook een birtje? | Would you like a beer to?          |
+| Bel me morgen!         | Call me tomorrow!                  |
+| Dat doe ik.            | I'll do that                       |
+| Ga zitten.             | Sit down.                          |
+| Nu niet.               | Not now.                           |
 
 ## General
 
