@@ -37,7 +37,12 @@
 ### Standart
 1. The standard word order in a sentence is **SVTP** - **S**ubject **V**ert **T**ime **P**lace.
 
-### Inversion
+## Plural
+
+| Ending                                 | Suffix |
+|----------------------------------------|--------|
+| **default**                            | **en** |
+| **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |
 
 ## Modals
 

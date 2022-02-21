@@ -95,6 +95,8 @@
 |                               | Anders nog iets?         |
 | Een kilo appeles, alstubleft. |                          |
 | Een pond kaas, graag.         |                          |
+|                               | Wat voor kaas?           |
+| Jonge kaas, alstblief.        |                          |
 |                               | Mag het iets meer zijn?  |
 |                               | (Can it be a bit more)   |
 | Ja, hoor. Dat it prima.       |                          |
@@ -104,7 +106,7 @@
 | Ik heb ook boter nodig.       |                          |
 
 
-### Paying
+### Betallen
 
 | Klant           | Verkoper                       |
 |-----------------|--------------------------------|
@@ -115,38 +117,70 @@
 | (there you are) |                                |
 |                 | Dank u wel.                    |
 
-### Fruits and Vegetables
+### Groente
 
-| Dutch         | English    | Russian                          |
-|---------------|------------|----------------------------------|
-| de courgette  | zucchini   | кабачок                          |
-| de andijvie   | endive     | среднее между салатом и капустой |
-| de aardappels | potatoes   |                                  |
-| de bloemkool  | califlower | цветная капуста                  |
-| de peterselie | parsley    | петрушка                         |
+| Dutch           | English       | Russian                          |
+|-----------------|---------------|----------------------------------|
+| de courgette    | zucchini      | кабачок                          |
+| de aardappels   | potatoes      |                                  |
+| de bloemkool    | califlower    | цветная капуста                  |
+| de aubergine    | eggplant      | баклажан                         |
+| de champignon   | mushroom      |                                  |
+| het boontje     | bean          |                                  |
+| de sperziebonen | green beans   | горох                            |
+| de spinazie     | spinach       |                                  |
+| de sla          | lettuce       |                                  |
+| de peterselie   | parsley       | петрушка                         |
+| de andijvie     | endive        | среднее между салатом и капустой |
+| de knoflook     | garlic        |                                  |
+| de broccoli     | broccoli      |                                  |
+| de kool         | cabbage       | капуста                          |
+| de witte kool   | white cabbage | белая капуста                    |
+| de rode kool    | red cabbage   | красная капуста                  |
+| de ui           | onion         |                                  |
+| de wortel       | carrot        |                                  |
+
+### Fruit
+
+| Dutch          | Plural           | English    | Russian  |
+|----------------|------------------|------------|----------|
+| de peer        | de pears         | pear       | груша    |
+| de druif       | de druiven       | grape      | виноград |
+| de kers        | de kersen        | cherry     | вишня    |
+| de aardbei     | de aardbeien     | strawberry | клубника |
+| de tomaat      | de tomaten       | tomatoes   |          |
+| de me**loen**  | de me**loen**en  | melon      | дыня     |
+| de cit**roen** | de cit**roen**en | lemon      |          |
+| de perzik      |                  | peach      |          |
+| de pruim       |                  | plum       | слива    |
+| de mandarijn   |                  | mandarin   |          |
+| de kiwi        |                  | kiwifruit  |          |
+| de banaan      |                  | banana     |          |
+
 
 
 ### Quantities
 
-| Dutch              | English          |
-|--------------------|------------------|
-| een gram           | gram             |
-| een ons            | 100 gram         |
-| een pond           | 500 gram         |
-| een halve kilo     | 500 gram         |
-| een kilo           | 1000 gram        |
-| anderhalf          | one and a half   |
-| tweeeneenhalf      | two and a half   |
-| viereneenhalf      | fier and a half  |
-| zo'n               | about / rougly   |
-| ongeveer           | about            |
-| de fles            | bottle           |
-| de doos            | box              |
-| het pak            | carton (коробка) |
-| de zak             | bag              |
-| de krat            | crate (ящик)     |
-| het bakje (de bak) | punnet (поднос)  |
-| het bosje (de bos) | bunch            |
+| Dutch              | English            |
+|--------------------|--------------------|
+| een gram           | gram               |
+| een ons            | 100 gram           |
+| een pond           | 500 gram           |
+| een halve kilo     | 500 gram           |
+| een kilo           | 1000 gram          |
+| anderhalf          | one and a half     |
+| tweeeneenhalf      | two and a half     |
+| viereneenhalf      | fier and a half    |
+| zo'n               | about / rougly     |
+| ongeveer           | about              |
+| de fles            | bottle             |
+| de doos            | box                |
+| het pak            | carton (коробка)   |
+| de zak             | bag                |
+| de krat            | crate (ящик)       |
+| het bakje (de bak) | punnet (поднос)    |
+| het bosje (de bos) | bunch              |
+| een kuipje         | a tub (for butter) |
 
 
 ### If you want more or less
