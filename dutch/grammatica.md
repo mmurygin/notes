@@ -39,10 +39,17 @@
 
 ## Plural
 
-| Ending                                 | Suffix |
-|----------------------------------------|--------|
-| **default**                            | **en** |
-| **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |
+| Ending                                 | Suffix | Example                |
+|----------------------------------------|--------|------------------------|
+| **default**                            | **en** | tomaten                |
+| **e**, **er**, **el**, **em**          | **s**  | biers, films           |
+| **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |                        |
+|----------------------------------------|--------|------------------------|
+
+* Exceptions: **kinderen**, **eieren**
+* No plural ending: **euro**, **jaar**, **kilo**, **cent**.
+* Double vowels are almost always dropped (e.g. neem => nemen)
+* Sometimes extra consonants are added (e.g. les => lessen )
 
 ## Modals
 
