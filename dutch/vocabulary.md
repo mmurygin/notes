@@ -157,8 +157,6 @@
 | de kiwi        |                  | kiwifruit  |          |
 | de banaan      |                  | banana     |          |
 
-
-
 ### Quantities
 
 | Dutch              | English            |
@@ -182,19 +180,56 @@
 | het bosje (de bos) | bunch              |
 | een kuipje         | a tub (for butter) |
 
+### Kaas
 
-### If you want more or less
-* Mag het iets meer zijn?
-* Mag het iets minder zijn?
+|--------------|---------------------|
+| jonge kaas   | young cheese        |
+| belegen kaas | mature cheese       |
+| oude kaas    | extra mature cheese |
+|--------------|---------------------|
 
-### Anything else
-* Anders nog iets?
-* Dat was het?
+### Bread
 
-### Paying
-* Dat is tien euro vieftig.
-* Dat is tien euro bij elkaar.
-* Alstublieft (here you are).
+|-------------------|---------------------|
+| brood             | bread               |
+| bruin brood       | brown bread         |
+| wit brood         | white bread         |
+| get bolletje      | roll                |
+| het puntje        | hard roll           |
+| het beleg         | to have on bread    |
+| de boter          | butter              |
+| de ham            | ham                 |
+| de hagelslag      | chocolate sprinkles |
+| de pindakaas      | peanut butter       |
+| de chocolatepasta | chocolate spread    |
+| de jam            | jam                 |
+| de aardbeienjam   | strawberry jam      |
+|-------------------|---------------------|
+
+### Om te drinken
+
+|-------------------|-------------------------|
+| de koffie         | coffee                  |
+| de volle melk     | full fat milk           |
+| de halfvolle melk | semi-skimmed milk       |
+| de magere melk    | skimmed milk            |
+| de suiker         | sugar                   |
+| de rode wijn      | red wine                |
+| de witte wijn     | white wine              |
+| het bier          | beer                    |
+| spa rood          | sparkling mineral water |
+| spa blauw         | still mineral water     |
+| de sinaasappelsap | orange juice            |
+|-------------------|-------------------------|
+
+### Om te knabbelen
+
+|--------------|----------|
+| chips (шипс) | chips    |
+| pinda's      | peanuts  |
+| noten        | nuts     |
+| toastjes     | crackers |
+|--------------|----------|
 
 
 ## Restaurant
