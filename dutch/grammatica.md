@@ -37,19 +37,31 @@
 ### Standart
 1. The standard word order in a sentence is **SVTP** - **S**ubject **V**ert **T**ime **P**lace.
 
-## Plural
+## Pluralis
 
-| Ending                                 | Suffix | Example                |
-|----------------------------------------|--------|------------------------|
-| **default**                            | **en** | tomaten                |
-| **e**, **er**, **el**, **em**          | **s**  | biers, films           |
-| **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |                        |
-|----------------------------------------|--------|------------------------|
+| Ending                                 | Suffix | Example      |
+|----------------------------------------|--------|--------------|
+| **default**                            | **en** | tomaten      |
+| **e**, **er**, **el**, **em**          | **s**  | biers, films |
+| **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |              |
+|----------------------------------------|--------|--------------|
 
 * Exceptions: **kinderen**, **eieren**
 * No plural ending: **euro**, **jaar**, **kilo**, **cent**.
 * Double vowels are almost always dropped (e.g. neem => nemen)
 * Sometimes extra consonants are added (e.g. les => lessen )
+
+## Adjectief
+
+|              | de-woord                     | het-woord                    |
+|--------------|------------------------------|------------------------------|
+| de of het    | de klein**e** courgette      | het goed**e** idee           |
+| een          | een klein**e** courgette     | een **klein** bosje          |
+| geen artikel | prettig**e** vakantie        | **goed** idee                |
+| pluralis     | de klein**e** courgettes     | de klein**e** bosjes         |
+|              | de prettig**e** vakanties    | de goed**e** ideeen          |
+|              | De courgette is **klein**.   | Het bosje is **klein**.      |
+|              | De andijvie is **heerlijk**. | Het gerecht is **heerlijk**. |
 
 ## Modals
 
