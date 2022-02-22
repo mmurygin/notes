@@ -15,7 +15,6 @@
 | we       | ons      | us              |
 | jullie   | jullie   | you             |
 | ze / zij | ze / hen | them            |
-|----------|----------|-----------------|
 
 
 ## Possessive Pronouns
@@ -30,7 +29,6 @@
 | we       | ons, onze  | our             |
 | jullie   | jullie     | your            |
 | ze / zij | hun        | their           |
-|----------|------------|-----------------|
 
 ## Word Order
 
@@ -44,7 +42,6 @@
 | **default**                            | **en** | tomaten      |
 | **e**, **er**, **el**, **em**          | **s**  | biers, films |
 | **-a**, **-i**, **-o**, **-u**, **-y** | **'s** |              |
-|----------------------------------------|--------|--------------|
 
 * Exceptions: **kinderen**, **eieren**
 * No plural ending: **euro**, **jaar**, **kilo**, **cent**.
@@ -75,7 +72,6 @@
 | u                   | wil    |
 | hij / zij           | wil    |
 | wij / jullie / zijn | willen |
-|---------------------|--------|
 
 #### Usage
 1. dezire
@@ -92,7 +88,6 @@
 | u                   | zal    |
 | hij / zij           | zal    |
 | wij / jullie / zijn | zullen |
-|---------------------|--------|
 
 #### Usage
 1. Future
