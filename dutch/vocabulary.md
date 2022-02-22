@@ -186,7 +186,6 @@
 | jonge kaas   | young cheese        |
 | belegen kaas | mature cheese       |
 | oude kaas    | extra mature cheese |
-|--------------|---------------------|
 
 ### Bread
 
@@ -219,7 +218,6 @@
 | spa rood          | sparkling mineral water |
 | spa blauw         | still mineral water     |
 | de sinaasappelsap | orange juice            |
-|-------------------|-------------------------|
 
 ### Om te knabbelen
 
@@ -228,7 +226,6 @@
 | pinda's      | peanuts  |
 | noten        | nuts     |
 | toastjes     | crackers |
-|--------------|----------|
 
 
 ## Restaurant
