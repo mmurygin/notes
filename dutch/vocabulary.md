@@ -204,7 +204,6 @@
 | de chocolatepasta | chocolate spread    |
 | de jam            | jam                 |
 | de aardbeienjam   | strawberry jam      |
-|-------------------|---------------------|
 
 ### Om te drinken
 

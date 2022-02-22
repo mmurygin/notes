@@ -1,5 +1,8 @@
 # Communication
 
+* TOC
+{:toc}
+
 ## Knowing what to say
 1. Identify your desired outcomes.
     * Do you want to persuade people?
@@ -56,11 +59,11 @@ Don't fake it. Find the right version for yourself.
 
 
 ### Being Influenceable
+**Being humble is not thinking less of yourself, but thinking of youself less.**
+
 1. Don't win arguments.
     * win hearts in minds
 1. Acknowledge others' positive effect on you / project.
     * Thank you, I hadn't looked on it before
     * I appreciate you challenging me on it
 1. Share your improvement efforts.
-
-
