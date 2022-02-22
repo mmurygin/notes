@@ -27,3 +27,20 @@
     * How to make it less serious in case it happened?
     * What is you backup plan?
 1. Take action
+
+## Simplify your life
+**Try focusing on, and enjoying, one task at a time.**
+
+1. Make a list of things that are in your mind.
+1. Can items be deleted?
+1. Can items be delegated?
+1. Can the small items be tackled right away?
+1. Plan how to tackle your tasks.
+
+## False Personality driver
+1. **Be perfect**. The more you focus on making things perfect the more you notice small imperfect things.
+    * solution: let the little things go.
+1. Hurry Up. Hurrying up people mostly live in the future. However fast you go you won't do anything.
+    * solution: slow down.
+1. Worrying excessively about what other people think about you.
+1. Be strong (not showing your emotions).
