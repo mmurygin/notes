@@ -98,4 +98,41 @@
 1. Probability
     * Ik zal misschien vandavond gaan koken. _I **might** cook something today._
 1. Plan
-    * Ik zal op vacantie gaan. _I **will** go on holiday.__
+    * Ik zal op vacantie gaan. _I **will** go on holiday._
+
+## ER
+
+### ER met en Prepositie
+
+#### Examples
+1. No prepositie => het
+    * Heb jij het niews gezien?
+    * Ja, Ik heb **het** gezien.
+1. With preprositie => er
+    * Heb jij naar het nieuws gekeken?
+    * Ja, ik heb **ernaar (er niet naar)**  gekeken.
+    * Houd jij van hoedjes?
+    * Ja, ik houd **ervan**.
+1. WEL: dingen, acties. GEEN: mensen, dieren.
+
+### ER = plaats
+1. Ben je in Amsterdam geweest?
+    * Ja, ik ben er geweest.
+    * Nee, ik ben er niet geweest.
+1. Wat kun je in Den Haag doen?
+    * Je kin er naar de strand gaan.
+
+### ER + hoeveelheid / telwoord
+1. Hoveel kinderen heb je?
+    * Ik heb er drie.
+    * Ik heb er geen.
+    * Ik heb er veel.
+    * Ik heb er te veel.
+
+#### Sentence structure
+1. De Hoofdzinnen
+    * **subject** - **werkwoord** - **ER+prepositie**
+    * **subject** - **werkwoord** - **ER** - **niet** - **prepositie**
+1. De Bijzinnen
+    * **subject** - **ER+prepositie** - **werkwoord**
+
