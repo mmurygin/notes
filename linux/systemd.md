@@ -2,54 +2,54 @@
 
 ## Documentation
 
-* List available systemctl types
+1. List available systemctl types
 
-```
-systectl -t help
-```
+    ```
+    systemctl -t help
+    ```
 
-* All directives
+1. All directives
 
-```
-man systemd.diretives
-```
+    ```
+    man systemd.diretives
+    ```
 
-* Configs for [unit,socket,timer]
+1. Configs for [unit,socket,timer]
 
-```
-man systemd.{unit,socket,timer}
-```
+    ```
+    man systemd.{unit,socket,timer}
+    ```
 
 ## Status
 
-* System status
+1. System status
 
-```
-systemctl status
-```
+    ```
+    systemctl status
+    ```
 
-* List available units by type
+1. List available units by type
 
-```
-systemctl list-unit-files -t service
-```
+    ```
+    systemctl list-unit-files -t service
+    ```
 
 ## Timers
 
-* Timer directives
+1. Timer directives
+
+    ```
+    man systemd.timer
+    ```
+
+1. Examples on how to configure timers
 
 ```
-man systemd.timer
+man systemd.time
 ```
 
-* Examples on how to configure timers
+1. Active timers
 
-```
-man sytemd.time
-```
-
-* Active timers
-
-```
-systemctl status *timer
-```
+    ```
+    systemctl status *timer
+    ```
