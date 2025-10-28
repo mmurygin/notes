@@ -1,5 +1,9 @@
 # Istio
 
+## Architecture
+
+![istio contorl plane](./img/istio-architecture.png)
+
 ## Ingress Gateway
 
 ![ingress gateway](./img/ingress-gw.png)

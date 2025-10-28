@@ -30,10 +30,18 @@
 | jullie   | jullie     | your            |
 | ze / zij | hun        | their           |
 
-## Word Order
+## Sensence Structure
 
-### Standart
-1. The standard word order in a sentence is **SVTP** - **S**ubject **V**ert **T**ime **P**lace.
+### Hoofdzinnen
+
+#### Standart
+
+**SVTP** - **S**ubject **V**erb **T**ime **P**lace.
+
+#### Inversion
+
+**Time/Place**
+
 
 ## Pluralis
 
