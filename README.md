@@ -1,5 +1,6 @@
 # My learning notes
 
+- [GenAI](genai)
 - [SRE](sre)
 - [HighLoad](highload)
 - [Computer Science](computer-science)
