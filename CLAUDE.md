@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a personal knowledge base containing learning notes on various technical topics. The repository is organized as a hierarchical documentation structure with markdown files covering software engineering, infrastructure, and related subjects.
 
+The target audience for this repository is an expirienced software engineer.
+
 ## Repository Structure
 
 The repository follows a topic-based organization:
