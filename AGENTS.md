@@ -80,18 +80,118 @@ The main branch is `master`.
 
 ## Documentation Patterns
 
+### README.md Structure
+
+README files serve as navigation indices and follow specific structural patterns depending on their location in the repository hierarchy.
+
+#### Root README.md
+
+The repository root README.md is the main entry point and follows this structure:
+
+```markdown
+# My learning notes
+
+- [GenAI](genai)
+- [SRE](sre)
+- [Databases](databases)
+```
+
+**Characteristics:**
+- Simple title: `# My learning notes`
+- Flat bullet list of top-level topics
+- Links point to **directories** (not README.md files)
+- Link text uses title case with spaces (e.g., "GenAI", "Computer Science")
+- No subdirectory nesting at this level
+- Alphabetically or logically ordered
+
+#### Topic README Files
+
+Each topic directory contains a README.md that serves as a table of contents for that topic:
+
+```markdown
+# SRE
+
+- [DevOps](devops.md)
+- [Monitoring](monitoring.md)
+- [Logging](logging.md)
+- [Alerting](alerting.md)
+```
+
+**Characteristics:**
+- Heading uses `#` (H1) with the topic name
+- Some older READMEs may use `##` (H2) - both are acceptable
+- Links point to **specific .md files** (explicit `.md` extension)
+- Link text is descriptive and human-readable
+- Topics listed in logical order (not necessarily alphabetical)
+- May include subdirectories with nested structure
+
+#### Nested Structure Pattern
+
+When a topic has subdirectories, show the hierarchy using indentation:
+
+```markdown
+## Databases
+
+- [Common](common.md)
+- [Optimization](optimization.md)
+- [MySQL](mysql)
+    - [Common](mysql/common.md)
+    - [QueryInfo Script](mysql/queryinfo.sql)
+- [MongoDB](mongodb.md)
+```
+
+**Rules for nested items:**
+- Parent item links to subdirectory (no `.md`)
+- Child items use 4-space indentation
+- Child items link to full relative path with file extension
+- Can mix files and subdirectories at the same level
+
 ### Topic Organization
 
 - Each main topic directory contains a README.md that serves as the table of contents
 - README files use bullet lists with links to individual topic files
-- Example from lang/cpp/README.md:
-  ```markdown
-  ## C++
+- When adding new content:
+  1. Create the content file (e.g., `new-topic.md`)
+  2. Add entry to the README.md with descriptive link text
+  3. Place entry in logical order within the list
+  4. Ensure link text is clear and matches file content
 
-  - [Compilation](compilation.md)
-  - [Dynamic memory](dynamic-memory.md)
-  - [Pointers and references](pointers-references.md)
-  ```
+#### Link Formatting Rules
+
+**Root README links to directories:**
+```markdown
+- [GenAI](genai)          ✓ Correct
+- [GenAI](genai/)         ✗ Avoid trailing slash
+- [GenAI](genai/README.md) ✗ Don't link to README explicitly
+```
+
+**Topic README links to files:**
+```markdown
+- [Monitoring](monitoring.md)     ✓ Correct
+- [Monitoring](monitoring)         ✗ Missing extension
+- [Monitoring](./monitoring.md)    ✗ Unnecessary ./
+```
+
+**Subdirectory links:**
+```markdown
+- [MySQL](mysql)                   ✓ Correct (directory)
+    - [Common](mysql/common.md)    ✓ Correct (file in subdirectory)
+```
+
+### When to Update READMEs
+
+**Always update the README when:**
+- Adding a new topic file to a directory
+- Removing a topic file from a directory
+- Renaming a topic file
+- Adding a new subdirectory with content
+
+**README update checklist:**
+1. Add new entry with descriptive link text
+2. Place in logical order (consider grouping related topics)
+3. Verify the link works (correct path and extension)
+4. Ensure consistent formatting with existing entries
+5. Check that link text accurately describes the content
 
 ### Cross-Topic References
 
