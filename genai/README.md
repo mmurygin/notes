@@ -2,5 +2,5 @@
 
 - [LLMs](llms.md)
 - [Generic Prompting](generic-prompting.md)
-- [Prompting for Developers](prompting-for-developers.md)
+- [Prompt Engineering](prompt-engineering.md)
 - [WindSurf](windsurf.md)

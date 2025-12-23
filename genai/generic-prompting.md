@@ -6,8 +6,8 @@
 
 Describe the task you want the tool to help you with. The task is the foundation of any prompt. It should be clear and specific. If you're vague with your instructions, you're likely to get bad results.
 
-To futher avoid misunderstanding from the tool, include a **persona** and an **output format** in your prompt. 
-* **Providing a persona**. Specifying a persona instructs an AI tool to draw its expertise form a particular field - filtering out irrelevant information. You can ask the tool to take on perspective of a science expert or an industry analyst, or ask it to create an output geared towards a specific audience, like your manager or team. 
+To futher avoid misunderstanding from the tool, include a **persona** and an **output format** in your prompt.
+* **Providing a persona**. Specifying a persona instructs an AI tool to draw its expertise form a particular field - filtering out irrelevant information. You can ask the tool to take on perspective of a science expert or an industry analyst, or ask it to create an output geared towards a specific audience, like your manager or team.
 * **Providing an output format**. The format is what you wnat the output to look like. Want a bullet list? Or maybe a table so you can compare results side-by-side? Include these details in your prompt.
 
 #### Example
@@ -72,9 +72,9 @@ For more complex prompts with multiple references, you can wrap your references 
 
 These are symbols you can use in prompts to add formatting. For example, if you were to use a gen AI tool to copy-edit your work, you could surround text with `_` to italicize it or `**` to bold it. This preserves your formatting as you move it into a gen AI tool, which generally uses plain, or unformatted text.
 
-### 4. Evaluate your output 
+### 4. Evaluate your output
 
-Different AI models are trained on unique data and rely on different programming techniques. Some models may be better suited to specific uses like writing code or brainstorming ideas, while others might have limited outputs because of their training sets. No matter the model, running the same prompt multiple times will likely render different results because of how gen AI tools process data. 
+Different AI models are trained on unique data and rely on different programming techniques. Some models may be better suited to specific uses like writing code or brainstorming ideas, while others might have limited outputs because of their training sets. No matter the model, running the same prompt multiple times will likely render different results because of how gen AI tools process data.
 
 That’s why it’s so important to evaluate your output. Before you use any AI-generated information, text, or materials, critically evaluate that the output is accurate, unbiased, relevant, and consistent before incorporating it into your workflows. If the output isn’t what you’re looking for, you should iterate on your prompt.
 

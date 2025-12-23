@@ -61,7 +61,7 @@ The embedding layer is essentially a giant lookup table: `token_id → vector`. 
 
 #### 2. Position Encoding
 
-**Problem:** Unlike RNNs that process sequences step-by-step, transformers process all tokens in parallel. But word order matters!
+**Problem:** Unlike Recurrent Neural Networks (RNNs) that process sequences step-by-step, transformers process all tokens in parallel. But word order matters!
 
 **Solution:** Add positional information to each token's embedding using sine/cosine functions:
 
@@ -107,21 +107,6 @@ Result: "sat" pays most attention to "cat" and "mat"
 - Head 3: Might learn syntactic dependencies
 - etc.
 
-**Software Engineering Analogy:**
-```python
-# Pseudo-code to understand attention
-def attention(query, keys, values):
-    # Compute similarity scores (dot product)
-    scores = query @ keys.T / sqrt(dimension)
-
-    # Normalize to probabilities
-    weights = softmax(scores)  # [0.4, 0.05, 0.1, 0.15, 0.05, 0.25]
-
-    # Weighted sum of values
-    output = weights @ values
-    return output
-```
-
 #### 4. Feed Forward Network
 
 After attention, each token representation is passed through a simple 2-layer neural network:
@@ -132,7 +117,30 @@ FFN(x) = ReLU(x · W1 + b1) · W2 + b2
 
 **Purpose:** Transform and enrich the representations. If attention is "gather information from other tokens," FFN is "process that information."
 
-**Dimensions:** Typically expands dimension by 4x (e.g., 768 → 3072 → 768), allowing complex non-linear transformations.
+
+**Software Engineer Analogy:**
+
+Think of the FFN as a **data transformation pipeline** that processes each token independently:
+
+1. **Input:** A vector of 768 numbers representing a token
+2. **Layer 1 (Expansion):** Multiply by matrix W1 → expands to 3072 dimensions
+   - Like mapping your data through a lookup table or hash function
+   - Each output dimension is a weighted sum of inputs (similar to a dot product)
+3. **ReLU Activation:** `max(0, x)` - zeros out negative values
+   - Acts like a filter: keeps positive signals, discards negative ones
+   - Introduces non-linearity (without this, the whole network would be just one big matrix multiplication)
+4. **Layer 2 (Compression):** Multiply by matrix W2 → back to 768 dimensions
+   - Projects the expanded representation back to original size
+5. **Add bias terms (b1, b2):** Like adding constants to adjust the output
+
+**Why expand then compress?**
+- The expansion creates a "wider" intermediate space where the network can learn more complex patterns
+- Similar to how you might deserialize data, process it in a richer format, then serialize back
+- The 4x expansion gives the model more "working memory" to compute complex transformations
+
+**Key difference from attention:**
+- Attention: tokens communicate with each other (cross-token operation)
+- FFN: each token is processed independently (per-token operation, easily parallelizable)
 
 #### 5. Add & Normalize (Residual Connections)
 
@@ -177,7 +185,7 @@ output = LayerNorm(input + Sublayer(input))
    - Final representation → probability distribution over vocabulary
    - Pick token with highest probability
 
-### Key Insights for Software Engineers
+### Key Insights
 
 **Parallel Processing:**
 - Unlike for-loops that process sequences step-by-step, transformers process all tokens simultaneously
