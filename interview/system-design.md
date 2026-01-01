@@ -1,7 +1,7 @@
 # System Design
 
 * TOC
-{:toc toc_levels=2..6}
+{:toc}
 
 ## Delivery Framework
 
