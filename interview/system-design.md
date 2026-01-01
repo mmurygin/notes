@@ -9,7 +9,7 @@
 
 ####  Functional
 
-Identify and priorotize top 3-5 requirements, as you can't build a design with 100+ during 1h interview
+Identify and prioritize top 3-5 requirements, as you can't build a design with 100+ during 1h interview
 
 #### Non-Functional
 Should be in form of `The system should be...`
@@ -79,7 +79,7 @@ Harden your design by:
 * Meeting **non-functional** requirements
 * Addressing edge cases
 * Identifying and addressing issues and bottlenecks
-* Observability, maintanance, cost
-* Improving the design based on probes from your interviwer
+* Observability, maintenance, cost
+* Improving the design based on probes from your interviewer
 
 **LISTEN. Make sure you give your interviewer room to ask questions and probe your design. Chances are they have specific signals they want to get from you and you're going to miss it if you're too busy talking. Plus, you'll hurt your evaluation on communication and collaboration.**

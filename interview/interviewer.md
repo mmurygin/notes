@@ -1,9 +1,7 @@
-# Basics
-
 * TOC
 {:toc}
 
-## Invetrivew
+## Interviewer
 
 ### Before
 1. Make sure you know questions you are going to ask before you enter interview room
@@ -16,7 +14,7 @@
 ### Introduction
 **A good start sets the tone.**
 
-1. Introduct youself
+1. Introduce yourself
 1. Make the candidate feel comfortable.
 1. Provide a rough agenda for the interview.
 1. Let them know that you will be taking notes.
@@ -35,7 +33,7 @@
 1. Notice not only what is being said, but also how it is being said.
 
 ### Closing
-1. Let the candidate know that they can ask questions thorugh the interview, to put them on ease
+1. Let the candidate know that they can ask questions throughout the interview, to put them at ease
 
 ## Questions
 
@@ -49,11 +47,11 @@
 1. Give me an example of...
 
 ### Probing questions
-Usually they follows open-ended questions, with the goal to understand the depth of person knowledge
+Usually they follow open-ended questions, with the goal to understand the depth of person knowledge
 
 ### Hypothetical questions
 Describes a scenario or situation and asks the candidate what they would do.
-How they handled similar sitations in the past.
+How they handled similar situations in the past.
 
 Example:
 1. If you were working with a stakeholder that didn't have clear expectations, how would you deal with them?
