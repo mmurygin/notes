@@ -1,4 +1,4 @@
-# Databricks Staff Backend Engineer Interview Preparation Plan
+# Databricks Staff Backend Engineer
 
 * TOC
 {:toc}
@@ -564,6 +564,7 @@ Staff-level preparation requires more depth. Plan for **6-8 weeks**.
 - [Data + AI Summit talks](https://www.youtube.com/c/Databricks) (YouTube)
 - [Interview Prep Page](https://www.databricks.com/company/careers/interview-prep) (official)
 - [Backend Interview Guide](https://www.databricks.com/sites/default/files/2025-04/engineering-careers-site-interview-prep-april-2025-002.pdf)
+- [Coderpad](https://coderpad.io/resources/docs/for-candidates/interview-preparation-guide/)
 
 ### System Design
 - *Designing Data-Intensive Applications* (Kleppmann) — **essential, read cover to cover**
