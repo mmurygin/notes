@@ -3,25 +3,19 @@
 * TOC
 {:toc}
 
-## Conflict resolution
+## Answers
 
-How can you handle disagreements with team members or stakeholders? How you navigate conflicts professionally and constructively
+### VM management V2 and Ashwin**
 
-> You disagreed with teammate or leaders
-> You dealt with interpersonal challenges
-> You had to navigate competing priorities
-> You faced frictions between teams
-> You turned a difficult relationship around
+[Conflict Resolution]
 
-**VM management V2 and Ashwin**
-
-### Situation
+#### Situation
 Over previous few years we've built OpenStack based private cloud platform. OpenStack was installed by vendor, my department did integration layer between Vanilla OpenStack and Booking eco-system. Platform got big adoption for development workloads (developer workstations and integration environment), totaling more than 8k VMs. But production onboarding was slow. At the same time, a new manager came to the team, he saw the architectural issues with the platform (in particular layer which was responsible for managing Virtual Machines), and was eager to rebuild it.
 
-### Task
+#### Task
 I've got a task to design platform v2 with better abstractions and TODO.
 
-### Actions
+#### Actions
 I had doubts that re-implementation will drastically improve adoption. So when I've started working on design, I first dedicated a lot of effort on researching why the adoption rate of the platform for PROD workload was lower than expected.
 
 Key steps I took:
@@ -38,13 +32,73 @@ Key steps I took:
 - Assembled document mapping Virtualization benefits vs Production problems
 - Document was used to decide on the future of underlying platform for Booking workloads
 
-### Results
+#### Results
 - Design improved development platform (which already had good adoption) and implemented cloud abstractions
 - Later changed underlying platform from OpenStack to EC2
 - Reached agreement that virtualization by itself doesn't solve development challenges
 - OpenStack for production was discontinued in favor of fast migration to AWS to benefit from all AWS services
 
-## Perseverance
+### TBU migration to MOSK
+[team conflict] [leadership]
+- tbu: cloud is unreliable
+- vendor: cloud is very old, upgrade
+- me:
+
+### Offscript Decomissioning
+- came up with data
+- raised awareness
+- got leadership approval, performed
+
+### Teaching Incident Response and Postmortems to a Vendor
+[cross team]
+
+### Leading PII incident
+- scale
+- cross-organizational improvements after incidnet
+    - security incident response
+    - PII monitor
+
+### BKS on MOSK
+[unblock others]
+
+- delivered MVP
+- aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
+
+### Toxic Support replies and Shared Responsibility model
+
+S: too direct on support when people ask trivial questions
+A: add AI support bot, add shared responsibility model, daily doc digest
+
+### VM provisioning with Harness
+[I was wrong]
+
+- no API
+- no cloud abstraction
+
+learning:
+- think about abstractions in advance, simplicity is not always the king
+
+
+### Image Labeling Service
+[proud of]
+
+- survived 100x scale
+- managed to navigate ambiguity
+- it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
+
+## Questions categories
+
+### Conflict resolution
+
+How can you handle disagreements with team members or stakeholders? How you navigate conflicts professionally and constructively
+
+> You disagreed with teammate or leaders
+> You dealt with interpersonal challenges
+> You had to navigate competing priorities
+> You faced frictions between teams
+> You turned a difficult relationship around
+
+### Perseverance
 
 Can you push through challenges and setbacks? Demonstrate your ability to overcome obstacles and maintain focus on long term goals
 
@@ -54,7 +108,7 @@ Can you push through challenges and setbacks? Demonstrate your ability to overco
 * The odds seemed stacked agains you
 * You refused to give up despite challenges
 
-## Adaptability
+### Adaptability
 
 How well do you handle change? Show that you can thrive in dynamic environment and adjust to your approach when necessary
 
@@ -63,7 +117,7 @@ How well do you handle change? Show that you can thrive in dynamic environment a
 * Plans fell through
 * You worked outside your comfort zone
 
-## Growth Mindset
+### Growth Mindset
 Continuous learning and improvement. Highligh your passion for personal and professional development.
 
 * You made significant mistakes
@@ -73,13 +127,11 @@ Continuous learning and improvement. Highligh your passion for personal and prof
 1. Self-taught throuw my life
 2. Personal Learning plans and notes
 
-## Leadership
+### Leadership
 
 Can you guide and inspire others?
 
-**Leading PII incident**
-
-## Collaboration & Communication
+### Collaboration & Communication
 
 How effectively do you work with others and convey ideas? Team work skills and ability to communicate complex concepts clearly.
 
@@ -89,8 +141,4 @@ How effectively do you work with others and convey ideas? Team work skills and a
 * helped other succeed
 * improved how people worked together
 
-## Results
-
-## Other
-1. Proud of: **Image Labeling Service**
-1. **Teaching vendor how to do proper incident handling and post-mortems**
+### Results
