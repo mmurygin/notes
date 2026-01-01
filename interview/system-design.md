@@ -1,11 +1,11 @@
 # System Design
 
 * TOC
-{:toc}
+{:toc toc_levels=2..6}
 
 ## Delivery Framework
 
-### 1. **Requirements (~5 min)**
+### 1. Requirements (~5 min)
 
 ####  Functional
 
