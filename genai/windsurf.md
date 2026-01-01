@@ -1,5 +1,8 @@
 # Windsurf
 
+* TOC
+{:toc}
+
 ## Prompt Best Practices
 1. **Define Clear Objectives**
     * Specify the task type (refactor, generate, explain, debug)

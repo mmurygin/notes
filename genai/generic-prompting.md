@@ -1,14 +1,17 @@
 # Prompting
 
+* TOC
+{:toc}
+
 ## Best Practices
 
 ### 1. Task
 
 Describe the task you want the tool to help you with. The task is the foundation of any prompt. It should be clear and specific. If you're vague with your instructions, you're likely to get bad results.
 
-To futher avoid misunderstanding from the tool, include a **persona** and an **output format** in your prompt.
-* **Providing a persona**. Specifying a persona instructs an AI tool to draw its expertise form a particular field - filtering out irrelevant information. You can ask the tool to take on perspective of a science expert or an industry analyst, or ask it to create an output geared towards a specific audience, like your manager or team.
-* **Providing an output format**. The format is what you wnat the output to look like. Want a bullet list? Or maybe a table so you can compare results side-by-side? Include these details in your prompt.
+To further avoid misunderstanding from the tool, include a **persona** and an **output format** in your prompt.
+* **Providing a persona**. Specifying a persona instructs an AI tool to draw its expertise from a particular field - filtering out irrelevant information. You can ask the tool to take on perspective of a science expert or an industry analyst, or ask it to create an output geared towards a specific audience, like your manager or team.
+* **Providing an output format**. The format is what you want the output to look like. Want a bullet list? Or maybe a table so you can compare results side-by-side? Include these details in your prompt.
 
 #### Example
 

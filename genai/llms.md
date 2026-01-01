@@ -1,5 +1,8 @@
 # LLMs
 
+* TOC
+{:toc}
+
 A **language model** is a type of artificial intelligence system that is trained to understand and generate human-like text. It learns the structure, grammar, and semantics of a language by processing vast amounts of textual data. **The primary goal** of a language model is to **predict the next word or token** in a sequence based on the context provided by previous words.
 
 ## Transformer Architecture

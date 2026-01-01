@@ -1,5 +1,8 @@
 # Claude
 
+* TOC
+{:toc}
+
 ## Thinking Mode
 
 Used to go **deep** into problem.
@@ -23,12 +26,12 @@ Used to get wider understanding of problem and come up with solution.
 
 `shift+tab` in claude code
 
-words like **step-by-step** in clade.ai or chatgpt.com
+words like **step-by-step** in claude.ai or chatgpt.com
 
 ## Working with Context
 
 * `<esc> + <esc>` - rewind the conversation (and code) to an earlier point in time, allows to maintain only valuable context
-* `/compact` - summarizes the conversation and continue, helps Claude stay focused but remember what it has learned in the curren tsession
+* `/compact` - summarizes the conversation and continue, helps Claude stay focused but remember what it has learned in the current session
 * `/clear` - clears the context. Useful when you want to start working on a new task in the same session
 
 ## Hooks
@@ -37,10 +40,10 @@ Hooks are shell commands that execute in response to events like tool calls. The
 
 ### Use cases
 
-* Run a code formater after Claude edits a file
+* Run a code formatter after Claude edits a file
 * Stop Claude from editing or reading a particular file
 * Run tests automatically after a file is changed
-* Block deprecated funtion usage
+* Block deprecated function usage
 
 ### Hook Flow
 
