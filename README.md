@@ -1,5 +1,6 @@
 # My learning notes
 
+- [Interview](interview)
 - [GenAI](genai)
 - [SRE](sre)
 - [HighLoad](highload)
