@@ -86,6 +86,20 @@ learning:
 - managed to navigate ambiguity
 - it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
 
+## Knative Istio integration
+
+- simplify
+- cross-team work
+- learned a lot
+
+## App performance optimization after migration to VM
+
+- A/B tests
+- coordinate networking, product team, vendor
+- huge pages
+- firmware upgrade consensus
+- communicate to leadership
+
 ## Questions categories
 
 ### Conflict resolution
@@ -141,4 +155,12 @@ How effectively do you work with others and convey ideas? Team work skills and a
 * helped other succeed
 * improved how people worked together
 
-### Results
+## Other cases
+1. internal terraform registry when it was not a thing in Terraform Enterprise
+2. Perform "history" presentation to new employees.
+3. SLO based alerting in Private Cloud
+4. Testing environment
+5. Feedback from manager to document better and be role model: all JIRA tickets and commits have clear structure
+6. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
+7. Audit section and adaptability.
+8. ARP config change

@@ -3,6 +3,33 @@
 * TOC
 {:toc}
 
+## Quick Reference
+
+**MVCC (Multiversion Concurrency Control)**:
+- PostgreSQL uses row versioning (xmin/xmax) instead of locks for read concurrency
+- Readers never block writers, writers never block readers
+- Old row versions become dead tuples, cleaned by VACUUM
+
+**Transaction Isolation Levels**:
+- **Read Committed** (default): New snapshot per statement, no serialization errors, allows non-repeatable reads
+- **Repeatable Read**: Single snapshot per transaction, fails on concurrent updates, prevents most anomalies
+- **Serializable**: Prevents all anomalies via dependency tracking, highest overhead (20-50%), requires retry logic
+
+**Row-Level Locking**:
+- **FOR UPDATE**: Exclusive lock, prevents all modifications
+- **FOR NO KEY UPDATE**: Allows foreign key checks
+- **FOR SHARE**: Shared lock, multiple readers allowed
+- **FOR KEY SHARE**: Weakest, allows non-key updates
+- **SKIP LOCKED**: Essential for job queues (skip locked rows)
+- **NOWAIT**: Fail fast for user-facing operations
+
+**Common Use Cases**:
+- Simple CRUD → Read Committed (default)
+- Financial reports → Repeatable Read
+- Complex business rules → Serializable
+- Job queues → SELECT FOR UPDATE SKIP LOCKED
+- User reservations → SELECT FOR UPDATE NOWAIT
+
 ## Commands
 1. List databases
     ```
@@ -85,6 +112,8 @@ SELECT * FROM users WHERE id = 1;
 -- Now returns Alice because xid=100 is in the past and committed
 ```
 
+**Note**: Different [transaction isolation levels](#transaction-isolation-levels) use these visibility rules differently - Read Committed takes a new snapshot per statement, while Repeatable Read uses a single snapshot for the entire transaction.
+
 ### VACUUM and Dead Tuples
 
 When rows are updated or deleted, old versions become "dead tuples" that are invisible to all transactions.
@@ -109,566 +138,137 @@ VACUUM FULL users;
 VACUUM ANALYZE users;
 ```
 
-### MVCC Behavior Across Isolation Levels
+### Transaction ID Wraparound
 
-MVCC implements different isolation levels by controlling when and how transaction snapshots are taken. Understanding these differences is critical for choosing the right isolation level.
+PostgreSQL uses 32-bit transaction IDs, which wrap around after ~4 billion transactions. If not managed, this can lead to data loss as old transactions appear "in the future."
 
-#### Snapshot Timing
+**Why Wraparound is Dangerous**:
+```
+Transaction IDs are circular:
+... → 2 billion → 3 billion → 4 billion → 0 → 1 → 2 → ...
 
-**Read Committed**: Takes a NEW snapshot at the start of EACH statement
-**Repeatable Read**: Takes ONE snapshot at the start of the FIRST statement in the transaction
-**Serializable**: Takes ONE snapshot like Repeatable Read, but adds dependency tracking
+If XID wraps without freezing:
+- Old committed data (XID=100) suddenly looks "uncommitted" (XID in future)
+- Rows become invisible, causing apparent data loss
+```
 
+**Monitoring Wraparound Risk**:
 ```sql
--- Demonstrate snapshot timing differences
+-- Check age of oldest unfrozen transaction per database
+SELECT datname, age(datfrozenxid) as xid_age,
+       pg_size_pretty(pg_database_size(datname)) as size
+FROM pg_database
+ORDER BY age(datfrozenxid) DESC;
 
--- Setup
-CREATE TABLE balances (id INT PRIMARY KEY, amount INT);
-INSERT INTO balances VALUES (1, 100);
+-- Warning thresholds:
+-- < 200M: Safe (green)
+-- 200M-1B: Autovacuum will be aggressive (yellow)
+-- 1B-2B: Critical, manual intervention needed (red)
+-- > 2B: Emergency, database will shut down (black)
 
--- Session 1: Read Committed (default)
-BEGIN;  -- Transaction starts but NO snapshot taken yet
-SELECT pg_sleep(2);  -- Wait 2 seconds
-
--- Session 2: Make a change during Session 1's sleep
-BEGIN;
-UPDATE balances SET amount = 200 WHERE id = 1;
-COMMIT;
-
--- Session 1: First statement - snapshot taken NOW
-SELECT amount FROM balances WHERE id = 1;
--- Returns: 200 (sees Session 2's committed change)
-
--- Session 2: Make another change
-UPDATE balances SET amount = 300 WHERE id = 1;
-
--- Session 1: Second statement - NEW snapshot taken
-SELECT amount FROM balances WHERE id = 1;
--- Returns: 300 (sees latest committed data)
-
-COMMIT;
+-- Check per-table age
+SELECT schemaname, tablename,
+       age(relfrozenxid) as xid_age,
+       pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) as size
+FROM pg_stat_user_tables
+ORDER BY age(relfrozenxid) DESC
+LIMIT 20;
 ```
 
+**Prevention Strategies**:
 ```sql
--- Same scenario with Repeatable Read
+-- 1. Ensure autovacuum is running
+SHOW autovacuum;  -- Should be 'on'
 
--- Session 1: Repeatable Read
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT pg_sleep(2);  -- Wait 2 seconds (still no snapshot)
+-- 2. Check autovacuum freeze settings
+SHOW autovacuum_freeze_max_age;  -- Default: 200 million
 
--- Session 2: Make a change
-BEGIN;
-UPDATE balances SET amount = 200 WHERE id = 1;
-COMMIT;
+-- 3. For critical tables, reduce freeze age
+ALTER TABLE important_table SET (
+    autovacuum_freeze_max_age = 100000000,  -- 100M instead of 200M
+    autovacuum_freeze_min_age = 5000000     -- 5M
+);
 
--- Session 1: First statement - snapshot taken NOW (after commit)
-SELECT amount FROM balances WHERE id = 1;
--- Returns: 200 (snapshot includes Session 2's change)
+-- 4. Manual freeze for large tables during low-traffic periods
+VACUUM FREEZE users;
 
--- Session 2: Make another change
-UPDATE balances SET amount = 300 WHERE id = 1;
-
--- Session 1: Second statement - SAME snapshot used
-SELECT amount FROM balances WHERE id = 1;
--- Returns: 200 (snapshot was frozen at first query)
-
-COMMIT;
+-- 5. Aggressive vacuum if approaching limits
+VACUUM FREEZE VERBOSE large_table;
 ```
 
-**Key Insight**: The snapshot is taken at the first query, not at BEGIN. Transactions that start with non-query statements (like SET, LOCK TABLE) delay snapshot creation.
-
-#### Read Committed: Per-Statement Snapshots
-
-In Read Committed, each statement operates on a fresh snapshot of committed data.
-
-**Snapshot Creation**:
-```
-Statement 1: snapshot = {xmin: 1000, xmax: 1005, xip: [1001, 1003]}
-Statement 2: snapshot = {xmin: 1001, xmax: 1006, xip: [1001]}  -- NEW snapshot
-Statement 3: snapshot = {xmin: 1001, xmax: 1007, xip: []}      -- NEW snapshot
-```
-
-**Practical Example - Lost Update Problem**:
-
+**Emergency Response** (if age > 1 billion):
 ```sql
--- Two sessions try to increment a counter
+-- 1. Check which tables are problematic
+SELECT schemaname, tablename, age(relfrozenxid)
+FROM pg_stat_user_tables
+WHERE age(relfrozenxid) > 1000000000
+ORDER BY age(relfrozenxid) DESC;
 
--- Session 1 (Read Committed)
-BEGIN;
-SELECT value FROM counters WHERE id = 1;  -- Reads: 10
--- Increment in application: value = 10 + 1 = 11
+-- 2. Freeze them immediately (may take hours for large tables)
+VACUUM FREEZE VERBOSE problematic_table;
 
--- Session 2 (concurrent)
-BEGIN;
-SELECT value FROM counters WHERE id = 1;  -- Reads: 10
--- Increment in application: value = 10 + 1 = 11
-UPDATE counters SET value = 11 WHERE id = 1;
-COMMIT;
-
--- Session 1 continues
-UPDATE counters SET value = 11 WHERE id = 1;  -- Overwrites Session 2's update!
-COMMIT;
-
--- Final value: 11 (should be 12) - LOST UPDATE!
+-- 3. Monitor progress
+SELECT schemaname, tablename,
+       age(relfrozenxid) as xid_age,
+       n_dead_tup,
+       last_vacuum,
+       last_autovacuum
+FROM pg_stat_user_tables
+WHERE tablename = 'problematic_table';
 ```
 
-**Why This Happens**:
-1. Both sessions read value=10 in their respective statement snapshots
-2. Both calculate new value as 11
-3. Last write wins, one increment is lost
+### Best Practices
 
-**Read Committed Write Behavior**:
-When updating/deleting rows, Read Committed:
-1. Takes statement snapshot to find candidate rows
-2. For each candidate, re-checks visibility using LATEST committed data
-3. If row was updated by concurrent transaction:
-   - Waits for that transaction to commit/rollback
-   - Re-evaluates WHERE clause on new row version
-   - If still matches, applies update; otherwise skips
-
+1. **Monitor Table Bloat**:
 ```sql
--- Demonstrate re-evaluation of WHERE clause
-
--- Setup
-CREATE TABLE accounts (id INT PRIMARY KEY, balance INT, status TEXT);
-INSERT INTO accounts VALUES (1, 100, 'active');
-
--- Session 1
-BEGIN;
-UPDATE accounts SET balance = 50 WHERE id = 1;
--- Doesn't commit yet
-
--- Session 2 (Read Committed)
-BEGIN;
-UPDATE accounts SET status = 'frozen'
-WHERE id = 1 AND balance < 75;
--- BLOCKS waiting for Session 1
-
--- Session 1 commits
-COMMIT;
-
--- Session 2 unblocks and re-evaluates WHERE clause
--- Checks: balance (now 50) < 75? YES
--- Applies update
--- Result: status = 'frozen', balance = 50
+SELECT schemaname, tablename,
+       pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) AS size,
+       n_dead_tup, n_live_tup,
+       ROUND(n_dead_tup * 100.0 / NULLIF(n_live_tup + n_dead_tup, 0), 2) AS dead_ratio
+FROM pg_stat_user_tables
+WHERE n_dead_tup > 1000
+ORDER BY n_dead_tup DESC;
 ```
 
-#### Repeatable Read: Transaction-Level Snapshots
-
-Repeatable Read maintains a single snapshot for the entire transaction after the first query.
-
-**Snapshot Structure**:
-```
-Transaction begins: no snapshot yet
-First query executes: snapshot = {xmin: 1000, xmax: 1005, xip: [1001, 1003]}
-All subsequent queries: USE SAME SNAPSHOT (frozen in time)
-```
-
-**Visibility with Single Snapshot**:
-
+2. **Configure Autovacuum Appropriately**:
 ```sql
--- Session 1: Repeatable Read
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT * FROM users WHERE id = 1;
--- Snapshot created: sees user with name = 'Alice'
-
--- Session 2: Updates the user
-BEGIN;
-UPDATE users SET name = 'Bob' WHERE id = 1;
-COMMIT;
-
--- Session 1: Same query, same snapshot
-SELECT * FROM users WHERE id = 1;
--- Still sees: name = 'Alice'
-
--- Session 1: Query different columns, still same snapshot
-SELECT id, name, email FROM users WHERE id = 1;
--- Still sees: name = 'Alice'
-
--- Session 1: Even aggregate queries use same snapshot
-SELECT COUNT(*) FROM users;
--- Uses same snapshot taken at first query
+-- For high-write tables
+ALTER TABLE users SET (
+    autovacuum_vacuum_scale_factor = 0.05,  -- Vacuum at 5% dead tuples
+    autovacuum_analyze_scale_factor = 0.02  -- Analyze at 2% changes
+);
 ```
 
-**Write Operations in Repeatable Read**:
+3. **Keep Transactions Short**: Long-running transactions prevent VACUUM from cleaning up dead tuples and advancing freeze horizon
 
-When a Repeatable Read transaction attempts UPDATE/DELETE/SELECT FOR UPDATE:
-1. Uses transaction snapshot to find candidate rows
-2. Attempts to acquire lock on each candidate
-3. If row was modified after snapshot:
-   - **Immediately fails** with serialization error
-   - No waiting, no re-evaluation
-   - Transaction must be retried
-
+4. **Monitor Transaction Age**:
 ```sql
--- First-updater-wins rule
-
--- Session 1: Repeatable Read
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT balance FROM accounts WHERE id = 1;
--- Snapshot: balance = 100
-
--- Session 2: Updates same row
-BEGIN;
-UPDATE accounts SET balance = 150 WHERE id = 1;
-COMMIT;
-
--- Session 1: Try to update
-UPDATE accounts SET balance = balance + 50 WHERE id = 1;
--- ERROR: could not serialize access due to concurrent update
-
--- Session 1 must rollback and retry entire transaction
-ROLLBACK;
+SELECT pid, usename, datname, state,
+       age(backend_xid) as xid_age,
+       age(backend_xmin) as xmin_age,
+       now() - xact_start as duration
+FROM pg_stat_activity
+WHERE backend_xid IS NOT NULL OR backend_xmin IS NOT NULL
+ORDER BY GREATEST(age(backend_xid), age(backend_xmin)) DESC;
 ```
 
-**Why This Error Occurs**:
-- Session 1's snapshot has xmin=100 for the accounts row
-- Session 2 created a new version with xmin=101
-- When Session 1 tries to update, it detects xmin changed
-- PostgreSQL cannot allow this because Session 1 might have made decisions based on stale data
-
-**Phantom Prevention in PostgreSQL**:
-
-PostgreSQL's Repeatable Read is stronger than SQL standard - it prevents phantoms through predicate locking.
-
-```sql
--- Session 1: Repeatable Read
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT COUNT(*) FROM orders WHERE user_id = 123;
--- Returns: 5 (snapshot frozen)
-
--- Session 2: Insert new order
-BEGIN;
-INSERT INTO orders (user_id, amount) VALUES (123, 100);
-COMMIT;
-
--- Session 1: Same query
-SELECT COUNT(*) FROM orders WHERE user_id = 123;
--- Returns: 5 (no phantom - uses same snapshot)
-
--- Session 1: Try to update all orders for user
-UPDATE orders SET processed = true WHERE user_id = 123;
--- Updates only 5 rows (the ones in snapshot)
--- New row inserted by Session 2 is INVISIBLE to this transaction
-
-COMMIT;
-```
-
-#### Serializable: Snapshot + Dependency Tracking
-
-Serializable uses the same snapshot mechanism as Repeatable Read but adds read-write dependency tracking to prevent serialization anomalies.
-
-**What Serializable Tracks**:
-1. **rw-dependencies**: Transaction T1 reads data that T2 later modifies
-2. **ww-dependencies**: Both transactions write to same data
-3. **Dangerous structures**: Cycles in dependency graph that indicate anomalies
-
-**Read-Write Conflict Detection**:
-
-```sql
--- Write skew example: impossible in serial execution
-
--- Initial state: Two VIP seats available
-CREATE TABLE seats (id INT PRIMARY KEY, vip BOOLEAN, reserved BOOLEAN);
-INSERT INTO seats VALUES (1, true, false), (2, true, false);
--- Business rule: At least 1 VIP seat must remain available
-
--- Session 1: Serializable
-BEGIN ISOLATION LEVEL SERIALIZABLE;
-SELECT COUNT(*) FROM seats WHERE vip = true AND reserved = false;
--- Returns: 2 (passes business rule check)
--- Creates read predicate: "COUNT of vip=true AND reserved=false"
-
--- Session 2: Serializable (concurrent)
-BEGIN ISOLATION LEVEL SERIALIZABLE;
-SELECT COUNT(*) FROM seats WHERE vip = true AND reserved = false;
--- Returns: 2 (same snapshot, passes business rule check)
-
--- Session 1: Reserve a seat
-UPDATE seats SET reserved = true WHERE id = 1;
--- Creates write on seats table
-COMMIT;  -- Success
-
--- Session 2: Reserve other seat
-UPDATE seats SET reserved = true WHERE id = 2;
--- PostgreSQL detects dangerous structure:
---   T2 read data (count=2)
---   T1 wrote to that data (reserved seat 1)
---   T2 now writing to same dataset (reserved seat 2)
--- This creates rw-antidependency: T2 read -> T1 write -> T2 write
-COMMIT;
--- ERROR: could not serialize access due to read/write dependencies among transactions
-```
-
-**How PostgreSQL Detects This**:
-
-```
-1. Session 1 commits:
-   - Records: "committed transaction T1 wrote to seats table"
-   - Marks read predicates that might conflict
-
-2. Session 2 tries to commit:
-   - Checks: Did any committed transaction write to data I read?
-   - Finds: T1 wrote to seats (id=1) after T2 read COUNT(*)
-   - Checks: Am I also writing to seats?
-   - Finds: Yes, writing to seats (id=2)
-   - Detects: Dangerous structure (pivot)
-   - Aborts: T2 with serialization error
-```
-
-**Serializable Read-Only Optimization**:
-
-Read-only Serializable transactions can be optimized and may never fail.
-
-```sql
--- Read-only transaction
-BEGIN ISOLATION LEVEL SERIALIZABLE READ ONLY DEFERRABLE;
-
--- This transaction:
--- 1. Can wait for safe snapshot (DEFERRABLE)
--- 2. Never needs to track writes (READ ONLY)
--- 3. Will never abort due to serialization conflicts
--- 4. Can run in parallel with any other transactions
-
-SELECT SUM(amount) FROM orders WHERE date = CURRENT_DATE;
-
-COMMIT;  -- Always succeeds
-```
-
-#### Comparative Example: Same Scenario, Different Levels
-
-```sql
--- Setup: Two accounts, transfer money between them
-CREATE TABLE accounts (id INT PRIMARY KEY, balance INT);
-INSERT INTO accounts VALUES (1, 1000), (2, 500);
-
--- Scenario: Two concurrent transfers
-
--- ============================================
--- READ COMMITTED
--- ============================================
-
--- Session 1: Transfer $100 from account 1 to 2
-BEGIN;  -- Read Committed (default)
-SELECT balance FROM accounts WHERE id = 1;  -- Reads: 1000
--- Check: balance >= 100? YES
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-
--- Session 2: Transfer $50 from account 1 to 2
-BEGIN;
-SELECT balance FROM accounts WHERE id = 1;  -- NEW snapshot, reads: 1000
--- Check: balance >= 50? YES
-UPDATE accounts SET balance = balance - 50 WHERE id = 1;
--- BLOCKS: waiting for Session 1
-
--- Session 1 commits
-UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-COMMIT;
-
--- Session 2 unblocks
--- Re-reads row with balance = 900 (after Session 1's update)
--- Applies: 900 - 50 = 850
-UPDATE accounts SET balance = balance + 50 WHERE id = 2;
-COMMIT;
-
--- Final state: account 1 = 850, account 2 = 650
--- Correct! Read Committed's re-evaluation saved us
-
--- ============================================
--- REPEATABLE READ
--- ============================================
-
--- Reset
-UPDATE accounts SET balance = 1000 WHERE id = 1;
-UPDATE accounts SET balance = 500 WHERE id = 2;
-
--- Session 1: Transfer $100 from account 1 to 2
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT balance FROM accounts WHERE id = 1;  -- Snapshot: 1000
--- Check: balance >= 100? YES
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-
--- Session 2: Transfer $50 from account 1 to 2
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT balance FROM accounts WHERE id = 1;  -- Same snapshot: 1000
--- Check: balance >= 50? YES
-UPDATE accounts SET balance = balance - 50 WHERE id = 1;
--- BLOCKS: waiting for Session 1
-
--- Session 1 commits
-UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-COMMIT;
-
--- Session 2 unblocks
--- Detects: row was modified after snapshot
--- ERROR: could not serialize access due to concurrent update
-ROLLBACK;
-
--- Need to retry Session 2 with new snapshot
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT balance FROM accounts WHERE id = 1;  -- New snapshot: 900
--- Check: balance >= 50? YES
-UPDATE accounts SET balance = balance - 50 WHERE id = 1;
-UPDATE accounts SET balance = balance + 50 WHERE id = 2;
-COMMIT;
-
--- Final state: account 1 = 850, account 2 = 650
--- Correct, but required retry
-
--- ============================================
--- SERIALIZABLE
--- ============================================
-
--- Reset
-UPDATE accounts SET balance = 1000 WHERE id = 1;
-UPDATE accounts SET balance = 500 WHERE id = 2;
-
--- Session 1: Transfer $100 from 1 to 2
-BEGIN ISOLATION LEVEL SERIALIZABLE;
-SELECT balance FROM accounts WHERE id = 1;  -- Snapshot: 1000
--- Creates read dependency
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-COMMIT;  -- Success, tracks writes
-
--- Session 2: Transfer $50 from 1 to 2
-BEGIN ISOLATION LEVEL SERIALIZABLE;
-SELECT balance FROM accounts WHERE id = 1;  -- Same snapshot: 1000
-UPDATE accounts SET balance = balance - 50 WHERE id = 1;
--- Detects: T1 wrote to data T2 read from same snapshot
--- ERROR: could not serialize access due to concurrent update
-ROLLBACK;
-
--- Behaves like Repeatable Read for this scenario
-```
-
-#### Visibility Rules by Isolation Level
-
-**Read Committed**:
-```python
-def tuple_visible_read_committed(tuple, statement_snapshot):
-    # Check if tuple was created by committed transaction
-    if tuple.xmin >= statement_snapshot.xmax:
-        return False  # Created after snapshot
-    if tuple.xmin in statement_snapshot.xip:
-        return False  # Created by active transaction
-    if not is_committed(tuple.xmin):
-        return False  # Creating transaction aborted
-
-    # Check if tuple was deleted
-    if tuple.xmax == 0:
-        return True  # Not deleted
-    if tuple.xmax >= statement_snapshot.xmax:
-        return True  # Deleted after snapshot
-    if tuple.xmax in statement_snapshot.xip:
-        return True  # Deleted by active transaction
-    if not is_committed(tuple.xmax):
-        return True  # Deleting transaction aborted
-
-    return False  # Deleted by committed transaction
-```
-
-**Repeatable Read / Serializable**:
-```python
-def tuple_visible_repeatable_read(tuple, transaction_snapshot):
-    # Same logic as Read Committed, but:
-    # 1. snapshot never changes during transaction
-    # 2. snapshot was taken at first query, not at BEGIN
-
-    # Additionally, for UPDATES:
-    if attempting_update:
-        if tuple.xmax != 0 and is_committed(tuple.xmax):
-            if tuple.xmax >= transaction_snapshot.xmax:
-                # Row was updated after our snapshot
-                raise SerializationError("concurrent update detected")
-
-    # Same visibility check as Read Committed
-    return tuple_visible_read_committed(tuple, transaction_snapshot)
-```
-
-#### Performance Implications
-
-**Read Committed**:
-- **Pros**: No serialization errors, no retries needed
-- **Cons**: Multiple snapshot acquisitions per transaction
-- **Overhead**: Low - snapshot creation is fast
-- **Use when**: Retrying logic is difficult to implement
-
-**Repeatable Read**:
-- **Pros**: Single snapshot per transaction, consistent view
-- **Cons**: Serialization errors on concurrent updates, requires retry logic
-- **Overhead**: Medium - snapshot held longer, prevents VACUUM
-- **Use when**: You need consistent reads but can handle retries
-
-**Serializable**:
-- **Pros**: Prevents all anomalies, guarantees serializability
-- **Cons**: Higher abort rate, more complex dependency tracking
-- **Overhead**: High - tracks read/write dependencies, more CPU
-- **Use when**: Correctness is critical, retry logic is robust
-
-```sql
--- Monitor overhead by isolation level
-SELECT
-    datname,
-    xact_commit,
-    xact_rollback,
-    ROUND(100.0 * xact_rollback / NULLIF(xact_commit + xact_rollback, 0), 2) AS rollback_pct,
-    conflicts,
-    deadlocks
-FROM pg_stat_database
-WHERE datname = current_database();
-```
-
-#### Choosing Isolation Level Based on MVCC Behavior
-
-**Choose Read Committed when**:
-- You can tolerate non-repeatable reads
-- Retry logic is complex or impossible
-- You're doing simple, single-row operations
-- Example: Web application CRUD operations
-
-**Choose Repeatable Read when**:
-- You need consistent snapshots for reporting
-- You have retry logic for serialization errors
-- You're reading multiple related rows
-- Example: Monthly financial reports, batch processing
-
-**Choose Serializable when**:
-- Business rules span multiple queries
-- Write skew would violate constraints
-- Absolute correctness is required
-- Example: Financial transfers, inventory with complex rules, booking systems
-
-```sql
--- Example: Choosing based on requirements
-
--- Simple update: Read Committed is fine
-BEGIN;
-UPDATE users SET last_login = now() WHERE id = 123;
-COMMIT;
-
--- Report generation: Use Repeatable Read
-BEGIN ISOLATION LEVEL REPEATABLE READ;
-SELECT SUM(amount) FROM orders WHERE status = 'completed';
-SELECT AVG(amount) FROM orders WHERE status = 'completed';
-SELECT COUNT(*) FROM orders WHERE status = 'completed';
--- All queries see same consistent snapshot
-COMMIT;
-
--- Complex business logic: Use Serializable
-BEGIN ISOLATION LEVEL SERIALIZABLE;
-SELECT COUNT(*) FROM seats WHERE vip = true AND NOT reserved;
--- Business rule: must keep at least 1 VIP seat available
-IF count > 1 THEN
-    UPDATE seats SET reserved = true
-    WHERE id = $requested_seat AND vip = true;
-END IF;
-COMMIT;
-```
+5. **Set Up Monitoring Alerts**:
+   - Alert when any database age(datfrozenxid) > 200M
+   - Alert when any table age(relfrozenxid) > 500M
+   - Alert when autovacuum workers are consistently maxed out
 
 ## Transaction Isolation Levels
 
-PostgreSQL implements four transaction isolation levels defined by SQL standard, though READ UNCOMMITTED behaves like READ COMMITTED.
+PostgreSQL implements four transaction isolation levels defined by SQL standard, though READ UNCOMMITTED behaves like READ COMMITTED. [Understanding MVCC](#multiversion-concurrency-control-mvcc) is essential for understanding how these isolation levels work.
+
+### How MVCC Implements Isolation Levels
+
+**Snapshot Timing** - The key difference between isolation levels:
+- **Read Committed**: Takes a NEW snapshot at the start of EACH statement
+- **Repeatable Read**: Takes ONE snapshot at the start of the FIRST query in the transaction
+- **Serializable**: Takes ONE snapshot like Repeatable Read, PLUS tracks read-write dependencies
+
+**Key Insight**: Snapshots are taken at the first query, not at BEGIN. Transactions starting with non-query statements (SET, LOCK TABLE) delay snapshot creation until the first actual query.
 
 ### 1. Read Uncommitted
 
@@ -820,6 +420,118 @@ COMMIT;  -- ERROR: could not serialize access due to read/write dependencies
 *PostgreSQL doesn't support dirty reads
 **PostgreSQL prevents phantom reads in Repeatable Read (stronger than SQL standard)
 
+### Common Pitfalls
+
+1. **Lost Updates in Read Committed**:
+```sql
+-- WRONG: Read-then-write pattern
+BEGIN;
+SELECT balance FROM accounts WHERE id = 1;  -- Reads 100
+-- Calculate new balance in application
+UPDATE accounts SET balance = 110 WHERE id = 1;  -- Lost update possible!
+COMMIT;
+
+-- CORRECT: Use atomic operations
+BEGIN;
+UPDATE accounts SET balance = balance + 10 WHERE id = 1;
+COMMIT;
+
+-- OR: Use SELECT FOR UPDATE (see SELECT FOR UPDATE section)
+BEGIN;
+SELECT balance FROM accounts WHERE id = 1 FOR UPDATE;  -- Locks row
+-- Calculate new balance
+UPDATE accounts SET balance = 110 WHERE id = 1;
+COMMIT;
+```
+**See also**: [SELECT FOR UPDATE](#select-for-update) for row-level locking strategies
+
+2. **Forgetting Retry Logic for Repeatable Read/Serializable**:
+```python
+# WRONG: No retry logic
+def transfer(from_id, to_id, amount):
+    conn.execute("BEGIN ISOLATION LEVEL SERIALIZABLE")
+    # ... transfer logic ...
+    conn.execute("COMMIT")  # May raise SerializationError!
+
+# CORRECT: With exponential backoff
+def transfer_with_retry(from_id, to_id, amount, max_attempts=3):
+    for attempt in range(max_attempts):
+        try:
+            conn.execute("BEGIN ISOLATION LEVEL SERIALIZABLE")
+            # ... transfer logic ...
+            conn.execute("COMMIT")
+            return  # Success
+        except SerializationError:
+            if attempt == max_attempts - 1:
+                raise
+            time.sleep(0.1 * (2 ** attempt))
+```
+
+3. **Long-Running Transactions**:
+```sql
+-- BAD: Holds snapshot for minutes/hours
+BEGIN ISOLATION LEVEL REPEATABLE READ;
+SELECT * FROM large_table;  -- Takes 30 minutes
+-- Meanwhile: blocks VACUUM, prevents autovacuum from cleaning dead tuples
+UPDATE small_table SET status = 'done';
+COMMIT;
+
+-- GOOD: Keep transactions short
+SELECT * FROM large_table;  -- Outside transaction
+BEGIN;
+UPDATE small_table SET status = 'done';
+COMMIT;
+```
+
+4. **Deadlocks from Inconsistent Lock Ordering**:
+```sql
+-- Transaction 1
+BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;
+
+-- Transaction 2 (concurrent) - DEADLOCK RISK!
+BEGIN;
+UPDATE accounts SET balance = balance - 50 WHERE id = 2;  -- Different order!
+UPDATE accounts SET balance = balance + 50 WHERE id = 1;
+COMMIT;
+
+-- SOLUTION: Always lock in same order
+BEGIN;
+SELECT balance FROM accounts WHERE id IN (1, 2) ORDER BY id FOR UPDATE;
+-- Now safe to update in any order
+COMMIT;
+```
+
+5. **Assuming Serializable is Always Safe**:
+```sql
+-- Even Serializable can't prevent application logic errors
+BEGIN ISOLATION LEVEL SERIALIZABLE;
+SELECT balance FROM accounts WHERE id = 1;  -- Returns 100
+-- Application bug: forgot to check if balance >= withdrawal
+UPDATE accounts SET balance = balance - 200 WHERE id = 1;  -- Now -100!
+COMMIT;  -- Succeeds! Database can't know business rules
+
+-- SOLUTION: Enforce constraints in database
+ALTER TABLE accounts ADD CONSTRAINT positive_balance CHECK (balance >= 0);
+```
+
+6. **Mixing Isolation Levels Without Understanding**:
+```sql
+-- Transaction 1: Read Committed
+BEGIN;
+UPDATE inventory SET quantity = quantity - 5 WHERE product_id = 1;
+
+-- Transaction 2: Serializable
+BEGIN ISOLATION LEVEL SERIALIZABLE;
+SELECT SUM(quantity) FROM inventory;  -- May see inconsistent state
+COMMIT;
+-- No error, but data might be inconsistent
+
+-- SOLUTION: Use same isolation level for related operations
+```
+
 ### Best Practices
 
 1. **Use Default (Read Committed) Unless You Need More**:
@@ -881,7 +593,9 @@ WHERE datname = current_database();
 
 ## SELECT FOR UPDATE
 
-SELECT FOR UPDATE locks rows returned by a SELECT query, preventing other transactions from modifying or locking them until the transaction completes.
+SELECT FOR UPDATE locks rows returned by a SELECT query, preventing other transactions from modifying or locking them until the transaction completes. This provides an alternative to higher [isolation levels](#transaction-isolation-levels) for preventing lost updates and race conditions.
+
+**When to use**: Row-level locking is often more efficient than Serializable isolation when you only need to protect specific rows, not enforce complex business rules across multiple queries.
 
 ### Basic Syntax
 
