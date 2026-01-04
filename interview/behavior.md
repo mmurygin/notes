@@ -5,6 +5,19 @@
 
 ## Answers
 
+### FaaS
+- MVP
+    - cleanup
+    - simplify networking (istio)
+    - setup deployments
+    - work with users (llm tools)
+- Eventing
+    - kafka research
+    - talked with kafka team
+    - talked with product teams
+    - pushed for no-go until we have a clear customer
+
+
 ### VM management V2 and Ashwin**
 
 [Conflict Resolution]
@@ -85,12 +98,6 @@ learning:
 - survived 100x scale
 - managed to navigate ambiguity
 - it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
-
-## Knative Istio integration
-
-- simplify
-- cross-team work
-- learned a lot
 
 ## App performance optimization after migration to VM
 
