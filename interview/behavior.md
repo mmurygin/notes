@@ -6,16 +6,37 @@
 ## Answers
 
 ### FaaS
-- MVP
-    - cleanup
-    - simplify networking (istio)
-    - setup deployments
-    - work with users (llm tools)
-- Eventing
-    - kafka research
-    - talked with kafka team
-    - talked with product teams
-    - pushed for no-go until we have a clear customer
+
+#### Situation
+
+Leadership asked me to lead a project after succesful PoC because staff engineer who led it was leaving the company. The project was to deploy serverless platform (like AWS Lambda) on top of existed infrastructure. The previous team did PoC, they took knative platform and basically did kubectl apply to one of production clusters. Knative is a bunch of kubernetes operators and CRDs, from customer point of view it abstracts containers and provides autoscaling including down to zeom.
+
+#### Task
+Make platform production ready and onboard first-customers. Product team identified one big new customer - a platform for llm tools.
+
+#### Actions
+
+At the beginning we had more or less clear WHAT needs to be done, HOW to make it was my job, but WHY to make it was also not 100% clear.
+
+##### Why
+I exlored available serverless solution (AWS Lambda) and talked with LLM tools platform on why they want to have FaaS platform and can't use Lambda. They shared that level of integration with booking for lambda is not good enough. I did research, talked with AWS team and discovered that Lambda work well with AWS only setup, but don't work well in hybrid setup (many booking tools are not supported), and there are no plans to make it the same level as on-prem setup. Also I noticed in the design the benefit of being vendor agnostic.  So why was clear - vendor agnostic and all integration out of the box.
+
+##### WHAT
+Next was a question on what exactly do we need to do. The task was to make platform "production ready". There are some generic requirements (like multi regional deployment, observability and so on) and there could be some customer specific requirements. So I've talked with LLM tools team and we came up with list of features: like integration with deployment pipeline, multi regional deployment, integration with service mesh.
+
+##### HOW
+Having that in the design doc, I digged into how to implement it.
+
+But first researched through the platform internals - read source code and event found a book on o'relly. Then identified external dependencies - like integration with deployments pipeline should be done by deployment team, so I've talked with them and aligned about timeline. Then created a few tasks in team backlog and picked up the most ambiquious part - the networkig layer. The thing is knative platform has pluggable networking layer. During PoC we implemented Istio-based networking layer, which made sense because we have centralized Istio setup at booking. But the devil was in details. The thing is in company setup istio control plane is centralized (in once central cluster), but knative requires cluster local control plane. So during PoC team just deployed a separate control plane dedicated for knative, which obviously was not ideal. To get rid of this dedicated setup we had to not only teach platform on how to work with remote control plane (which was doable), but also how to avoid race conditions when many platform talk with the shared control plane. The last one turned out quite challenging, involving shared ownership and potential mess up of centralized control plane. So I went to discover some alternatives. An alternative solution was not to use istio networking plugin at all. Knative had another network plugin - called kourier. It was a simple envoy-based gateway with small controlled. So the setup was much simplier, but had some drawbacks. Centralized istio wouldn't know anything about Functions, only gateway would know about them. So it means we had to deploy every function to every cluster where gateway is present. It turned out an acceptable trade-off, because platform can scale to 0 and we will not waste a lot of resources. So I went this route, changed networkig implementation and onboarded this gateway as a regular service to centralized SM, which basically unblocked multi regional deployment.
+
+#### Result
+Platform was production ready and LLM tool platform was unblocked. They started migration of LLM tools from their monolith setup to FaaS platform.
+
+### Knative Eventing
+- kafka research
+- talked with kafka team
+- talked with product teams
+- pushed for no-go until we have a clear customer
 
 
 ### VM management V2 and Ashwin**
