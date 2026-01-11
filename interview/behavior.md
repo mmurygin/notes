@@ -50,8 +50,7 @@ How: I looked through the source code and platform docs, identified external dep
 
 We didn't waste time on deploying and integrating platform which nobody would use.
 
-
-### VM management V2 and Ashwin**
+### VM management V2 and Ashwin
 
 [Conflict Resolution]
 
@@ -84,6 +83,69 @@ Key steps I took:
 - Reached agreement that virtualization by itself doesn't solve development challenges
 - OpenStack for production was discontinued in favor of fast migration to AWS to benefit from all AWS services
 
+### VM provisioning with Harness
+[I was wrong]
+
+#### Situation
+- vendor deployed OpenStack in our DCs
+- my team was building integration layer between vendor product and company ecosystem
+
+#### Task
+- design and implement deployment pipeline for production workload (how product engineers will create and manage VMs)
+- constraint: the deployment should go through harness
+
+#### Action
+- build simple possible integration
+- harness delegate talks directly with openstack
+- no cloud abstractions
+
+#### Result
+- harness UI is the only abstraction
+- required new harness workflow for every simple interraction with platform
+- no cloud abstractions => complex migration between clouds / vendors
+- later: build API to abstract having openstack and manu clouds per region
+
+#### Learnings
+- infrastructure changes are very expensive, have proper abstractions around them, simplest is not always the king
+- think about product future in 5-10 years, not only how users will onboard to a platform, but also how would you decomission it
+- think about who uses your product, find a way to satisfy product need but still deliver upstream requirements (implement delegate, but call API from it)
+
+### Teaching Incident Response and Postmortems to a Vendor
+[cross team] [take initiative to improve]
+
+#### Situation
+Vendor didn't have an incident response process. Engineers were sitting in zoom call, with one of them sharing screen. No IC, external communications, event logs. Post incident, they wrote RCA (root cause analysis).
+
+#### Task
+Nobody actually assigned me to improvement, but problems were obvious and I didn't event have to invent solution, just align them with our company standards.
+
+#### Actions
+The thing is that booking has pretty old and legacy setup of perl running on baremetal servers and writing it to huge cluster of MySQL dbs. To make it work over the years we build very suffisticated reliablity practices and incident response. So my task was to teach vendor these processes. I did it both by example (led some incident), by introducing some policies (there sould be IC, all commands are approve explicitly, events and actions should be tracked in dedicated slack channel, in case of P1 leadership should be updated every 30 mins). Postmortem: should include context, root cause, symptoms, detection, corrective actions, improvements: how to prevent, reduce impact, what could've gone terribly wrong, how effective was incident repsonse process. Helped to conduct postmortem reviewes.
+
+#### Results
+Vendor adopted practices, vendor managed to comply with SLA 22/24 following months => MTTR and MTTF decreased.
+
+### App performance optimization after migration to VM
+
+#### Situation
+App was 35% slower after migration to VMs, while ~5% slowleness was acceptable.
+
+#### Tasks
+Fix performance
+
+#### Action
+Assembled SME team consiste of (vendor, production engineers, dc engineers). Basically sit and talk about specific of workload (running huge number of perl scripts, CPU intensive).
+
+Identified different avenues to explore:
+* potential virtualization optimization (numa)
+* os config differences (huge pages)
+* hardware differences (cpu frequency)
+
+I setup A/B tests.
+
+#### Results
+10% response time improve with huge pages, tested on high CPU frequency hardware and got 20% more improvement in speed, ordered new hardware...
+
 ### TBU migration to MOSK
 [cross team conflict] [leadership]
 - tbu: cloud is unreliable
@@ -94,9 +156,6 @@ Key steps I took:
 - came up with data
 - raised awareness
 - got leadership approval, performed
-
-### Teaching Incident Response and Postmortems to a Vendor
-[cross team]
 
 ### Leading PII incident
 - scale
@@ -110,20 +169,13 @@ Key steps I took:
 - delivered MVP
 - aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
 
-### Toxic Support replies and Shared Responsibility model
+### History presentation for new employees.
 
-S: too direct on support when people ask trivial questions
-A: add AI support bot, add shared responsibility model, daily doc digest
+### SLO based alerting in private cloud.
 
-### VM provisioning with Harness
-[I was wrong]
+### First external platform audit.
 
-- no API
-- no cloud abstraction
-
-learning:
-- think about abstractions in advance, simplicity is not always the king
-
+### ARP config change
 
 ### Image Labeling Service
 [proud of]
@@ -132,13 +184,9 @@ learning:
 - managed to navigate ambiguity
 - it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
 
-## App performance optimization after migration to VM
-
-- A/B tests
-- coordinate networking, product team, vendor
-- huge pages
-- firmware upgrade consensus
-- communicate to leadership
+## Other cases
+1. internal terraform registry when it was not a thing in Terraform Enterprise
+6. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
 
 ## Questions categories
 
@@ -194,13 +242,3 @@ How effectively do you work with others and convey ideas? Team work skills and a
 * turned difficult collaboration around
 * helped other succeed
 * improved how people worked together
-
-## Other cases
-1. internal terraform registry when it was not a thing in Terraform Enterprise
-2. Perform "history" presentation to new employees.
-3. SLO based alerting in Private Cloud
-4. Testing environment
-5. Feedback from manager to document better and be role model: all JIRA tickets and commits have clear structure
-6. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
-7. Audit section and adaptability.
-8. ARP config change
