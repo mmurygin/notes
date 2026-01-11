@@ -7,9 +7,11 @@
 
 ### FaaS
 
+This story has two parts, first part is how I led the succesful delivery of new product within Core Infrastructure. The second part is the story how I pushed back on direction from product teams related to next stages of platform development.
+
 #### Situation
 
-Leadership asked me to lead a project after succesful PoC because staff engineer who led it was leaving the company. The project was to deploy serverless platform (like AWS Lambda) on top of existed infrastructure. The previous team did PoC, they took knative platform and basically did kubectl apply to one of production clusters. Knative is a bunch of kubernetes operators and CRDs, from customer point of view it abstracts containers and provides autoscaling including down to zeom.
+Leadership asked me to lead a project after succesful PoC because staff engineer who led it was leaving the company. The main goal of the project was to deploy and intergrate FaaS platformm (like AWS Lambda) on top of existed infrastructure. The previous team did PoC, they took knative platform and basically did kubectl apply to one of production clusters. Knative is a bunch of kubernetes operators and CRDs, from customer point of view it abstracts containers and provides autoscaling including down to zero.
 
 #### Task
 Make platform production ready and onboard first-customers. Product team identified one big new customer - a platform for llm tools.
@@ -19,24 +21,34 @@ Make platform production ready and onboard first-customers. Product team identif
 At the beginning we had more or less clear WHAT needs to be done, HOW to make it was my job, but WHY to make it was also not 100% clear.
 
 ##### Why
-I exlored available serverless solution (AWS Lambda) and talked with LLM tools platform on why they want to have FaaS platform and can't use Lambda. They shared that level of integration with booking for lambda is not good enough. I did research, talked with AWS team and discovered that Lambda work well with AWS only setup, but don't work well in hybrid setup (many booking tools are not supported), and there are no plans to make it the same level as on-prem setup. Also I noticed in the design the benefit of being vendor agnostic.  So why was clear - vendor agnostic and all integration out of the box.
+I exlored available serverless solution (AWS Lambda) and talked with LLM tools platform on why they want to have FaaS platform and can't use Lambda. They shared that level of integration with booking for lambda is not good enough. I did research, talked with AWS team and discovered that Lambda in booking environment works well with AWS only setup, but don't work well in hybrid setup (many booking tools are not supported), and there are no plans to make it the same level as on-prem setup. Also I noticed in the design the benefit of being vendor agnostic.  So why was clear - vendor agnostic and all integration out of the box.
 
 ##### WHAT
-Next was a question on what exactly do we need to do. The task was to make platform "production ready". There are some generic requirements (like multi regional deployment, observability and so on) and there could be some customer specific requirements. So I've talked with LLM tools team and we came up with list of features: like integration with deployment pipeline, multi regional deployment, integration with service mesh.
+Next was a question on what exactly do we need to do. The task was to make platform "production ready". There are some generic requirements (like multi regional deployment, observability and so on) and there could be some customer specific requirements. So I've talked with LLM tools team and we came up with min list of features: like integration with deployment pipeline, multi regional deployment, integration with service mesh and service directory.
 
 ##### HOW
 Having that in the design doc, I digged into how to implement it.
 
-But first researched through the platform internals - read source code and event found a book on o'relly. Then identified external dependencies - like integration with deployments pipeline should be done by deployment team, so I've talked with them and aligned about timeline. Then created a few tasks in team backlog and picked up the most ambiquious part - the networkig layer. The thing is knative platform has pluggable networking layer. During PoC we implemented Istio-based networking layer, which made sense because we have centralized Istio setup at booking. But the devil was in details. The thing is in company setup istio control plane is centralized (in once central cluster), but knative requires cluster local control plane. So during PoC team just deployed a separate control plane dedicated for knative, which obviously was not ideal. To get rid of this dedicated setup we had to not only teach platform on how to work with remote control plane (which was doable), but also how to avoid race conditions when many platform talk with the shared control plane. The last one turned out quite challenging, involving shared ownership and potential mess up of centralized control plane. So I went to discover some alternatives. An alternative solution was not to use istio networking plugin at all. Knative had another network plugin - called kourier. It was a simple envoy-based gateway with small controlled. So the setup was much simplier, but had some drawbacks. Centralized istio wouldn't know anything about Functions, only gateway would know about them. So it means we had to deploy every function to every cluster where gateway is present. It turned out an acceptable trade-off, because platform can scale to 0 and we will not waste a lot of resources. So I went this route, changed networkig implementation and onboarded this gateway as a regular service to centralized SM, which basically unblocked multi regional deployment.
+But first researched through the platform internals - read source code and event found a book on o'relly. Then identified external dependencies - like integration with deployments pipeline should be done by deployment team, so I've talked with them and aligned about timeline. Then created a few tasks in team backlog and picked up the most ambiquious part - the networkig layer. The thing is knative platform has pluggable networking layer. During PoC we implemented Istio-based networking layer, which made sense because we have centralized Istio setup at booking. But the devil was in details. The thing is in company setup istio control plane is centralized (in one central cluster), but knative requires cluster local control plane. So during PoC team just deployed a separate control plane dedicated for knative, which obviously was not ideal. To get rid of this dedicated setup we had to not only teach platform on how to work with remote control plane (which was doable), but also how to avoid race conditions when many platform talk with the shared control plane. The last one turned out quite challenging, involving shared ownership and potential mess up of centralized control plane. So I went to discover some alternatives. An alternative solution was not to use istio networking plugin at all. Knative had another network plugin - called kourier. It was a simple envoy-based gateway with small controlled. So the setup was much simplier, but had some drawbacks. Centralized istio wouldn't know anything about Functions, only gateway would know about them. So it means we had to deploy every function to every cluster where gateway is present. It turned out an acceptable trade-off, because platform can scale to 0 and we will not waste a lot of resources. So I went this route, changed networkig implementation and onboarded this gateway as a regular service to centralized SM, which basically unblocked multi regional deployment.
 
 #### Result
 Platform was production ready and LLM tool platform was unblocked. They started migration of LLM tools from their monolith setup to FaaS platform.
 
 ### Knative Eventing
-- kafka research
-- talked with kafka team
-- talked with product teams
-- pushed for no-go until we have a clear customer
+
+#### Situation
+After delivering succesful MVP of knative-serving platform Product team was pushing to deploy and integrate into booking environment another part of knative platform - which is called knative-eventing. The main benefit of this platform is that it provides centralized event hub, where producers can be anything which can send HTTP request and consumer can be anything which can process HTTP request. Consumers are also autoscaled based on number of messages in progress. In general, platform abstract all of the compexity of dealing with event bus (kafka, rabit, sqs), and everything is just HTTP based.
+
+#### Task
+What: Deploy and integrate platform into booking environment. Why: to simplify adoption of event driven architecture at booking (is a bit vague, so I put a note to gather more concrete use-cases and customers before implementation)
+
+#### Actions
+
+How: I looked through the source code and platform docs, identified external dependencies. The major dependency was kafka (because it provided message streaming layer platform required). I didn't have deep knowledge in kafka, so took some docs, books, deployed it locally inside kind cluster and learned it. Then having this knowledge I went to kafka team with list of requirements. The main challenge was how to provide an isolated environment for platform, so that it doesn't impact other kafka customers. We found a solution both for on-prem (prefixes) and AWS (dedicated cluster). I also gathered feedback about feasibility of the platform, because we technically building an abstraction layer on top of kafka. They were a bit skeptical, the main justification was that we already have a very well written and adopted library to interract with kafka directly, and it's hard to find justification on why they need to migrate (when everybody is there it is clear, but until we reach some mass it's useless). That's where I decided to focus on why (how was clear). I arranged a series of meeting with product teams which used kafka (gather the list with help of kafka team) and gathered their feedback. The feedback was that they would prefer to interract with kafka directly (they already know how to do it and they can use all of the kafka features - like batching and replay). Together with product we prepared one-pager to understand interest from potential new customers, and there were not many. So I pushed the recommendation to not proceed with eventing platform, until we have a clear customer base and need.
+
+#### Results
+
+We didn't waste time on deploying and integrating platform which nobody would use.
 
 
 ### VM management V2 and Ashwin**
@@ -73,10 +85,10 @@ Key steps I took:
 - OpenStack for production was discontinued in favor of fast migration to AWS to benefit from all AWS services
 
 ### TBU migration to MOSK
-[team conflict] [leadership]
+[cross team conflict] [leadership]
 - tbu: cloud is unreliable
 - vendor: cloud is very old, upgrade
-- me:
+- me: let's talk with both and understand their point of view
 
 ### Offscript Decomissioning
 - came up with data
