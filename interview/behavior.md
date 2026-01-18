@@ -1,9 +1,22 @@
 # Behavior Interview
 
-* TOC
-{:toc}
-
-## Answers
++ [Knative Eventing](#knative-eventing)
++ [VM management V2 and Ashwin](#vm-management-v2-and-ashwin)
++ [VM provisioning with Harness](#vm-provisioning-with-harness)
++ [Teaching Incident Response and Postmortems to a Vendor](#teaching-incident-response-and-postmortems-to-a-vendor)
++ [App performance optimization after migration to VM](#app-performance-optimization-after-migration-to-vm)
++ [TBU migration to MOSK](#tbu-migration-to-mosk)
++ [Offscript Decomissioning](#offscript-decomissioning)
++ [Leading PII incident](#leading-pii-incident)
++ [BKS on MOSK](#bks-on-mosk)
++ [History presentation for new employees.](#history-presentation-for-new-employees)
++ [Actions](#actions-4)
++ [Results](#results-4)
++ [SLO based alerting in private cloud.](#slo-based-alerting-in-private-cloud)
++ [First external platform audit.](#first-external-platform-audit)
++ [ARP config change](#arp-config-change)
++ [Image Labeling Service](#image-labeling-service)
++ [Other cases](#other-cases)
 
 ### FaaS
 
@@ -202,61 +215,6 @@ Made a lot of friends and hopefully improved onboarding experience from new join
 - managed to navigate ambiguity
 - it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
 
-## Other cases
+### Other cases
 1. internal terraform registry when it was not a thing in Terraform Enterprise
-6. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
-
-## Questions categories
-
-### Conflict resolution
-
-How can you handle disagreements with team members or stakeholders? How you navigate conflicts professionally and constructively
-
-> You disagreed with teammate or leaders
-> You dealt with interpersonal challenges
-> You had to navigate competing priorities
-> You faced frictions between teams
-> You turned a difficult relationship around
-
-### Perseverance
-
-Can you push through challenges and setbacks? Demonstrate your ability to overcome obstacles and maintain focus on long term goals
-
-* You faced significant technical obstacles
-* Thinkgs didn't go as planned
-* You had to push through setbacks
-* The odds seemed stacked agains you
-* You refused to give up despite challenges
-
-### Adaptability
-
-How well do you handle change? Show that you can thrive in dynamic environment and adjust to your approach when necessary
-
-* Everything changed unexpectedly
-* You had to pivot quickly
-* Plans fell through
-* You worked outside your comfort zone
-
-### Growth Mindset
-Continuous learning and improvement. Highligh your passion for personal and professional development.
-
-* You made significant mistakes
-* You received tough feedback
-* You were initially wrong about something
-
-1. Self-taught throuw my life
-2. Personal Learning plans and notes
-
-### Leadership
-
-Can you guide and inspire others?
-
-### Collaboration & Communication
-
-How effectively do you work with others and convey ideas? Team work skills and ability to communicate complex concepts clearly.
-
-* worked accross multiple teams
-* built bridges between groups
-* turned difficult collaboration around
-* helped other succeed
-* improved how people worked together
+2. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
