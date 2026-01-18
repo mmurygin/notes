@@ -128,7 +128,7 @@ Vendor adopted practices, vendor managed to comply with SLA 22/24 following mont
 ### App performance optimization after migration to VM
 
 #### Situation
-App was 35% slower after migration to VMs, while ~5% slowleness was acceptable.
+App was 50% slower after migration to VMs, while ~5% slowleness was acceptable.
 
 #### Tasks
 Fix performance
@@ -138,13 +138,19 @@ Assembled SME team consiste of (vendor, production engineers, dc engineers). Bas
 
 Identified different avenues to explore:
 * potential virtualization optimization (numa)
-* os config differences (huge pages)
+* host os config differences (huge pages)
 * hardware differences (cpu frequency)
 
-I setup A/B tests.
+I setup A/B tests and helped to troubleshoot THB:
+* 1 VM vs 1 baremetal host
+* compare system metrics from guest VM and baremetal => no diff
+* compare system metrics from hypervisor and baremtal => a lot of page faults
+* altough guest OS has enabled THB, host OS didn't have pre-allocated pages
+* so guest thought that they use 2MB pages, but in reality on hypervisor we had 512 4KB pages, which ended up in a lot of page faults
+* we enabled THP on hypervisor and pre-allocated required number of THP for every VM
 
 #### Results
-10% response time improve with huge pages, tested on high CPU frequency hardware and got 20% more improvement in speed, ordered new hardware...
+Together with NUMA change it did 25% of improvement, the other 20% improvement came from CPU change
 
 ### TBU migration to MOSK
 [cross team conflict] [leadership]
@@ -170,8 +176,20 @@ I setup A/B tests.
 - aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
 
 ### History presentation for new employees.
+#### Situation
+when I joined booking there was "infra overview" presentation from principal, which described how we ended up having 50k baremetal servers running perl. This presentation was extremely useful to me, after a few years this engineer left the company. I discovered that new joiners in my track have vague understanding of "big picture".
+
+#### Task
+I decided to help onboarders in my team, and started to give similar presentation.
+
+### Actions
+Got a positive feedback, expanded presentation to whole department. Gave more than 20 talks (small groups, white board).
+
+### Results
+Made a lot of friends and hopefully improved onboarding experience from new joiners.
 
 ### SLO based alerting in private cloud.
+[todo]
 
 ### First external platform audit.
 
