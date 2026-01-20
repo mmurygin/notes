@@ -20,17 +20,6 @@ words like **step-by-step** in claude.ai or chatgpt.com
 
 Used to go **deep** into problem.
 
-#### Activation
-
-The following modes are supported, to activate just type this word
-
-* `<think>` - basic extended thinking
-* `<think hard>` - more thinking budget
-* `<think harder>` - even more thinking budget
-* `<ultrathink>`- maximum thinking budget
-
-Claude supports different thinking modes that control how reasoning is performed and displayed:
-
 ## Context
 
 * `<esc> + <esc>` - rewind the conversation (and code) to an earlier point in time, allows to maintain only valuable context
@@ -83,3 +72,6 @@ https://www.anthropic.com/engineering/claude-code-best-practices
 1. Write good code (SOLID and DDD)
 1. Plan in advance
 1. Give Claude a way to iterate on results automatically (write some unit tests, define what success / failure look like)
+
+## References
+1. [Common workflows](https://code.claude.com/docs/en/common-workflows)
