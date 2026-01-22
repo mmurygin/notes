@@ -18,6 +18,10 @@
 + [Image Labeling Service](#image-labeling-service)
 + [Other cases](#other-cases)
 
+### Tell Me about yourself
+I'm self taught software engineer and don't have a computer science degree. At school I was good at math and physics and decided to go for physics degree, specializing on nuclear physics. So in theory I should work in a secret nuclear research center somewhere deep in Russia. But during my internship I didn't like what I've saw (undermotivated and burned out engineers), so I decided to explore another avenue. By the end of my study I did a bit of programming for my math research, I also did some research of local market what which skills are necessary to get a job. Got some books and online courses and started to learn. After about 6-9 months I got a SD job in local company. Worked hard, but didn't stop learning. After a few years, my company made a deal with SV company to create a product for them. And I was invited to become part of this team. After a few years I became technical lead of this team and grew team to 9 engineer. It was very cool time, we worked as a start-up owning product end-to-end frontend, backend, supporting ML algorithms, infrastructure. But from career point of view it was a wall for me, because all of the big action and decisions was happening in headquates in SV. So I decided to try myself in big international company. That's how about 6 years ago I got offer from booking.com and moved to Netherlands. At booking I worked in many teams mostly inside Core Platforms department (building platform for production engineers at booking). At booking it was a rought path with many learnings along the way. Worked on Virtualization platform which had both successes and massive failures, worked on Distributed Job scheduling platform and led FaaS platform. Worked with great staff engineers who empower and unblock others and not so great staff engineer who create chaos around themself. Tried to be a good staff when I got the scope without title. Now after 6 years I think it's time for a next step, so I'm here:)
+
+
 ### FaaS
 
 This story has two parts, first part is how I led the succesful delivery of new product within Core Infrastructure. The second part is the story how I pushed back on direction from product teams related to next stages of platform development.
@@ -141,7 +145,7 @@ Vendor adopted practices, vendor managed to comply with SLA 22/24 following mont
 ### App performance optimization after migration to VM
 
 #### Situation
-App was 50% slower after migration to VMs, while ~5% slowleness was acceptable.
+App was 40% slower after migration to VMs, while ~5% slowleness was acceptable.
 
 #### Tasks
 Fix performance
@@ -163,30 +167,51 @@ I setup A/B tests and helped to troubleshoot THB:
 * we enabled THP on hypervisor and pre-allocated required number of THP for every VM
 
 #### Results
-Together with NUMA change it did 25% of improvement, the other 20% improvement came from CPU change
+Together with NUMA change it did 15% of improvement, the other 20% improvement came from CPU change
 
 ### TBU migration to MOSK
 [cross team conflict] [leadership]
-- tbu: cloud is unreliable
-- vendor: cloud is very old, upgrade
-- me: let's talk with both and understand their point of view
+
+#### Situation
+We got a few single region outages with OpenStack (Ceph in particular), and one of the critical business units was raising concerns about platform stability.
+
+#### Task
+Make customer happy and stop complaining.
+
+#### Actions
+1. Talk with customers
+- why single region outage is a big deal for them: they are only present in 2 regions (not 3 like all other services)
+- why they can't deploy into 3rd - network layour is different
+
+2. Review incidents and see if we can push improvements on vendor side
+- vendor - we are using VERY old version of Ceph which doesn't deal well with network partitioning, it doesn't make sense to invest in back porting, we already have new version of cloud deployed - customer should migrate
+- customer can't migrate because of different network layour and lack of service mesh
+
+3. Dig into why network is different
+- migration happened right after aquisition and there were no green light from security to be on the same netowrk
+- now it's ok
+- talked with SM team, setup a plan how can they migrate to shared SM
+
+4. Convinced the team to schedule and start migration
+
+#### Results
+1. TBU migrated to new cloud, they got standard 3 region redundancy and they were happy even during single region outage (which hasn't happened in next 2 years).
 
 ### Offscript Decomissioning
-- came up with data
-- raised awareness
-- got leadership approval, performed
+[initiative]
+
+S: unsecure
+T: convince to decomission
+A: came up with data, bring it to relevant leaders, couple it with company objective
+R: access restriction was scheduled in 1 week, full decomissioning in 3 month
 
 ### Leading PII incident
+
 - scale
 - cross-organizational improvements after incidnet
     - security incident response
     - PII monitor
 
-### BKS on MOSK
-[unblock others]
-
-- delivered MVP
-- aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
 
 ### History presentation for new employees.
 #### Situation
@@ -201,12 +226,6 @@ Got a positive feedback, expanded presentation to whole department. Gave more th
 ### Results
 Made a lot of friends and hopefully improved onboarding experience from new joiners.
 
-### SLO based alerting in private cloud.
-[todo]
-
-### First external platform audit.
-
-### ARP config change
 
 ### Image Labeling Service
 [proud of]
@@ -214,6 +233,22 @@ Made a lot of friends and hopefully improved onboarding experience from new join
 - survived 100x scale
 - managed to navigate ambiguity
 - it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
+
+
+### ARP config change
+
+### BKS on MOSK
+[unblock others]
+
+- delivered MVP
+- aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
+
+
+### SLO based alerting in private cloud.
+[todo]
+
+### First external platform audit.
+
 
 ### Other cases
 1. internal terraform registry when it was not a thing in Terraform Enterprise
