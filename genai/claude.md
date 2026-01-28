@@ -4,21 +4,15 @@
 {:toc}
 
 
-## Modes
+## Planning Mode
 
-### Planning Mode
+Used to get wider understanding of problem and come up with solution. Use it always for complex problems before jumping into solution.
 
-Used to get wider understanding of problem and come up with solution.
+## LSP Servers
 
-#### Activation
-
-`shift+tab` in claude code
-
-words like **step-by-step** in claude.ai or chatgpt.com
-
-### Thinking Mode
-
-Used to go **deep** into problem.
+Configure LSP servers to make sure that Claude can use them for code edition
+* https://code.claude.com/docs/en/discover-plugins#code-intelligence
+* https://github.com/Piebald-AI/claude-code-lsps
 
 ## Context
 
