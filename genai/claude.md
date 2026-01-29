@@ -5,15 +5,6 @@
 
 ## Prompting Fundamentals
 
-### Prompt Structure
-
-Effective Claude Code prompts follow this structure:
-
-1. **Task**: What you want Claude to do
-2. **Current Behavior**: What's happening now (for bugs)
-3. **Expected Behavior**: What should happen
-4. **How to Test**: Verification criteria
-
 ### Be Specific and Contextual
 
 **Ineffective:**
