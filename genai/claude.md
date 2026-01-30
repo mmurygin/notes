@@ -392,13 +392,6 @@ jobs:
           claude -p "Review this PR for code quality" --allowedTools "Read,Glob,Grep"
 ```
 
-### Security Considerations
-
-- Limit tools Claude can access
-- Run in isolated environments
-- Audit all operations
-- Manage API keys securely
-
 ## Git Worktrees for Parallel Development
 
 Run multiple Claude Code sessions on different branches:
@@ -417,6 +410,32 @@ cd ../project-feature-b && claude
 - Independent file state per worktree
 - Changes don't affect other worktrees
 - Shared Git history and remote connections
+
+### Merging Worktree into Target Branch
+
+```bash
+# 1. Commit all changes in the worktree
+cd ../project-feature-a
+git add . && git commit -m "Complete feature A"
+
+# 2. Push the branch to remote (optional, for PR workflow)
+git push -u origin feature-a
+
+# 3. Switch to main repository and merge
+cd ../project
+git checkout main
+git merge feature-a
+
+# 4. Clean up: remove the worktree and branch
+git worktree remove ../project-feature-a
+git branch -d feature-a
+```
+
+**Alternative: Squash merge for cleaner history:**
+```bash
+git merge --squash feature-a
+git commit -m "Add feature A"
+```
 
 ## Token Optimization
 
@@ -454,12 +473,6 @@ Use 3 parallel agents to brainstorm ideas for cleanup of `@services/xxx.cpp`
 commit, push, pr
 
 Check why this function changed, use git history
-```
-
-### Teach Claude Internal Tools
-
-```
-Use bk CLI to create project
 ```
 
 ## Anti-Patterns to Avoid
