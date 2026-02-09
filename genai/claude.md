@@ -53,42 +53,19 @@ Return findings in a markdown table with severity ratings
 </formatting>
 ```
 
-## Thinking Modes
+## Plan Mode
 
-### Thinking Keywords Hierarchy
+Press `Tab` to activate Plan Mode - Claude analyzes and plans without making changes.
 
-Claude Code supports different thinking depths:
-
-| Keyword | Thinking Level | Use Case |
-|---------|---------------|----------|
-| `think` | Basic extended thinking | Standard analysis |
-| `think more` | Medium depth | Complex problems |
-| `think harder` | Deep analysis | Architectural decisions |
-| `ultrathink` | Maximum thinking budget | Critical system design |
-
-### Ultrathink Mode
-
-Use `ultrathink` for maximum reasoning:
-
-```
-ultrathink: Analyze this codebase and suggest architectural improvements
-for handling 10x current traffic
-```
+1. Enable Ultrathink for deep solution thinking
+2. Use Plan Mode to review the proposed approach
+3. Confirm and implement the plan
 
 Best for:
 - Complex architectural decisions
 - Performance optimization
 - Unfamiliar codebase analysis
 - Security audits
-
-### Plan Mode
-
-Press `Tab` to activate Plan Mode - Claude analyzes and plans without making changes.
-
-**Combining Ultrathink and Plan Mode:**
-1. Enable Ultrathink for deep solution thinking
-2. Use Plan Mode to review the proposed approach
-3. Confirm and implement the plan
 
 ## Context Management
 
@@ -260,7 +237,7 @@ Hooks are shell commands that execute in response to events.
 
 Check available hooks with `/hooks` command.
 
-## Custom Slash Commands
+## Commands
 
 ### Creating Commands
 
