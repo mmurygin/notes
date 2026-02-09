@@ -137,8 +137,8 @@ Brief overview of your project's purpose.
 - Build: [Command]
 
 ## Project Structure
-- `/src`: Main source code
-- `/tests`: Unit and integration tests
+- @docs/src/CLAUDE.md
+- @docs/tests/CLAUDE.md
 
 ## Important Notes
 - [Specific instructions]
@@ -152,6 +152,9 @@ Brief overview of your project's purpose.
 | Be Specific | Provide clear, actionable instructions |
 | Use Descriptive Names | `api-validation.md` not `rules1.md` |
 | Regular Updates | Review as project evolves |
+| Use references | Reference other CLAUDE.md in main CLAUDE.md |
+
+## Skills
 
 ## Subagents
 
@@ -456,7 +459,6 @@ Check why this function changed, use git history
 
 | Anti-Pattern | Problem | Solution |
 |--------------|---------|----------|
-| Windows-style paths on Unix | Compatibility issues | Use forward slashes |
 | Too many options | Confuses users | Provide clear default |
 | Testing mock behavior | Unreliable tests | Test actual behavior |
 | Not encoding intent upfront | Misaligned results | Define standards clearly |
@@ -488,14 +490,12 @@ Check why this function changed, use git history
 
 ### Learning Resources
 - [Claude Code Course - Anthropic + DeepLearningAI](https://learn.deeplearning.ai/courses/claude-code-a-highly-agentic-coding-assistant/)
+- [Agent Skills with Anthropic and DeepLearningAI](https://learn.deeplearning.ai/courses/agent-skills-with-anthropic)
 
 ### Community Resources
 - [Claude Code Prompt Engineering Guide](https://claudecode.io/guides/prompt-engineering)
-- [CLAUDE.md Advanced Tips](https://kuanhaohuang.com/claude-code-claude-md-advanced-tips/)
 - [Claude Code Handbook](https://nikiforovall.blog/claude-code-rules/fundamentals/use-claude-md)
 - [Better Practices Guide](https://kylestratis.com/posts/a-better-practices-guide-to-using-claude-code/)
 - [Claude Agent SDK Best Practices](https://skywork.ai/blog/claude-agent-sdk-best-practices-ai-agents-2025/)
-- [Deep Thinking Techniques](https://claudefa.st/docs/learn/performance/deep-thinking-techniques)
-- [Context Management Guide](https://cas.dev/blog/claude-code-memory-complete-guide)
 - [GitHub - ykdojo/claude-code-tips](https://github.com/ykdojo/claude-code-tips)
 - [GitHub - zebbern/claude-code-guide](https://github.com/zebbern/claude-code-guide)
