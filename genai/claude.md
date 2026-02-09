@@ -156,6 +156,29 @@ Brief overview of your project's purpose.
 
 ## Skills
 
+### Why
+
+![Skills](img/skills.png)
+
+### Skills vs MCP
+
+![Skills vs MCP](img/skills-vs-mcp.png)
+
+### Skills vs Tools
+
+![Skills vs Tools](img/skills-vs-tools.png)
+
+### Skills vs SubAgents
+
+![Skills vs SubAgents](img/skills-vs-subagents.png)
+
+### All Together
+
+![All Together](img/skills-all-together.png)
+
+### Resources
+- [Skill Explained](https://claude.com/blog/skills-explained)
+
 ## Subagents
 
 ### Delegation Patterns
