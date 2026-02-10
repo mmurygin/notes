@@ -5,3 +5,4 @@
 - [Prompt Engineering](prompt-engineering.md)
 - [Claude](claude.md)
 - [WindSurf](windsurf.md)
+- [Vibe Coding](vibe-coding.md)
