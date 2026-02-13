@@ -1,5 +1,7 @@
 # Behavior Interview
 
++ [Tell Me about yourself](#tell-me-about-yourself)
++ [FaaS](#faas)
 + [Knative Eventing](#knative-eventing)
 + [VM management V2 and Ashwin](#vm-management-v2-and-ashwin)
 + [VM provisioning with Harness](#vm-provisioning-with-harness)
@@ -8,19 +10,17 @@
 + [TBU migration to MOSK](#tbu-migration-to-mosk)
 + [Offscript Decomissioning](#offscript-decomissioning)
 + [Leading PII incident](#leading-pii-incident)
-+ [BKS on MOSK](#bks-on-mosk)
 + [History presentation for new employees.](#history-presentation-for-new-employees)
-+ [Actions](#actions-4)
-+ [Results](#results-4)
++ [BKS on MOSK](#bks-on-mosk)
 + [SLO based alerting in private cloud.](#slo-based-alerting-in-private-cloud)
-+ [First external platform audit.](#first-external-platform-audit)
-+ [ARP config change](#arp-config-change)
-+ [Image Labeling Service](#image-labeling-service)
 + [Other cases](#other-cases)
-
 ### Tell Me about yourself
-I'm self taught software engineer and don't have a computer science degree. At school I was good at math and physics and decided to go for physics degree, specializing on nuclear physics. So in theory I should work in a secret nuclear research center somewhere deep in Russia. But during my internship I didn't like what I've saw (undermotivated and burned out engineers), so I decided to explore another avenue. By the end of my study I did a bit of programming for my math research, I also did some research of local market what which skills are necessary to get a job. Got some books and online courses and started to learn. After about 6-9 months I got a SD job in local company. Worked hard, but didn't stop learning. After a few years, my company made a deal with SV company to create a product for them. And I was invited to become part of this team. After a few years I became technical lead of this team and grew team to 9 engineer. It was very cool time, we worked as a start-up owning product end-to-end frontend, backend, supporting ML algorithms, infrastructure. But from career point of view it was a wall for me, because all of the big action and decisions was happening in headquates in SV. So I decided to try myself in big international company. That's how about 6 years ago I got offer from booking.com and moved to Netherlands. At booking I worked in many teams mostly inside Core Platforms department (building platform for production engineers at booking). At booking it was a rought path with many learnings along the way. Worked on Virtualization platform which had both successes and massive failures, worked on Distributed Job scheduling platform and led FaaS platform. Worked with great staff engineers who empower and unblock others and not so great staff engineer who create chaos around themself. Tried to be a good staff when I got the scope without title. Now after 6 years I think it's time for a next step, so I'm here:)
 
+I have about 15 years of expirience, and the interesting part that I'm self-taught software engineer. I have a degree in nuclear physics, and in theory I should've been a nuclear scientist. But when I did internship in one of the research centers in Russia, I didn't like what I saw: demotivated and underpaid engineers, who imitated work. The main skill which I got in university were not physics and math, but it was the skill on how to learn on myself. I wasn't very dilligent student, and also had to work to pay for my living so I always skipped most of the theory lessons, and before the examps I had to learn everything by myself or with a group of friends. And it worked well, I got a degree with honor and when I decided to not be a nuclear scienties I used the same skills to learn software development. When I graduated I already knew a bit of programming (learned it for my math research), but it wasn't enough to get a job, so I've research local market, gathered requirements and spent around 6 months preparing for a job, got accepted after the first interview.
+
+So I joined company as a full stack developer, initially worked on some internal products, but never stopped learning and soon got a good reputation. So when my company made a deal with US company to make a product for them, I was invited to join that team. Initially there were 5 of us, and the goal was to build system for generating training sets for machine learning tasks. So we had some data input from customers, had to perform some pre-processing, then send it to human labelers, then do post-processing and send data to clients. It was a cool time and we worked in startup-like environment: we were given vague requirements from US customers and had all the freedom to implement any technical decision we wanted. Later  I was assined as a technical lead of this group. Over 3 years I grew team to 9 engineers, and we build product with SoA, everything was deployed to k8s (back in times it wasn't as wide spread as it is now), services were scaled horizontally based on events.
+
+But from career point of view it was a wall for me, because all of the big action and decisions was happening in headquates in SV. So I decided to try myself in big international company. That's how about 6 years ago I got offer from booking.com and moved to Netherlands. At booking I worked in 2 teams both inside Core Platforms department (building platform for production engineers at booking). In the first team I was focused on building integration layer between OpenStack based private cloud and Booking Eco system and helping to migrate the most critical workload including serices which served main page of booking. There were some good things, some failures and a lot of learning we can talk about. The second (and curent team) is focused on building platform for sporadic workloads at booking (includes distributed job scheduling, FaaS on top of kubernetes and Lambda). The distributed job scheduling platform had legary baremetal part and modern k8s. The legacy one still hosted the main part of workload, but was abandoned by the team and consistenly failing SLOs. So I helped to stabilize it (we can dig into it) and also design and led deployment and integration of FaaS platform.
 
 ### FaaS
 
@@ -220,36 +220,19 @@ when I joined booking there was "infra overview" presentation from principal, wh
 #### Task
 I decided to help onboarders in my team, and started to give similar presentation.
 
-### Actions
+#### Actions
 Got a positive feedback, expanded presentation to whole department. Gave more than 20 talks (small groups, white board).
 
-### Results
+#### Results
 Made a lot of friends and hopefully improved onboarding experience from new joiners.
 
-
-### Image Labeling Service
-[proud of]
-
-- survived 100x scale
-- managed to navigate ambiguity
-- it brought a lot of money to outsourcing company (brought another customer) and it helped team to relocate
-
-
-### ARP config change
-
 ### BKS on MOSK
-[unblock others]
-
-- delivered MVP
-- aligned on blockers (didn't won't to rely / depend for critical part on a separate vendor)
-
 
 ### SLO based alerting in private cloud.
 [todo]
 
-### First external platform audit.
-
-
 ### Other cases
 1. internal terraform registry when it was not a thing in Terraform Enterprise
 2. Centos9 - helped the team to get up to speed with build process and dependencies, helped to structure work
+3. ARP for Mysql [big technical compexity]
+4. BKS on MOSK [unblocked others]
