@@ -14,6 +14,7 @@
 + [BKS on MOSK](#bks-on-mosk)
 + [SLO based alerting in private cloud.](#slo-based-alerting-in-private-cloud)
 + [Other cases](#other-cases)
+
 ### Tell Me about yourself
 
 I have about 15 years of expirience, and the interesting part that I'm self-taught software engineer. I have a degree in nuclear physics, and in theory I should've been a nuclear scientist. But when I did internship in one of the research centers in Russia, I didn't like what I saw: demotivated and underpaid engineers, who imitated work. The main skill which I got in university were not physics and math, but it was the skill on how to learn on myself. I wasn't very dilligent student, and also had to work to pay for my living so I always skipped most of the theory lessons, and before the examps I had to learn everything by myself or with a group of friends. And it worked well, I got a degree with honor and when I decided to not be a nuclear scienties I used the same skills to learn software development. When I graduated I already knew a bit of programming (learned it for my math research), but it wasn't enough to get a job, so I've research local market, gathered requirements and spent around 6 months preparing for a job, got accepted after the first interview.
