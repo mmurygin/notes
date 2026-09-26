@@ -131,28 +131,18 @@ Useful for ofline-servicing systems and batch jobs.
     * Threads
     * GoRoutines
     * Queue size
-
-
-### Additional useful metrics
+    * Network throughtput
 1. **Dependencies** - you should always monitor your dependencies. So that, in case of emergency you could immediately understand that service dependency is the root cause of issue.
     * the health of dependency
     * availability, latency and errors for all requests to dependency.
-1. **Intended Changes** - changes is the number one source of any issues. It's very useful to have all the change logs in one place. Type of changes:
+1. **Changes** - changes is the number one source of any issues. It's very useful to have all the change logs in one place. Type of changes:
     * release of new software version
     * configuration update
     * infrastructure update
     * hardware update
 1. **External uptime checks.**
-1. **Blackbox monitoring.**
-1. **Number of alerts per service.**
 
 ## Metrics Examples
-### Virtual Machine
-1. CPU Usage
-1. Memory
-1. Disk Traffic
-1. Network Usage
-1. Clock Drift
 
 ### Database Metrics
 1. Connections (threads in mysql)
@@ -164,29 +154,13 @@ Useful for ofline-servicing systems and batch jobs.
 1. The correctness of data
     * to prevent the cases when we slowly loose data
 
-### Message Queues
-1. Queue Length
-1. Publish Rate
-1. Consumption rate
 
 ### Cache
 1. Cache evicted ratio
 1. Cache hit ratio (hit / (hit + miss)
-
-### DNS
-1. Zone transfers (when slave sync with master)
-1. QPS
-    * at least QPS for server
-    * better QPS per zone
-    * the best QPS per view
 
 ## Visualization
 1. Stack related graphs vertically.
 1. Use the correct (and expected) scale and unit in your axes.
 1. Add thresholds to graphs when relevant.
 1. Enable shared crosshairs across graphs (possible in grafana).
-
-## In Real Life
-1. Google Monitoring
-
-    ![Global monitoring](./img/global-monitoring.png)
