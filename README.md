@@ -1,10 +1,10 @@
 # My learning notes
 
-- [Interview](interview)
 - [GenAI](genai)
 - [SRE](sre)
 - [HighLoad](highload)
 - [Computer Science](computer-science)
+- [Interview](interview)
 - [Linux](linux)
 - [Puppet](puppet)
 - [Programming Languages](lang)
